@@ -42,7 +42,7 @@ class Solution
         long ans = Long.MAX_VALUE;
       
         for(int i=m-1;i<n;i++){
-            if(a.get((int)i)-a.get((int)(i-(m-1)))<ans){
+            if(a.get(i)-a.get((int)(i-(m-1)))<ans){
                 ans = a.get((int)i)-a.get((int)(i-(m-1)));
             }
         }
