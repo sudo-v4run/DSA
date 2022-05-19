@@ -39,7 +39,7 @@ class Solution
     {
         Collections.sort(a);
         
-        long ans = Long.MAX_VALUE;
+        long ans = Integer.MAX_VALUE;
       
         for(int i=m-1;i<n;i++){
             if(a.get(i)-a.get(i-(m-1))<ans){
