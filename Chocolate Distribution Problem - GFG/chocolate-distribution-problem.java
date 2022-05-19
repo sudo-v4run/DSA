@@ -43,7 +43,7 @@ class Solution
       
         for(int i=m-1;i<n;i++){
             if(a.get(i)-a.get(i-(m-1))<ans){
-                ans = a.get((int)i)-a.get((int)(i-(m-1)));
+                ans = a.get(i)-a.get(i-(m-1));
             }
         }
         
