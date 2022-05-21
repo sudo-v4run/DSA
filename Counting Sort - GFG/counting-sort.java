@@ -27,41 +27,24 @@ class Solution
     //order using Counting Sort.
     public static String countSort(String arr)
     {
-        char seq[] = arr.toCharArray();
-        int n = seq.length;
+        int count[] = new int[26];
+        char input[] = arr.toCharArray();
+        char output[] = new char[input.length];
         
-        //Declaring output character array that will have sorted letters.
-        char output[] = new char[n];
-        
-        //Creating a count array to store count of individual
-        //characters and initialize count array as 0.
-        int count[] = new int[256];
-        Arrays.fill(count, 0);
-        
-        //Storing count of each character.
-        for (int i=0; i<n; ++i)
-            ++count[seq[i]];
-            
-        //Modifying the count array such that each element at each index 
-        //stores the sum of previous counts. 
-        //The modified count array indicates the position of each object in 
-        //the output sequence.
-        for (int i=1; i<=255; ++i)
-            count[i] += count[i-1];
-            
-        //Building the output character array.
-        for (int i = 0; i<n; ++i)
-        {
-            output[count[seq[i]]-1] = seq[i];
-            --count[seq[i]];
+        for(int i = 0 ; i < input.length ; i++){
+            count[input[i]-'a']++;
+        }
+        for(int i = 1 ; i < count.length ; i++){
+            count[i]+=count[i-1];
         }
         
-        //Copying the output array to arr, so that arr now
-        //contains sorted characters.
-        for (int i = 0; i<n; ++i)
-            seq[i] = output[i];
-            
-        //returning the sorted string.     
-        return new String(seq);
+        for(int i = input.length-1 ; i>=0 ; i--){
+            output[--count[input[i]-'a']] = input[i];
+        }
+        
+        for(int i = 0 ; i < input.length;i++){
+            input[i] = output[i];
+        }
+        return new String(input);
     }
 }
