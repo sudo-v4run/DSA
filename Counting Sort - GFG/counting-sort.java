@@ -42,9 +42,9 @@ class Solution
             output[--count[input[i]-'a']] = input[i];
         }
         
-        for(int i = 0 ; i < input.length;i++){
-            input[i] = output[i];
-        }
-        return new String(input);
+        // for(int i = 0 ; i < input.length;i++){
+        //     input[i] = output[i];
+        // }
+        return new String(output);
     }
 }
