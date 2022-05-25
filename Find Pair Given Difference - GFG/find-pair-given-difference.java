@@ -40,16 +40,37 @@ class Solution
 {
     public boolean findPair(int arr[], int size, int n)
     {
-        Arrays.sort(arr);
-        int i = 0 ;
-        int j =1 ;
-        while(i<size && j<size){
-            if(i!=j && arr[j]-arr[i] == n){
+        // Arrays.sort(arr);
+        // int i = 0 ;
+        // int j =1 ;
+        // while(i<size && j<size){
+        //     if(i!=j && arr[j]-arr[i] == n){
+        //         return true;
+        //     }else if(arr[j]-arr[i]>n){
+        //         i++;
+        //     }else{
+        //         j++;
+        //     }
+        // }
+        
+        // return false;
+        
+        
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        
+        for(int i = 0 ; i < size ; i++){
+            hm.put(arr[i],hm.getOrDefault(arr[i],0)+1);
+        }
+        
+        for(int i = 0 ; i < size ; i++ ){
+            int ans = arr[i]+n;
+            
+            if(n==0 && hm.get(arr[i])>1){
                 return true;
-            }else if(arr[j]-arr[i]>n){
-                i++;
-            }else{
-                j++;
+            }
+           
+            else if(n>0 && hm.containsKey(ans)){
+                return true;
             }
         }
         
