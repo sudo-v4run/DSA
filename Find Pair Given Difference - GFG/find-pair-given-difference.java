@@ -40,14 +40,20 @@ class Solution
 {
     public boolean findPair(int arr[], int size, int n)
     {
-        for(int i = 0 ; i < size ; i++){
-            for(int j = i+1 ; j < size ; j++){
-                if(Math.abs(arr[i]-arr[j])==n){
-                    return true;
-                }
+        Arrays.sort(arr);
+        int s = 0 ;
+        int e = 1;
+        
+        while(s<size && e<size){
+            if(s!=e && arr[e]-arr[s]==n){
+                return true;
+            }
+            else if((arr[e]-arr[s])<n){
+                e++;
+            }else{
+                s++;
             }
         }
-        
         return false;
     }
 }
