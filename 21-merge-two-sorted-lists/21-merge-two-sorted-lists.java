@@ -23,15 +23,11 @@ class Solution {
             }
             res = res.next;
         }
-        while(list1!=null){
+        if(list1!=null){
             res.next=list1;
-            res = res.next;
-            list1=list1.next;
         }
-        while(list2!=null){
+        if(list2!=null){
             res.next=list2;
-            res = res.next;
-            list2=list2.next;
         }
         return ans.next;
     }
