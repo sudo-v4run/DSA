@@ -26,7 +26,7 @@ class Solution {
         if(list1!=null){
             res.next=list1;
         }
-        if(list2!=null){
+        else if(list2!=null){
             res.next=list2;
         }
         return ans.next;
