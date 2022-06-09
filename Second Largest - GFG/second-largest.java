@@ -43,7 +43,7 @@ class Solution {
                 second = largest;
                 largest = arr[i];
             }else if(arr[i]<largest){
-                if(second == -1 || arr[i]>second){
+                if( arr[i]>second){
                     second = arr[i];
                 }
             }
