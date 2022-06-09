@@ -32,7 +32,7 @@ class Solution
 	        
 	   int first = 0 , second = 1 , third = -1;
 	   
-	   for(int i = 0 ; i < n ; i++){
+	   for(int i = 1 ; i < n ; i++){
 	       if(arr[i]>arr[first]){
 	           third = second;
                second  = first;
