@@ -37,16 +37,14 @@ class Solution
 	           third = second;
                second  = first;
                first = i;
-	       }else if(arr[i]<arr[first]){
-	           if(arr[i]>arr[second]){
+	       }
+	       else if(arr[i]>arr[second]){
 	               third = second;
 	               second = i;
-	           }else if(arr[i]<arr[second]){
-	               if(third==-1||arr[i]>arr[third]){
+	       }
+	       else if(third==-1||arr[i]>arr[third]){
 	                   third = i;
 	               }
-	           }
-	       }
 	   }
 	   
 	   if(third == -1) return -1;
