@@ -33,17 +33,27 @@ public class Main {
 
 class Solution {
     void pushZerosToEnd(int[] arr, int n) {
-        int left = 0 ;
-        int right = 0 ;
-        int temp;
-        while(right<n){
-            if(arr[right]!=0){
-                temp = arr[right];
-                arr[right] = arr[left];
-                arr[left] = temp;
-                left++;
+        // int left = 0 ;
+        // int right = 0 ;
+        // int temp;
+        // while(right<n){
+        //     if(arr[right]!=0){
+        //         temp = arr[right];
+        //         arr[right] = arr[left];
+        //         arr[left] = temp;
+        //         left++;
+        //     }
+        //     right++;
+        // }
+        
+        int cnt = 0 ;
+        for(int i = 0 ; i < n ; i++){
+            if(arr[i]!=0){
+                arr[cnt++] = arr[i];
             }
-            right++;
+        }
+        for(int i = cnt ; i < n ; i++){
+            arr[i] =0;
         }
     }
 }
