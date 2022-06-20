@@ -23,31 +23,25 @@ class Solution
         Stack<Integer> s = new Stack<>();
         
         for(char c : S.toCharArray()){
-            int ch = c-'0';
-            int ch1 ,ch2;
-            
-            if(c=='+'){
-                ch1 = s.pop();
-                ch2 = s.pop();
-                s.push(ch2+ch1);
-            }
-            else if(c=='/'){
-                ch1 = s.pop();
-                ch2 = s.pop();
-                s.push(ch2 / ch1);
-            }
-            else if(c=='*'){
-                ch1 = s.pop();
-                ch2 = s.pop();
-                s.push(ch2 * ch1);
-            }
-            else if(c=='-'){
-                ch1 = s.pop();
-                ch2 = s.pop();
-                s.push(ch2 - ch1);
-            }
-            else if(Character.isDigit(c)){
+            if(Character.isDigit(c)){
                 s.push(c-'0');
+            }else{
+                int op1 = s.pop();
+                int op2 = s.pop();
+                switch(c){
+                    case '+':
+                        s.push(op2+op1);
+                        break;
+                    case '-':
+                        s.push(op2-op1);
+                        break;
+                    case '*':
+                        s.push(op2*op1);
+                        break;
+                    case '/':
+                        s.push(op2/op1);
+                        break;
+                }
             }
         }
         
