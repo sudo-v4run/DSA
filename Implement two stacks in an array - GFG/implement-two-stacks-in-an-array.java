@@ -89,7 +89,7 @@ class Stacks
     //Function to push an integer into the stack2.
     void push2(int x, TwoStack sq)
     {
-        if (sq.top2 > sq.top1+1)
+        if (sq.top1 < sq.top2-1)
             sq.arr[--sq.top2] = x;
     }
 
