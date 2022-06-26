@@ -61,16 +61,13 @@ class GfG {
             res.push(q.poll());
         }
         
+        while(!res.isEmpty()){
+            fin.add(res.pop());
+        }
         while(!q.isEmpty()){
             fin.add(q.poll());
         }
-        while(!res.isEmpty()){
-            q.add(res.pop());
-        }
-        while(!fin.isEmpty()){
-            q.add(fin.poll());
-        }
         
-        return q;
+        return fin;
     }
 }
