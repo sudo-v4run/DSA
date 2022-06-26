@@ -25,12 +25,24 @@ class GFG
 //User function Template for Java
 class Solution{
     static int trailingZeroes(int N){
+        
+        int j = 5;
         int res = 0;
         
-        while(N!=0){
-            res+=N/5;
-            N=N/5;
+        while(j<=N){
+            res+=N/j;
+            j=j*5;
         }
+        
+        
+        
+        
+        // int res = 0;
+        
+        // while(N!=0){
+        //     res+=N/5;
+        //     N=N/5;
+        // }
         
         return res;
     }
