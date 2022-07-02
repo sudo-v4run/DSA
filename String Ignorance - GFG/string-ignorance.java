@@ -19,7 +19,7 @@ class GFG {
 	            char ch = s.charAt(i);
 	            hm.put(ch,hm.getOrDefault(ch,0)+1);
 	            
-	            if(((hm.get(ch))&1)!=0){// div
+	            if(((hm.get(ch))&1)!=0){  //masking with 1 to check the occurence of the character is even or odd. Modding with 2 can also be done.
 	                System.out.print(S.charAt(i));
 	            }
 	            
