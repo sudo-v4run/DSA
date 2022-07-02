@@ -19,7 +19,7 @@ class GFG {
 	            char ch = s.charAt(i);
 	            hm.put(ch,hm.getOrDefault(ch,0)+1);
 	            
-	            if((hm.get(ch))%2!=0){
+	            if(((hm.get(ch))&1)!=0){// div
 	                System.out.print(S.charAt(i));
 	            }
 	            
