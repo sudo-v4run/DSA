@@ -43,12 +43,12 @@ class Solution
         
         for(int i = 0 ; i < a.length();i++){
             char ch = a.charAt(i);
-            arr[(int)ch-'a']++;
+            arr[ch-'a']++;
         }
         
         for(int i = 0 ; i < b.length();i++){
             char ch =b.charAt(i);
-            arr[(int)ch-'a']--;
+            arr[ch-'a']--;
         }
         
         for(int i = 0 ; i < arr.length ; i++){
