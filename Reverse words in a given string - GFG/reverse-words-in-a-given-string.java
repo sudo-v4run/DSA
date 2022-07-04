@@ -38,9 +38,6 @@ class Solution
             }
             else if(j==ch.length-1){
                 reverseChars(ch,i,j);
-                
-                i = j+1;
-                
             }
         }
         
