@@ -34,7 +34,6 @@ class Solution
                 reverseChars(ch,i,j-1);
                 
                 i = j+1;
-                
             }
             else if(j==ch.length-1){
                 reverseChars(ch,i,j);
