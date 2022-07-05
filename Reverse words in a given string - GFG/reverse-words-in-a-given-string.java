@@ -25,24 +25,35 @@ class Solution
     //Function to reverse words in a given string.
     String reverseWords(String S)
     {
-        char ch[] = S.toCharArray();
-        int i = 0 ;
-        int j = 0;
+        String wrds[] = S.split("\\.");
+        String res = "";
         
-        for( ;j<ch.length;j++){
-            if(ch[j]=='.'){
-                reverseChars(ch,i,j-1);
-                
-                i = j+1;
-            }
-            else if(j==ch.length-1){
-                reverseChars(ch,i,j);
+        for(int i = wrds.length-1 ; i>=0 ; i--){
+            res+=wrds[i];
+            if(i!=0){
+                res+='.';
             }
         }
         
-        reverseChars(ch,0,ch.length-1);
+        return res;
+        // char ch[] = S.toCharArray();
+        // int i = 0 ;
+        // int j = 0;
         
-        return new String(ch);
+        // for( ;j<ch.length;j++){
+        //     if(ch[j]=='.'){
+        //         reverseChars(ch,i,j-1);
+                
+        //         i = j+1;
+        //     }
+        //     else if(j==ch.length-1){
+        //         reverseChars(ch,i,j);
+        //     }
+        // }
+        
+        // reverseChars(ch,0,ch.length-1);
+        
+        // return new String(ch);
     }
     public void reverseChars(char[] arr,int i , int j){
         while(i<j){
