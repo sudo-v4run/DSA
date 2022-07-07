@@ -36,7 +36,7 @@ class Solution{
                 l++;
             }
             hs.add(S.charAt(r));
-            res = Math.max(res,r-l+1);
+            res = Math.max(res,hs.size());
         }
         return res;
     }
