@@ -52,25 +52,18 @@ class Solution {
     // Function to return the count of the number of elements in
     // the intersection of two arrays.
     public static int NumberofElementsInIntersection(int a[], int b[], int n, int m) {
-        HashSet<Integer> h1 = new HashSet<>();
-        HashSet<Integer> h2 = new HashSet<>();
-        
-        for(int e : a){
-            h1.add(e);
+        HashSet<Integer> hs = new HashSet<>();
+        for(int i : a){
+            hs.add(i);
         }
-        for(int e2:b){
-            h2.add(e2);
-        }
-        
         int cnt = 0;
-        
-        for(int i : h1){
-            if(h2.contains(i)){
+        for(int i : b){
+            if(hs.contains(i)){
                 cnt++;
+                hs.remove(i);
             }
         }
         
         return cnt;
     }
-    
 };
