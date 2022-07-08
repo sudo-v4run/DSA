@@ -12,26 +12,47 @@ class Solution
 {
     public static void sort012(int a[], int n)
     {
-        int low = 0 ;
-        int mid = 0;
-        int high = n-1;
         
+        int low=0,mid=0,high=n-1;
         while(mid<=high){
             if(a[mid]==0){
-                int temp = a[mid];
-                a[mid] = a[low];
-                a[low] = temp;
+                int temp = a[low];
+                a[low]=a[mid];
+                a[mid]=temp;
                 low++;
                 mid++;
             }else if(a[mid]==1){
                 mid++;
             }else{
-                int temp = a[mid];
-                a[mid] = a[high];
-                a[high] = temp;
+                int temp = a[high];
+                a[high]=a[mid];
+                a[mid]=temp;
                 high--;
             }
         }
+        
+        
+        // int cnt0=0,cnt1=0;
+        // for(int i = 0 ; i < n ; i++){
+        //     if(a[i]==0)
+        //         cnt0++;
+        //     else if(a[i]==1)
+        //         cnt1++;
+        // }
+        // for(int i = 0 ; i< n ; i++){
+        //     while(cnt0!=0){
+        //         a[i]=0;
+        //         cnt0--;
+        //         i++;
+        //     }
+        //     while(cnt1!=0){
+        //         a[i]=1;
+        //         cnt1--;
+        //         i++;
+        //     }
+        //     a[i]=2;
+        // }
+        
     }
 }
 
