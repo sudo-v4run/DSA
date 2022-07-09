@@ -14,9 +14,10 @@ class Solution
     {
         
         int low=0,mid=0,high=n-1;
-        while(mid<=high){
+        int temp;
+        while(mid<=high){ 
             if(a[mid]==0){
-                int temp = a[low];
+                temp = a[low];
                 a[low]=a[mid];
                 a[mid]=temp;
                 low++;
@@ -24,7 +25,7 @@ class Solution
             }else if(a[mid]==1){
                 mid++;
             }else{
-                int temp = a[high];
+                temp = a[high];
                 a[high]=a[mid];
                 a[mid]=temp;
                 high--;
