@@ -21,11 +21,17 @@ class Solution
 { 
     int findLength(String s) 
     { 
-         int count=0;
-   for(int i=s.length()-1;i>=0;i--){
-       if(s.charAt(i)==' '&&count!=0)break;
-       if(s.charAt(i)!=' ')count++;
-   }
-   return count;
+        // code here
+        int result=0;
+        int n=s.length();
+        while(n>0){
+            if(s.charAt(--n)!=' '){
+                result++;
+            }
+            else if(result>0){
+                return result;
+                }
+        }
+        return result;
     }
 }
