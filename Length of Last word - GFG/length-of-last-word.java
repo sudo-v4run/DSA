@@ -20,18 +20,14 @@ class GFG{
 class Solution 
 { 
     int findLength(String s) 
-    { 
-        // code here
-        int result=0;
+    {
+        s=s.trim();
+        int res = 0;
         int n=s.length()-1;
-        while(n>=0){
-            if(s.charAt(n--)!=' '){
-                result++;
-            }
-            else if(result>0){
-                return result;
-                }
+        while(n>=0 && s.charAt(n)!=' '){
+            res++;
+            n--;
         }
-        return result;
+        return res;
     }
 }
