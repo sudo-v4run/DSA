@@ -21,15 +21,14 @@ class Solution
     String firstRepChar(String s) 
     { 
         HashSet<Character> hs = new HashSet<>();
-        //String ans = '-1';
         
         for(int i = 0 ; i <s.length() ; i++){
             if(hs.contains(s.charAt(i))){
                 return ""+s.charAt(i);
-                //return ans;
             }
             hs.add(s.charAt(i));
         }
+        
         return "-1";
     }
 } 
