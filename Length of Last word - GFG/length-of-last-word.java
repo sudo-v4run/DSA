@@ -23,9 +23,9 @@ class Solution
     { 
         // code here
         int result=0;
-        int n=s.length();
-        while(n>0){
-            if(s.charAt(--n)!=' '){
+        int n=s.length()-1;
+        while(n>=0){
+            if(s.charAt(n--)!=' '){
                 result++;
             }
             else if(result>0){
