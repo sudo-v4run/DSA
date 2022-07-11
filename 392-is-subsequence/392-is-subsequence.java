@@ -1,33 +1,37 @@
 class Solution {
     public boolean isSubsequence(String s, String t) {
-//         int i = 0 , j = 0;
-//         while(i<s.length() && j<t.length()){
-//             if(s.charAt(i)==t.charAt(j)){
-//                 i++;
-//             }
-//             j++;
+        int i = 0 , j = 0;
+        while(i<s.length() && j<t.length()){
+            if(s.charAt(i)==t.charAt(j)){
+                i++;
+            }
+            j++;
+        }
+        
+        return i==s.length();
+        
+        
+        
+//         Stack<Character> st = new Stack<>();
+        
+//         for(int i = 0 ; i < s.length();i++){
+//             st.push(s.charAt(i));
 //         }
         
-//         return i==s.length();
-        
-        Stack<Character> st = new Stack<>();
-        
-        for(int i = 0 ; i < s.length();i++){
-            st.push(s.charAt(i));
-        }
-        
-        for(int i = t.length()-1 ; i>=0 ; i--){
-            if(st.isEmpty()){
-                return true;
-            }
+//         for(int i = t.length()-1 ; i>=0 ; i--){
+//             if(st.isEmpty()){
+//                 return true;
+//             }
            
-            if(st.peek()==t.charAt(i)){
-                st.pop();
-            }
-        }
+//             if(st.peek()==t.charAt(i)){
+//                 st.pop();
+//             }
+//         }
+        
+//         return st.isEmpty();
         
         
-        return st.isEmpty();
+        
         
         // int m = s.length();
         // int n = t.length();
