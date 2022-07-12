@@ -27,9 +27,9 @@ class GFG
 class Solution{
     String longestCommonPrefix(String arr[], int n){
         
-        if(arr.length==1){
-            return arr[0];
-        }
+        // if(arr.length==1){
+        //     return arr[0];
+        // }
         
         String ans =  commonprefix(arr,0,arr.length-1);
         if(ans!=""){
