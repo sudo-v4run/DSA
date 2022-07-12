@@ -42,10 +42,15 @@ class Solution
         }
         
     }
+    static void randomize(int arr[],int l , int h){
+        int rand =  (int) (Math.random()*(h-l))+l;
+        swap(arr,rand,l);
+    }
     static int partition(int arr[], int low, int high)
     {
         int i = low;
         int j = high;
+        randomize(arr,low,high);
         int pivot = arr[low];
         while(i<j){
             while(i<j && arr[i]<=pivot) i++;
