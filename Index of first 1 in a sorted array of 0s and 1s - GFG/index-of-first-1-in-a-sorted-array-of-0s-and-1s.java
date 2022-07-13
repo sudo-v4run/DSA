@@ -41,7 +41,7 @@ class Solution {
         int l =  0 ;
         int r = arr.length-1;
         while(l<=r){
-            int mid = (l+r)/2;
+            int mid = l+(r-l)/2;
             if(arr[mid]==1 && (mid==0 || arr[mid-1]==0)){
                 return mid;
             }
