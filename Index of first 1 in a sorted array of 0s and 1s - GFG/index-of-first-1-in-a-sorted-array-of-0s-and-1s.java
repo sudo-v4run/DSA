@@ -40,20 +40,17 @@ class Solution {
     {
         int l =  0 ;
         int r = arr.length-1;
-        int ans = -1;
         while(l<=r){
             int mid = (l+r)/2;
-            if(arr[mid]==1){
-                ans = mid;
-                if(mid>=1 && arr[mid-1]!=0){
-                    r = mid-1;
-                }else{
-                    break;
-                }
+            if(arr[mid]==1 && (mid==0 || arr[mid-1]==0)){
+                return mid;
+            }
+            else if(arr[mid]==1){
+                r = mid-1;
             }else{
                 l = mid+1;
-            } 
+            }
         }
-        return (int)ans;
+        return -1;
     }
 }
