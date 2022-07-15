@@ -44,7 +44,7 @@ class Solution
                     l = mid+1;
                 }
             }else{
-                if(key>A[mid] && key<A[h]){
+                if(key>A[mid] && key<=A[h]){
                     l = mid+1;
                 }else{
                     h = mid-1;
