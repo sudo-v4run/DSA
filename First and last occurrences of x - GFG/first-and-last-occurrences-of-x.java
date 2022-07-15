@@ -16,8 +16,8 @@ class GFG
     ArrayList<Long> find(long arr[], int n, int x)
     {
         ArrayList<Long> res = new ArrayList<>();
-        int f = findfirst(arr,x,0,arr.length-1);
-        int l = findlast(arr,x,0,arr.length-1);
+        int f = findfirst(arr,x,0,n-1);
+        int l = findlast(arr,x,0,n-1);
         res.add((long)f);
         res.add((long)l);
         
