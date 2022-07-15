@@ -31,28 +31,26 @@ public class GFG
 
 class Solution
 {
-    int search(int arr[], int l, int h, int x)
+    int search(int A[], int l, int h, int key)
     {
         while(l<=h){
-            int m = l+(h-l)/2;
-            if(x==arr[m]){
-                return m;
-            }
-            if(arr[l]<=arr[m]){
-                if(x>=arr[l] && x<arr[m]){
-                    h = m-1;
+            int mid = (l+h)/2;
+            if(A[mid]==key)
+                return mid;
+            if(A[l]<=A[mid]){
+                if(key>=A[l] && key<A[mid]){
+                    h = mid-1;
                 }else{
-                    l = m+1;
+                    l = mid+1;
                 }
             }else{
-                if(x>arr[m] && x<arr[h]){
-                    l = m+1;
+                if(key>A[mid] && key<A[h]){
+                    l = mid+1;
                 }else{
-                    h=m-1;
+                    h = mid-1;
                 }
             }
         }
-        
         return -1;
     }
 }
