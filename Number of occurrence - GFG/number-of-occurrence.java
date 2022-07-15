@@ -38,7 +38,7 @@ class Solution {
     int count(int[] arr, int n, int x) {
         int f = findfirst(arr,x,0,n-1);
         int l = findlast(arr,x,0,n-1);
-        if(f!= -1 && l != -1){
+        if(f!= -1){
             return l-f+1;
         }
         
