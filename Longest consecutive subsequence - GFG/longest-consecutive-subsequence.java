@@ -66,7 +66,7 @@ class Solution
     //Function to return length of longest subsequence of consecutive integers.
 	static int findLongestConseqSubseq(int arr[], int N)
 	{
-	    int ans = 1;
+	    int ans = 0;
 	    HashSet<Integer> hs = new HashSet<>();
 	    for(int e : arr){
 	        hs.add(e);
