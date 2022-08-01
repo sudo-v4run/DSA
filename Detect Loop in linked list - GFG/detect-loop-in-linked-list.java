@@ -83,10 +83,10 @@ class Solution {
         Node slow = head;
         Node fast = head;
         
-        while(fast!=null){
+        while(fast.next!=null){
             slow = slow.next;
             fast = fast.next;
-            if(fast!=null){
+            if(fast.next!=null){
                 fast = fast.next;
                 if(slow==fast){
                     return true;
