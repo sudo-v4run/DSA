@@ -82,17 +82,18 @@ class Solution
         }
         Node cur=head;
         Node prev = null;
+        Node nextemp = null;
         int cnt = 0;
 
         while(cur!=null && cnt<k){
-            Node temp = cur.next;
+            nextemp = cur.next;
             cur.next = prev;
             prev = cur;
-            cur = temp;
+            cur = nextemp;
             cnt++;
         }
-        if(cur!=null)
-            head.next = reverse(cur,k);
+        if(nextemp!=null)
+            head.next = reverse(nextemp,k);
         
         return prev;
     }
