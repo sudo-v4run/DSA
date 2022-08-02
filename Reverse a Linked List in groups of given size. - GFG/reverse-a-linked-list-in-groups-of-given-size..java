@@ -77,9 +77,9 @@ class Solution
 {
     public static Node reverse(Node head, int k)
     {
-        if(head==null){
-            return null;
-        }
+        // if(head==null){
+        //     return null;
+        // }
         Node cur=head;
         Node prev = null;
         Node nextemp = null;
