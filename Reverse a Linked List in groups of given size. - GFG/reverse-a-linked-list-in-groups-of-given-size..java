@@ -77,29 +77,24 @@ class Solution
 {
     public static Node reverse(Node head, int k)
     {
-        Node prevFirst = null, newHead = null;
-        Node cur = head;
-        while(cur!=null){
-            int count = 0;
-            Node prev = null;
-            Node first = cur;
-            while(cur!=null && count<k){
-                Node temp = cur.next;
-                cur.next = prev;
-                prev = cur;
-                cur = temp;
-                count++;
-            }
-            
-            if(newHead==null){
-                newHead = prev;
-            }else{
-                prevFirst.next = prev;
-            }
-            prevFirst = first;
+        if(head==null){
+            return null;
         }
+        Node cur=head;
+        Node prev = null;
+        int cnt = 0;
+
+        while(cur!=null && cnt<k){
+            Node temp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = temp;
+            cnt++;
+        }
+        if(cur!=null)
+            head.next = reverse(cur,k);
         
-        return newHead;
+        return prev;
     }
 }
 
