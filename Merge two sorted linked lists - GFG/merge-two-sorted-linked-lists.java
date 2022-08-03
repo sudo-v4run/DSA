@@ -93,10 +93,10 @@ class LinkedList
         Node head = null, tail = null;
         Node a = head1 , b = head2;
         
-        if(a==null)
-            return b;
-        if(b==null)
-            return a;
+        // if(a==null)
+        //     return b;
+        // if(b==null)
+        //     return a;
         
         if(a.data<=b.data){
             head=a;
