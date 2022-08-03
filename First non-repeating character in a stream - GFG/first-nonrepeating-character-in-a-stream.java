@@ -34,18 +34,14 @@ class Solution
                 or.add(ch);
             }
             vis[ch-'a']++;
-            int f = 0;
+            char ch2 = '#';
             for(int j = 0 ; j < or.size();j++){
-                char ch2 = or.get(j);
-                if(vis[ch2-'a']==1){
-                    ans+=ch2;
-                    f = 1;
+                if(vis[or.get(j)-'a']==1){
+                    ch2 = or.get(j);
                     break;
                 }
             }
-            if(f==0){
-                ans+='#';
-            }
+            ans+=ch2;
         }
         
         return ans;
