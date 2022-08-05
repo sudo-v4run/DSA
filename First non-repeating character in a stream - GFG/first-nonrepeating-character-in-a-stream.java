@@ -43,7 +43,6 @@ class Solution
             }
             ans+=ch2;
         }
-        
         return ans;
     }
 }
