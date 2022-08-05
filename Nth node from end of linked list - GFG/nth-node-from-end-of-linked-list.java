@@ -97,27 +97,46 @@ class GfG
     //Function to find the data of nth node from the end of a linked list.
     int getNthFromLast(Node head, int n)
     {
-    	Node rev = reverse(head);
-    	while(n-- >1){
-    	    rev=rev.next;
-    	    if(rev==null){
-    	        return -1;
-    	    }
-    	}
-    	
-    	return rev.data;
-    }
-    static Node reverse(Node head){
-        Node cur=head;
-        Node prev=null;
-        Node temp=null;
-        while(cur!=null){
-            temp = cur.next;
-            cur.next = prev;
-            prev = cur;
-            cur = temp;
+        Node cur = head;
+        Node ans = head;
+        while(n--!=0){
+            if(cur==null){
+                return -1;
+            }
+            cur = cur.next;
+            
         }
         
-        return prev;
+        while(cur!=null){
+            cur=cur.next;
+            ans=ans.next;
+        }
+        
+        return ans.data;
+        
+        
+        
+    // 	Node rev = reverse(head);
+    // 	while(n-- >1){
+    // 	    rev=rev.next;
+    // 	    if(rev==null){
+    // 	        return -1;
+    // 	    }
+    // 	}
+    	
+    // 	return rev.data;
     }
+    // static Node reverse(Node head){
+    //     Node cur=head;
+    //     Node prev=null;
+    //     Node temp=null;
+    //     while(cur!=null){
+    //         temp = cur.next;
+    //         cur.next = prev;
+    //         prev = cur;
+    //         cur = temp;
+    //     }
+        
+    //     return prev;
+    // }
 }
