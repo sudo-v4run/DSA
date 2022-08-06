@@ -31,6 +31,7 @@ class GFG{
 class Solution{
     static List<Integer> leftSmaller(int n, int a[])
     {
+        //TC - O(n)
         Stack<Integer> s = new Stack<>();
         List<Integer> res = new ArrayList<>();
         
