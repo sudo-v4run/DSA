@@ -39,7 +39,7 @@ class Solution {
         while(ori!=null&&cur!=null){
             ori.next = ori.next.next;
             if(cur.next!=null)
-            cur.next = cur.next.next;
+                cur.next = cur.next.next;
             ori=ori.next;
             cur = cur.next;
         }
