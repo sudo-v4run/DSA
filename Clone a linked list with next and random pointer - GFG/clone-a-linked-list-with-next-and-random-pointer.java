@@ -189,10 +189,10 @@ class Clone {
         Node ori = head;
         cur = head.next;
         Node ans = cur;
-        while(head!=null&&cur!=null){
-            head.next = head.next.next;
+        while(ori!=null&&cur!=null){
+            ori.next = ori.next.next;
             cur.next = (cur.next!=null)?cur.next.next:null;
-            head=head.next;
+            ori=ori.next;
             cur = cur.next;
         }
         
