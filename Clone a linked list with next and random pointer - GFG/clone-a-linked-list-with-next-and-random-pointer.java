@@ -171,6 +171,9 @@ class Node {
 class Clone {
     //Function to clone a linked list with next and random pointer.
     Node copyList(Node head) {
+        if(head==null)
+            return null;
+            
         Node cur = head;
         while(cur!=null){
             Node temp = cur.next;
@@ -191,7 +194,8 @@ class Clone {
         Node ans = cur;
         while(ori!=null&&cur!=null){
             ori.next = ori.next.next;
-            cur.next = (cur.next!=null)?cur.next.next:null;
+            if(cur.next!=null)
+                cur.next = cur.next.next;
             ori=ori.next;
             cur = cur.next;
         }
