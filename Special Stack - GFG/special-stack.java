@@ -43,7 +43,7 @@ class GfG{
     {
         int ans = -1;
         if(s.isEmpty()){
-            return 0;
+            return -1;
         }
         return min;
 	}
