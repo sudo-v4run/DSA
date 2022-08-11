@@ -47,8 +47,8 @@ class Solution
         int k = 0 ;
         for(int e : price){
             int days = 1;
-            while(!s.isEmpty()&& s.peek().a<=e ){
-                days+=s.peek().b;
+            while(!s.isEmpty()&& s.peek().first<=e ){
+                days+=s.peek().second;
                 s.pop();
             }
             s.push(new Pair(e,days));
@@ -58,10 +58,10 @@ class Solution
         return arr;
     }
     static class Pair{
-        int a ,b;
-        Pair(int first, int b){
-            this.a = a;
-            this.b = b;
+        int first ,second;
+        Pair(int first, int second){
+            this.first = first;
+            this.second = second;
         }
     }
     
