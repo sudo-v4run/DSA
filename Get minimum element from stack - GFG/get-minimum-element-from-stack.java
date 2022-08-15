@@ -68,7 +68,7 @@ class GfG
             return -1;
         }
         int t = s.pop();
-        if(t>=minEle){
+        if(t>minEle){
             return t;
         }else{
             int ans = minEle;
