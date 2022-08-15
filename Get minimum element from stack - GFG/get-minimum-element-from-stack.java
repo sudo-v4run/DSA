@@ -72,7 +72,7 @@ class GfG
             return t;
         }else{
             int ans = minEle;
-            minEle=2*minEle-t;
+            minEle=minEle-t;
             return ans;
         }
     }
@@ -88,7 +88,7 @@ class GfG
         if(x>=minEle){
             s.push(x);
         }else{
-            s.push(2*x-minEle);
+            s.push(x-minEle);
             minEle=x;
         }
         
