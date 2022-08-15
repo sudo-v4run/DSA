@@ -85,7 +85,7 @@ class GfG
             minEle=x;
             return;
         }
-        if(x>minEle){
+        if(x>=minEle){
             s.push(x);
         }else{
             s.push(2*x-minEle);
