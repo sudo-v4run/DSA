@@ -55,7 +55,6 @@ class ModifyQueue {
 class GfG {
     // Function to reverse first k elements of a queue.
     public Queue<Integer> modifyQueue(Queue<Integer> q, int k) {
-        //Queue<Integer> qq = new LinkedList<>();
         Stack<Integer> s = new Stack<>();
         int i = k;
         int n = q.size();
