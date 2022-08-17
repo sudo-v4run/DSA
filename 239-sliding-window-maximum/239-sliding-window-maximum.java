@@ -9,10 +9,10 @@ class Solution {
                 q.removeLast();
             }
             q.addLast(i);
-            res[j] = arr[q.peek()];
         }
         for(;i<arr.length;i++){
-          
+            res[j++] = arr[q.peek()];
+         
             if(!q.isEmpty() && q.peek()==i-k){
                 q.removeFirst();
             }
@@ -20,8 +20,8 @@ class Solution {
                 q.removeLast();
             }
             q.addLast(i);
-            res[++j] = arr[q.peek()];
         }
+        res[j] = arr[q.peek()];
         
         return res;
     }
