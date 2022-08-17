@@ -13,7 +13,7 @@ class Solution {
         }
         for(;i<arr.length;i++){
           
-            while(!q.isEmpty() && q.peek()<=i-k){
+            if(!q.isEmpty() && q.peek()==i-k){
                 q.removeFirst();
             }
             while(!q.isEmpty() && arr[q.peekLast()]<=arr[i]){
