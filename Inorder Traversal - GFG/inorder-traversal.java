@@ -115,7 +115,7 @@ class Solution {
     ArrayList<Integer> inOrder(Node root) {
         
         if(root==null){
-            return res;
+            return null;
         }
         
         inOrder(root.left);
