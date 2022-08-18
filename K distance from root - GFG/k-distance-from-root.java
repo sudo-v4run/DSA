@@ -125,7 +125,7 @@ class Tree
          if(root==null){
              return null;
          }
-         if(root!=null && k==0){
+         if(k==0){
              res.add(root.data);
          }
          Kdistance(root.left,k-1);
