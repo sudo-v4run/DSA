@@ -131,12 +131,26 @@ class BinaryTree
         
     }
     ArrayList<Integer> preOrder(Node root){
-        if(root==null)
-            return null;
+        // if(root==null)
+        //     return null;
         
-        res.add(root.data);
-        preOrder(root.left);
-        preOrder(root.right);
+        // res.add(root.data);
+        // preOrder(root.left);
+        // preOrder(root.right);
+        
+        // return res;
+        
+        Stack<Node> s = new Stack<>();
+        s.add(root);
+        
+        while(!s.isEmpty()){
+            Node pop = s.pop();
+            res.add(pop.data);
+            if(pop.right!=null)
+                s.push(pop.right);
+            if(pop.left!=null)
+                s.push(pop.left);
+        }
         
         return res;
     }
