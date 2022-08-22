@@ -114,13 +114,27 @@ class Solution {
     ArrayList<Integer> res = new ArrayList<>();
     ArrayList<Integer> inOrder(Node root) {
         
-        if(root==null){
-            return null;
-        }
+        // if(root==null){
+        //     return null;
+        // }
         
-        inOrder(root.left);
-        res.add(root.data);
-        inOrder(root.right);
+        // inOrder(root.left);
+        // res.add(root.data);
+        // inOrder(root.right);
+        
+        // return res;
+        
+        Stack<Node> s = new Stack<>();
+        Node cur = root;
+        while(cur!=null||!s.isEmpty()){
+            while(cur!=null){
+                s.push(cur);
+                cur=cur.left;
+            }
+            Node pop = s.pop();
+            res.add(pop.data);
+            cur=pop.right;
+        }
         
         return res;
     }
