@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    //TreeNode ans = null;
+  
     public TreeNode searchBST(TreeNode root, int val) {
 //         TreeNode cur = root;
         
