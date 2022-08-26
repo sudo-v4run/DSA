@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    TreeNode ans = null;
+    //TreeNode ans = null;
     public TreeNode searchBST(TreeNode root, int val) {
 //         TreeNode cur = root;
         
@@ -35,14 +35,13 @@ class Solution {
         }
         
         if(root.val == val ){
-            ans = root;
+            return root;
         }
         if(val>root.val){
-            searchBST(root.right,val);
+            return searchBST(root.right,val);
         }else{
-            searchBST(root.left,val);
+            return searchBST(root.left,val);
         }
         
-        return ans;
     }
 }
