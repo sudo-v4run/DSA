@@ -110,75 +110,75 @@ class GfG {
 
 class Tree {
     
-    // public static Node deleteNode(Node root, int X) {
-    //     if(root==null){
-    //         return null;
-    //     }
-    //     if(X > root.data){
-    //         root.right = deleteNode(root.right , X);
-    //     }else if(X < root.data){
-    //         root.left = deleteNode(root.left , X);
-    //     }else{
-    //         if(root.left==null){
-    //             return root.right;
-    //         }
-    //         else if(root.right == null){
-    //             return root.left;
-    //         }else{
-    //             root.data = findMin(root.right);
-    //             root.right = deleteNode(root.right , root.data);
-    //         }
-
-    //     }
-        
-    //     return root;
-    // }
-    
-    
-    public static Node deleteNode(Node root, int X){
-        // Iterative..
-        
-        Node cur = root;
-        
+    public static Node deleteNode(Node root, int X) {
         if(root==null){
             return null;
         }
-        
-        if( X > cur.data ){
-            cur = cur.right;
-        }else if( X < cur.data){
-            cur = cur.left;
+        if(X > root.data){
+            root.right = deleteNode(root.right , X);
+        }else if(X < root.data){
+            root.left = deleteNode(root.left , X);
         }else{
-            
-            if(cur.left==null){
-                return cur.right;
+            if(root.left==null){
+                return root.right;
             }
-            else if(cur.right==null){
-                return cur.left; 
+            else if(root.right == null){
+                return root.left;
+            }else{
+                root.data = findMin(root.right);
+                root.right = deleteNode(root.right , root.data);
             }
-            else{
-                Node parent = null;
-                int minVal = findMin(cur.right);
-                cur.data = minVal;
-                cur = cur.right;
-                while(cur.data != minVal){
-                    parent = cur;
-                    cur = cur.left;
-                }
-                if(parent!=null){
-                    if(cur.right!=null){
-                        parent.left = cur.right;
-                    }else{
-                        parent.left = null;
-                    }
-                }else{
-                    root.right = null;
-                }
-            }
+
         }
         
         return root;
     }
+    
+    
+    // public static Node deleteNode(Node root, int X){
+    //     Iterative..
+        
+    //     Node cur = root;
+        
+    //     if(root==null){
+    //         return null;
+    //     }
+        
+    //     if( X > cur.data ){
+    //         cur = cur.right;
+    //     }else if( X < cur.data){
+    //         cur = cur.left;
+    //     }else{
+            
+    //         if(cur.left==null){
+    //             return cur.right;
+    //         }
+    //         else if(cur.right==null){
+    //             return cur.left; 
+    //         }
+    //         else{
+    //             Node parent = null;
+    //             int minVal = findMin(cur.right);
+    //             cur.data = minVal;
+    //             cur = cur.right;
+    //             while(cur.data != minVal){
+    //                 parent = cur;
+    //                 cur = cur.left;
+    //             }
+    //             if(parent!=null){
+    //                 if(cur.right!=null){
+    //                     parent.left = cur.right;
+    //                 }else{
+    //                     parent.left = null;
+    //                 }
+    //             }else{
+    //                 root.right = null;
+    //             }
+    //         }
+    //     }
+            
+    //     return root;
+    // }
     
     static int findMin(Node root){
         int minV = 0;
