@@ -156,23 +156,25 @@ class Tree {
             else if(cur.right==null){
                 return cur.left; 
             }
-            else{Node parent = null;
-            int minVal = findMin(cur.right);
-            cur.data = minVal;
-            cur = cur.right;
-            while(cur.data != minVal){
-                parent = cur;
-                cur = cur.left;
-            }
-            if(parent!=null){
-                if(cur.right!=null){
-                    parent.left = cur.right;
-                }else{
-                    parent.left = null;
+            else{
+                Node parent = null;
+                int minVal = findMin(cur.right);
+                cur.data = minVal;
+                cur = cur.right;
+                while(cur.data != minVal){
+                    parent = cur;
+                    cur = cur.left;
                 }
-            }else{
-                root.right = null;
-            }}
+                if(parent!=null){
+                    if(cur.right!=null){
+                        parent.left = cur.right;
+                    }else{
+                        parent.left = null;
+                    }
+                }else{
+                    root.right = null;
+                }
+            }
         }
         
         return root;
