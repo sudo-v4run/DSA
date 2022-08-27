@@ -125,22 +125,19 @@ class Tree {
             else if(root.right == null){
                 return root.left;
             }else{
-                root.data = findMin(root.right);
+                root.data = (findMin(root.right)).data;
                 root.right = deleteNode(root.right , root.data);
             }
-
         }
         
         return root;
     }
     
-    static int findMin(Node root){
-        int minV = 0;
-        while(root!=null){
-            minV = root.data;
+    static Node findMin(Node root){
+        while(root.left!=null){
             root = root.left;
         }
         
-        return minV;
+        return root;
     }
 }
