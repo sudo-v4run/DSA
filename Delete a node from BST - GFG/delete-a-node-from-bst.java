@@ -111,6 +111,7 @@ class GfG {
 class Tree {
     
     public static Node deleteNode(Node root, int X){
+        //Itera
         if(root==null || (root.data==X && root.left == null && root.right==null)){
             return null;
         }
