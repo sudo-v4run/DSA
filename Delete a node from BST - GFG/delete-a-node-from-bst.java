@@ -111,7 +111,7 @@ class GfG {
 class Tree {
     
     public static Node deleteNode(Node root, int X){
-        if(root==null|| (root.data == X && root.left==null && root.right==null) ){
+        if(root==null || (root.data==X && root.left == null && root.right==null)){
             return null;
         }
         Node cur = root;
@@ -120,29 +120,22 @@ class Tree {
         }else if( X < cur.data){
             cur = cur.left;
         }else{
-            if( cur.left == null ){
-                cur = cur.right;
-            }else if( cur.right == null){
+            Node parent = null;
+            int minVal = findMin(cur.right);
+            cur.data = minVal;
+            cur = cur.right;
+            while(cur.data != minVal){
+                parent = cur;
                 cur = cur.left;
-            }else{
-                Node parent = null;
-                int minVal = findMin(cur.right);
-                cur.data = minVal;
-                cur = cur.right;
-                while(cur.data != minVal){
-                    parent = cur;
-                    cur = cur.left;
-                }
-                if(parent!=null){
-                    if(cur.right!=null){
-                        parent.left = cur.right;
-                    }else{
-                        parent.left = null;
-                    }
+            }
+            if(parent!=null){
+                if(cur.right!=null){
+                    parent.left = cur.right;
                 }else{
-                    root.right = null;
+                    parent.left = null;
                 }
-                
+            }else{
+                root.right = null;
             }
         }
         
