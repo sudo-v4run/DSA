@@ -14,31 +14,59 @@
  * }
  */
 class Solution {
-    public List<List<Integer>> zigzagLevelOrder(TreeNode root){
-        //RECURSIVE....
-        List<List<Integer>> ans = new ArrayList<>();
-        zigzag(root,ans,0);
-        return ans;
-    }
+//     public List<List<Integer>> zigzagLevelOrder(TreeNode root){
+//         //RECURSIVE....
+//         List<List<Integer>> ans = new ArrayList<>();
+//         zigzag(root,ans,0);
+//         return ans;
+//     }
     
-    public static void zigzag(TreeNode root,List<List<Integer>> ans,int level){
-        if(root==null)
-            return;
-        if(ans.size()==level){
-            ArrayList<Integer> res = new ArrayList<>();
-            ans.add(res);
-        }
+//     public static void zigzag(TreeNode root,List<List<Integer>> ans,int level){
+//         if(root==null)
+//             return;
+//         if(ans.size()==level){
+//             ArrayList<Integer> res = new ArrayList<>();
+//             ans.add(res);
+//         }
         
-        if(level%2==0){
-            ans.get(level).add(root.val);
-        }else{
-            ans.get(level).add(0,root.val);
-        }
+//         if(level%2==0){
+//             ans.get(level).add(root.val);
+//         }else{
+//             ans.get(level).add(0,root.val);
+//         }
         
-        zigzag(root.left,ans,level+1);
-        zigzag(root.right,ans,level+1);
+//         zigzag(root.left,ans,level+1);
+//         zigzag(root.right,ans,level+1);
+//     }
+   public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+if (root == null) return res;
+Queue<TreeNode> queue = new LinkedList<>();
+queue.add(root);
+boolean zigzag = false;
+while (!queue.isEmpty()) {
+    List<Integer> level = new ArrayList<>();
+    int cnt = queue.size();
+    for (int i = 0; i < cnt; i++) {
+        TreeNode node = queue.poll();
+        if (zigzag) {
+            level.add(0, node.val);
+        }
+        else {
+            level.add(node.val);
+        }
+        if (node.left != null) {
+            queue.add(node.left);
+        }
+        if (node.right != null) {
+            queue.add(node.right);
+        }
     }
-    
+    res.add(level);
+    zigzag = !zigzag;
+}
+return res;
+    }
     
 //     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
 //        ITERATIVE.....
