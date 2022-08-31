@@ -105,35 +105,60 @@ class Solution
     // target : the target sum
     HashSet<Integer> hs = new HashSet<>();
     int ans = 0;
-    public int isPairPresent(Node root, int target)
-    {
-        if(root==null){
-            return 0;
-        }
-        isPairPresentUtil(root,target);
-       
-        return ans;
-    }
-    public void isPairPresentUtil(Node root, int target)
-    {
-        if(root==null){
-            return;
-        }
-        isPairPresent(root.left,target);
-        if(!hs.contains(target-root.data)){
-            hs.add(root.data);
-        }else{
-            ans = 1;
-        }
-        isPairPresent(root.right,target);
-    }
-    
     // public int isPairPresent(Node root, int target)
     // {
     //     if(root==null){
     //         return 0;
     //     }
+    //     isPairPresentUtil(root,target);
+       
+    //     return ans;
+    // }
+    // public void isPairPresentUtil(Node root, int target)
+    // {
+    //     if(root==null){
+    //         return;
+    //     }
     //     isPairPresent(root.left,target);
+    //     if(!hs.contains(target-root.data)){
+    //         hs.add(root.data);
+    //     }else{
+    //         ans = 1;
+    //     }
     //     isPairPresent(root.right,target);
     // }
+    Node head = null;
+    public int isPairPresent(Node root, int target)
+    {
+        if(root==null){
+            return 0;
+        }
+        if(head==null){
+            head = root;
+        }
+        if(root.left!=null)
+            isPairPresent(root.left,target);
+            
+        findComp(head,target-root.data);
+            
+        if(root.right!=null)
+            isPairPresent(root.right,target);
+        
+        return ans;
+    }
+    public void findComp(Node root,int target){
+        if(root==null){
+            return;
+        }
+        if(root.data==target){
+            ans = 1;
+        }
+        if(target>root.data){
+            findComp(root.right,target);
+        }
+        
+        if(target<root.data){
+            findComp(root.left,target);
+        }
+    }
 }
