@@ -29,7 +29,7 @@ class Solution {
         }
         minDiffInBST(root.left);
         if(prev<root.val)
-            minDist = Math.min(minDist,(root.val-prev));
+            minDist = Math.min(minDist,root.val-prev);
         prev = root.val;
         minDiffInBST(root.right);
     }
