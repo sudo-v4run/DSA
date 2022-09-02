@@ -135,7 +135,7 @@ public class Solution
     static Node prev;
     
     Solution(){
-        prev = null;
+       prev = null;
     }
      
     static boolean isBSTUtil(Node root)
