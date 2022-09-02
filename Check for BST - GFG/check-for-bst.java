@@ -116,18 +116,51 @@ class GfG {
 public class Solution
 {
     //Function to check whether a Binary Tree is BST or not.
-    boolean isBST(Node root)
+    // boolean isBST(Node root)
+    // {
+    //     return isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+    // }
+    
+    // boolean isBST(Node root,int minVal , int maxVal){
+    //     if(root==null)
+    //         return true;
+        
+    //     if(root.data<=minVal || root.data >=maxVal)
+    //         return false;
+        
+    //     return isBST(root.left,minVal,root.data) && isBST(root.right,root.data,maxVal);
+    // }
+    
+
+    static Node prev;
+    
+    Solution(){
+        prev = null;
+    }
+     
+    static boolean isBSTUtil(Node root)
     {
-        return isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+        // traverse the tree in inorder fashion and
+        // keep track of prev node
+        if (root != null)
+        {
+            if (!isBSTUtil(root.left))
+                return false;
+     
+            // Allows only distinct valued nodes
+            if (prev != null && root.data <= prev.data)
+                return false;
+     
+            prev = root;
+     
+            return isBSTUtil(root.right);
+        }
+        return true;
     }
     
-    boolean isBST(Node root,int minVal , int maxVal){
-        if(root==null)
-            return true;
-        
-        if(root.data<=minVal || root.data >=maxVal)
-            return false;
-        
-        return isBST(root.left,minVal,root.data) && isBST(root.right,root.data,maxVal);
+    
+    boolean isBST(Node root)
+    {
+        return isBSTUtil(root);
     }
 }
