@@ -14,6 +14,26 @@
  * }
  */
 class Solution {
+    public boolean isValidBST(TreeNode root) {
+        
+        return isValidBSTUtil(root,Long.MIN_VALUE, Long.MAX_VALUE);
+        
+    }
+    public static boolean isValidBSTUtil(TreeNode root,long minVal,long maxVal){
+        if(root==null)
+            return true;
+        
+        if(root.val<=minVal || root.val >=maxVal)
+            return false;
+        
+        return isValidBSTUtil(root.left,minVal,root.val)
+            && isValidBSTUtil(root.right,root.val,maxVal);
+    }
+    
+    
+    
+    
+    
     // TreeNode pre = null;
     // public boolean isValidBST(TreeNode root) {
     //     if (root == null) return true;
@@ -23,30 +43,33 @@ class Solution {
     //     return isValidBST(root.right);
     // }
     
-    static  TreeNode prev;
+    
+    
+    
+    
+    
+    
+//     static  TreeNode prev;
      
-    static boolean isBSTUtil(TreeNode root)
-    {
-        // traverse the tree in inorder fashion and
-        // keep track of prev node
-        if (root != null)
-        {
-            if (!isBSTUtil(root.left))
-                return false;
+//     static boolean isBSTUtil(TreeNode root)
+//     {
+//         if (root != null)
+//         {
+//             if (!isBSTUtil(root.left))
+//                 return false;
      
-            // Allows only distinct valued nodes
-            if (prev != null && root.val <= prev.val)
-                return false;
+//             if (prev != null && root.val <= prev.val)
+//                 return false;
      
-            prev = root;
+//             prev = root;
      
-            return isBSTUtil(root.right);
-        }
-        return true;
-    }
+//             return isBSTUtil(root.right);
+//         }
+//         return true;
+//     }
      
-    public boolean isValidBST(TreeNode root) {
-        prev=null;
-        return isBSTUtil(root);
-    }
+//     public boolean isValidBST(TreeNode root) {
+//         prev=null;
+//         return isBSTUtil(root);
+//     }
 }
