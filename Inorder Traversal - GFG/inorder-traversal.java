@@ -113,7 +113,7 @@ class Solution {
     // Function to return a list containing the inorder traversal of the tree.
     ArrayList<Integer> res = new ArrayList<>();
     ArrayList<Integer> inOrder(Node root) {
-        
+        //recursive
         // if(root==null){
         //     return null;
         // }
@@ -124,16 +124,46 @@ class Solution {
         
         // return res;
         
-        Stack<Node> s = new Stack<>();
+        
+        //iterative
+        // Stack<Node> s = new Stack<>();
+        // Node cur = root;
+        // while(cur!=null||!s.isEmpty()){
+        //     while(cur!=null){
+        //         s.push(cur);
+        //         cur=cur.left;
+        //     }
+        //     Node pop = s.pop();
+        //     res.add(pop.data);
+        //     cur=pop.right;
+        // }
+        
+        // return res;
+        
+        
+        
+        //MORRIS traversal
+        
         Node cur = root;
-        while(cur!=null||!s.isEmpty()){
-            while(cur!=null){
-                s.push(cur);
-                cur=cur.left;
+        while(cur!=null){
+            if(cur.left==null){
+                res.add(cur.data);
+                cur = cur.right;
             }
-            Node pop = s.pop();
-            res.add(pop.data);
-            cur=pop.right;
+            else{
+                Node temp = cur.left;
+                while(temp.right!=null&&temp.right!=cur){
+                    temp = temp.right;
+                }
+                if(temp.right==null){
+                    temp.right = cur;
+                    cur = cur.left;
+                }else if(temp.right==cur){
+                    temp.right = null;
+                    res.add(cur.data);
+                    cur = cur.right;
+                }
+            }
         }
         
         return res;
