@@ -125,6 +125,9 @@ class BinaryTree
     //Function to return a list containing the preorder traversal of the tree.
     static ArrayList<Integer> preorder(Node root)
     {
+        
+        //MORRIS TRAVERSAL
+        
         ArrayList<Integer> res = new ArrayList<Integer>();
         
         Node cur = root;
