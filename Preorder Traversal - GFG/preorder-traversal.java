@@ -123,33 +123,29 @@ class GfG {
 class BinaryTree
 {
     //Function to return a list containing the preorder traversal of the tree.
-    ArrayList<Integer> res = new ArrayList<>();
     static ArrayList<Integer> preorder(Node root)
     {
-        BinaryTree p = new BinaryTree();
-        return p.preOrder(root);
+        ArrayList<Integer> res = new ArrayList<Integer>();
         
-    }
-    ArrayList<Integer> preOrder(Node root){
-        // if(root==null)
-        //     return null;
-        
-        // res.add(root.data);
-        // preOrder(root.left);
-        // preOrder(root.right);
-        
-        // return res;
-        
-        Stack<Node> s = new Stack<>();
-        s.add(root);
-        
-        while(!s.isEmpty()){
-            Node pop = s.pop();
-            res.add(pop.data);
-            if(pop.right!=null)
-                s.push(pop.right);
-            if(pop.left!=null)
-                s.push(pop.left);
+        Node cur = root;
+        while(cur!=null){
+            if(cur.left==null){
+                res.add(cur.data);
+                cur = cur.right;
+            }else{
+                Node temp = cur.left;
+                while(temp.right!=null&&temp.right!=cur){
+                    temp = temp.right;
+                }
+                if(temp.right==null){
+                    res.add(cur.data);
+                    temp.right=cur;
+                    cur = cur.left;
+                }else if(temp.right==cur){
+                    temp.right = null;
+                    cur = cur.right;
+                }
+            }
         }
         
         return res;
