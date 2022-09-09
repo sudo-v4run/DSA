@@ -28,22 +28,15 @@ class GFG {
 //User function Template for Java
 
 class Solution {
-    static int canReach(int[] arr, int n) {
-        if(arr[0]==0)
-            return 0;
+    static int canReach(int[] arr, int N) {
+        int goal = arr.length-1;
         
-        int goal = n-1;
-        
-        for(int i = n-2 ; i>=0 ; i--){
+        for(int i = goal ; i>=0 ; i--){
             if(i+arr[i]>=goal){
                 goal = i;
             }
         }
         
-        if(goal==0){
-            return 1;
-        }
-        
-        return 0;
+        return (goal==0)?1:0;
     }
 };
