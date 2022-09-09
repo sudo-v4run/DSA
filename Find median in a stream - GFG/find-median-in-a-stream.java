@@ -36,16 +36,40 @@ class Solution
     static Queue<Integer> minH = new PriorityQueue<>();
     static Queue<Integer> maxH = new PriorityQueue<>(Collections.reverseOrder());
     static boolean isEven = true;
+    
+    
+    
+    // public static void insertHeap(int x)
+    // {
+    //     if(isEven){
+    //         minH.offer(x);
+    //         maxH.offer(minH.poll());
+    //     }else{
+    //         maxH.offer(x);
+    //         minH.offer(maxH.poll());
+    //     }
+    //     isEven = !isEven;
+        
+    //     balanceHeaps();
+    // }
+    
+    
+    // public static void balanceHeaps()
+    // {
+    //     return;
+    // }
+    
+    
+    
+    
+    
     public static void insertHeap(int x)
     {
-        if(isEven){
-            minH.offer(x);
-            maxH.offer(minH.poll());
-        }else{
+        if(maxH.size()==0 || x < maxH.peek()){
             maxH.offer(x);
-            minH.offer(maxH.poll());
+        }else{
+            minH.offer(x);
         }
-        isEven = !isEven;
         
         balanceHeaps();
     }
@@ -53,8 +77,15 @@ class Solution
     
     public static void balanceHeaps()
     {
-        return;
+        if(maxH.size()>minH.size()+1){
+            minH.offer(maxH.poll());
+        }else if(maxH.size()<minH.size()){
+            maxH.offer(minH.poll());
+        }
     }
+    
+    
+    
     
    
     public static double getMedian()
