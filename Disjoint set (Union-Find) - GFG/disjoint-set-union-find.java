@@ -36,10 +36,10 @@ class GfG
 	int find(int parent[],int x)
     {
           if(parent[x]==x){
-              return x;
+              return parent[x];
           }
           
-          return find(parent,parent[x]);
+          return parent[x] = find(parent,parent[x]);
 	}
 	void unionSet(int parent[],int x,int z)
     {
