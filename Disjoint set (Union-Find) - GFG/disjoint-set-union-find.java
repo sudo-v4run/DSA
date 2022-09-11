@@ -33,24 +33,62 @@ class Disjoint{
 
 class GfG
 {
+    //Simple and naive....
+    
+    
+// 	int find(int parent[],int x)
+//     {
+//           if(parent[x]!=x){
+//               return find(parent,parent[x]);
+//           }
+          
+//           return x;
+// 	}
+// 	void unionSet(int parent[],int x,int z)
+//     {
+//          int parX = find(parent,x);
+//          int parZ = find(parent,z);
+         
+//          if(parX==parZ){
+//              return;
+//          }
+         
+//          parent[parX] = parZ;
+// 	}
+	
+	
+	
+	
+	
+	
+	
+	
+// little bit optimized with rank..
+	
 	int find(int parent[],int x)
     {
           if(parent[x]!=x){
-              return find(parent,parent[x]);
+              parent[x] = find(parent,parent[x]);
           }
           
-          return x;
+          return parent[x];
 	}
 	void unionSet(int parent[],int x,int z)
     {
          int parX = find(parent,x);
          int parZ = find(parent,z);
+         int n = parent.length;
+         int rank[] = new int[n+1];
          
-         if(parX==parZ){
-             return;
-         }
-         
-         parent[parX] = parZ;
+        if(rank[parX]>rank[parZ]){
+            parent[parX] = parZ;
+        }else if(rank[parX]>rank[parZ]){
+            parent[parZ] = parX;
+        }else{
+            parent[parX] = parZ;
+            rank[parZ]++;
+        }
+
 	}
 	
 	
@@ -63,36 +101,6 @@ class GfG
 	
 	
 	
-// 	int find(int parent[],int x)
-//     {
-//           if(parent[x]!=x){
-//               parent[x] = find(parent,parent[x]);
-//           }
-          
-//           return parent[x];
-// 	}
-// 	void unionSet(int parent[],int x,int z)
-//     {
-//          int parX = find(parent,x);
-//          int parZ = find(parent,z);
-         
-//          if(parX==parZ){
-//              return;
-//          }
-         
-//          parent[parX] = parZ;
-// 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 // 	int find(int parent[],int x)
 //     {
@@ -113,4 +121,6 @@ class GfG
          
 //          parent[parX] = parZ;
 // 	}
+
+
 }
