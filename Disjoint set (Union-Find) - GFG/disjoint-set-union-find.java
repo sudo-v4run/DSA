@@ -43,13 +43,13 @@ class GfG
 	}
 	void unionSet(int parent[],int x,int z)
     {
-         int findX = find(parent,x);
-         int findZ = find(parent,z);
+         int parX = find(parent,x);
+         int parZ = find(parent,z);
          
-         if(findX==findZ){
+         if(parX==parZ){
              return;
          }
          
-         parent[findX] = findZ;
+         parent[parX] = parZ;
 	}
 }
