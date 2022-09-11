@@ -36,25 +36,23 @@ class GfG
     //Simple and naive....
     
     
-// 	int find(int parent[],int x)
-//     {
-//           if(parent[x]!=x){
-//               return find(parent,parent[x]);
-//           }
+	int find(int parent[],int x)
+    {
+          if(parent[x]!=x){
+              return find(parent,parent[x]);
+          }
           
-//           return x;
-// 	}
-// 	void unionSet(int parent[],int x,int z)
-//     {
-//          int parX = find(parent,x);
-//          int parZ = find(parent,z);
+          return x;
+	}
+	void unionSet(int parent[],int x,int z)
+    {
+         int parX = find(parent,x);
+         int parZ = find(parent,z);
          
-//          if(parX==parZ){
-//              return;
-//          }
+        
          
-//          parent[parX] = parZ;
-// 	}
+         parent[parX] = parZ;
+	}
 	
 	
 	
@@ -65,31 +63,31 @@ class GfG
 	
 // little bit optimized with rank..
 	
-	int find(int parent[],int x)
-    {
-          if(parent[x]!=x){
-              parent[x] = find(parent,parent[x]);
-          }
+// 	int find(int parent[],int x)
+//     {
+//           if(parent[x]!=x){
+//               parent[x] = find(parent,parent[x]);
+//           }
           
-          return parent[x];
-	}
-	void unionSet(int parent[],int x,int z)
-    {
-         int parX = find(parent,x);
-         int parZ = find(parent,z);
-         int n = parent.length;
-         int rank[] = new int[n+1];
+//           return parent[x];
+// 	}
+// 	void unionSet(int parent[],int x,int z)
+//     {
+//          int parX = find(parent,x);
+//          int parZ = find(parent,z);
+//          int n = parent.length;
+//          int rank[] = new int[n+1];
          
-        if(rank[parX]>rank[parZ]){
-            parent[parX] = parZ;
-        }else if(rank[parX]>rank[parZ]){
-            parent[parZ] = parX;
-        }else{
-            parent[parX] = parZ;
-            rank[parZ]++;
-        }
+//         if(rank[parX]>rank[parZ]){
+//             parent[parX] = parZ;
+//         }else if(rank[parX]>rank[parZ]){
+//             parent[parZ] = parX;
+//         }else{
+//             parent[parX] = parZ;
+//             rank[parZ]++;
+//         }
 
-	}
+// 	}
 	
 	
 	
