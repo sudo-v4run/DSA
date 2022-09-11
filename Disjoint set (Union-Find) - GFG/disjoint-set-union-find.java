@@ -36,10 +36,10 @@ class GfG
 	int find(int parent[],int x)
     {
           if(parent[x]!=x){
-              parent[x] = find(parent,parent[x]);
+              return find(parent,parent[x]);
           }
           
-          return parent[x];
+          return x;
 	}
 	void unionSet(int parent[],int x,int z)
     {
@@ -52,4 +52,65 @@ class GfG
          
          parent[parX] = parZ;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+// 	int find(int parent[],int x)
+//     {
+//           if(parent[x]!=x){
+//               parent[x] = find(parent,parent[x]);
+//           }
+          
+//           return parent[x];
+// 	}
+// 	void unionSet(int parent[],int x,int z)
+//     {
+//          int parX = find(parent,x);
+//          int parZ = find(parent,z);
+         
+//          if(parX==parZ){
+//              return;
+//          }
+         
+//          parent[parX] = parZ;
+// 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+// 	int find(int parent[],int x)
+//     {
+//           if(parent[x]!=x){
+//               parent[x] = find(parent,parent[x]);
+//           }
+          
+//           return parent[x];
+// 	}
+// 	void unionSet(int parent[],int x,int z)
+//     {
+//          int parX = find(parent,x);
+//          int parZ = find(parent,z);
+         
+//          if(parX==parZ){
+//              return;
+//          }
+         
+//          parent[parX] = parZ;
+// 	}
 }
