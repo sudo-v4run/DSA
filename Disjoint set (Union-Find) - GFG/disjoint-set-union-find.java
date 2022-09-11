@@ -35,11 +35,11 @@ class GfG
 {
 	int find(int parent[],int x)
     {
-          if(parent[x]==x){
-              return parent[x];
+          if(parent[x]!=x){
+              parent[x] = find(parent,parent[x]);
           }
           
-          return parent[x] = find(parent,parent[x]);
+          return parent[x];
 	}
 	void unionSet(int parent[],int x,int z)
     {
