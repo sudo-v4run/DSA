@@ -65,48 +65,6 @@ class GfG
 	
 // little bit optimized with rank..
 	
-	int find(int parent[],int x)
-    {
-          if(parent[x]!=x){
-              parent[x] = find(parent,parent[x]);
-          }
-          
-          return parent[x];
-	}
-	void unionSet(int parent[],int x,int z)
-    {
-         int parX = find(parent,x);
-         int parZ = find(parent,z);
-         int n = parent.length;
-         int rank[] = new int[n+1];
-         
-         if(parX==parZ){
-             return;
-         }
-        
-         
-        if(rank[parX]>rank[parZ]){
-            parent[parX] = parZ;
-        }else if(rank[parX]>rank[parZ]){
-            parent[parZ] = parX;
-        }else{
-            parent[parX] = parZ;
-            rank[parZ]++;
-        }
-
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 // 	int find(int parent[],int x)
 //     {
 //           if(parent[x]!=x){
@@ -119,13 +77,55 @@ class GfG
 //     {
 //          int parX = find(parent,x);
 //          int parZ = find(parent,z);
+//          int n = parent.length;
+//          int rank[] = new int[n+1];
          
 //          if(parX==parZ){
 //              return;
 //          }
+        
          
-//          parent[parX] = parZ;
+//         if(rank[parX]>rank[parZ]){
+//             parent[parX] = parZ;
+//         }else if(rank[parX]>rank[parZ]){
+//             parent[parZ] = parX;
+//         }else{
+//             parent[parX] = parZ;
+//             rank[parZ]++;
+//         }
+
 // 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// Optimized... constant TC for find()
+	
+	int find(int parent[],int x)
+    {
+          if(parent[x]!=x){
+              parent[x] = find(parent,parent[x]);
+          }
+          
+          return parent[x];
+	}
+	void unionSet(int parent[],int x,int z)
+    {
+         int parX = find(parent,x);
+         int parZ = find(parent,z);
+         
+         if(parX==parZ){
+             return;
+         }
+         
+         parent[parX] = parZ;
+	}
 
 
 }
