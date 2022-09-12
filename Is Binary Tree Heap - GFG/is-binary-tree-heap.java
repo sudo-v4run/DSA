@@ -124,9 +124,12 @@ class Solution {
         if(root==null){
             return true;
         }
+        
         if(i>=n){
             return false;
         }
+        
+        
         if((root.left!=null && root.data<=root.left.data)||(root.right!=null&&root.data<=root.right.data))
             return false;
         
