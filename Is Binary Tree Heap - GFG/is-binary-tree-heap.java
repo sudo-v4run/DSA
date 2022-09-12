@@ -116,34 +116,69 @@ class Node{
 */
 
 class Solution {
-    boolean isHeap(Node tree) {
-        int n = noOfNodes(tree);
-        return checkIsHeap(tree,n,0);
-    }
-    boolean checkIsHeap(Node root,int n,int i){
+    boolean isHeap(Node root) {
+        
+        // int n = noOfNodes(tree);
+        // return checkIsHeap(tree,n,0);
+        
         if(root==null){
             return true;
         }
         
-        if(i>=n){
-            return false;
+        Queue<Node> q = new LinkedList<>();
+        q.offer(root);
+        boolean mtyN = false;
+        while(!q.isEmpty()){
+            Node pop = q.poll();
+            if(pop.left!=null){
+                if(mtyN||pop.left.data>=pop.data){
+                    return false;
+                }else{
+                     q.offer(pop.left);
+                }
+            }else{
+                mtyN = true;
+            }
+            
+            if(pop.right!=null){
+                if(mtyN||pop.right.data>=pop.data){
+                    return false;
+                }else{
+                    q.offer(pop.right);
+                }
+            }else{
+                mtyN = true;
+            }
         }
-        
-        
-        if((root.left!=null && root.data<=root.left.data)||(root.right!=null&&root.data<=root.right.data))
-            return false;
-        
-        return checkIsHeap(root.left,n,2*i+1)&&checkIsHeap(root.right,n,2*i+2);
+        return true;
     }
-    int no = 0;
-    int noOfNodes(Node root){
-        if(root==null){
-            return 0;
-        }
+    
+    
+    
+    // boolean checkIsHeap(Node root,int n,int i){
+    //     if(root==null){
+    //         return true;
+    //     }
         
-        int leftn = noOfNodes(root.left);
-        int rytn = noOfNodes(root.right);
+    //     if(i>=n){
+    //         return false;
+    //     }
         
-        return 1+leftn+rytn;
-    }
+        
+    //     if((root.left!=null && root.data<=root.left.data)||(root.right!=null&&root.data<=root.right.data))
+    //         return false;
+        
+    //     return checkIsHeap(root.left,n,2*i+1)&&checkIsHeap(root.right,n,2*i+2);
+    // }
+    // int no = 0;
+    // int noOfNodes(Node root){
+    //     if(root==null){
+    //         return 0;
+    //     }
+        
+    //     int leftn = noOfNodes(root.left);
+    //     int rytn = noOfNodes(root.right);
+        
+    //     return 1+leftn+rytn;
+    // }
 }
