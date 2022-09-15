@@ -46,12 +46,12 @@ class Solution {
        
     void dfs(int s , int vis[] , ArrayList<ArrayList<Integer>> adj)
     {
-        for (int j = 0; j < adj.size(); j++)
+        for (int nei = 0; nei < adj.size(); nei++)
         {
-            if (adj.get(s).get(j) != 0 && vis[j] != 1)
+            if (adj.get(s).get(nei) != 0 && vis[nei] != 1)
             {
-                vis[j] = 1;
-                dfs(j, vis, adj);
+                vis[nei] = 1;
+                dfs(nei, vis, adj);
             }
         }
     }
