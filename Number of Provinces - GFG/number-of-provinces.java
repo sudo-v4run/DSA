@@ -31,27 +31,27 @@ class GFG {
 class Solution {
     int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {
         
-        int[] visited = new int[V];
+        int[] vis = new int[V];
         int count = 0;
         for (int i = 0; i < V; i++)
         {
-            if (visited[i] == 0)
+            if (vis[i] == 0)
             {
-                dfs(adj, visited, i);
+                dfs(i, vis, adj);
                 count++;
             }
         }
         return count;
     }
        
-    void dfs(ArrayList<ArrayList<Integer>> M, int[] visited, int i)
+    void dfs(int s , int vis[] , ArrayList<ArrayList<Integer>> adj)
     {
-        for (int j = 0; j < M.size(); j++)
+        for (int j = 0; j < adj.size(); j++)
         {
-            if (i!=j && M.get(i).get(j) == 1 && visited[j] == 0)
+            if (adj.get(s).get(j) != 0 && vis[j] != 1)
             {
-                visited[j] = 1;
-                dfs(M, visited, j);
+                vis[j] = 1;
+                dfs(j, vis, adj);
             }
         }
     }
