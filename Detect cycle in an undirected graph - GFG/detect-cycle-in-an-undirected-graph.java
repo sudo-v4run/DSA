@@ -40,18 +40,18 @@ class Solution {
         
         for(int i = 0 ; i  < V ; i++){
             if(vis[i]!=1)
-                if(dfs(i,vis,adj,-1)){
+                if(isCycleDfs(i,vis,adj,-1)){
                     return true;
                 }
         }
         
         return false;
     }
-    public boolean dfs(int s,int vis[],ArrayList<ArrayList<Integer>> adj,int parent){
+    public boolean isCycleDfs(int s,int vis[],ArrayList<ArrayList<Integer>> adj,int parent){
         vis[s] = 1;
         for(int nei : adj.get(s)){
             if(vis[nei]!=1){
-                if(dfs(nei,vis,adj,s)){
+                if(isCycleDfs(nei,vis,adj,s)){
                     return true;
                 }
             }else if(nei!=parent){
