@@ -60,7 +60,7 @@ class Solution {
     static void dfs(int s , int vis[] , ArrayList<ArrayList<Integer>> adj){
         vis[s] = 1;
         for(int nei : adj.get(s)){
-            if(nei!=0 && vis[nei]!=1){
+            if(vis[nei]!=1){
                 dfs(nei,vis,adj);
             }
         }
