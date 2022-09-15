@@ -28,41 +28,30 @@ class GFG {
 }
 // } Driver Code Ends
 
-
-//User function Template for Java
-
 class Solution {
-    static int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {
-        int vis[] = new int[V];
-        int cnt = 0;
-          ArrayList<ArrayList<Integer>> adjls=new ArrayList<ArrayList<Integer>>();
-      for(int i=0;i<V;i++){
-          adjls.add(new ArrayList<Integer>());
-      }
-       
-      for(int i=0;i<V;i++){
-          for(int j=0;j<V;j++){
-              if(adj.get(i).get(j)==1){
-                  adjls.get(i).add(j);
-                  adjls.get(j).add(i);
-              }
-          }
-      }
-       
-        for(int i = 0 ; i < V ; i++){
-            if(vis[i]!=1){
-                cnt++;
-                dfs(i,vis,adjls);
-                
+    int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {
+        
+        int[] visited = new int[V];
+        int count = 0;
+        for (int i = 0; i < V; i++)
+        {
+            if (visited[i] == 0)
+            {
+                dfs(adj, visited, i);
+                count++;
             }
         }
-        return cnt;
+        return count;
     }
-    static void dfs(int s , int vis[] , ArrayList<ArrayList<Integer>> adj){
-        vis[s] = 1;
-        for(int nei : adj.get(s)){
-            if(vis[nei]!=1){
-                dfs(nei,vis,adj);
+       
+    void dfs(ArrayList<ArrayList<Integer>> M, int[] visited, int i)
+    {
+        for (int j = 0; j < M.size(); j++)
+        {
+            if (i!=j && M.get(i).get(j) == 1 && visited[j] == 0)
+            {
+                visited[j] = 1;
+                dfs(M, visited, j);
             }
         }
     }
