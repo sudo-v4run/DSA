@@ -51,8 +51,9 @@ class Solution {
        
         for(int i = 0 ; i < V ; i++){
             if(vis[i]!=1){
-                dfs(i,vis,adjls);
                 cnt++;
+                dfs(i,vis,adjls);
+                
             }
         }
         return cnt;
