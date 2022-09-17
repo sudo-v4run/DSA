@@ -60,39 +60,83 @@ class Main {
 
 class Solution
 {
+    //Using DFS...
+    
+    // static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
+    // {
+        
+    //     int vis[] = new int[V];
+    //     Stack<Integer> st = new Stack<>();
+        
+        
+    //     for(int i = 0 ; i < V ; i++){
+    //         if(vis[i]!=1){
+    //             dfs(0,vis,adj,st);
+    //         }
+    //     }
+        
+    //     int res[] = new int[V];
+    //     int k = 0;
+        
+    //     while(!st.isEmpty()){
+    //         res[k++] = st.pop();
+    //     }
+        
+    //     return res;
+        
+    // }
+    // static void dfs(int s,int vis[] ,ArrayList<ArrayList<Integer>> adj, Stack<Integer> st){
+    //     vis[s] = 1;
+        
+    //     for(int nei : adj.get(s)){
+    //         if(vis[nei]!=1){
+    //             dfs(nei,vis,adj,st);
+    //         }
+    //     }
+    //     st.push(s);
+    // }
+    
+    
+    
+    //Using BFS....
     
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
     {
-        //Using DFS...
         
         int vis[] = new int[V];
-        Stack<Integer> st = new Stack<>();
-        
-        
-        for(int i = 0 ; i < V ; i++){
-            if(vis[i]!=1){
-                dfs(0,vis,adj,st);
-            }
-        }
-        
+        int indeg[] = new int[V];
+        Queue<Integer> q = new LinkedList<>();
         int res[] = new int[V];
         int k = 0;
         
-        while(!st.isEmpty()){
-            res[k++] = st.pop();
+        findIG(adj,indeg);
+        
+        for(int i = 0 ; i < V ; i++){
+            if(indeg[i]==0){
+                q.offer(i);
+            }
+        }
+        
+        while(!q.isEmpty()){
+            int pop = q.poll();
+            res[k++] = pop;
+            
+            for(int nei : adj.get(pop)){
+                indeg[nei]--;
+                if(indeg[nei]==0){
+                    q.offer(nei);
+                }
+            }
         }
         
         return res;
         
     }
-    static void dfs(int s,int vis[] ,ArrayList<ArrayList<Integer>> adj, Stack<Integer> st){
-        vis[s] = 1;
-        
-        for(int nei : adj.get(s)){
-            if(vis[nei]!=1){
-                dfs(nei,vis,adj,st);
+    static void findIG(ArrayList<ArrayList<Integer>> adj, int indeg[]){
+        for(int i = 0 ; i < adj.size() ; i++){
+            for(int j : adj.get(i) ){
+                indeg[j]++;
             }
         }
-        st.push(s);
     }
 }
