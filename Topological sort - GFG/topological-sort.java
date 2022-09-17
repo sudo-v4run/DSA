@@ -98,7 +98,7 @@ class Solution
     
     
     
-    //Using BFS....
+    // Using Kahn's Algorithm - BFS....
     
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
     {
