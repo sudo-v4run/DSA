@@ -39,7 +39,33 @@ class Solution {
     public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
         
         int vis[] = new int[V];
-        return dfs(0,vis,adj);
+        
+        //return dfs(0,vis,adj);
+        
+        //Using Stack
+        
+        ArrayList<Integer> res = new ArrayList<>();
+        Stack<Integer> st = new Stack<>();
+        
+        st.push(0);
+        
+        while(!st.isEmpty()){
+            int cur = st.pop();
+            
+            if(vis[cur]!=1){
+                res.add(cur);
+                vis[cur] = 1;
+            }
+            
+            for(int nei = adj.get(cur).size()-1 ; nei>=0 ; nei--){
+                if(vis[adj.get(cur).get(nei)]!=1){
+                    st.push(adj.get(cur).get(nei));
+                }
+            }
+            
+        }
+        
+        return res;
 
     }
     
