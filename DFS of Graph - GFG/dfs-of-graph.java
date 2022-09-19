@@ -46,11 +46,11 @@ class Solution {
     ArrayList<Integer> res = new ArrayList<>();
     
     public ArrayList<Integer> dfs(int s,int[] vis,ArrayList<ArrayList<Integer>> adj){
-        if(vis[s]!=1){
-            vis[s] = 1;
-            res.add(s);
-            for(int i : adj.get(s) ){
-                dfs(i,vis,adj);
+        vis[s] = 1;
+        res.add(s);
+        for(int nei : adj.get(s)){
+            if(vis[nei]!=1){
+                dfs(nei,vis,adj);
             }
         }
         
