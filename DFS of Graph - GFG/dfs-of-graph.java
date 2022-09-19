@@ -48,26 +48,21 @@ class Solution {
         Stack<Integer> st = new Stack<>();
         
         st.push(0);
-        //vis[0] = 1;
-       // res.add(0);
         
         while(!st.isEmpty()){
             int cur = st.pop();
             
-            
-            // if(vis[cur]!=1){
-            //     res.add(cur);
-            //     vis[cur] = 1;
-            // }
+            if(vis[cur]!=1){
+                res.add(cur);
+                vis[cur] = 1;
+            }
             
             for(int nei = adj.get(cur).size()-1 ; nei>=0 ; nei--){
                 if(vis[adj.get(cur).get(nei)]!=1){
                     st.push(adj.get(cur).get(nei));
                 }
             }
-            if(vis[cur]!=1)
-                res.add(cur);
-            vis[cur] = 1;
+            
         }
         
         return res;
