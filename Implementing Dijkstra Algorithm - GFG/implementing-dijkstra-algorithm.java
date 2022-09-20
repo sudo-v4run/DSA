@@ -67,7 +67,12 @@ class Solution
             dis[i] = 10000000;
         }
         int vis[] = new int[V];
-        PriorityQueue<Pair> q = new PriorityQueue<>((a,b) -> {return (a.w-b.w);});
+        PriorityQueue<Pair> q = new PriorityQueue<>((a,b) -> { 
+            if(a.w>b.w)
+                return b.w;
+            else 
+                return a.w;
+        });
         dis[S] = 0;
         q.offer(new Pair(S,0));
         
