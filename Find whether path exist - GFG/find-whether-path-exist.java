@@ -44,37 +44,32 @@ class Solution
     
     public boolean is_Possible(int[][] grid)
     {
+        Queue<Pair> q = new LinkedList<>();
         int vis[][] = new int[grid.length][grid[0].length];
         for(int i = 0 ; i < grid.length ; i++){
             for(int j = 0 ; j < grid[0].length ; j++){
                 if(grid[i][j]==1){
-                    if(bfs(new Pair(i,j),grid,vis)){
-                        return true;
-                    }
+                    q.offer(new Pair(i,j));
+                    break;
                 }
             }
         }
-        return false;
-    }
-    public static boolean bfs(Pair src, int arr[][],int vis[][]){
-        Queue<Pair> q = new LinkedList<>();
-        q.offer(src);
         
         while(!q.isEmpty()){
             Pair s = q.poll();
             int x = s.r;
             int y = s.c;
             
-            if(x<0||x>=arr.length||y<0||y>=arr[0].length)
+            if(x<0||x>=grid.length||y<0||y>=grid[0].length)
                 continue;
             
-            if(arr[x][y]==0)
+            if(grid[x][y]==0)
                 continue;
                 
             if(vis[x][y]==1)
                 continue;
             
-            if(arr[x][y]==2){
+            if(grid[x][y]==2){
                 return true;
             }
             
