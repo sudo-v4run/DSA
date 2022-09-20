@@ -73,10 +73,11 @@ class Solution
         
         while(!q.isEmpty()){
             Pair cur = q.poll();
-            if(vis[cur.v]==1)
-                continue;
             
-            vis[cur.v] = 1;
+            // if(vis[cur.v]==1)
+            //     continue;
+            
+            // vis[cur.v] = 1;
             
             ArrayList<ArrayList<Integer>> arr = adj.get(cur.v);
             
