@@ -65,13 +65,13 @@ class Solution
         
         int key[] = new int[V];
         boolean mst[] = new boolean[V];
-        int parent[] = new int[V];
+        //int parent[] = new int[V];
         int ans = 0;
         
         for(int i = 0 ; i < V ;i++){
             key[i] = 10000000;
             mst[i] = false;
-            parent[i] = -1;
+            //parent[i] = -1;
         }
         key[0] = 0;
         
@@ -92,7 +92,7 @@ class Solution
                 
                 if(mst[vr]==false && key[vr]>wt){
                     key[vr]=wt;
-                    parent[vr]=cur.v; 
+                   // parent[vr]=cur.v;
                     q.offer(new Pair(vr,key[vr]));
                 }
             }
