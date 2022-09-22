@@ -47,19 +47,30 @@ class DriverClass
 
 class Solution
 {
-    static class Pair{
-        int v,w;
-        Pair(int v, int w){
+    // for Kruskal's Algo ..
+    static class Edge{
+        int u,v,w;
+        Edge(int u,int v, int w){
+            this.u = u;
             this.v = v;
             this.w = w;
         }
     }
     
+    // for Prims...
+    // static class Pair{
+    //     int v,w;
+    //     Pair(int v, int w){
+    //         this.v = v;
+    //         this.w = w;
+    //     }
+    // }
+    
     static int spanningTree(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj) 
     {
-        // kruskal ...
+        // kruskal's Algo ...
         
-        TreeMap<Integer,ArrayList<Pair> > tm = new TreeMap<>();
+        ArrayList<Edge> ed = new ArrayList<>();
         int par[] = new int[V];
         for(int i = 0 ; i < V ; i++){
             par[i] = i;
@@ -68,31 +79,25 @@ class Solution
         for(int i = 0 ; i < V ; i++){
             ArrayList<ArrayList<Integer>> nei = adj.get(i);
             for(ArrayList<Integer> a : nei){
-                ArrayList<Pair> al = tm.get(a.get(1));
-                if (al == null) {
-                    al = new ArrayList<Pair>();
-                    tm.put(a.get(1), al);
-                }
-                al.add(new Pair(i,a.get(0)));
+                ed.add(new Edge(i,a.get(0),a.get(1)));
             }
         }
         
         int ans = 0;
-      
         
-        for (Map.Entry<Integer,ArrayList<Pair>>entry : tm.entrySet()){
-            ArrayList<Pair> list = entry.getValue();
-            for(Pair pr : list){
-                Pair e = pr;
-                if(find(par,e.v)!=find(par,e.w)){
-                    ans+=entry.getKey();
-                    unionSet(par,e.v,e.w);
-                }
+        Collections.sort(ed,((a,b)->{return a.w-b.w;}));
+        
+        for(Edge i : ed){
+            if(find(par,i.u)!=find(par,i.v)){
+                unionSet(par,i.u,i.v);
+                ans+=i.w;
             }
-            
         }
         
         return ans;
+        
+        
+        
         
         
         
