@@ -60,7 +60,7 @@ class Solution
         Arrays.fill(dis,100000000);
         dis[S] = 0;
         
-        for(int j = 0 ; j < V-1 ; j++){
+        for(int j = 0 ; j < V; j++){
             
             for(ArrayList<Integer> a : adj){
                 if(dis[a.get(1)]>dis[a.get(0)]+a.get(2)){
