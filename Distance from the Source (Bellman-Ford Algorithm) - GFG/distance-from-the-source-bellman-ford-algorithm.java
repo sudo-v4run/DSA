@@ -44,14 +44,6 @@ class DriverClass
 }
 // } Driver Code Ends
 
-
-//User function Template for Java
-
-/*
-*   adj: vector of vectors which represents the graph
-*   S: source vertex to start traversing graph with
-*   V: number of vertices
-*/
 class Solution
 {
     static int[] bellman_ford(int V, ArrayList<ArrayList<Integer>> adj, int S)
@@ -60,8 +52,7 @@ class Solution
         Arrays.fill(dis,100000000);
         dis[S] = 0;
         
-        for(int j = 0 ; j < V; j++){
-            
+        for(int j = 0 ; j < V-1 ; j++){
             for(ArrayList<Integer> a : adj){
                 if(dis[a.get(1)]>dis[a.get(0)]+a.get(2)){
                     dis[a.get(1)]=dis[a.get(0)]+a.get(2);
