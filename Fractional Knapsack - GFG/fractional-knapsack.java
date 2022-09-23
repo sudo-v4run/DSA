@@ -47,10 +47,10 @@ class Solution
     
     double fractionalKnapsack(int W, Item arr[], int n) 
     {
-        Arrays.sort(arr,(i1,i2)->{return (i1.weight*i2.value)-(i2.weight*i1.value);});
+        Arrays.sort(arr,(i1,i2)->{return (i2.value*i1.weight)-(i1.value*i2.weight);});
         double profit = 0;
         for(int i = 0 ; i < n ; i++){
-            if(W>=arr[i].weight){
+            if( arr[i].weight<=W){
                 profit+=arr[i].value;
                 W-=arr[i].weight;
             }else{
