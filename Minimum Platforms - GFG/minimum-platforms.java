@@ -42,23 +42,23 @@ class Solution
 {
     static int findPlatform(int arr[], int dep[], int n)
     {
-        Arrays.sort(dep);
         Arrays.sort(arr);
-        int a = 1;
-        int d = 0;
+        Arrays.sort(dep);
+        
+        int i = 1;
+        int j = 0;
         int max = 1;
         int minP = 1;
         
-        while(a<n && d<n){
-            if(arr[a]<=dep[d]){
-                a++;
+        while(i<n){
+            if(arr[i]<=dep[j]){
+                i++;
                 max++;
-                
+                minP=Math.max(minP,max);
             }else{
+                j++;
                 max--;
-                d++;
             }
-            minP = Math.max(max,minP);
         }
         
         return minP;
