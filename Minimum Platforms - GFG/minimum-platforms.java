@@ -49,36 +49,17 @@ class Solution
         int max = 1;
         int minP = 1;
         
-        while(a<n){
-            if(arr[a]>dep[d]){
-                d++;
-                max--;
-                
-            }
-            else{
+        while(a<n && d<n){
+            if(arr[a]<=dep[d]){
                 a++;
                 max++;
-            }
-            minP=Math.max(max,minP);}
-        
-        // int min_p = 1;
-        // int needed_p=1;
-        // Arrays.sort(arr);
-        // Arrays.sort(dep);
-        // int i=1,j=0;
-        // while(i<n & j<n){
-        //     if(arr[i]>dep[j]){
-        //         j++;
-        //         min_p--;
                 
-        //     }
-        //     else{
-        //         i++;
-        //         min_p++;
-        //     }
-        //     needed_p=Math.max(needed_p,min_p);
-        // }
-        // return needed_p;
+            }else{
+                max--;
+                d++;
+            }
+            minP = Math.max(max,minP);
+        }
         
         return minP;
     }
