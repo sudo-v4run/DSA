@@ -34,11 +34,12 @@ class Solution
         List<String> sl = new ArrayList<>();
         int n = s.length();
         
-        for(int i = 0 ; i < Math.pow(2,n) ; i++){
+        for(int num = 0 ; num < Math.pow(2,n) ; num++){
             String ss = "";
-            for(int j = 0 ; j < n ; j++){
-                if((i&(1<<j))!=0){
-                    ss+=s.charAt(j);
+            for(int i = 0 ; i < n ; i++){
+                // here i refers to ith bit to check if ith bit is 1 or 0
+                if((num&(1<<i))!=0){
+                    ss+=s.charAt(i);
                 }
             }
             
