@@ -43,11 +43,36 @@ class Solution
         // Recursion with DP...
         // Memorization(Top-Down) ...
         
+        // int dp[] = new int[n];
+        // Arrays.fill(dp,-1);
+        
+        // return findMaxSumDP(n-1,arr,dp);
+        
+        // Tabulation (Buttom-Up) ...
         int dp[] = new int[n];
         Arrays.fill(dp,-1);
         
-        return findMaxSumDP(n-1,arr,dp);
+        return findMaxSumT(n,arr,dp);
     }
+    
+    public int findMaxSumT(int n ,int arr[],int dp[]){
+        
+        dp[0] = arr[0];
+        
+        for(int i = 1 ; i < n ; i++){
+            int takeThis = arr[i];
+            if(i>1){
+                takeThis+= dp[i-2];
+            }
+            int notTake = 0+dp[i-1];
+            
+            dp[i] = Math.max(takeThis,notTake);
+        }
+        
+        return dp[n-1];
+    }
+    
+    
     public int findMaxSumR(int index ,int arr[]){
         
         
@@ -63,6 +88,8 @@ class Solution
         
         return Math.max(takeThis,notTake);
     }
+
+
     public int findMaxSumDP(int index,int arr[],int dp[]){
         if(index==0)
             return arr[index];
