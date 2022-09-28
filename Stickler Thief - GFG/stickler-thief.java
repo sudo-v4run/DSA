@@ -56,22 +56,22 @@ class Solution
         
         // Tabulation (Buttom-Up) ..Space Optimized SC - O(1) ..
         
-        int prevSteps2 = arr[0];
-        int prevNeg = 0;
+        int prev = arr[0];
+        int prev2 = 0;
         
         for(int i = 1 ; i < n ; i++){
             int takeThis = arr[i];
             if(i>1){
-                takeThis+= prevNeg;
+                takeThis+= prev2;
             }
-            int notTake = 0+prevSteps2;
+            int notTake = 0 + prev;
             
             int curi = Math.max(takeThis,notTake);
-            prevNeg = prevSteps2;
-            prevSteps2 = curi;
+            prev2 = prev;
+            prev = curi;
         }
         
-        return prevSteps2;
+        return prev;
         
         
     }
