@@ -43,10 +43,10 @@ class Solution
         // Recursion with DP...
         // Memorization(Top-Down) ...
         
-        int dp[] = new int[n];
-        Arrays.fill(dp,-1);
+        // int dp[] = new int[n];
+        // Arrays.fill(dp,-1);
         
-        return findMaxSumDP(n-1,arr,dp);
+        // return findMaxSumDP(n-1,arr,dp);
         
         // Tabulation (Buttom-Up) ...
         // int dp[] = new int[n];
@@ -56,22 +56,22 @@ class Solution
         
         // Tabulation (Buttom-Up) ..Space Optimized SC - O(1) ..
         
-        // int prev = arr[0];
-        // int prev2 = 0;
+        int prev = arr[0];
+        int prev2 = 0;
         
-        // for(int i = 1 ; i < n ; i++){
-        //     int takeThis = arr[i];
-        //     if(i>1){
-        //         takeThis+= prev2;
-        //     }
-        //     int notTake = 0 + prev;
+        for(int i = 1 ; i < n ; i++){
+            int takeThis = arr[i];
+            if(i>1){
+                takeThis+= prev2;
+            }
+            int notTake = 0 + prev;
             
-        //     int curi = Math.max(takeThis,notTake);
-        //     prev2 = prev;
-        //     prev = curi;
-        // }
+            int curi = Math.max(takeThis,notTake);
+            prev2 = prev;
+            prev = curi;
+        }
         
-        // return prev;
+        return prev;
         
         
     }
@@ -98,7 +98,7 @@ class Solution
         
         
         if(index==0)
-            return arr[index];
+            return arr[0];
         
         if(index<0)
             return 0;
