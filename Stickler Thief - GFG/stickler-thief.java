@@ -49,10 +49,31 @@ class Solution
         // return findMaxSumDP(n-1,arr,dp);
         
         // Tabulation (Buttom-Up) ...
-        int dp[] = new int[n];
-        Arrays.fill(dp,-1);
+        // int dp[] = new int[n];
+        // Arrays.fill(dp,-1);
         
-        return findMaxSumT(n,arr,dp);
+        // return findMaxSumT(n,arr,dp);
+        
+        // Tabulation (Buttom-Up) ..Space Optimized SC - O(1) ..
+        
+        int prevSteps2 = arr[0];
+        int prevNeg = 0;
+        
+        for(int i = 1 ; i < n ; i++){
+            int takeThis = arr[i];
+            if(i>1){
+                takeThis+= prevNeg;
+            }
+            int notTake = 0+prevSteps2;
+            
+            int curi = Math.max(takeThis,notTake);
+            prevNeg = prevSteps2;
+            prevSteps2 = curi;
+        }
+        
+        return prevSteps2;
+        
+        
     }
     
     public int findMaxSumT(int n ,int arr[],int dp[]){
