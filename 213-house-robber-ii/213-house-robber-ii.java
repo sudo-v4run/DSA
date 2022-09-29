@@ -1,11 +1,6 @@
 class Solution {
     public int rob(int[] nums) {
         int n = nums.length;
-        int dp[] = new int[n];
-        Arrays.fill(dp,-1);
-    
-        int dp2[] = new int[n];
-        Arrays.fill(dp2,-1);
         
         if(n==1)
             return nums[0];
@@ -22,20 +17,25 @@ class Solution {
             }
         }
         
-        return Math.max(hr(temp1.length-1,temp1,dp),hr(temp2.length-1,temp2,dp2));
+        return Math.max(hr(temp1),hr(temp2));
     }
-    public int hr(int index , int arr[] , int dp[]){
-        if(index<0)
-            return 0;
-        if(index==0){
-            return arr[0];
+    public int hr(int arr[]){
+        int prev1 = arr[0];
+        int prev2 = 0;
+        
+        for(int i = 1 ; i < arr.length ; i++){
+            int takeThis = arr[i];
+            if(i>1)
+                takeThis += prev2;
+            
+            int notTake = 0 + prev1;
+            
+            int curi = Math.max(takeThis,notTake);
+            
+            prev2 = prev1;
+            prev1 = curi;
         }
         
-        if(dp[index]!=-1)
-            return dp[index];
-        
-        int takeThis = arr[index] + hr(index-2,arr,dp);
-        int notTake = 0 + hr(index-1, arr, dp);
-        return dp[index] = Math.max(takeThis,notTake);
+        return prev1;
     }
 }
