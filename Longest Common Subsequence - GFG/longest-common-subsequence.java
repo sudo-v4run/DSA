@@ -29,10 +29,8 @@ class Solution
     static int lcs(int x, int y, String s1, String s2)
     {
         int dp[][] = new int[x][y];
-        for(int i = 0 ; i < dp.length ; i++){
-            for(int j = 0 ; j < dp[0].length ; j++){
-                dp[i][j] = -1;
-            }
+        for(int[] row : dp){
+            Arrays.fill(row,-1);
         }
         return lcsDP(x-1,y-1,s1,s2,dp);
     }
