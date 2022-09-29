@@ -23,7 +23,6 @@ class GFG {
 }
 // } Driver Code Ends
 
-
 class Solution
 {
     static int lcs(int x, int y, String s1, String s2)
@@ -40,15 +39,18 @@ class Solution
         
         // Tabulation (Buttom - Up) ... 
         
-        return lcsDPT(x,y,s1,s2);
+        //return lcsDPT(x,y,s1,s2);
+        
+        
+        
+        // Tabulation (Buttom - Up) ... Space Optimized..O(m)
+        
+        return lcsDPTSO(x,y,s1,s2);
         
     }
     
     static int lcsDPT(int m , int n , String s1, String s2){
         int dp[][] = new int[m+1][n+1];
-        for(int[] row : dp){
-            Arrays.fill(row,-1);
-        }
         
         for(int j = 0 ;  j <= n ; j++){
             dp[0][j] = 0;
@@ -68,6 +70,25 @@ class Solution
         
         return dp[m][n];
     }
+    
+    
+    static int lcsDPTSO(int m , int n , String s1, String s2){
+        int cur[] = new int[n+1];
+        int prev[] = new int[n+1];
+        
+        for(int i = 1 ; i <= m ; i++){
+            for(int j = 1 ; j <= n ; j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1))
+                    cur[j] = 1+prev[j-1];
+                else cur[j] = 0 + Math.max( cur[j-1] , prev[j]);
+            }
+            prev=(int[])(cur.clone());
+        }
+        
+        
+        return prev[n];
+    }
+    
     
     
     
