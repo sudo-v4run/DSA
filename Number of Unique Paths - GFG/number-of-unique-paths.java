@@ -53,8 +53,26 @@ class Solution
         
         // Tabulation (Buttom-Up) .. Space Optimized O(n)
         
-        return nupTSO(m,n);
+        //return nupTSO(m,n);
+        
+        
+        // Most Optimized Solution using Combinations ...
+        
+        int N = m+n-2;
+        int R = m-1;
+        double res = 1.0;
+        
+        for(int i = 1 ; i <=R ;i++){
+            res = res*(N-R+i)/i;
+        }
+        
+        return (int)res;
     }
+    
+    
+    
+    
+    
     public static int nupT(int m , int n){
         int dp[][] = new int[m][n];
         
@@ -78,6 +96,9 @@ class Solution
         
         return dp[m-1][n-1];
     }
+    
+    
+    
     
     public static int nupTSO(int m , int n){
         int cur[] = new int[n];
