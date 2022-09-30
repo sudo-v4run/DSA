@@ -3,12 +3,34 @@ class Solution {
         
         // Memoization ...
         
-        int dp[][] = new int[arr.size()][arr.get(arr.size()-1).size()];
-        for(int[] row:dp){
-            Arrays.fill(row,-1);
+//         int dp[][] = new int[arr.size()][arr.get(arr.size()-1).size()];
+//         for(int[] row:dp){
+//             Arrays.fill(row,-1);
+//         }
+        
+//         return tmps(0,0,arr,dp);
+        
+        
+        // Tabulation ....
+        int m = arr.size();
+        int n = arr.get(arr.size()-1).size();
+        int dp[][] = new int[m][n];
+        
+        for(int j =0 ; j < n ; j++ ){
+            dp[m-1][j] = arr.get(m-1).get(j);
         }
         
-        return tmps(0,0,arr,dp);
+        for(int i = m-2 ; i >= 0 ; i--){
+            int N = arr.get(i).size();
+            for(int j = N-1 ; j>=0 ; j--){
+                int down = arr.get(i).get(j)+dp[i+1][j];
+                int dg = arr.get(i).get(j)+dp[i+1][j+1];
+                dp[i][j] = Math.min(down,dg);
+            }
+        }
+        
+        return dp[0][0];
+        
     }
     public static int tmps(int i,int j , List<List<Integer>> arr,int dp[][]){
         
