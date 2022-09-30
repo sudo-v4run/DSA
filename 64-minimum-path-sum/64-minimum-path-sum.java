@@ -5,11 +5,35 @@ class Solution {
         
         // Memoization (Top-Down) ...
         
+//         int dp[][] = new int[m][n];
+//         for(int[] row:dp){
+//             Arrays.fill(row,-1);
+//         }
+//         return mpsr(m-1,n-1,arr,dp);
+        
+        
+        
+        // Tabulation (Buttom - Up) ...
         int dp[][] = new int[m][n];
-        for(int[] row:dp){
-            Arrays.fill(row,-1);
+        
+        dp[0][0] = arr[0][0];
+        
+        for(int i = 0 ; i < m ; i++){
+            for(int j = 0 ; j < n ; j++){
+                if(i==0 && j==0)
+                    continue;
+                int up = Integer.MAX_VALUE;
+                int left = Integer.MAX_VALUE;
+                if(i>0)
+                    up = arr[i][j] + dp[i-1][j];
+                if(j>0)
+                    left = arr[i][j] + dp[i][j-1];
+                dp[i][j] = Math.min(up,left);
+            }
         }
-        return mpsr(m-1,n-1,arr,dp);
+        
+        return dp[m-1][n-1];
+        
     }
     public static int mpsr(int i , int j , int arr[][], int dp[][] ){
         
