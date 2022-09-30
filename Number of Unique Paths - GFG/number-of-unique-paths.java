@@ -63,7 +63,8 @@ class Solution
         double res = 1.0;
         
         for(int i = 1 ; i <=R ;i++){
-            res = res*(N-i+1)/i;
+            //res = res*(N-i+1)/i;
+             res = res*(N-R+i)/i;
         }
         
         return (int)res;
