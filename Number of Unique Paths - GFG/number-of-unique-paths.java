@@ -41,9 +41,19 @@ class Solution
         // return nup(m-1,n-1,dp);
         
         
+        
+        
+        
         // Tabulation (Buttom-Up) ..
         
-        return nupT(m,n);
+        //return nupT(m,n);
+        
+        
+        
+        
+        // Tabulation (Buttom-Up) .. Space Optimized O(n)
+        
+        return nupTSO(m,n);
     }
     public static int nupT(int m , int n){
         int dp[][] = new int[m][n];
@@ -67,6 +77,32 @@ class Solution
         }
         
         return dp[m-1][n-1];
+    }
+    
+    public static int nupTSO(int m , int n){
+        int cur[] = new int[n];
+        int prev[] = new int[n];
+        
+        cur[0] = 1;
+        
+        for(int i = 0 ; i < m ; i++){
+            for(int j = 0 ; j < n ; j++){
+                if(i==0&&j==0)
+                    continue;
+                int up = 0;
+                int left = 0;
+                if(i>=1)
+                    up = prev[j];
+                if(j>=1)
+                    left = cur[j-1];
+                    
+                cur[j] = up+left;
+                
+            }
+            prev = cur.clone();
+        }
+        
+        return prev[n-1];
     }
     
     
