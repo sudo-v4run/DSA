@@ -14,9 +14,37 @@ class Solution {
         
         
         // Tabulation (Buttom - Up) ...
-        int dp[][] = new int[m][n];
         
-        dp[0][0] = arr[0][0];
+//         int dp[][] = new int[m][n];
+        
+//         dp[0][0] = arr[0][0];
+        
+//         for(int i = 0 ; i < m ; i++){
+//             for(int j = 0 ; j < n ; j++){
+//                 if(i==0 && j==0)
+//                     continue;
+//                 int up = Integer.MAX_VALUE;
+//                 int left = Integer.MAX_VALUE;
+//                 if(i>0)
+//                     up = arr[i][j] + dp[i-1][j];
+//                 if(j>0)
+//                     left = arr[i][j] + dp[i][j-1];
+//                 dp[i][j] = Math.min(up,left);
+//             }
+//         }
+        
+//         return dp[m-1][n-1];
+        
+        
+        
+        
+        
+        // Tabulation Space Optimized O(n) ...
+        
+        int cur[] = new int[n];
+        int prev[] = new int[n];
+        
+        cur[0] = arr[0][0];
         
         for(int i = 0 ; i < m ; i++){
             for(int j = 0 ; j < n ; j++){
@@ -25,14 +53,15 @@ class Solution {
                 int up = Integer.MAX_VALUE;
                 int left = Integer.MAX_VALUE;
                 if(i>0)
-                    up = arr[i][j] + dp[i-1][j];
+                    up = arr[i][j] + prev[j];
                 if(j>0)
-                    left = arr[i][j] + dp[i][j-1];
-                dp[i][j] = Math.min(up,left);
+                    left = arr[i][j] + cur[j-1];
+                cur[j] = Math.min(up,left);
             }
+            prev = cur.clone();
         }
         
-        return dp[m-1][n-1];
+        return prev[n-1];
         
     }
     public static int mpsr(int i , int j , int arr[][], int dp[][] ){
