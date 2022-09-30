@@ -14,29 +14,69 @@ class Solution {
         // return up2(m-1,n-1,arr,dp);
         
         
+        
+        
+        
+        
+        
         // Tabulation (Buttom - Up) ...
         
-        int dp[][] = new int[m][n];
+//         int dp[][] = new int[m][n];
+        
+//         for(int i = 0 ; i < m ; i++){
+//             for(int j = 0 ; j < n ; j++){
+//                 if(arr[i][j]==1)
+//                     dp[i][j]=0;
+//                 else if(i==0 && j==0)
+//                     dp[i][j] = 1;
+//                 else{
+//                     int up = 0;
+//                     int left = 0;
+//                     if(i>0)
+//                         up+=dp[i-1][j];
+//                     if(j>0)
+//                         left+=dp[i][j-1];
+//                     dp[i][j] = up+left;
+//                 }
+//             }
+//         }
+        
+//        return dp[m-1][n-1];
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        // Tabulation Space Optimized ...
+        
+        int cur[] = new int[n];
+        int prev[] = new int[n];
         
         for(int i = 0 ; i < m ; i++){
             for(int j = 0 ; j < n ; j++){
                 if(arr[i][j]==1)
-                    dp[i][j]=0;
+                    cur[j]=0;
                 else if(i==0 && j==0)
-                    dp[i][j] = 1;
+                    cur[j] = 1;
                 else{
                     int up = 0;
                     int left = 0;
                     if(i>0)
-                        up+=dp[i-1][j];
+                        up+=prev[j];
                     if(j>0)
-                        left+=dp[i][j-1];
-                    dp[i][j] = up+left;
+                        left+=cur[j-1];
+                    cur[j] = up+left;
                 }
             }
+            prev = cur.clone();
         }
         
-        return dp[m-1][n-1];
+        return prev[n-1];
         
     }
     public static int up2(int i , int j , int arr[][],int dp[][]){
