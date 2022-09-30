@@ -32,17 +32,42 @@ class Solution
     
     public static int NumberOfPath(int m, int n) 
     {
-        return nup(m-1,n-1);
+        int dp[][] = new int[m][n];
+        for(int[] row : dp){
+            Arrays.fill(row,-1);
+        }
+        return nup(m-1,n-1,dp);
     }
-    public static int nup(int i , int j){
+    public static int nup(int i , int j,int dp[][]){
+        // DP
         if(i==0&&j==0)
             return 1;
         if(i<0||j<0)
             return 0;
         
-        int up = nup(i-1,j);
-        int left = nup(i,j-1);
+        if(dp[i][j] != -1)
+            return dp[i][j];
         
-        return up+left;
+        int up = nup(i-1,j,dp);
+        int left = nup(i,j-1,dp);
+        
+        return dp[i][j] = up+left;
+        
+        
+        
+        
+        // Recursion...
+        
+        // if(i==0&&j==0)
+        //     return 1;
+        // if(i<0||j<0)
+        //     return 0;
+        
+        // int up = nup(i-1,j);
+        // int left = nup(i,j-1);
+        
+        // return up+left;
+        
+        
     }
 }
