@@ -30,16 +30,53 @@ class Solution{
     {
         
         // Memoization (Top - Down) ...
+        
+        // int dp[][] = new int[n][n];
+        // for(int[] row:dp){
+        //     Arrays.fill(row,-1);
+        // }
+        // int maxi = Integer.MIN_VALUE;
+        // for(int j = 0 ; j < n ; j++){
+        //     maxi = Math.max(maxi,mpsm(n-1,j,arr,dp));
+        // }
+        
+        // return maxi;
+        
+        
+        
+        
+        
+        
+        // Tabulation .. (Buttom - Up) ...
+        
         int dp[][] = new int[n][n];
-        for(int[] row:dp){
-            Arrays.fill(row,-1);
+        
+        for(int j = 0 ; j < n ; j++){
+            dp[0][j] = arr[0][j];
         }
+        
+        for(int i = 1 ; i < n; i++){
+            for(int j = 0 ; j < n ; j++){
+                int up = arr[i][j];
+                int ld = arr[i][j];
+                int rd = arr[i][j];
+                up+=dp[i-1][j];
+                if(j-1>=0)
+                    ld += dp[i-1][j-1];
+                if(j+1 <= n-1)
+                    rd += dp[i-1][j+1];
+                
+                dp[i][j] = Math.max(up,Math.max(ld,rd));
+            }
+        }
+        
         int maxi = Integer.MIN_VALUE;
         for(int j = 0 ; j < n ; j++){
-            maxi = Math.max(maxi,mpsm(n-1,j,arr,dp));
+            maxi = Math.max(maxi,dp[n-1][j]);
         }
         
         return maxi;
+        
     }
     public static int mpsm(int i , int j , int arr[][], int dp[][]){
         
