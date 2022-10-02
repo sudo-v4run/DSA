@@ -52,56 +52,57 @@ class Solution{
         
         // Tabulation ...
         
-        // boolean dp[][] = new boolean[n][k+1];
+        boolean dp[][] = new boolean[n][k+1];
         
-        // for(int index= 0 ; index < n ; index++){
-        //     dp[index][0] = true;
-        // }
+        for(int index= 0 ; index < n ; index++){
+            dp[index][0] = true;
+        }
         
-        // if(arr[0]<=k) dp[0][arr[0]] = true;
+        if(arr[0]<=k) dp[0][arr[0]] = true;
         
-        // for(int index=1 ; index<n ; index++){
-        //     for(int target=1 ; target<=k ; target++){
-        //         boolean pick = false;
-        //         if(arr[index] <= target)
-        //             pick = dp[index-1][target-arr[index]];
-        //         boolean notPick = dp[index-1][target];
+        for(int index=1 ; index<n ; index++){
+            for(int target=1 ; target<=k ; target++){
+                boolean pick = false;
+                if(arr[index] <= target)
+                    pick = dp[index-1][target-arr[index]];
+                boolean notPick = dp[index-1][target];
 
-        //         dp[index][target] = pick|notPick;
-        //     }
-        // }
-        // return dp[n-1][k];
+                dp[index][target] = pick|notPick;
+            }
+        }
+        return dp[n-1][k];
         
         
         
         
         // Tabulation Space Optimized ...
         
-        boolean cur[] = new boolean[k+1];
-        boolean prev[] = new boolean[k+1];
+        // boolean cur[] = new boolean[k+1];
+        // boolean prev[] = new boolean[k+1];
         
-        for(int index= 0 ; index < n ; index++){
-            prev[0] = true;
-        }
+        // for(int index= 0 ; index < n ; index++){
+        //     prev[0] = true;
+        // }
         
-        if(arr[0]<=k) prev[arr[0]] = true;
+        // if(arr[0]<=k) prev[arr[0]] = true;
         
-        for(int index=1 ; index<n ; index++){
-            for(int target=1 ; target<=k ; target++){
-                boolean pick = false;
-                if(arr[index] <= target)
-                    pick = prev[target-arr[index]];
-                boolean notPick = prev[target];
+        // for(int index=1 ; index<n ; index++){
+        //     for(int target=1 ; target<=k ; target++){
+        //         boolean pick = false;
+        //         if(arr[index] <= target)
+        //             pick = prev[target-arr[index]];
+        //         boolean notPick = prev[target];
 
-                cur[target] = pick|notPick;
-            }
-            prev = cur.clone();
-        }
-        return prev[k];
+        //         cur[target] = pick|notPick;
+        //     }
+        //     prev = cur.clone();
+        // }
+        // return prev[k];
         
     }
     public static boolean sset(int index,int target,int arr[], int dp[][]){
         // Momoization...
+        
         if(target==0){
             return true;
         }
