@@ -81,7 +81,7 @@ class Solution {
         int ans = Integer.MAX_VALUE;
         for(int s1 = 0 ; s1 <= totSum ; s1++){
             if(prev[s1]==true){
-                int s2 = totSum -s1;
+                int s2 = totSum - s1;
                 ans = Math.min(ans,Math.abs(s1-s2));
             }
         }
