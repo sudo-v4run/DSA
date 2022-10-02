@@ -41,11 +41,11 @@ class Solution{
         
         //Memoization ....
         
-        int dp[][] = new int[n][k+1];
-        for(int row[] : dp){
-            Arrays.fill(row,-1);
-        }
-        return sset(n-1,k,arr,dp);
+        // int dp[][] = new int[n][k+1];
+        // for(int row[] : dp){
+        //     Arrays.fill(row,-1);
+        // }
+        // return sset(n-1,k,arr,dp);
         
         
         
@@ -76,29 +76,29 @@ class Solution{
         
         
         
-        // Tabulation Space Optimized ...
+        // Tabulation Space Optimized ... O
         
-        // boolean cur[] = new boolean[k+1];
-        // boolean prev[] = new boolean[k+1];
+        boolean cur[] = new boolean[k+1];
+        boolean prev[] = new boolean[k+1];
         
-        // for(int index= 0 ; index < n ; index++){
-        //     prev[0] = true;
-        // }
+        for(int index= 0 ; index < n ; index++){
+            prev[0] = true;
+        }
         
-        // if(arr[0]<=k) prev[arr[0]] = true;
+        if(arr[0]<=k) prev[arr[0]] = true;
         
-        // for(int index=1 ; index<n ; index++){
-        //     for(int target=1 ; target<=k ; target++){
-        //         boolean pick = false;
-        //         if(arr[index] <= target)
-        //             pick = prev[target-arr[index]];
-        //         boolean notPick = prev[target];
+        for(int index=1 ; index<n ; index++){
+            for(int target=1 ; target<=k ; target++){
+                boolean pick = false;
+                if(arr[index] <= target)
+                    pick = prev[target-arr[index]];
+                boolean notPick = prev[target];
 
-        //         cur[target] = pick|notPick;
-        //     }
-        //     prev = cur.clone();
-        // }
-        // return prev[k];
+                cur[target] = pick|notPick;
+            }
+            prev = cur.clone();
+        }
+        return prev[k];
         
     }
     
