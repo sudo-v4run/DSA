@@ -15,7 +15,7 @@ class Solution {
     
     
     
-    static Boolean isSubsetSum(int n, int arr[], int k){
+    static boolean isSubsetSum(int n, int arr[], int k){
         
         
         //Memoization ....
