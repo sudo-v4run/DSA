@@ -50,6 +50,37 @@ class Solution
 {
     static int knapSack(int totW, int wt[], int val[], int n) 
     {
+        
+        
+        
+        // Tabulation - Space Optimized- Only 1D Array ....
+        
+        if(totW==0)
+            return 0;
+            
+        int prev[] = new int[totW+1];
+        
+        
+        
+        for(int w=wt[0] ; w<=totW ; w++){
+            prev[w] = val[0];
+        }
+        
+        for(int item = 1 ; item < n ; item++){
+            for(int w = totW ; w>=1 ; w--){
+                int take = 0;
+                if(wt[item]<=w){
+                    take = val[item] + prev[w-wt[item]];
+                }
+                int notTake = 0 + prev[w];
+                prev[w] = Math.max(take,notTake);
+            }
+        }
+        
+        
+        return prev[totW];
+        
+        
         // Memoization (Top-Down)  ...
         
         // int dp[][] = new int[n][totW+1];
@@ -126,38 +157,7 @@ class Solution
         
         // return prev[totW];
         
-        
-        
-        
-        
-        
-        
-        // Tabulation Space Optimized Only 1D Array ....
-        
-        if(totW==0)
-            return 0;
-            
-        int prev[] = new int[totW+1];
-        
-        
-        
-        for(int w=wt[0] ; w<=totW ; w++){
-            prev[w] = val[0];
-        }
-        
-        for(int item = 1 ; item < n ; item++){
-            for(int w = totW ; w>=1 ; w--){
-                int take = 0;
-                if(wt[item]<=w){
-                    take = val[item] + prev[w-wt[item]];
-                }
-                int notTake = 0 + prev[w];
-                prev[w] = Math.max(take,notTake);
-            }
-        }
-        
-        
-        return prev[totW];
+
         
     }
     public static int ks01(int item,int totW,int wt[],int vl[],int dp[][]){
