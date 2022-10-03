@@ -3,12 +3,45 @@ class Solution {
 
         int n = coins.length;
         
-        // Memoization (Top-Down) ...
+        // Tabulation (Button-Up) ...
+        
         int dp[][] = new int[n][target+1];
-        for(int[] row:dp){
-            Arrays.fill(row,-1);
+        
+//         if(target==0)
+//             return 1;
+        
+        for(int t = 0 ; t <= target ; t++){
+            if(t%coins[0]==0){
+                dp[0][t] = 1;
+            }
         }
-        return coinc2(n-1,target,coins,dp);
+        
+        for(int index = 1 ; index<n ; index++){
+            for(int t = 0 ; t <= target ; t++){
+                int pick = 0;
+                if(coins[index]<=t){
+                    pick = dp[index][t-coins[index]];
+                }
+                int notPick = dp[index-1][t];
+
+                dp[index][t] = pick+notPick;
+            }
+        }
+        
+        return dp[n-1][target];
+        
+        
+        
+        
+        // Memoization (Top-Down) ...
+        
+        // int dp[][] = new int[n][target+1];
+        // for(int[] row:dp){
+        //     Arrays.fill(row,-1);
+        // }
+        // return coinc2(n-1,target,coins,dp);
+        
+
     }
     
     
