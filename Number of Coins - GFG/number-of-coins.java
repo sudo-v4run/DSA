@@ -110,7 +110,7 @@ class Solution{
 	   //     Arrays.fill(row,-1);
 	   // }
 	    
-	   // int ans = mnc(n-1,coins,target,dp);
+	   // int ans = mnc(n-1,target,coins,dp);
 	   // if(ans>=(int)1e9){
 	   //     return -1;
 	   // }
@@ -118,7 +118,7 @@ class Solution{
 	}
 	
 	
-	public static int mnc(int index,int coins[],int target,int dp[][]){
+	public static int mnc(int index,int target,int coins[],int dp[][]){
 	    
 	    if(target==0){
 	        return 0;
@@ -135,8 +135,8 @@ class Solution{
 	    
 	    int take = (int)1e9;
 	    if(coins[index]<=target)
-	        take = 1 + mnc(index,coins,target-coins[index],dp);
-	    int notTake = 0 + mnc(index-1,coins,target,dp);
+	        take = 1 + mnc(index,target-coins[index],coins,dp);
+	    int notTake = 0 + mnc(index-1,target,coins,dp);
 	    
 	    return dp[index][target] = Math.min(take,notTake);
 	    
@@ -156,8 +156,8 @@ class Solution{
 	   // }
 	   // int take = (int)1e9;
 	   // if(coins[index]<=target)
-	   //     take = 1 + mnc(index,coins,target-coins[index]);
-	   // int notTake = 0 + mnc(index-1,coins,target);
+	   //     take = 1 + mnc(index,target-coins[index],coins);
+	   // int notTake = 0 + mnc(index-1,target,coins);
 	    
 	   // return Math.min(take,notTake);
 	}
