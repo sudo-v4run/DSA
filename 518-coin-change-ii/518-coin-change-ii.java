@@ -7,9 +7,6 @@ class Solution {
         
         int dp[][] = new int[n][target+1];
         
-//         if(target==0)
-//             return 1;
-        
         for(int t = 0 ; t <= target ; t++){
             if(t%coins[0]==0){
                 dp[0][t] = 1;
