@@ -31,30 +31,58 @@ class Solution{
 	    
 	    // Tabulation ... 
 	    
-	    
-	    
-	    
-	    
-	    
-	   // Memoization ....(Top-Down) ...
 	    int dp[][] = new int[n][target+1];
-	    for(int[] row: dp){
-	        Arrays.fill(row,-1);
+	    
+	    if(target==0)
+	        return 0;
+	    
+	    for(int t = 0 ; t <= target ; t++){
+	        if(t%coins[0]==0){
+	            dp[0][t] = t/coins[0];
+	        }else{
+	            dp[0][t] = (int)1e9;
+	        }
 	    }
 	    
-	    int ans = mnc(n-1,coins,target,dp);
+	    for(int index = 1 ; index < n ; index++){
+	        for(int t = 1 ; t <= target ; t++){
+	            int take = (int)1e9;
+        	    if(coins[index]<=t)
+        	        take = 1 + dp[index][t-coins[index]];
+        	    int notTake = 0 + dp[index-1][t];
+        	    
+        	    dp[index][t] = Math.min(take,notTake);
+	        }
+	    }
+	    int ans = dp[n-1][target];
+	    
 	    if(ans>=(int)1e9){
 	        return -1;
 	    }
 	    return ans;
+	    
+	    
+	    
+	   // Memoization ....(Top-Down) ...
+	   
+	   // int dp[][] = new int[n][target+1];
+	   // for(int[] row: dp){
+	   //     Arrays.fill(row,-1);
+	   // }
+	    
+	   // int ans = mnc(n-1,coins,target,dp);
+	   // if(ans>=(int)1e9){
+	   //     return -1;
+	   // }
+	   // return ans;
 	}
+	
+	
 	public static int mnc(int index,int coins[],int target,int dp[][]){
 	    
 	    if(target==0){
 	        return 0;
 	    }
-	    if(target<0)
-	        return -1;
 	    if(index==0){
 	        if(target%coins[0]==0){
 	            return target/coins[0];
@@ -80,8 +108,6 @@ class Solution{
 	   // if(target==0){
 	   //     return 0;
 	   // }
-	   // if(target<0)
-	   //     return -1;
 	   // if(index==0){
 	   //     if(target%coins[0]==0){
 	   //         return target/coins[0];
