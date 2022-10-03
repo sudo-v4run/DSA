@@ -28,8 +28,6 @@ class Solution{
 
 	public int minCoins(int coins[], int n, int target) 
 	{
-	    
-	    
 	    // Tabulation ... Space Optimized ...
 	    
 	    int cur[] = new int[target+1];
