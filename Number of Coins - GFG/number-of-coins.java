@@ -29,18 +29,20 @@ class Solution{
 	public int minCoins(int coins[], int n, int target) 
 	{
 	    
-	    // Tabulation ... 
 	    
-	    int dp[][] = new int[n][target+1];
+	    // Tabulation ... Space Optimized ...
+	    
+	    int cur[] = new int[target+1];
+	    int prev[] = new int[target+1];
 	    
 	    if(target==0)
 	        return 0;
 	    
 	    for(int t = 0 ; t <= target ; t++){
 	        if(t%coins[0]==0){
-	            dp[0][t] = t/coins[0];
+	            prev[t] = t/coins[0];
 	        }else{
-	            dp[0][t] = (int)1e9;
+	            prev[t] = (int)1e9;
 	        }
 	    }
 	    
@@ -48,18 +50,58 @@ class Solution{
 	        for(int t = 1 ; t <= target ; t++){
 	            int take = (int)1e9;
         	    if(coins[index]<=t)
-        	        take = 1 + dp[index][t-coins[index]];
-        	    int notTake = 0 + dp[index-1][t];
+        	        take = 1 + cur[t-coins[index]];
+        	    int notTake = 0 + prev[t];
         	    
-        	    dp[index][t] = Math.min(take,notTake);
+        	    cur[t] = Math.min(take,notTake);
 	        }
+	        prev = cur.clone();
 	    }
-	    int ans = dp[n-1][target];
+	    int ans = prev[target];
 	    
 	    if(ans>=(int)1e9){
 	        return -1;
 	    }
 	    return ans;
+	    
+	    
+	    
+	    
+	    
+	    
+	    // Tabulation ... 
+	    
+	    
+	    
+	   // int dp[][] = new int[n][target+1];
+	    
+	   // if(target==0)
+	   //     return 0;
+	    
+	   // for(int t = 0 ; t <= target ; t++){
+	   //     if(t%coins[0]==0){
+	   //         dp[0][t] = t/coins[0];
+	   //     }else{
+	   //         dp[0][t] = (int)1e9;
+	   //     }
+	   // }
+	    
+	   // for(int index = 1 ; index < n ; index++){
+	   //     for(int t = 1 ; t <= target ; t++){
+	   //         int take = (int)1e9;
+    //     	    if(coins[index]<=t)
+    //     	        take = 1 + dp[index][t-coins[index]];
+    //     	    int notTake = 0 + dp[index-1][t];
+        	    
+    //     	    dp[index][t] = Math.min(take,notTake);
+	   //     }
+	   // }
+	   // int ans = dp[n-1][target];
+	    
+	   // if(ans>=(int)1e9){
+	   //     return -1;
+	   // }
+	   // return ans;
 	    
 	    
 	    
