@@ -3,13 +3,14 @@ class Solution {
 
         int n = coins.length;
         
-        // Tabulation (Button-Up) ...
+        // Tabulation Space Optimized ... 
         
-        int dp[][] = new int[n][target+1];
+        int cur[] = new int[target+1];
+        int prev[] = new int[target+1];
         
         for(int t = 0 ; t <= target ; t++){
             if(t%coins[0]==0){
-                dp[0][t] = 1;
+                prev[t] = 1;
             }
         }
         
@@ -17,15 +18,41 @@ class Solution {
             for(int t = 0 ; t <= target ; t++){
                 int pick = 0;
                 if(coins[index]<=t){
-                    pick = dp[index][t-coins[index]];
+                    pick = cur[t-coins[index]];
                 }
-                int notPick = dp[index-1][t];
+                int notPick = prev[t];
 
-                dp[index][t] = pick+notPick;
+                cur[t] = pick+notPick;
             }
+            prev = cur.clone();
         }
         
-        return dp[n-1][target];
+        return prev[target];
+        
+        
+        // Tabulation (Button-Up) ...
+        
+//         int dp[][] = new int[n][target+1];
+        
+//         for(int t = 0 ; t <= target ; t++){
+//             if(t%coins[0]==0){
+//                 dp[0][t] = 1;
+//             }
+//         }
+        
+//         for(int index = 1 ; index<n ; index++){
+//             for(int t = 0 ; t <= target ; t++){
+//                 int pick = 0;
+//                 if(coins[index]<=t){
+//                     pick = dp[index][t-coins[index]];
+//                 }
+//                 int notPick = dp[index-1][t];
+
+//                 dp[index][t] = pick+notPick;
+//             }
+//         }
+        
+//         return dp[n-1][target];
         
         
         
