@@ -33,14 +33,44 @@ class GFG{
 class Solution{
     static int knapSack(int n, int W, int val[], int wt[])
     {
-        // Memoization .. (Top - Down) ...
+        
+        
+        
+        // Tabulation (Buttom - Up) ....
         
         int dp[][] = new int[n][W+1];
-        for(int[] row :dp){
-            Arrays.fill(row,-1);
+        
+        for(int w = wt[0] ; w<= W ; w++){
+            dp[0][w] = (w/wt[0])*val[0];
         }
-        return uks(n-1,W,val,wt,dp);
+        
+        for(int item = 1 ; item< n ; item++){
+            for(int w = 0 ; w<= W ; w++){
+                int pick = 0;
+                if(wt[item]<=w){
+                    pick += val[item] + dp[item][w-wt[item]];
+                }
+                int notPick = 0 + dp[item-1][w];
+                
+                dp[item][w] =  Math.max(pick,notPick);
+            }
+        }
+        return dp[n-1][W];
+        
+        
+        
+        // Memoization .. (Top - Down) ...
+        
+        // int dp[][] = new int[n][W+1];
+        // for(int[] row :dp){
+        //     Arrays.fill(row,-1);
+        // }
+        // return uks(n-1,W,val,wt,dp);
+        
+        
+        
     }
+    
     static int uks(int item,int W,int val[],int wt[],int dp[][]){
         
         if(item==0){
