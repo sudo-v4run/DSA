@@ -35,9 +35,8 @@ class Solution{
     {
         
         
-        // Tabulation (Buttom - Up) .... Space Optimized ...
+        // Tabulation (Buttom - Up) .... Space Optimized ... Only 1D Array
         
-        int cur[] = new int[W+1];
         int prev[] = new int[W+1];
         
         for(int w = wt[0] ; w<= W ; w++){
@@ -48,38 +47,40 @@ class Solution{
             for(int w = 0 ; w<= W ; w++){
                 int pick = 0;
                 if(wt[item]<=w){
-                    pick += val[item] + cur[w-wt[item]];
+                    pick += val[item] + prev[w-wt[item]];
                 }
                 int notPick = 0 + prev[w];
                 
-                cur[w] =  Math.max(pick,notPick);
+                prev[w] =  Math.max(pick,notPick);
             }
-            prev = cur.clone();
         }
         return prev[W];
+        
+        
+        
         
         // Tabulation (Buttom - Up) .... Space Optimized ...
         
-        int cur[] = new int[W+1];
-        int prev[] = new int[W+1];
+        // int cur[] = new int[W+1];
+        // int prev[] = new int[W+1];
         
-        for(int w = wt[0] ; w<= W ; w++){
-            prev[w] = (w/wt[0])*val[0];
-        }
+        // for(int w = wt[0] ; w<= W ; w++){
+        //     prev[w] = (w/wt[0])*val[0];
+        // }
         
-        for(int item = 1 ; item< n ; item++){
-            for(int w = 0 ; w<= W ; w++){
-                int pick = 0;
-                if(wt[item]<=w){
-                    pick += val[item] + cur[w-wt[item]];
-                }
-                int notPick = 0 + prev[w];
+        // for(int item = 1 ; item< n ; item++){
+        //     for(int w = 0 ; w<= W ; w++){
+        //         int pick = 0;
+        //         if(wt[item]<=w){
+        //             pick += val[item] + cur[w-wt[item]];
+        //         }
+        //         int notPick = 0 + prev[w];
                 
-                cur[w] =  Math.max(pick,notPick);
-            }
-            prev = cur.clone();
-        }
-        return prev[W];
+        //         cur[w] =  Math.max(pick,notPick);
+        //     }
+        //     prev = cur.clone();
+        // }
+        // return prev[W];
         
         
         
