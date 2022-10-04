@@ -35,27 +35,74 @@ class Solution{
     {
         
         
+        // Tabulation (Buttom - Up) .... Space Optimized ...
         
-        // Tabulation (Buttom - Up) ....
-        
-        int dp[][] = new int[n][W+1];
+        int cur[] = new int[W+1];
+        int prev[] = new int[W+1];
         
         for(int w = wt[0] ; w<= W ; w++){
-            dp[0][w] = (w/wt[0])*val[0];
+            prev[w] = (w/wt[0])*val[0];
         }
         
         for(int item = 1 ; item< n ; item++){
             for(int w = 0 ; w<= W ; w++){
                 int pick = 0;
                 if(wt[item]<=w){
-                    pick += val[item] + dp[item][w-wt[item]];
+                    pick += val[item] + cur[w-wt[item]];
                 }
-                int notPick = 0 + dp[item-1][w];
+                int notPick = 0 + prev[w];
                 
-                dp[item][w] =  Math.max(pick,notPick);
+                cur[w] =  Math.max(pick,notPick);
             }
+            prev = cur.clone();
         }
-        return dp[n-1][W];
+        return prev[W];
+        
+        // Tabulation (Buttom - Up) .... Space Optimized ...
+        
+        int cur[] = new int[W+1];
+        int prev[] = new int[W+1];
+        
+        for(int w = wt[0] ; w<= W ; w++){
+            prev[w] = (w/wt[0])*val[0];
+        }
+        
+        for(int item = 1 ; item< n ; item++){
+            for(int w = 0 ; w<= W ; w++){
+                int pick = 0;
+                if(wt[item]<=w){
+                    pick += val[item] + cur[w-wt[item]];
+                }
+                int notPick = 0 + prev[w];
+                
+                cur[w] =  Math.max(pick,notPick);
+            }
+            prev = cur.clone();
+        }
+        return prev[W];
+        
+        
+        
+        // Tabulation (Buttom - Up) ....
+        
+        // int dp[][] = new int[n][W+1];
+        
+        // for(int w = wt[0] ; w<= W ; w++){
+        //     dp[0][w] = (w/wt[0])*val[0];
+        // }
+        
+        // for(int item = 1 ; item< n ; item++){
+        //     for(int w = 0 ; w<= W ; w++){
+        //         int pick = 0;
+        //         if(wt[item]<=w){
+        //             pick += val[item] + dp[item][w-wt[item]];
+        //         }
+        //         int notPick = 0 + dp[item-1][w];
+                
+        //         dp[item][w] =  Math.max(pick,notPick);
+        //     }
+        // }
+        // return dp[n-1][W];
         
         
         
