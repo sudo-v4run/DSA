@@ -24,55 +24,81 @@ class RodCutting {
 class Solution{
     public int cutRod(int price[], int n) {
         
-                // Tabulation ...  (Buttom - Up) ...
+        // Tabulation... (Buttom - Up)..Space Optimized... Using only 1D Array
         
-        int dp[][] = new int[n][n+1];
-        
-        for(int row[]:dp)
-            Arrays.fill(row,-1);
+        int prev[] = new int[n+1];
         
         for(int rodLen = 0 ; rodLen <= n ; rodLen++){
-            dp[0][rodLen] = rodLen*price[0];
+            prev[rodLen] = rodLen*price[0];
         }
         
         for(int index = 1 ; index< n ; index++){
             for(int rodLen = 0 ; rodLen <= n ; rodLen++){
                 int cut = 0;
                 if((index+1)<=rodLen) // index+1 = rod length
-                    cut = price[index] + dp[index][rodLen - (index+1)];
-                int notCut = 0 + dp[index-1][rodLen];
+                    cut = price[index] + prev[rodLen - (index+1)];
+                int notCut = 0 + prev[rodLen];
                 
-                dp[index][rodLen] = Math.max(cut,notCut);
+                prev[rodLen] = Math.max(cut,notCut);
             }
         }
         
-        return dp[n-1][n];
+        return prev[n];
+        
+        
+        
+        // Tabulation ...  (Buttom - Up) ...Space Optimized...
+        
+        // int cur[] = new int[n+1];
+        // int prev[] = new int[n+1];
+        
+        // for(int rodLen = 0 ; rodLen <= n ; rodLen++){
+        //     prev[rodLen] = rodLen*price[0];
+        // }
+        
+        // for(int index = 1 ; index< n ; index++){
+        //     for(int rodLen = 0 ; rodLen <= n ; rodLen++){
+        //         int cut = 0;
+        //         if((index+1)<=rodLen) // index+1 = rod length
+        //             cut = price[index] + cur[rodLen - (index+1)];
+        //         int notCut = 0 + prev[rodLen];
+                
+        //         cur[rodLen] = Math.max(cut,notCut);
+        //     }
+        //     prev = cur.clone();
+        // }
+        
+        // return prev[n];
+        
+        
         
         
         
         // Tabulation ...  (Buttom - Up) ...
         
-        int dp[][] = new int[n][n+1];
+        // int dp[][] = new int[n][n+1];
         
-        for(int row[]:dp)
-            Arrays.fill(row,-1);
+        // for(int rodLen = 0 ; rodLen <= n ; rodLen++){
+        //     dp[0][rodLen] = rodLen*price[0];
+        // }
         
-        for(int rodLen = 0 ; rodLen <= n ; rodLen++){
-            dp[0][rodLen] = rodLen*price[0];
-        }
-        
-        for(int index = 1 ; index< n ; index++){
-            for(int rodLen = 0 ; rodLen <= n ; rodLen++){
-                int cut = 0;
-                if((index+1)<=rodLen) // index+1 = rod length
-                    cut = price[index] + dp[index][rodLen - (index+1)];
-                int notCut = 0 + dp[index-1][rodLen];
+        // for(int index = 1 ; index< n ; index++){
+        //     for(int rodLen = 0 ; rodLen <= n ; rodLen++){
+        //         int cut = 0;
+        //         if((index+1)<=rodLen) // index+1 = rod length
+        //             cut = price[index] + dp[index][rodLen - (index+1)];
+        //         int notCut = 0 + dp[index-1][rodLen];
                 
-                dp[index][rodLen] = Math.max(cut,notCut);
-            }
-        }
+        //         dp[index][rodLen] = Math.max(cut,notCut);
+        //     }
+        // }
         
-        return dp[n-1][n];
+        // return dp[n-1][n];
+        
+        
+        
+        
+        
         
         // Memoization (Top- Down) ...
         
