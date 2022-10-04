@@ -24,14 +24,65 @@ class RodCutting {
 class Solution{
     public int cutRod(int price[], int n) {
         
-        // Memoization (Top- Down) ...
+                // Tabulation ...  (Buttom - Up) ...
         
         int dp[][] = new int[n][n+1];
-        for(int[] row:dp){
+        
+        for(int row[]:dp)
             Arrays.fill(row,-1);
+        
+        for(int rodLen = 0 ; rodLen <= n ; rodLen++){
+            dp[0][rodLen] = rodLen*price[0];
         }
-        return rcp(n-1,n,price,dp);
+        
+        for(int index = 1 ; index< n ; index++){
+            for(int rodLen = 0 ; rodLen <= n ; rodLen++){
+                int cut = 0;
+                if((index+1)<=rodLen) // index+1 = rod length
+                    cut = price[index] + dp[index][rodLen - (index+1)];
+                int notCut = 0 + dp[index-1][rodLen];
+                
+                dp[index][rodLen] = Math.max(cut,notCut);
+            }
+        }
+        
+        return dp[n-1][n];
+        
+        
+        
+        // Tabulation ...  (Buttom - Up) ...
+        
+        int dp[][] = new int[n][n+1];
+        
+        for(int row[]:dp)
+            Arrays.fill(row,-1);
+        
+        for(int rodLen = 0 ; rodLen <= n ; rodLen++){
+            dp[0][rodLen] = rodLen*price[0];
+        }
+        
+        for(int index = 1 ; index< n ; index++){
+            for(int rodLen = 0 ; rodLen <= n ; rodLen++){
+                int cut = 0;
+                if((index+1)<=rodLen) // index+1 = rod length
+                    cut = price[index] + dp[index][rodLen - (index+1)];
+                int notCut = 0 + dp[index-1][rodLen];
+                
+                dp[index][rodLen] = Math.max(cut,notCut);
+            }
+        }
+        
+        return dp[n-1][n];
+        
+        // Memoization (Top- Down) ...
+        
+        // int dp[][] = new int[n][n+1];
+        // for(int[] row:dp){
+        //     Arrays.fill(row,-1);
+        // }
+        // return rcp(n-1,n,price,dp);
     }
+    
     public static int rcp(int index, int rodLen,int price[],int dp[][]){
         
         
