@@ -1,30 +1,45 @@
 class Solution {
     public int longestPalindromeSubseq(String s) {
-        String s1 = s;
-        String s2 = "";
-        int n1 = s1.length();
         
-        for( int i = n1-1 ; i>=0 ; i-- ){
-            s2+=s1.charAt(i);
+        // Using only given String...
+        
+        int n = s.length();
+        
+        int dp[][] = new int[n][n];
+        for(int[] row: dp){
+            Arrays.fill(row,-1);
         }
-        int n2 = s2.length();
         
-        // Tabulation ... (Buttom- Up)... Space Optimized....
+        return lps(0,n-1,s,dp);
         
-        int prev[] = new int[n2+1];
-        int cur[] = new int[n2+1];
         
-        for(int i1 = 1 ; i1<= n1 ; i1++){
-            for(int i2=1 ; i2<=n2 ; i2++){
-                if(s1.charAt(i1-1)==s2.charAt(i2-1)){
-                    cur[i2] = 1+prev[i2-1];
-                }
-                else
-                    cur[i2] = Math.max(prev[i2],cur[i2-1]);
-            }
-            prev = cur.clone();
-        }
-        return prev[n2];
+        
+        
+//         String s1 = s;
+//         String s2 = "";
+//         int n1 = s1.length();
+        
+//         for( int i = n1-1 ; i>=0 ; i-- ){
+//             s2+=s1.charAt(i);
+//         }
+//         int n2 = s2.length();
+        
+//         // Tabulation ... (Buttom- Up)... Space Optimized....
+        
+//         int prev[] = new int[n2+1];
+//         int cur[] = new int[n2+1];
+        
+//         for(int i1 = 1 ; i1<= n1 ; i1++){
+//             for(int i2=1 ; i2<=n2 ; i2++){
+//                 if(s1.charAt(i1-1)==s2.charAt(i2-1)){
+//                     cur[i2] = 1+prev[i2-1];
+//                 }
+//                 else
+//                     cur[i2] = Math.max(prev[i2],cur[i2-1]);
+//             }
+//             prev = cur.clone();
+//         }
+//         return prev[n2];
         
         
         
@@ -60,6 +75,57 @@ class Solution {
         
         //return lcs(s1.length()-1,s2.length()-1,s1,s2,dp);
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    public int lps(int index1, int index2 ,String s,int dp[][]){
+        
+        if(index1>s.length()-1||index2<0)
+            return 0;
+        
+        if(dp[index1][index2] != -1)
+            return dp[index1][index2];
+        
+        if(s.charAt(index1)==s.charAt(index2)){
+            return dp[index1][index2] = 1+lps(index1+1,index2-1,s,dp);
+        }
+        return dp[index1][index2] = Math.max(lps(index1+1,index2,s,dp),
+                                                lps(index1,index2-1,s,dp));
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public int lcs(int index1, int index2 ,String s1,String s2,int dp[][]){
         
         if(index1<0||index2<0)
