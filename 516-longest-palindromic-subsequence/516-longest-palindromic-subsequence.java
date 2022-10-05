@@ -9,13 +9,39 @@ class Solution {
         }
         int n2 = s2.length();
         
-        // Memoization ... (Top - Down)....
-        int dp[][] = new int[n1][n2];
-        for(int[] row:dp){
-            Arrays.fill(row,-1);
+        
+        
+        // Tabulation ... (Buttom- Up)...
+        
+        int dp[][] = new int[n1+1][n2+1];
+        
+        for(int i2 = 0 ; i2 <= n2; i2++){
+            dp[0][i2] = 0;
+        }
+        for(int i1 = 0 ; i1 <= n1; i1++){
+            dp[i1][0] = 0;
         }
         
-        return lcs(s1.length()-1,s2.length()-1,s1,s2,dp);
+        for(int i1 = 1 ; i1<= n1 ; i1++){
+            for(int i2=1 ; i2<=n2 ; i2++){
+                if(s1.charAt(i1-1)==s2.charAt(i2-1)){
+                    dp[i1][i2] = 1+dp[i1-1][i2-1];
+                }
+                else
+                    dp[i1][i2] = Math.max(dp[i1-1][i2],dp[i1][i2-1]);
+            }
+        }
+        return dp[n1][n2];
+        
+        
+        // Memoization ... (Top - Down)....
+        
+        // int dp[][] = new int[n1][n2];
+        // for(int[] row:dp){
+        //     Arrays.fill(row,-1);
+        // }
+        
+        //return lcs(s1.length()-1,s2.length()-1,s1,s2,dp);
     }
     public int lcs(int index1, int index2 ,String s1,String s2,int dp[][]){
         
