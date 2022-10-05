@@ -3,30 +3,51 @@ class Solution {
         int n1 = s1.length();
         int n2 = s2.length();
         
-        
         // Tabulation ... (Buttom-Up) ...
         
-        int dp[][] = new int[n1+1][n2+1];
+        int prev[] = new int[n2+1];
+        int cur[] = new int[n2+1];
         
         for(int j = 0 ; j <= n2 ; j++){
-            dp[0][j] = 0;
-        }
-        
-        for(int i = 0 ; i <= n1 ; i++){
-            dp[i][0] = 0;
+            prev[j] = 0;
         }
         
         for(int i = 1 ; i <= n1 ; i++){
             for(int j = 1 ; j <= n2 ;j++){
                  if(s1.charAt(i-1)==s2.charAt(j-1)){
-                    dp[i][j] = 1+dp[i-1][j-1];
+                    cur[j] = 1+prev[j-1];
                 }
                 else
-                    dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1]);
+                    cur[j] = Math.max(prev[j],cur[j-1]);
             }
+            prev = cur.clone();
         }
         
-        return dp[n1][n2];
+        return prev[n2];
+        
+        // Tabulation ... (Buttom-Up) ...
+        
+//         int dp[][] = new int[n1+1][n2+1];
+        
+//         for(int j = 0 ; j <= n2 ; j++){
+//             dp[0][j] = 0;
+//         }
+        
+//         for(int i = 0 ; i <= n1 ; i++){
+//             dp[i][0] = 0;
+//         }
+        
+//         for(int i = 1 ; i <= n1 ; i++){
+//             for(int j = 1 ; j <= n2 ;j++){
+//                  if(s1.charAt(i-1)==s2.charAt(j-1)){
+//                     dp[i][j] = 1+dp[i-1][j-1];
+//                 }
+//                 else
+//                     dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1]);
+//             }
+//         }
+        
+//         return dp[n1][n2];
         
         // Memoization ...(Top - Down) ...
 //         int dp[][] = new int[n1][n2];
