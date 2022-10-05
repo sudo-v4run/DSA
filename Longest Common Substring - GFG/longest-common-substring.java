@@ -29,21 +29,43 @@ class GFG
 class Solution{
     int longestCommonSubstr(String s1, String s2, int n, int m){
         // return lcsubstr(n-1,m-1,s1,s2);
-        // Mp
-        int dp[][] = new int[n+1][m+1];
+        
+        
+        // Tabulation .. (Buttom- Up).. Space Optimized- O(m+1)
+        int prev[] = new int[m+1];
+        int cur[] = new int[m+1];
         int ans = 0;
         for(int i = 1 ; i <= n ; i++){
             for(int j = 1 ; j<= m ; j++){
                 if(s1.charAt(i-1)==s2.charAt(j-1)){
-                    dp[i][j] = 1+dp[i-1][j-1];
-                    ans = Math.max(ans,dp[i][j]);
+                    cur[j] = 1+prev[j-1];
+                    ans = Math.max(ans,cur[j]);
                 }else{
-                    dp[i][j] = 0;
+                    cur[j] = 0;
                 }
             }
+            prev = cur.clone();
         }
         
         return ans;
+        
+        
+        // Tabulation ... (Buttom- Up)...
+        
+        // int dp[][] = new int[n+1][m+1];
+        // int ans = 0;
+        // for(int i = 1 ; i <= n ; i++){
+        //     for(int j = 1 ; j<= m ; j++){
+        //         if(s1.charAt(i-1)==s2.charAt(j-1)){
+        //             dp[i][j] = 1+dp[i-1][j-1];
+        //             ans = Math.max(ans,dp[i][j]);
+        //         }else{
+        //             dp[i][j] = 0;
+        //         }
+        //     }
+        // }
+        
+        // return ans;
         
     }
     static int lcsubstr(int index1,int index2,String s1,String s2){
