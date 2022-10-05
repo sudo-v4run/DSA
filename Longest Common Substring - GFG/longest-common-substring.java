@@ -28,10 +28,9 @@ class GFG
 
 class Solution{
     int longestCommonSubstr(String s1, String s2, int n, int m){
-        // return lcsubstr(n-1,m-1,s1,s2);
+
+       // Tabulation .. (Buttom- Up).. Space Optimized- O(m+1)..
         
-        
-        // Tabulation .. (Buttom- Up).. Space Optimized- O(m+1)
         int prev[] = new int[m+1];
         int cur[] = new int[m+1];
         int ans = 0;
@@ -50,6 +49,8 @@ class Solution{
         return ans;
         
         
+        
+        
         // Tabulation ... (Buttom- Up)...
         
         // int dp[][] = new int[n+1][m+1];
@@ -66,16 +67,5 @@ class Solution{
         // }
         
         // return ans;
-        
-    }
-    static int lcsubstr(int index1,int index2,String s1,String s2){
-        if(index1<0||index2<0){
-            return 0;
-        }
-        if(s1.charAt(index1)==s2.charAt(index2)){
-            return 1+lcsubstr(index1-1,index2-1,s1,s2);
-        }else{
-            return 0;
-        }
     }
 }
