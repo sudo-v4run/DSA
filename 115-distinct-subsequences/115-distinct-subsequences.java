@@ -24,23 +24,23 @@ class Solution {
         
         // Tabulation (Buttom-Up)... Space Optimized...
         
-        int cur[] = new int[n2+1];
-        int prev[] = new int[n2+1];
+//         int cur[] = new int[n2+1];
+//         int prev[] = new int[n2+1];
         
-        prev[0] = cur[0] = 1;
+//         prev[0] = cur[0] = 1;
         
-        for(int index1 = 1 ; index1 <= n1 ; index1++){
-            for(int index2 = 1 ; index2 <= n2 ; index2++){
-                if(s1.charAt(index1-1)==s2.charAt(index2-1)){
-                    cur[index2] = prev[index2-1] + prev[index2];
-                }
-                else
-                    cur[index2] = prev[index2];
-            }
-            prev = cur.clone();
-        }
+//         for(int index1 = 1 ; index1 <= n1 ; index1++){
+//             for(int index2 = 1 ; index2 <= n2 ; index2++){
+//                 if(s1.charAt(index1-1)==s2.charAt(index2-1)){
+//                     cur[index2] = prev[index2-1] + prev[index2];
+//                 }
+//                 else
+//                     cur[index2] = prev[index2];
+//             }
+//             prev = cur.clone();
+//         }
         
-        return prev[n2];
+//         return prev[n2];
         
         
         // Tabulation (Buttom-Up)...
@@ -67,12 +67,13 @@ class Solution {
         
         // Memoization...(Top-Down)...
         
-//         int dp[][] = new int[n1][n2];
-//         for(int[] row:dp){
-//             Arrays.fill(row,-1);
-//         }
+        int dp[][] = new int[n1][n2];
+        for(int[] row:dp){
+            Arrays.fill(row,-1);
+        }
         
-//         return ds(n1-1,n2-1,s1,s2,dp);
+        return ds(n1-1,n2-1,s1,s2,dp);
+        
     }
     
     public static int ds(int index1,int index2 ,String s1,String s2,int dp[][]){
