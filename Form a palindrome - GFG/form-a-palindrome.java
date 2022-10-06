@@ -29,13 +29,33 @@ class Solution{
         }
         int n2 = s2.length();
         
-        //Memoization ... (Top-Down)....
-        int dp[][] = new int[n1][n2];
-        for(int[] row:dp){
-            Arrays.fill(row,-1);
+        
+        // Tabulation ... (Buttom-Up) ...
+        
+        int dp[][] = new int[n1+1][n2+1];
+        
+        for(int index1 = 1 ; index1 <= n1; index1++){
+            for(int index2 = 1 ; index2 <= n2 ; index2++){
+                if(s1.charAt(index1-1)==s2.charAt(index2-1)){
+                    dp[index1][index2] = 1+dp[index1-1][index2-1];
+                }
+                else 
+                    dp[index1][index2] = Math.max(dp[index1-1][index2],dp[index1][index2-1]);
+            }
         }
         
-        return n1-lcs(n1-1,n2-1,s1,s2,dp);
+        
+        return n1-dp[n1][n2];
+        
+        
+        //Memoization ... (Top-Down)....
+        
+        // int dp[][] = new int[n1][n2];
+        // for(int[] row:dp){
+        //     Arrays.fill(row,-1);
+        // }
+        
+        // return n1-lcs(n1-1,n2-1,s1,s2,dp);
     }
     static int lcs(int index1,int index2 , String s1, String s2,int dp[][]){
         if(index1<0||index2<0){
