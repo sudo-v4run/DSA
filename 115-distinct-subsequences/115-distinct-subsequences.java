@@ -3,25 +3,49 @@ class Solution {
         int n1 = s1.length();
         int n2 = s2.length();
         
-        // Tabulation (Buttom-Up)...
+        // Tabulation (Buttom-Up)... Space Optimized...
         
-        int dp[][] = new int[n1+1][n2+1];
+        int cur[] = new int[n2+1];
+        int prev[] = new int[n2+1];
+        
         for(int index1 = 0 ; index1 <= n1 ; index1++){
-            dp[index1][0] = 1;
+            prev[0] = 1;
+            cur[0] = 1;
         }
         
         for(int index1 = 1 ; index1 <= n1 ; index1++){
             for(int index2 = 1 ; index2 <= n2 ; index2++){
                 if(s1.charAt(index1-1)==s2.charAt(index2-1)){
-                    dp[index1][index2] = dp[index1-1][index2-1]
-                                                        + dp[index1-1][index2];
+                    cur[index2] = prev[index2-1] + prev[index2];
                 }
                 else
-                    dp[index1][index2] = dp[index1-1][index2];
+                    cur[index2] = prev[index2];
             }
+            prev = cur.clone();
         }
         
-        return dp[n1][n2];
+        return prev[n2];
+        
+        
+        // Tabulation (Buttom-Up)...
+        
+//         int dp[][] = new int[n1+1][n2+1];
+//         for(int index1 = 0 ; index1 <= n1 ; index1++){
+//             dp[index1][0] = 1;
+//         }
+        
+//         for(int index1 = 1 ; index1 <= n1 ; index1++){
+//             for(int index2 = 1 ; index2 <= n2 ; index2++){
+//                 if(s1.charAt(index1-1)==s2.charAt(index2-1)){
+//                     dp[index1][index2] = dp[index1-1][index2-1]
+//                                                         + dp[index1-1][index2];
+//                 }
+//                 else
+//                     dp[index1][index2] = dp[index1-1][index2];
+//             }
+//         }
+        
+//         return dp[n1][n2];
         
         
         
