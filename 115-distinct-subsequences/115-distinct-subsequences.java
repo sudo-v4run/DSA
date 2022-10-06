@@ -5,21 +5,34 @@ class Solution {
         
         // Tabulation (Buttom-Up)...
         
-//         int dp[][] = new int[n1+1][n2+1];
-//         for(int index1 = )
+        int dp[][] = new int[n1+1][n2+1];
+        for(int index1 = 0 ; index1 <= n1 ; index1++){
+            dp[index1][0] = 1;
+        }
         
+        for(int index1 = 1 ; index1 <= n1 ; index1++){
+            for(int index2 = 1 ; index2 <= n2 ; index2++){
+                if(s1.charAt(index1-1)==s2.charAt(index2-1)){
+                    dp[index1][index2] = dp[index1-1][index2-1]
+                                                        + dp[index1-1][index2];
+                }
+                else
+                    dp[index1][index2] = dp[index1-1][index2];
+            }
+        }
         
+        return dp[n1][n2];
         
         
         
         // Memoization...(Top-Down)...
         
-        int dp[][] = new int[n1][n2];
-        for(int[] row:dp){
-            Arrays.fill(row,-1);
-        }
+//         int dp[][] = new int[n1][n2];
+//         for(int[] row:dp){
+//             Arrays.fill(row,-1);
+//         }
         
-        return ds(n1-1,n2-1,s1,s2,dp);
+//         return ds(n1-1,n2-1,s1,s2,dp);
     }
     public static int ds(int index1,int index2 ,String s1,String s2,int dp[][]){
         if(index1<index2)
