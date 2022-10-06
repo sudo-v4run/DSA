@@ -70,9 +70,15 @@ class Solution
         //             dp[index1][index2] = Math.max(dp[index1-1][index2],dp[index1][index2-1]);
         //     }
         // }
+    
+        // int common = dp[n1][n2];
+        // int deletions = n2-common;
+        // int insertions = n1 - common;
+        
+        // return insertions+deletions;
         
         
-        // return n1-dp[n1][n2];
+        
         
         
         //Memoization ... (Top-Down)....
@@ -82,7 +88,12 @@ class Solution
         //     Arrays.fill(row,-1);
         // }
         
-        // return n1-lcs(n1-1,n2-1,s1,s2,dp);
+        // int common = lcs(n1-1,n2-1,s1,s2,dp);
+        // int deletions = n2-common;
+        // int insertions = n1 - common;
+        
+        // return insertions+deletions;
+        
     }
     static int lcs(int index1,int index2 , String s1, String s2,int dp[][]){
         if(index1<0||index2<0){
