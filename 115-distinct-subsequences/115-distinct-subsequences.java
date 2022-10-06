@@ -8,10 +8,8 @@ class Solution {
         int cur[] = new int[n2+1];
         int prev[] = new int[n2+1];
         
-        for(int index1 = 0 ; index1 <= n1 ; index1++){
-            prev[0] = 1;
-            cur[0] = 1;
-        }
+        prev[0] = 1;
+        cur[0] = 1;
         
         for(int index1 = 1 ; index1 <= n1 ; index1++){
             for(int index2 = 1 ; index2 <= n2 ; index2++){
