@@ -3,26 +3,45 @@ class Solution {
         int n1 = s1.length();
         int n2 = s2.length();
         
-        // Tabulation (Buttom-Up)... Space Optimized...
+        // Tabulation (Buttom-Up)... Space Optimized...1D Array...
         
-        int cur[] = new int[n2+1];
-        int prev[] = new int[n2+1];
+        int dp[] = new int[n2+1];
         
-        prev[0] = 1;
-        cur[0] = 1;
+        dp[0] = 1;
         
         for(int index1 = 1 ; index1 <= n1 ; index1++){
-            for(int index2 = 1 ; index2 <= n2 ; index2++){
+            for(int index2 = n2 ; index2 >=1 ; index2--){
                 if(s1.charAt(index1-1)==s2.charAt(index2-1)){
-                    cur[index2] = prev[index2-1] + prev[index2];
+                    dp[index2] = dp[index2-1] + dp[index2];
                 }
-                else
-                    cur[index2] = prev[index2];
             }
-            prev = cur.clone();
         }
         
-        return prev[n2];
+        return dp[n2];
+        
+        
+        
+        
+        // Tabulation (Buttom-Up)... Space Optimized...
+        
+//         int cur[] = new int[n2+1];
+//         int prev[] = new int[n2+1];
+        
+//         prev[0] = 1;
+//         cur[0] = 1;
+        
+//         for(int index1 = 1 ; index1 <= n1 ; index1++){
+//             for(int index2 = 1 ; index2 <= n2 ; index2++){
+//                 if(s1.charAt(index1-1)==s2.charAt(index2-1)){
+//                     cur[index2] = prev[index2-1] + prev[index2];
+//                 }
+//                 else
+//                     cur[index2] = prev[index2];
+//             }
+//             prev = cur.clone();
+//         }
+        
+//         return prev[n2];
         
         
         // Tabulation (Buttom-Up)...
