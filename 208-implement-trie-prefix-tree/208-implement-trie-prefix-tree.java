@@ -1,19 +1,26 @@
 class Trie {
     TrieNode root;
+    
     class TrieNode{
-        TrieNode arr[] = new TrieNode[26];
-        boolean isEnd = false;
+        TrieNode arr[];
+        boolean isEnd;
+        TrieNode(){
+            arr = new TrieNode[26];
+            isEnd = false;
+        }
     }
     public Trie() {
-        
         root = new TrieNode();
-        
+    }
+    
+    public boolean containsKey(TrieNode root,char ch){
+        return root.arr[ch-'a'] != null;
     }
     
     public void insert(String word) {
         TrieNode cur = root;
         for(char ch : word.toCharArray()){
-            if(cur.arr[ch-'a'] == null){
+            if(!containsKey(cur,ch)){
                 TrieNode newNode = new TrieNode();
                 cur.arr[ch-'a'] = newNode;
             }
@@ -25,7 +32,7 @@ class Trie {
     public boolean search(String word) {
         TrieNode cur = root;
         for(char ch : word.toCharArray()){
-            if(cur.arr[ch-'a'] == null){
+            if(!containsKey(cur,ch)){
                 return false;
             }
             cur = cur.arr[ch-'a'];
@@ -36,7 +43,7 @@ class Trie {
     public boolean startsWith(String prefix) {
         TrieNode cur = root;
         for(char ch : prefix.toCharArray()){
-            if(cur.arr[ch-'a'] == null){
+            if(!containsKey(cur,ch)){
                 return false;
             }
             cur = cur.arr[ch-'a'];
