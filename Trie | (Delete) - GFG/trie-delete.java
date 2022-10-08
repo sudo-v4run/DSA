@@ -86,41 +86,61 @@ public class TrieTest
 }
 // } Driver Code Ends
 
-
-/*Complete the function below
-Node is as follows:
-class TrieNode 
-{
-    char content; 
-    boolean isEnd; 
-    int count;  
-    LinkedList<TrieNode> childList; 
-    public TrieNode(char c)
-    {
-        childList = new LinkedList<TrieNode>();
-        isEnd = false;
-        content = c;
-        count = 0;
-    }  
-    public TrieNode subNode(char c)
-    {
-        if (childList != null)
-            for (TrieNode eachChild : childList)
-                if (eachChild.content == c)
-                    return eachChild;
-        return null;
-    }
-}*/
 class Solution
 {
+    // public static void deleteKey(TrieNode root,char[] key)
+    // {
+    //     // TrieNode cur = root;
+    //     // for(char ch : key){
+    //     //     if(cur.subNode(ch) != null){
+    //     //         cur = cur.subNode(ch);
+    //     //     }
+    //     // }
+    //     // cur.isEnd = false;
+        
+    //     int len = key.length;
+    //     remove(root.subNode(key[0]),key,0,len-1);
+    // }
+    
+    
+    // public static void remove(TrieNode root,char[] key , int level , int len){
+    //     TrieNode cur = root;
+    //     if(level==len){
+    //         if(cur.isEnd==true){
+    //             cur.isEnd= false;
+    //         }
+    //         if(isFreeNode(cur)){
+    //             cur = null;
+    //         }
+    //         return;
+    //     }
+    //     remove(cur.subNode(key[level+1]),key,level+1,len);
+    // }
+    // public static boolean isFreeNode(TrieNode root){
+    //     return root.childList.size()>=1?false:true;
+    // }
+    
+    
+    
     public static void deleteKey(TrieNode root,char[] key)
     {
+        int len = key.length;
+        remove(root,key,0,len);
+    }
+    public static void remove(TrieNode root,char[] key , int level , int len){
         TrieNode cur = root;
-        for(char ch : key){
-            if(cur.subNode(ch) != null){
-                cur = cur.subNode(ch);
+        if(level==len){
+            if(cur.isEnd==true){
+                cur.isEnd= false;
             }
+            if(isFreeNode(cur)){
+                cur = null;
+            }
+            return;
         }
-        cur.isEnd = false;
+        remove(cur.subNode(key[level]),key,level+1,len);
+    }
+    public static boolean isFreeNode(TrieNode root){
+        return root.childList.size()>=1?false:true;
     }
 }
