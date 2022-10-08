@@ -20,6 +20,7 @@ class Solution {
                 }
             }
             cur[0] = flag;
+            
             for(int index2 = 1 ; index2 <= n2 ; index2++){
                 if(s1.charAt(index1-1)==s2.charAt(index2-1) || s1.charAt(index1-1)=='?'){
                     cur[index2] = prev[index2-1];
