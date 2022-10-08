@@ -1,12 +1,8 @@
 class Trie {
     TrieNode root;
     class TrieNode{
-        TrieNode arr[];
-        boolean isEnd;
-        TrieNode(){
-            arr = new TrieNode[26];
-            isEnd = false;
-        }
+        TrieNode arr[] = new TrieNode[26];
+        boolean isEnd = false;
     }
     public Trie() {
         
