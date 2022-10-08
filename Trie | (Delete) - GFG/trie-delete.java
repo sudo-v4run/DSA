@@ -88,8 +88,8 @@ public class TrieTest
 
 class Solution
 {
-    // public static void deleteKey(TrieNode root,char[] key)
-    // {
+    public static void deleteKey(TrieNode root,char[] key)
+    {
     //     // TrieNode cur = root;
     //     // for(char ch : key){
     //     //     if(cur.subNode(ch) != null){
@@ -98,35 +98,11 @@ class Solution
     //     // }
     //     // cur.isEnd = false;
         
-    //     int len = key.length;
-    //     remove(root.subNode(key[0]),key,0,len-1);
-    // }
-    
-    
-    // public static void remove(TrieNode root,char[] key , int level , int len){
-    //     TrieNode cur = root;
-    //     if(level==len){
-    //         if(cur.isEnd==true){
-    //             cur.isEnd= false;
-    //         }
-    //         if(isFreeNode(cur)){
-    //             cur = null;
-    //         }
-    //         return;
-    //     }
-    //     remove(cur.subNode(key[level+1]),key,level+1,len);
-    // }
-    // public static boolean isFreeNode(TrieNode root){
-    //     return root.childList.size()>=1?false:true;
-    // }
-    
-    
-    
-    public static void deleteKey(TrieNode root,char[] key)
-    {
         int len = key.length;
-        remove(root,key,0,len);
+        remove(root.subNode(key[0]),key,0,len-1);
     }
+    
+    
     public static void remove(TrieNode root,char[] key , int level , int len){
         TrieNode cur = root;
         if(level==len){
@@ -138,9 +114,32 @@ class Solution
             }
             return;
         }
-        remove(cur.subNode(key[level]),key,level+1,len);
+        remove(cur.subNode(key[level+1]),key,level+1,len);
     }
     public static boolean isFreeNode(TrieNode root){
         return root.childList.size()>=1?false:true;
     }
+    
+    
+    // public static void deleteKey(TrieNode root,char[] key)
+    // {
+    //     int len = key.length;
+    //     remove(root,key,0,len);
+    // }
+    // public static void remove(TrieNode root,char[] key , int level , int len){
+    //     TrieNode cur = root;
+    //     if(level==len){
+    //         if(cur.isEnd==true){
+    //             cur.isEnd= false;
+    //         }
+    //         if(isFreeNode(cur)){
+    //             cur = null;
+    //         }
+    //         return;
+    //     }
+    //     remove(cur.subNode(key[level]),key,level+1,len);
+    // }
+    // public static boolean isFreeNode(TrieNode root){
+    //     return root.childList.size()>=1?false:true;
+    // }
 }
