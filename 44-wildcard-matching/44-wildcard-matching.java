@@ -4,7 +4,7 @@ class Solution {
         int n2 = s2.length();
         
         
-        // Tabulation (Button-Up) ...
+        // Tabulation (Button-Up) ...Space Optimized...
         
         int cur[] = new int[n2+1];
         int prev[] = new int[n2+1];
