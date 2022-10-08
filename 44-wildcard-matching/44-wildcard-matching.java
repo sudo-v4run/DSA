@@ -16,6 +16,9 @@ class Solution {
         if(index1<0 && index2<0){
             return 1;
         }
+        if(index1 < 0 ){
+            return 0;
+        }
         if(index2 < 0 ){
             for(int i = 0 ; i <= index1 ; i++){
                 if(s1.charAt(i)!='*')
@@ -23,11 +26,6 @@ class Solution {
             }
             return 1;
         }
-        
-        if(index1 < 0 ){
-            return 0;
-        }
- 
         if(dp[index1][index2] != -1)
             return dp[index1][index2];
         
