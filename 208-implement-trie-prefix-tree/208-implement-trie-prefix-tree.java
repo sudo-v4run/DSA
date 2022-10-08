@@ -13,7 +13,7 @@ class Trie {
         root = new TrieNode();
     }
     
-    public boolean containsKey(TrieNode root,char ch){
+    public static boolean containsKey(TrieNode root,char ch){
         return root.arr[ch-'a'] != null;
     }
     
