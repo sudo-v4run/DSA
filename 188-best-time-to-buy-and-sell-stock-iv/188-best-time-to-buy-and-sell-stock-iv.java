@@ -2,25 +2,47 @@ class Solution {
     public int maxProfit(int k, int[] prices) {
         int n = prices.length;
         
-        
-        //Tabulation .. 
-        int dp[][] = new int[n+1][(2*k)+1];
+        //Tabulation .. Space Optimized...
+        int cur[] = new int[(2*k)+1];
+        int next[] = new int[(2*k)+1];
         
         for(int index = n-1 ; index>=0 ; index--){
             for(int transaction = 2*k-1 ; transaction >=0 ; transaction--){
                 if(transaction%2==0){
-                    dp[index][transaction] = Math.max(
-                                                        dp[index+1][transaction+1]-prices[index],
-                                                        dp[index+1][transaction]-0     );
+                    cur[transaction] = Math.max(
+                                                        next[transaction+1]-prices[index],
+                                                        next[transaction]-0     );
                 }else{
-                    dp[index][transaction] = Math.max(
-                                                        dp[index+1][transaction+1]+prices[index],
-                                                        dp[index+1][transaction]+0     );
+                    cur[transaction] = Math.max(
+                                                        next[transaction+1]+prices[index],
+                                                        next[transaction]+0     );
                 }
             }
+            next = cur;
         }
         
-        return dp[0][0];
+        return next[0];
+        
+        
+        
+        //Tabulation .. 
+//         int dp[][] = new int[n+1][(2*k)+1];
+        
+//         for(int index = n-1 ; index>=0 ; index--){
+//             for(int transaction = 2*k-1 ; transaction >=0 ; transaction--){
+//                 if(transaction%2==0){
+//                     dp[index][transaction] = Math.max(
+//                                                         dp[index+1][transaction+1]-prices[index],
+//                                                         dp[index+1][transaction]-0     );
+//                 }else{
+//                     dp[index][transaction] = Math.max(
+//                                                         dp[index+1][transaction+1]+prices[index],
+//                                                         dp[index+1][transaction]+0     );
+//                 }
+//             }
+//         }
+        
+//         return dp[0][0];
         
         
         // Memoization...
