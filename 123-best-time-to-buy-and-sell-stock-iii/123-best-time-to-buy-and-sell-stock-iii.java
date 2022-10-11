@@ -3,27 +3,59 @@ class Solution {
         int n = prices.length;
         // int cap = 2;
         
+        // Tabulation..(Buttom-Up)...Space Optimized..
         
-        // Tabulation..(Buttom-Up)...
         int limit = 2;
         
-        int dp[][][] = new int[n+1][2][3];
+        int cur[][] = new int[2][3];
+        int next[][] = new int[2][3];
         
         for(int index = n-1; index>=0 ; index--){
             for(int canBuy = 0 ; canBuy<=1 ; canBuy++){
                 for(int cap = 1 ; cap<=2 ; cap++){
                     if(canBuy==1)
-                        dp[index][canBuy][cap] = Math.max(dp[index+1][0][cap]-prices[index],
-                                                dp[index+1][1][cap]-0 );
+                        cur[canBuy][cap] = Math.max(next[0][cap]-prices[index],
+                                               next[1][cap]-0 );
                     else
-                        dp[index][canBuy][cap] = Math.max(dp[index+1][1][cap-1]+prices[index],
-                                                dp[index+1][0][cap]+0 );
+                        cur[canBuy][cap] = Math.max(next[1][cap-1]+prices[index],
+                                                next[0][cap]+0 );
+                }
+            }
+            for(int i = 0 ; i < cur.length ; i++){
+                for(int j = 0 ; j < cur[0].length ; j++){
+                    next[i][j] = cur[i][j];
                 }
             }
         }
         
         
-        return dp[0][1][2];
+        return next[1][2];
+        
+        
+        
+        
+        
+        // Tabulation..(Buttom-Up)...
+        
+//         int limit = 2;
+        
+//         int dp[][][] = new int[n+1][2][3];
+        
+//         for(int index = n-1; index>=0 ; index--){
+//             for(int canBuy = 0 ; canBuy<=1 ; canBuy++){
+//                 for(int cap = 1 ; cap<=2 ; cap++){
+//                     if(canBuy==1)
+//                         dp[index][canBuy][cap] = Math.max(dp[index+1][0][cap]-prices[index],
+//                                                 dp[index+1][1][cap]-0 );
+//                     else
+//                         dp[index][canBuy][cap] = Math.max(dp[index+1][1][cap-1]+prices[index],
+//                                                 dp[index+1][0][cap]+0 );
+//                 }
+//             }
+//         }
+        
+        
+//         return dp[0][1][2];
         
         
         
