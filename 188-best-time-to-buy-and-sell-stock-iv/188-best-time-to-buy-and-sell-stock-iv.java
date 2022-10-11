@@ -3,13 +3,33 @@ class Solution {
         int n = prices.length;
         
         
+        //Tabulation .. 
+        int dp[][] = new int[n+1][(2*k)+1];
+        
+        for(int index = n-1 ; index>=0 ; index--){
+            for(int transaction = 2*k-1 ; transaction >=0 ; transaction--){
+                if(transaction%2==0){
+                    dp[index][transaction] = Math.max(
+                                                        dp[index+1][transaction+1]-prices[index],
+                                                        dp[index+1][transaction]-0     );
+                }else{
+                    dp[index][transaction] = Math.max(
+                                                        dp[index+1][transaction+1]+prices[index],
+                                                        dp[index+1][transaction]+0     );
+                }
+            }
+        }
+        
+        return dp[0][0];
+        
+        
         // Memoization...
         
-        int dp[][] = new int[n][2*k];
-        for(int[] row: dp){
-            Arrays.fill(row,-1);
-        }
-        return bss4(0,0,k,prices,dp);
+        // int dp[][] = new int[n][2*k];
+        // for(int[] row: dp){
+        //     Arrays.fill(row,-1);
+        // }
+        // return bss4(0,0,k,prices,dp);
     }
     public static int bss4(int index,int transaction,int k,int prices[],int dp[][]){
         
