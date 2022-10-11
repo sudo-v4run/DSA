@@ -2,6 +2,8 @@ class Solution {
     public int maxProfit(int k, int[] prices) {
         int n = prices.length;
         
+        // Refer to Best Time to Buy and Sell Stock 3 for another approach ... replace cap = k
+        
         //Tabulation .. Space Optimized...
         int cur[] = new int[(2*k)+1];
         int next[] = new int[(2*k)+1];
