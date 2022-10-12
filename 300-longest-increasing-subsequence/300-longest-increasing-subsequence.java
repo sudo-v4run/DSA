@@ -2,7 +2,11 @@ class Solution {
     public int lengthOfLIS(int[] nums) {
         int n = nums.length;
         
+        
+        
+        
         //Memoization...
+        
         int dp[][] = new int[n][n+1];
         
         for(int[] row:dp){
