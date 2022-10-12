@@ -4,45 +4,43 @@ class Solution {
         
         // Tabulation...Space Optimized...
         
-//         int cur[] = new int[2];
-//         int next[] = new int[2];
-//         int nextOfnext[] = new int[2];
+        int cur[] = new int[2];
+        int next[] = new int[2];
         
-//         for(int index = n-1 ; index>=0 ; index--){
-//             for(int canBuy = 0 ; canBuy<=1 ; canBuy++){
-//                 if(canBuy==1){
-//                     cur[canBuy] = Math.max(next[0]-prices[index],
-//                                         next[1]-0);
-//                 }else{
-//                     cur[canBuy] = Math.max(nextOfnext[1]+prices[index],
-//                                         next[0]+0);
-//                 }
-//             }
-//             nextOfnext = next.clone();
-//             next = cur.clone();
-//         }
+        for(int index = n-1 ; index>=0 ; index--){
+            for(int canBuy = 0 ; canBuy<=1 ; canBuy++){
+                if(canBuy==1){
+                    cur[canBuy] = Math.max(next[0]-prices[index],
+                                        next[1]-0);
+                }else{
+                    cur[canBuy] = Math.max(next[1]+prices[index]-fee,
+                                        next[0]+0);
+                }
+            }
+            next = cur.clone();
+        }
         
-//         return next[1];
+        return next[1];
         
         
         
         // Tabulation...
         
-        int dp[][] = new int[n+2][2];
+//         int dp[][] = new int[n+2][2];
         
-        for(int index = n-1 ; index>=0 ; index--){
-            for(int canBuy = 0 ; canBuy<=1 ; canBuy++){
-                if(canBuy==1){
-                    dp[index][canBuy] = Math.max(dp[index+1][0]-prices[index],
-                                        dp[index+1][1]-0);
-                }else{
-                    dp[index][canBuy] = Math.max(dp[index+1][1]+prices[index]-fee,
-                                        dp[index+1][0]+0);
-                }
-            }
-        }
+//         for(int index = n-1 ; index>=0 ; index--){
+//             for(int canBuy = 0 ; canBuy<=1 ; canBuy++){
+//                 if(canBuy==1){
+//                     dp[index][canBuy] = Math.max(dp[index+1][0]-prices[index],
+//                                         dp[index+1][1]-0);
+//                 }else{
+//                     dp[index][canBuy] = Math.max(dp[index+1][1]+prices[index]-fee,
+//                                         dp[index+1][0]+0);
+//                 }
+//             }
+//         }
         
-        return dp[0][1];
+//         return dp[0][1];
         
         
         
