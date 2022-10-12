@@ -2,18 +2,34 @@ class Solution {
     public int lengthOfLIS(int[] nums) {
         int n = nums.length;
         
+        //Tabulation....
+        int dp[][] = new int[n+1][n+1];
+        
+        for(int index = n-1; index >=0 ; index--){
+            for(int prev_ind = index-1 ; prev_ind >= -1 ; prev_ind--){
+                int take = 0;
+                if(prev_ind==-1 || nums[index]>nums[prev_ind]){
+                    take = 1 + dp[index+1][index+1];
+                }
+                int notTake = dp[index+1][prev_ind+1];
+
+                dp[index][prev_ind+1] = Math.max(take,notTake);
+            }
+        }
+        
+        return dp[0][-1+1];
         
         
         
         //Memoization....
         
-        int dp[][] = new int[n][n+1];
+//         int dp[][] = new int[n][n+1];
         
-        for(int[] row:dp){
-            Arrays.fill(row,-1);
-        }
+//         for(int[] row:dp){
+//             Arrays.fill(row,-1);
+//         }
         
-        return lis(0,-1,nums,dp);
+//         return lis(0,-1,nums,dp);
     }
     public static int lis(int index, int prev_ind,int nums[],int dp[][]){
         
