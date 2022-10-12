@@ -28,30 +28,30 @@ class Solution {
         
         // Tabulation...
         
-//         int dp[][] = new int[n+2][2];
+        int dp[][] = new int[n+2][2];
         
-//         for(int index = n-1 ; index>=0 ; index--){
-//             for(int canBuy = 0 ; canBuy<=1 ; canBuy++){
-//                 if(canBuy==1){
-//                     dp[index][canBuy] = Math.max(dp[index+1][0]-prices[index],
-//                                         dp[index+1][1]-0);
-//                 }else{
-//                     dp[index][canBuy] = Math.max(dp[index+2][1]+prices[index],
-//                                         dp[index+1][0]+0);
-//                 }
-//             }
-//         }
+        for(int index = n-1 ; index>=0 ; index--){
+            for(int canBuy = 0 ; canBuy<=1 ; canBuy++){
+                if(canBuy==1){
+                    dp[index][canBuy] = Math.max(dp[index+1][0]-prices[index],
+                                        dp[index+1][1]-0);
+                }else{
+                    dp[index][canBuy] = Math.max(dp[index+1][1]+prices[index]-fee,
+                                        dp[index+1][0]+0);
+                }
+            }
+        }
         
-//         return dp[0][1];
+        return dp[0][1];
         
         
         
         //Memoization...
-        int dp[][] = new int[n][2];
-        for(int[] row:dp){
-            Arrays.fill(row,-1);
-        }
-        return bsswc(0,1,prices,fee,dp);
+        // int dp[][] = new int[n][2];
+        // for(int[] row:dp){
+        //     Arrays.fill(row,-1);
+        // }
+        // return bsswc(0,1,prices,fee,dp);
     }
     public static int bsswc(int index,int canBuy,int prices[],int fee,int dp[][]){
         
