@@ -2,7 +2,9 @@ class Solution {
     public int lengthOfLIS(int[] nums) {
         int n = nums.length;
         
-        //Tabulation....(Algorithm)..
+        
+//        Tabulation....(Algorithm)...
+        
         int dp[] = new int[n]; 
         Arrays.fill(dp,1);
         
@@ -18,6 +20,55 @@ class Solution {
         }
         
         return maxi;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        // Printing the LIS...
+        
+//         int dp[] = new int[n];
+//         int hash[] = new int[n];
+        
+//         Arrays.fill(dp,1);
+        
+//         int maxi = Integer.MIN_VALUE;
+//         int lastInd = 0;
+        
+//         for(int index = 0 ; index < n ; index++){
+//             hash[index] = index;
+//             for(int prev = 0 ; prev < index ; prev++){
+//                 if(nums[index]>nums[prev] && dp[prev]+1 > dp[index]){
+//                     dp[index] = dp[prev]+1;
+//                     hash[index] = prev;
+//                 }
+//             }
+//             if(maxi < dp[index]){
+//                 maxi = dp[index];
+//                 lastInd = index;
+//             }
+//         }
+        
+//         ArrayList<Integer> arr = new ArrayList<>();
+        
+//         while(hash[lastInd] != lastInd){            
+//             lastInd = hash[lastInd];
+//             arr.add(nums[lastInd]);
+//         }
+        
+//         // LIS is stored in reverse order...
+        
+//         for(int ele : arr){
+//             System.out.print(ele+"  ");
+//         }
+        
+//         System.out.println();
+//         return maxi;
         
         
         //Tabulation....
