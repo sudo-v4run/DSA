@@ -2,24 +2,47 @@ class Solution {
     public int lengthOfLIS(int[] nums) {
         int n = nums.length;
         
+        // Using Binary Search....
+        
+        ArrayList<Integer> lis = new ArrayList<>();
+        lis.add(nums[0]);
+        int len = 1;
+        
+        for(int i = 1 ; i < n ; i++){
+            if(nums[i]>lis.get(len-1)){
+                lis.add(nums[i]);
+                len++;
+            }else{
+                if(lis.contains(nums[i])==false){
+                    int index = lower_bound(nums[i],lis);
+                    lis.set(index,nums[i]);
+                }
+            }
+        }
+        
+        
+        return len;
+        
+        
+        
         
 //        Tabulation....(Algorithm)...
         
-        int dp[] = new int[n]; 
-        Arrays.fill(dp,1);
+//         int dp[] = new int[n]; 
+//         Arrays.fill(dp,1);
         
-        int maxi = Integer.MIN_VALUE;
-        for(int index = 0 ; index < n ; index++){
-            for(int prev_ind = 0 ; prev_ind < index ; prev_ind++){
-                if(nums[index]>nums[prev_ind]){
-                    dp[index] = Math.max(dp[index],1 + dp[prev_ind]);
-                }
+//         int maxi = Integer.MIN_VALUE;
+//         for(int index = 0 ; index < n ; index++){
+//             for(int prev_ind = 0 ; prev_ind < index ; prev_ind++){
+//                 if(nums[index]>nums[prev_ind]){
+//                     dp[index] = Math.max(dp[index],1 + dp[prev_ind]);
+//                 }
                 
-            }
-            maxi = Math.max(maxi,dp[index]);
-        }
+//             }
+//             maxi = Math.max(maxi,dp[index]);
+//         }
         
-        return maxi;
+//         return maxi;
         
         
         
@@ -123,6 +146,49 @@ class Solution {
         
 //         return lis(0,-1,nums,dp);
     }
+    
+    static int lower_bound(int key , ArrayList<Integer> arr)
+    {
+        // Initialize starting index and
+        // ending index
+        int low = 0, high = arr.size();
+        int mid;
+ 
+        // Till high does not crosses low
+        while (low < high) {
+ 
+            // Find the index of the middle element
+            mid = low + (high - low) / 2;
+ 
+            // If key is less than or equal
+            // to array[mid], then find in
+            // left subarray
+            if (key <= arr.get(mid)) {
+                high = mid;
+            }
+ 
+            // If key is greater than array[mid],
+            // then find in right subarray
+            else {
+ 
+                low = mid + 1;
+            }
+        }
+ 
+        // If key is greater than last element which is
+        // array[n-1] then lower bound
+        // does not exists in the array
+        if (low < arr.size() && arr.get(low) < key) {
+            low++;
+        }
+ 
+        // Returning the lower_bound index
+        return low;
+    }
+    
+    
+    
+    
     public static int lis(int index, int prev_ind,int nums[],int dp[][]){
         
         if(index==nums.length)
