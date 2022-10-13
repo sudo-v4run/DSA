@@ -2,25 +2,45 @@ class Solution {
     public int lengthOfLIS(int[] nums) {
         int n = nums.length;
         
-        //Tabulation....
+        //Tabulation....(Algorithm)..
+        int dp[] = new int[n]; 
+        Arrays.fill(dp,1);
         
-        int cur[] = new int[n+1];
-        int next[] = new int[n+1];
-        
-        for(int index = n-1; index >=0 ; index--){
-            for(int prev_ind = index-1 ; prev_ind >= -1 ; prev_ind--){
-                int take = 0;
-                if(prev_ind==-1 || nums[index]>nums[prev_ind]){
-                    take = 1 + next[index+1];
+        int maxi = Integer.MIN_VALUE;
+        for(int index = 0 ; index < n ; index++){
+            for(int prev_ind = 0 ; prev_ind < index ; prev_ind++){
+                if(nums[index]>nums[prev_ind]){
+                    dp[index] = Math.max(dp[index],1 + dp[prev_ind]);
                 }
-                int notTake = next[prev_ind+1];
-
-                cur[prev_ind+1] = Math.max(take,notTake);
+                
             }
-            next = cur.clone();
+            maxi = Math.max(maxi,dp[index]);
         }
         
-        return next[-1+1];
+        return maxi;
+        
+        
+        //Tabulation....
+        
+//         int cur[] = new int[n+1];
+//         int next[] = new int[n+1];
+        
+//         for(int index = n-1; index >=0 ; index--){
+//             for(int prev_ind = index-1 ; prev_ind >= -1 ; prev_ind--){
+//                 int take = 0;
+//                 if(prev_ind==-1 || nums[index]>nums[prev_ind]){
+//                     take = 1 + next[index+1];
+//                 }
+//                 int notTake = next[prev_ind+1];
+
+//                 cur[prev_ind+1] = Math.max(take,notTake);
+//             }
+//             next = cur.clone();
+//         }
+        
+//         return next[-1+1];
+        
+        
         
         //Tabulation....
         
