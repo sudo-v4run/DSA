@@ -3,21 +3,42 @@ class Solution {
         int n = nums.length;
         
         //Tabulation....
-        int dp[][] = new int[n+1][n+1];
+        
+        int cur[] = new int[n+1];
+        int next[] = new int[n+1];
         
         for(int index = n-1; index >=0 ; index--){
             for(int prev_ind = index-1 ; prev_ind >= -1 ; prev_ind--){
                 int take = 0;
                 if(prev_ind==-1 || nums[index]>nums[prev_ind]){
-                    take = 1 + dp[index+1][index+1];
+                    take = 1 + next[index+1];
                 }
-                int notTake = dp[index+1][prev_ind+1];
+                int notTake = next[prev_ind+1];
 
-                dp[index][prev_ind+1] = Math.max(take,notTake);
+                cur[prev_ind+1] = Math.max(take,notTake);
             }
+            next = cur.clone();
         }
         
-        return dp[0][-1+1];
+        return next[-1+1];
+        
+        //Tabulation....
+        
+//         int dp[][] = new int[n+1][n+1];
+        
+//         for(int index = n-1; index >=0 ; index--){
+//             for(int prev_ind = index-1 ; prev_ind >= -1 ; prev_ind--){
+//                 int take = 0;
+//                 if(prev_ind==-1 || nums[index]>nums[prev_ind]){
+//                     take = 1 + dp[index+1][index+1];
+//                 }
+//                 int notTake = dp[index+1][prev_ind+1];
+
+//                 dp[index][prev_ind+1] = Math.max(take,notTake);
+//             }
+//         }
+        
+//         return dp[0][-1+1];
         
         
         
