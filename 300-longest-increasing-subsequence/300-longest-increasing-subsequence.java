@@ -149,40 +149,27 @@ class Solution {
     
     static int lower_bound(int key , ArrayList<Integer> arr)
     {
-        // Initialize starting index and
-        // ending index
         int low = 0, high = arr.size();
         int mid;
  
-        // Till high does not crosses low
         while (low < high) {
  
-            // Find the index of the middle element
             mid = low + (high - low) / 2;
  
-            // If key is less than or equal
-            // to array[mid], then find in
-            // left subarray
             if (key <= arr.get(mid)) {
                 high = mid;
             }
  
-            // If key is greater than array[mid],
-            // then find in right subarray
             else {
  
                 low = mid + 1;
             }
         }
  
-        // If key is greater than last element which is
-        // array[n-1] then lower bound
-        // does not exists in the array
         if (low < arr.size() && arr.get(low) < key) {
             low++;
         }
  
-        // Returning the lower_bound index
         return low;
     }
     
