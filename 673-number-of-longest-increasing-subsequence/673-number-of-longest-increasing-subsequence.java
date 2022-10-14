@@ -20,9 +20,6 @@ class Solution {
             maxi = Math.max(maxi,dp[i]);
         }
         
-        for(int e : cnt)
-            System.out.print(e+" ");
-        
         int nos = 0;
         for(int i = 0 ; i < n ; i++){
             if(dp[i]==maxi){
