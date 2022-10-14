@@ -78,6 +78,7 @@ class Solution {
 //         }
         
 //         ArrayList<Integer> arr = new ArrayList<>();
+//         arr.add(nums[lastInd]);
         
 //         while(hash[lastInd] != lastInd){            
 //             lastInd = hash[lastInd];
