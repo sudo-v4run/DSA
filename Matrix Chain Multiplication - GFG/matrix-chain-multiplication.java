@@ -28,13 +28,29 @@ class GFG
 class Solution{
     static int matrixMultiplication(int n, int arr[])
     {
+        int dp[][] = new int[n][n];
+        
+        for(int i = n-1 ; i>= 1 ; i--){
+            for(int j = i+1 ; j< n ; j++){
+                int mini = Integer.MAX_VALUE;
+                for(int k = i ; k < j ; k++){
+                    int steps = (arr[i-1] * arr[k] * arr[j]) + 
+                                    dp[i][k]+dp[k+1][j];
+                                    
+                    mini = Math.min(mini,steps);
+                }
+                dp[i][j] = mini;
+            }
+        }
+        
+        return dp[1][n-1];
         
         // Memoization...
-        int dp[][] = new int[n][n];
-        for(int[] row : dp)
-            Arrays.fill(row,-1);
+        // int dp[][] = new int[n][n];
+        // for(int[] row : dp)
+        //     Arrays.fill(row,-1);
             
-        return noOp(1,n-1,arr,dp);
+        // return noOp(1,n-1,arr,dp);
     }
     public static int noOp(int i , int j , int arr[], int dp[][]){
         if(i==j)
