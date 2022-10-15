@@ -10,17 +10,36 @@ class Solution {
         
         Arrays.sort(cutsarr);
         
+        //Tabulation ....
         
+        int dp[][] = new int[n+2][n+2];
+        
+        for(int i = n ; i >=1 ; i--){
+            for(int j = 1; j <=n ; j++){
+                int mini = Integer.MAX_VALUE;
+        
+                for(int index = i ; index <= j ; index++){
+                    int cost = cutsarr[j+1]-cutsarr[i-1] +
+                            mctcs(i,index-1,cutsarr,dp)+mctcs(index+1,j,cutsarr,dp);
+                    mini = Math.min(mini,cost);
+                }
+
+                dp[i][j] = mini;
+            }
+        }
+        
+        return dp[1][n];
         
         
         
         //Memoization...
-        int dp[][] = new int[n+2][n+2];
         
-        for(int[] row:dp)
-            Arrays.fill(row,-1);
+//         int dp[][] = new int[n+2][n+2];
         
-        return mctcs(1,n,cutsarr,dp);
+//         for(int[] row:dp)
+//             Arrays.fill(row,-1);
+        
+//         return mctcs(1,n,cutsarr,dp);
     }
     public static int mctcs(int i,int j,int cutsarr[],int dp[][]){
         
