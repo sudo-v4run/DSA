@@ -15,12 +15,16 @@ class Solution {
         int dp[][] = new int[n+2][n+2];
         
         for(int i = n ; i >=1 ; i--){
-            for(int j = 1; j <=n ; j++){
+            for(int j = 1; j <= n ; j++){
+                
+                if(i>j)
+                    continue;
+                
                 int mini = Integer.MAX_VALUE;
         
                 for(int index = i ; index <= j ; index++){
                     int cost = cutsarr[j+1]-cutsarr[i-1] +
-                            mctcs(i,index-1,cutsarr,dp)+mctcs(index+1,j,cutsarr,dp);
+                            dp[i][index-1]+dp[index+1][j];
                     mini = Math.min(mini,cost);
                 }
 
