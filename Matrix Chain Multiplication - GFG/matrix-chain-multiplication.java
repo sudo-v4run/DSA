@@ -28,6 +28,8 @@ class GFG
 class Solution{
     static int matrixMultiplication(int n, int arr[])
     {
+        // Tabulation..
+        
         int dp[][] = new int[n][n];
         
         for(int i = n-1 ; i>= 1 ; i--){
@@ -44,6 +46,8 @@ class Solution{
         }
         
         return dp[1][n-1];
+        
+        
         
         // Memoization...
         // int dp[][] = new int[n][n];
