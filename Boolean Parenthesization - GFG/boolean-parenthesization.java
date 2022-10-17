@@ -22,6 +22,7 @@ class GFG{
 
 class Solution{
     static int mod = 1003;
+    
     static int countWays(int n, String s){
         
         
