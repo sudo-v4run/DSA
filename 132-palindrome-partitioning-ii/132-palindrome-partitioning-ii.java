@@ -4,33 +4,33 @@ class Solution {
         
         // Tabulation ....
         
-        int dp[] = new int[n+1];
+//         int dp[] = new int[n+1];
         
-        for(int i = n-1 ; i >= 0 ;i--){
-            int mini = Integer.MAX_VALUE;
-            String temp = "";
+//         for(int i = n-1 ; i >= 0 ;i--){
+//             int mini = Integer.MAX_VALUE;
+//             String temp = "";
 
-            for(int j = i ; j < n ; j++){
-                temp += s.charAt(j);
+//             for(int j = i ; j < n ; j++){
+//                 temp += s.charAt(j);
 
-                if(isPalin(temp)){
-                    int cost = 1+dp[j+1];
-                    mini = Math.min(mini,cost);
-                }
-            }
+//                 if(isPalin(temp)){
+//                     int cost = 1+dp[j+1];
+//                     mini = Math.min(mini,cost);
+//                 }
+//             }
 
-            dp[i] = mini;
-        }
+//             dp[i] = mini;
+//         }
         
-        return dp[0]-1;
+//         return dp[0]-1;
         
         
         // Memoization...
         
-//         int dp[] = new int[n];
-//         Arrays.fill(dp,-1);
+        int dp[] = new int[n];
+        Arrays.fill(dp,-1);
         
-//         return minpartis(0,s,dp)-1;
+        return minpartis(0,s,dp)-1;
     }
     
     public static int minpartis(int i , String s, int dp[]){
