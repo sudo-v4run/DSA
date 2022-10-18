@@ -2,7 +2,7 @@ class Solution {
     public int minCut(String s) {
         int n = s.length();
         
-        // Tabulation ....
+        // Tabulation ...
         
         int dp[] = new int[n+1];
         
