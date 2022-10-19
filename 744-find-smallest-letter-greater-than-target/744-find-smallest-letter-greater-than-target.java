@@ -4,7 +4,6 @@ class Solution {
         int e = letters.length-1;
         
         while(s<=e){
-            
             int mid = s + (e-s)/2;
             
             if(target < letters[mid]){
