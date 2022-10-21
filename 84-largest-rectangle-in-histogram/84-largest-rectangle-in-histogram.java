@@ -44,7 +44,7 @@ class Solution {
             s.push(i);
         }
         
-        s = new Stack<>();
+        while(!s.isEmpty()) s.pop();
         
         s.push(n-1);
         
