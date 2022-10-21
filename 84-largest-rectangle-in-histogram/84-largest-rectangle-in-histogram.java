@@ -27,9 +27,7 @@ class Solution {
         Stack<Integer> s = new Stack<>();
         s.push(0);
         for(int i = 0; i<n ; i++){
-            int cur = heights[i];
-            
-            while(!s.isEmpty() && heights[s.peek()]>=cur){
+            while(!s.isEmpty() && heights[s.peek()]>=heights[i]){
                 s.pop();
             }
             
@@ -48,9 +46,7 @@ class Solution {
         
         
         for(int i = n-1; i>=0 ; i--){
-            int cur = heights[i];
-            
-            while(!s.isEmpty() && heights[s.peek()]>=cur){
+            while(!s.isEmpty() && heights[s.peek()]>=heights[i]){
                 s.pop();
             }
             
@@ -67,8 +63,7 @@ class Solution {
         
         for(int i = 0 ; i < n ; i++){
             int width = right[i]-left[i]+1;
-            int h = heights[i];
-            area = Math.max(area,width*h);
+            area = Math.max(area,width*heights[i]);
         }
         
         return area;
