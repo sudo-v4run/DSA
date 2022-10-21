@@ -1,7 +1,6 @@
 class Solution {
     public int search(int[] arr, int target) {
         int pivot = findPivot(arr);
-        System.out.println(pivot);
         int ans = bs(arr,target,0,pivot);
         if(ans != -1)
             return ans;
