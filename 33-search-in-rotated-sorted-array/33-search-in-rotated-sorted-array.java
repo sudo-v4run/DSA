@@ -17,7 +17,7 @@ class Solution {
         while(s<e){
             int m = s+(e-s)/2;
             
-            if(m+1<=e && arr[m]>arr[m+1]){
+            if(arr[m]>arr[m+1]){
                 return m;
             }
             
