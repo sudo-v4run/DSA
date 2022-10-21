@@ -10,9 +10,9 @@
 class Solution {
     public int findInMountainArray(int target, MountainArray mountainArr) {
         int peak = peakEle(mountainArr);
-        int ans = orderAgnosticBs(mountainArr,target,0,peak);
-        if(ans != -1)
-            return ans;
+        int firstTry = orderAgnosticBs(mountainArr,target,0,peak);
+        if(firstTry != -1)
+            return firstTry;
         return orderAgnosticBs(mountainArr,target,peak+1,mountainArr.length()-1);
     }
     public static int peakEle(MountainArray mountainArr){
