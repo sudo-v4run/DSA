@@ -5,11 +5,9 @@ class Solution {
         int left[] = new int[n];
         int right[] = new int[n];
         
-        left[0] = 0;
-        right[n-1] = n-1;
-        
-        
         //   O(n*n)             **********************************
+        // left[0] = 0;
+        // right[n-1] = n-1;
         // for(int i = 0; i < n ; i++){
         //     int j = i-1;
         //     while(j>=0 && heights[j]>=heights[i]){
@@ -28,7 +26,7 @@ class Solution {
         
         Stack<Integer> s = new Stack<>();
         s.push(0);
-        for(int i = 1; i<n ; i++){
+        for(int i = 0; i<n ; i++){
             int cur = heights[i];
             
             while(!s.isEmpty() && heights[s.peek()]>=cur){
@@ -49,7 +47,7 @@ class Solution {
         s.push(n-1);
         
         
-        for(int i = n-2; i>=0 ; i--){
+        for(int i = n-1; i>=0 ; i--){
             int cur = heights[i];
             
             while(!s.isEmpty() && heights[s.peek()]>=cur){
