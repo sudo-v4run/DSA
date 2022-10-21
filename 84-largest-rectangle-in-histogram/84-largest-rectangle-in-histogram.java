@@ -25,7 +25,7 @@ class Solution {
         
         
         Stack<Integer> s = new Stack<>();
-        s.push(0);
+        
         for(int i = 0; i<n ; i++){
             while(!s.isEmpty() && heights[s.peek()]>=heights[i]){
                 s.pop();
@@ -40,9 +40,8 @@ class Solution {
             s.push(i);
         }
         
-        while(!s.isEmpty()) s.pop();
         
-        s.push(n-1);
+        while(!s.isEmpty()) s.pop();
         
         
         for(int i = n-1; i>=0 ; i--){
