@@ -5,7 +5,7 @@ class Solution {
         int left[] = new int[n];
         int right[] = new int[n];
         
-        //   O(n*n)             **********************************
+        //   O(n*n)             *********************************
         // left[0] = 0;
         // right[n-1] = n-1;
         // for(int i = 0; i < n ; i++){
