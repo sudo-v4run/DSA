@@ -26,75 +26,115 @@ class FindMinCost
 }
 // } Driver Code Ends
 
-
-/*Complete the function given below*/
 class Solution {
-    public int maxArea(int m[][], int r, int c) {
-        int curRow[] = new int[c];
-        curRow = m[0];
-        int maxAns = maxHistogram(curRow);
-        for(int i = 1 ; i<r ; i++){
-            for(int j = 0 ; j < c ; j++){
-                if(m[i][j]==1){
-                    curRow[j]+=1;
+    public int maxArea(int arr[][], int n, int m) {
+        int maxA = 0;
+        int curRow[] = new int[m];
+        
+        for(int[] row : arr){
+            for(int i = 0 ; i < m ; i++){
+                if(row[i]==0){
+                    curRow[i] = 0;
                 }else{
-                    curRow[j]=0;
+                    curRow[i]++;
                 }
             }
-            int curAns = maxHistogram(curRow);
-            maxAns= Math.max(maxAns,curAns);
+            maxA = Math.max(maxA,largestRectangleArea(curRow));
         }
         
-        return maxAns;
+        return maxA;
     }
-    static int maxHistogram(int arr[]){
-        int ps[] = new int[arr.length];
-        int ns[] = new int[arr.length];
-        ps = ps(arr);
-        ns = ns(arr);
-        int ans = 0;
-        for(int i = 0 ; i < arr.length ; i++){
-            if(ns[i]==-1){
-                ns[i]=arr.length;
-            }
-            int width = ns[i]-ps[i]-1;
-            ans = Math.max(ans,arr[i]*width);
-        }
+    public int largestRectangleArea(int[] heights) {
+        int n = heights.length;
         
-        return ans;
-    }
-    static int[] ps(int arr[]){
+        int left[] = new int[n];
+        int right[] = new int[n];
+        
+        //   O(n*n)             ************************************
+        // left[0] = 0;
+        // right[n-1] = n-1;
+        // for(int i = 0; i < n ; i++){
+        //     int j = i-1;
+        //     while(j>=0 && heights[j]>=heights[i]){
+        //         j--;
+        //     }
+        //     left[i] = j+1;
+        //     j = i+1;
+        //     while(j<=n-1 && heights[j]>=heights[i]){
+        //         j++;
+        //     }
+        //     right[i] = j-1;
+        // }
+        
+        //***********************************************************
+        
+        
         Stack<Integer> s = new Stack<>();
-        int res[] = new int[arr.length];
-        for(int i = 0 ; i < arr.length ; i++){
-            while(!s.isEmpty() && arr[s.peek()]>=arr[i]){
+        
+        for(int i = 0; i<n ; i++){
+            while(!s.isEmpty() && heights[s.peek()]>=heights[i]){
                 s.pop();
             }
+            
             if(s.isEmpty()){
-                res[i] = -1;
+                left[i] = 0;
             }else{
-                res[i] = s.peek();
+                left[i] = s.peek()+1;
             }
+            
             s.push(i);
         }
         
-        return res;
-    }
-    static int[] ns(int arr[]){
-        Stack<Integer> s = new Stack<>();
-        int res[] = new int[arr.length];
-        for(int i = arr.length-1 ; i >= 0 ; i--){
-            while(!s.isEmpty() && arr[s.peek()]>=arr[i]){
+        
+        while(!s.isEmpty()) s.pop();
+        
+        
+        for(int i = n-1; i>=0 ; i--){
+            while(!s.isEmpty() && heights[s.peek()]>=heights[i]){
                 s.pop();
             }
+            
             if(s.isEmpty()){
-                res[i] = -1;
+                right[i] = n-1;
             }else{
-                res[i] = s.peek();
+                right[i] = s.peek()-1;
             }
+            
             s.push(i);
         }
         
-        return res;
+        int area = 0;
+        
+        for(int i = 0 ; i < n ; i++){
+            int width = right[i]-left[i]+1;
+            area = Math.max(area,width*heights[i]);
+        }
+        
+        return area;
+        
+        
+        
+        //***********************************************************
+        
+        
+//         Stack<Integer> s = new Stack<>();
+//         int maxA = 0;
+        
+//         for(int i = 0 ; i <= n; i++){
+//             while(!s.isEmpty()&& (i==n || heights[s.peek()]>=heights[i]) ){
+//                 int h = heights[s.pop()];
+//                 int width;
+//                 if(s.isEmpty()){
+//                     width = i;
+//                 }else{
+//                     width = (i-s.peek()-1);
+//                 }
+//                 maxA = Math.max(maxA,h*width);
+//             }
+//             s.push(i);
+//         }
+        
+//         return maxA;
+        
     }
 }
