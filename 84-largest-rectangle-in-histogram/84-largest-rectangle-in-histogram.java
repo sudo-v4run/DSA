@@ -24,72 +24,72 @@ class Solution {
         //********************************************************
         
         
-//         Stack<Integer> s = new Stack<>();
+        Stack<Integer> s = new Stack<>();
         
-//         for(int i = 0; i<n ; i++){
-//             while(!s.isEmpty() && heights[s.peek()]>=heights[i]){
-//                 s.pop();
-//             }
+        for(int i = 0; i<n ; i++){
+            while(!s.isEmpty() && heights[s.peek()]>=heights[i]){
+                s.pop();
+            }
             
-//             if(s.isEmpty()){
-//                 left[i] = 0;
-//             }else{
-//                 left[i] = s.peek()+1;
-//             }
+            if(s.isEmpty()){
+                left[i] = 0;
+            }else{
+                left[i] = s.peek()+1;
+            }
             
-//             s.push(i);
-//         }
+            s.push(i);
+        }
         
         
-//         while(!s.isEmpty()) s.pop();
+        while(!s.isEmpty()) s.pop();
         
         
-//         for(int i = n-1; i>=0 ; i--){
-//             while(!s.isEmpty() && heights[s.peek()]>=heights[i]){
-//                 s.pop();
-//             }
+        for(int i = n-1; i>=0 ; i--){
+            while(!s.isEmpty() && heights[s.peek()]>=heights[i]){
+                s.pop();
+            }
             
-//             if(s.isEmpty()){
-//                 right[i] = n-1;
-//             }else{
-//                 right[i] = s.peek()-1;
-//             }
+            if(s.isEmpty()){
+                right[i] = n-1;
+            }else{
+                right[i] = s.peek()-1;
+            }
             
-//             s.push(i);
-//         }
+            s.push(i);
+        }
         
-//         int area = 0;
+        int area = 0;
         
-//         for(int i = 0 ; i < n ; i++){
-//             int width = right[i]-left[i]+1;
-//             area = Math.max(area,width*heights[i]);
-//         }
+        for(int i = 0 ; i < n ; i++){
+            int width = right[i]-left[i]+1;
+            area = Math.max(area,width*heights[i]);
+        }
         
-//         return area;
+        return area;
         
         
         
         //****************************************************************
         
         
-        Stack<Integer> s = new Stack<>();
-        int maxA = 0;
+//         Stack<Integer> s = new Stack<>();
+//         int maxA = 0;
         
-        for(int i = 0 ; i <= n; i++){
-            while(!s.isEmpty()&& (i==n || heights[s.peek()]>=heights[i]) ){
-                int h = heights[s.pop()];
-                int width;
-                if(s.isEmpty()){
-                    width = i;
-                }else{
-                    width = (i-s.peek()-1);
-                }
-                maxA = Math.max(maxA,h*width);
-            }
-            s.push(i);
-        }
+//         for(int i = 0 ; i <= n; i++){
+//             while(!s.isEmpty()&& (i==n || heights[s.peek()]>=heights[i]) ){
+//                 int h = heights[s.pop()];
+//                 int width;
+//                 if(s.isEmpty()){
+//                     width = i;
+//                 }else{
+//                     width = (i-s.peek()-1);
+//                 }
+//                 maxA = Math.max(maxA,h*width);
+//             }
+//             s.push(i);
+//         }
         
-        return maxA;
+//         return maxA;
         
     }
 }
