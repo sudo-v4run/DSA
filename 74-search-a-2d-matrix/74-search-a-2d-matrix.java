@@ -3,30 +3,50 @@ class Solution {
         int m = matrix.length;
         int n = matrix[0].length;
         
-        int mc = n/2;
+        int s = 0;
+        int e = m*n-1;
         
-        if(m==1){
-            return bs(matrix,0,target,mc);
-        }
-        
-        int rs = 0;
-        int re = m-1;
-        
-        while(!(rs+1==re)){
-            int mr = rs+(re-rs)/2;
+        while(s<=e){
+            int mid = s+(e-s)/2;
             
-            if(matrix[mr][mc]==target)
+            if(target==matrix[mid/n][mid%n])
                 return true;
-            if(target<matrix[mr][mc]){
-                re = mr;
+            
+            if(target<matrix[mid/n][mid%n]){
+                e = mid-1;
             }else{
-                rs = mr;
+                s = mid+1;
             }
         }
         
-        if(bs(matrix,rs,target,mc))
-            return true;
-        return bs(matrix,re,target,mc);
+        return false;
+        
+        
+        
+//         int mc = n/2;
+        
+//         if(m==1){
+//             return bs(matrix,0,target,mc);
+//         }
+        
+//         int rs = 0;
+//         int re = m-1;
+        
+//         while(!(rs+1==re)){
+//             int mr = rs+(re-rs)/2;
+            
+//             if(matrix[mr][mc]==target)
+//                 return true;
+//             if(target<matrix[mr][mc]){
+//                 re = mr;
+//             }else{
+//                 rs = mr;
+//             }
+//         }
+        
+//         if(bs(matrix,rs,target,mc))
+//             return true;
+//         return bs(matrix,re,target,mc);
         
         
     }
