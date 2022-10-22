@@ -1,5 +1,5 @@
 # Max rectangle
-## Medium
+## Hard
 <div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a binary matrix <strong>M </strong>of size <strong>n X m</strong>. Find the maximum area of a rectangle formed only of <strong>1s</strong> in the given matrix. </span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
