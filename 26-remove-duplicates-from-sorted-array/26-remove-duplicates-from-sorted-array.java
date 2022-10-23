@@ -6,11 +6,8 @@ class Solution {
         
         while(j<arr.length){
             if(arr[i]!=arr[j]){
-                int temp = arr[i+1];
                 arr[i+1] = arr[j];
-                arr[j] = temp;
-                i++;
-                j++;
+                i++;j++;
                 k++;
             }else{
                 j++;
