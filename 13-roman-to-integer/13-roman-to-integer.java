@@ -20,7 +20,7 @@ class Solution {
                 ans+=10;
             }else if(ch=='L'){
                 ans+=50;
-            }else if(ch=='C'){  //"MCMXCIV" 
+            }else if(ch=='C'){
                 ans+=100;
             }else if(ch=='D'){
                 ans+=500;
