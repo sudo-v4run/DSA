@@ -13,7 +13,7 @@ class Solution {
                 ans[1] = i;
                 return ans;
             }
-            hm.put(nums[i],i);
+            else hm.put(nums[i],i);
         }
         return ans;
         
