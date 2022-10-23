@@ -11,10 +11,9 @@ class Solution {
             if(hm.containsKey(target-nums[i])){
                 ans[0] = hm.get(target-nums[i]);
                 ans[1] = i;
-                break;
-            }else{
-                hm.put(nums[i],i);
+                return ans;
             }
+            hm.put(nums[i],i);
         }
         return ans;
         
