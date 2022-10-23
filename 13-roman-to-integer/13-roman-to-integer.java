@@ -10,7 +10,7 @@ class Solution {
         s = s.replace("CD","CCCC");
         s = s.replace("CM","DCCCC");
         
-        for(int i = s.length()-1 ; i >=0 ; i--){
+        for( int i = s.length()-1 ; i >=0 ; i-- ){
             char ch = s.charAt(i);
             if(ch=='I'){
                 ans+=1;
