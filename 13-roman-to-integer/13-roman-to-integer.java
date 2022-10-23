@@ -27,17 +27,6 @@ class Solution {
             }else{
                 ans+=1000;
             }
-            
-            // if(i>0 && ch != s.charAt(i-1)){
-            //     char last = s.charAt(i-1);
-            //     if(last=='I'){
-            //         ans-=1;
-            //     }else if(last=='X'){
-            //         ans-=10;
-            //     }else if(last=='C'){
-            //         ans-=100;
-            //     }
-            // }
         }
         
         return ans;
