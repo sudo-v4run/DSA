@@ -1,21 +1,50 @@
 class Solution {
     public int climbStairs(int n) {
         
-        //Tabulation....
+        //Tabulation.... Space Optimized....
         
-        int dp[] = new int[n];
+        int cur = 1;
+        if(n==1)
+            return cur;
         
-        dp[0] = 1;
-        if(n>1) dp[1] = 2;
+        int prev = 2;
+        if(n==2)
+            return prev;
+        
+        int secondPrev = 1;
         
         for(int index = 2 ; index < n ; index++){
-            int oneStep = dp[index-1];
-            int  twoSteps = dp[index-2];
+            int oneStep = prev;
+            int  twoSteps = secondPrev;
 
-            dp[index] = oneStep+twoSteps;
+            cur = oneStep+twoSteps;
+            
+            secondPrev = prev;
+            prev = cur;
         }
         
-        return dp[n-1];
+        return cur;
+        
+        
+        
+        
+        
+        
+        //Tabulation....
+        
+//         int dp[] = new int[n];
+        
+//         dp[0] = 1;
+//         if(n>1) dp[1] = 2;
+        
+//         for(int index = 2 ; index < n ; index++){
+//             int oneStep = dp[index-1];
+//             int  twoSteps = dp[index-2];
+
+//             dp[index] = oneStep+twoSteps;
+//         }
+        
+//         return dp[n-1];
         
         
         
