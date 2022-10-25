@@ -6,8 +6,7 @@ class Solution {
         int dp[] = new int[n];
         
         dp[0] = 1;
-        if(n>1)
-            dp[1] = 2;
+        if(n>1) dp[1] = 2;
         
         for(int index = 2 ; index < n ; index++){
             int oneStep = dp[index-1];
