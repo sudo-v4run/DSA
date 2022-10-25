@@ -1,0 +1,21 @@
+import java.math.BigInteger;
+class Solution {
+    public int[] plusOne(int[] digits) {
+        String ins = Arrays.toString(digits).replaceAll("\\[|\\]|,|\\s", "");
+        
+        BigInteger ans = new BigInteger(ins);
+        BigInteger one = new BigInteger("1");
+        ans = ans.add(one);
+        
+        ins = String.valueOf(ans);
+        
+        char arr[] = ins.toCharArray();
+        int res[] = new int[arr.length];
+        
+        for(int i = 0 ; i < arr.length ; i++){
+            res[i] = Integer.parseInt(arr[i]+"");
+        }
+        
+        return res;
+    }
+}
