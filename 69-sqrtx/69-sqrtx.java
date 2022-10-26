@@ -1,11 +1,11 @@
 class Solution {
     public int mySqrt(int x) {
         
-        if(x==0)
-            return 0;
+        if(x<=1)
+            return x;
         
         int s = 1;
-        int e = x;
+        int e = x/2;
         
         int ans = -1;
         
