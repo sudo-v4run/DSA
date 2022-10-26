@@ -30,17 +30,13 @@ class Solution {
         TreeNode cur = root;
         
         while(cur!=null || !s.isEmpty()){
-            if(cur!=null){
+            while(cur!=null){
                 s.push(cur);
                 cur = cur.left;
-            }else{
-                if(s.isEmpty())
-                    break;
-                
-                cur = s.pop();
-                res.add(cur.val);
-                cur = cur.right;
             }
+            cur = s.pop();
+            res.add(cur.val);
+            cur = cur.right;
         }
         
         return res;
