@@ -15,11 +15,42 @@
  */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
+        
         List<Integer> res = new ArrayList<Integer>();
         
-        inOrder(root,res);
+//         inOrder(root,res);
+        
+//         return res;
+        
+        
+        // Morris ....
+        
+        TreeNode cur = root;
+        
+        while(cur!=null){
+            if(cur.left == null){
+                res.add(cur.val);
+                cur = cur.right;
+            }else{
+            TreeNode temp = cur.left;
+            while(temp.right!=null && temp.right != cur){
+                temp = temp.right;
+            }
+            if(temp.right==cur){
+                temp.right = null;
+                res.add(cur.val);
+                cur = cur.right;
+            }else{
+                temp.right = cur;
+                cur = cur.left;
+            }
+            }
+            
+        }
         
         return res;
+        
+        
     }
     public static void inOrder(TreeNode root,List<Integer> res){
         if(root == null)
