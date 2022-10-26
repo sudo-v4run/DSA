@@ -72,8 +72,6 @@ class Solution {
         
         return res;
         
-        
-        
     }
     public static void inOrder(TreeNode root,List<Integer> res){
         if(root == null)
