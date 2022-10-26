@@ -12,6 +12,9 @@ class Solution {
         while(s<=e){
             int m = s+(e-s)/2;
             
+            if(m==x/m)
+                return m;
+            
             if(m <= x/m){
                 ans = m;
                 s = m+1;
