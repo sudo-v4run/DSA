@@ -25,11 +25,9 @@ class Solution {
         
         if (x == 0) return 0;
         int i = 1;
-        while(i*i <= x){
-            if (i <= x / i && (i + 1) > x / (i + 1))
-                return i;
+        while(i <= x/i) 
             i++;
-        }
-        return -1;
+        
+        return i-1;
     }
 }
