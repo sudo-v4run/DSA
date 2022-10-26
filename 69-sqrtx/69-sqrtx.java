@@ -9,20 +9,18 @@ class Solution {
         
         int ans = -1;
         
-        while(s<e){
-            int m = (s+(e-s)/2)+1;
+        while(s<=e){
+            int m = s+(e-s)/2;
             
-            if(m==x/m)
-                return m;
-            
-            if(m < x/m){
-                s = m;
+            if(m <= x/m){
+                ans = m;
+                s = m+1;
             }else{
                 e = m-1;
             }
         }
         
-        return s;
+        return ans;
         
         
         
