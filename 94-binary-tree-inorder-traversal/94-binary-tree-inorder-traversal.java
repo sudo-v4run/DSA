@@ -23,20 +23,21 @@ class Solution {
 //         return res;
         
         
-        // Iterative ... Using Stack ...
+        // Iterative ... Using Stack ... 
         
         Stack<TreeNode> s = new Stack<>();
         
         TreeNode cur = root;
         
         while(cur!=null || !s.isEmpty()){
-            while(cur!=null){
+            if(cur!=null){
                 s.push(cur);
                 cur = cur.left;
+            }else{
+                cur = s.pop();
+                res.add(cur.val);
+                cur = cur.right;
             }
-            cur = s.pop();
-            res.add(cur.val);
-            cur = cur.right;
         }
         
         return res;
