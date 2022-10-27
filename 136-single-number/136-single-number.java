@@ -9,11 +9,12 @@ class Solution {
                 hs.remove(nums[i]);
             }
         }
-        
+        int ans = 0;
         for(int e : hs){
-            return e;
+            ans = e;
+            break;
         }
         
-        return 0;
+        return ans;
     }
 }
