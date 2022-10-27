@@ -4,7 +4,7 @@ class Solution {
         int maxP = 0;
         int minSoFar = prices[0];
         
-        for(int i = 1 ; i < prices.length ; i++){
+        for(int i = 0 ; i < prices.length ; i++){
             minSoFar = Math.min(minSoFar,prices[i]);
             
             maxP = Math.max(maxP,prices[i]-minSoFar);
