@@ -21,7 +21,7 @@ public class Solution {
             res = res << 1;
             
             if((n&1)==1){
-                res = res | 1;
+                res++;          // or res = res | 1
             }
             
             n = n >> 1;
