@@ -15,7 +15,6 @@ public class Solution {
         return res;
         
         
-        
 //         int res = 0;
         
 //         for(int i = 0 ; i <= 31 ; i++){
@@ -24,7 +23,6 @@ public class Solution {
 //         }
         
 //         return res;
-        
         
     }
 }
