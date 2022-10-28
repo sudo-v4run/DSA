@@ -15,19 +15,14 @@ public class Solution {
         ListNode a = headA;
         ListNode b = headB;
         
-        while(true){
-            
-            if(a==null && b==null){
-                return null;
-            }
-            if(a==b){
-                return a;
-            }
+        while(a!=b){
             
             a = a==null?headB:a.next;
             b = b==null?headA:b.next;
             
         }
+        
+        return a;
         
            
         
