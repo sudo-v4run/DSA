@@ -2,12 +2,17 @@ public class Solution {
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {
         
- int ones = 0;
-    	while(n!=0) {
-    		ones = ones + (n & 1);
-    		n = n>>>1;
-    	}
-    	return ones;
+        
+        int cnt = 0;
+        
+        while(n!=0){
+            
+            cnt = cnt + (n&1);     // or (n%2)
+            
+            n = n>>>1;             // >> preserves sign bit but >>> does not 
+        }
+        
+        return cnt;
         
         
         
@@ -20,7 +25,7 @@ public class Solution {
 //                 cnt++;
 //             }
             
-//             n = n>>1;
+//             n = n>>>1;           // >> preserves sign bit but >>> does not
 //         }
         
 //         return cnt;
