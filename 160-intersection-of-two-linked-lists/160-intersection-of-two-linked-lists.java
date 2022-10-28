@@ -16,6 +16,7 @@ public class Solution {
         ListNode b = headB;
         
         while(true){
+            
             if(a==null && b==null){
                 return null;
             }
@@ -25,6 +26,7 @@ public class Solution {
             
             a = a==null?headB:a.next;
             b = b==null?headA:b.next;
+            
         }
         
         
