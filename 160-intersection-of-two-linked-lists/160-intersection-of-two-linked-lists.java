@@ -88,6 +88,7 @@ public class Solution {
 //         }
 //         return null;
     }
+    
     public static int length(ListNode node){
         int len = 0;
         while(node!=null){
@@ -97,4 +98,5 @@ public class Solution {
         
         return len;
     }
+    
 }
