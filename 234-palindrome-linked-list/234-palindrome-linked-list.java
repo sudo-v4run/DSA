@@ -10,10 +10,16 @@
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
+        
         ArrayList<Integer> res = new ArrayList<>();
+        
+        // String res = "";
         
         while(head!=null){
             res.add(head.val);
+            
+            // res+=String.valueOf(head.val);
+            
             head = head.next;
         }
         
