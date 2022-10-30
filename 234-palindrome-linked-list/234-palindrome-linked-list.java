@@ -30,10 +30,14 @@ class Solution {
             slow = temp;
         }
         
+        ListNode nextNode = null;
         while(prev!=null){
+            ListNode temp = prev.next;
             if(prev.val!=head.val)
                 return false;
-            prev = prev.next;
+            prev.next = nextNode;
+            nextNode = prev;
+            prev = temp;
             head = head.next;
         }
         
