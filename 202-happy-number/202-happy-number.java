@@ -1,18 +1,36 @@
 class Solution {
     public boolean isHappy(int n) {
         
-        HashSet<Integer> hs = new HashSet<>();
+        int slow = n;
+        int fast = n;
         
-        while(!hs.contains(n)){
-            hs.add(n);
-            n = sumOfDigits(n);
-            
-            if(n==1){
-                return true;
-            }
+        do{
+            slow = sumOfDigits(slow);
+            fast = sumOfDigits(fast);
+            fast = sumOfDigits(fast);  
+        }while(slow!=fast);
+        
+        if(slow==1){
+            return true;
         }
         
         return false;
+        
+        
+        
+        
+//         HashSet<Integer> hs = new HashSet<>();
+        
+//         while(!hs.contains(n)){
+//             hs.add(n);
+//             n = sumOfDigits(n);
+            
+//             if(n==1){
+//                 return true;
+//             }
+//         }
+        
+//         return false;
         
         
         
