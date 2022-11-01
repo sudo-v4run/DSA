@@ -10,9 +10,7 @@ class Solution {
         
         return xor ^ i;
         
-        
-        
-        
+             
 //         int n = nums.length;
 //         int Nsum  = (n*(n+1)) / 2;
 //         int totSum = 0;
