@@ -13,7 +13,7 @@ class Solution {
         
                      
 
-//         int Nsum  = (n*(n+1)) / 2;
+//         int Nsum  = (n*(n+1))/2;
         
 //         for(int i : nums){
 //             Nsum-=i;
@@ -24,7 +24,7 @@ class Solution {
         
         
 
-//         int Nsum  = (n*(n+1)) / 2;
+//         int Nsum  = (n*(n+1))/2;
 //         int totSum = 0;
         
 //         for(int i : nums){
