@@ -14,30 +14,16 @@ class Solution {
         ListNode head = new ListNode();
         ListNode ans = head;
         
-        while(l1!=null && l2!=null){
-            int sum = l1.val + l2.val+carry;
+        while(l1!=null || l2!=null){
+            int sum = l1!=null && l2==null?l1.val: l1==null && l2!=null ? l2.val : l1==null && l2==null? 0 :l1.val+l2.val; 
+            sum+=carry;
             head.next = new ListNode((sum%10));
-            carry = ((sum/10)%10);
+            carry = (sum/10);
             head = head.next;
-            l1 = l1.next;
-            l2 = l2.next;
+            l1 = l1==null?l1:l1.next;
+            l2 = l2==null?l2:l2.next;
         }
-        
-        while(l1!=null){
-            int sum = l1.val+carry;
-            head.next = new ListNode((sum%10));
-            carry = ((sum/10)%10);
-            head = head.next;
-            l1 = l1.next;
-        }
-        
-        while(l2!=null){
-            int sum = l2.val+carry;
-            head.next = new ListNode((sum%10));
-            carry = ((sum/10)%10);
-            head = head.next;
-            l2 = l2.next;
-        }
+    
         if(carry!=0){
             head.next = new ListNode(carry);
         }
