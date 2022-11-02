@@ -2,20 +2,17 @@ class Solution {
     public List<String> fizzBuzz(int n) {
         List<String> res = new ArrayList<>();
         
-        while(n!=0){
-            if(n%3==0 && n%5==0){
+        for(int i = 0 ; i < n ; i++){
+            if((i+1)%3==0 && (i+1)%5==0){
                 res.add("FizzBuzz");
-            }else if(n%3==0){
+            }else if((i+1)%3==0){
                 res.add("Fizz");
-            }else if(n%5==0){
+            }else if((i+1)%5==0){
                 res.add("Buzz");
             }else{
-                res.add(String.valueOf(n));
+                res.add(String.valueOf(i+1));
             }
-            n--;
         }
-        
-        Collections.reverse(res);
         
         return res;
     }
