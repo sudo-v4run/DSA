@@ -1,5 +1,5 @@
 class Solution {
-    
+
     static String res = "";
     static int resLen = 0;
     
