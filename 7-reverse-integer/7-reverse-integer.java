@@ -1,6 +1,6 @@
 class Solution {
-    
     public int reverse(int x) {
+        
         int rev = 0;
         int prev = 0;
         
