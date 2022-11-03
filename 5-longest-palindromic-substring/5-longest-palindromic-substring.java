@@ -4,6 +4,7 @@ class Solution {
     static int resLen = 0;
     
     public String longestPalindrome(String s){
+        
         int n = s.length();
         res = "";
         resLen = 0;
@@ -25,6 +26,7 @@ class Solution {
         return res;
     }
     public static void pali(String s , int l , int r){
+        
         int n =s.length();
         
         while(l>=0 && r<n && s.charAt(l)==s.charAt(r)){
@@ -35,6 +37,7 @@ class Solution {
             l--;
             r++;
         }
+        
     }
     
     
