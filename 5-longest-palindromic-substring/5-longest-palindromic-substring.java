@@ -24,7 +24,6 @@ class Solution {
         
         return res;
     }
-    
     public static void pali(String s , int l , int r){
         int n =s.length();
         
