@@ -4,13 +4,12 @@ class Solution {
     static int resLen = 0;
     
     public String longestPalindrome(String s){
-        
         int n = s.length();
-        
         res = "";
         resLen = 0;
         
         for(int i = 0 ; i < n ; i++){
+            
             // Odd...
             int l = i;
             int r = i;
@@ -20,12 +19,12 @@ class Solution {
             l = i;
             r = i+1;
             pali(s,l,r);
+            
         }
         
         return res;
     }
     public static void pali(String s , int l , int r){
-        
         int n =s.length();
         
         while(l>=0 && r<n && s.charAt(l)==s.charAt(r)){
