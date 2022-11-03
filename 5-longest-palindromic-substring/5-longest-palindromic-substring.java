@@ -22,7 +22,6 @@ class Solution {
     }
     public static void pali(String s , int l , int r){
         int n =s.length();
-        
         while(l>=0 && r<n && s.charAt(l)==s.charAt(r)){
             if(r-l+1>resLen){
                 resLen = r-l+1;
