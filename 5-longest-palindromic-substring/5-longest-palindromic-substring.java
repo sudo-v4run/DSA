@@ -5,22 +5,21 @@ class Solution {
     
     public String longestPalindrome(String s){
         int n = s.length();
-        
         res = "";
         resLen = 0;
         
-        
         for(int i = 0 ; i < n ; i++){
-            int l = i;
-            int r = i;
             
             // Odd...
+            int l = i;
+            int r = i;
             pali(s,l,r);
             
             // Even...
             l = i;
             r = i+1;
             pali(s,l,r);
+            
         }
         
         return res;
