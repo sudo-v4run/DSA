@@ -7,7 +7,6 @@ class Solution {
         resLen = 0;
         
         for(int i = 0 ; i < n ; i++){
-            
             // Odd...
             int l = i;
             int r = i;
@@ -17,7 +16,6 @@ class Solution {
             l = i;
             r = i+1;
             pali(s,l,r);
-            
         }
         
         return res;
