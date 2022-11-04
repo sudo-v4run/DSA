@@ -1,12 +1,13 @@
 class Solution {
     public int maxArea(int[] heights) {
         int n = heights.length;
+        
         int l = 0;
         int r = n-1;
         
         int maxWater = 0;
         
-        while(l<=r){
+        while(l<r){
             int w = r-l;
             int h = Math.min(heights[l],heights[r]);
             
