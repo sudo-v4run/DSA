@@ -1,5 +1,6 @@
 class Solution {
     public int maxArea(int[] heights) {
+        
         int n = heights.length;
         
         int l = 0;
