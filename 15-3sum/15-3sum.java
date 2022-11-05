@@ -6,6 +6,9 @@ class Solution {
         int n = nums.length;
         
         for(int i = 0 ; i < n ; i++){
+            if(i>0 && nums[i]==nums[i-1])
+                continue;
+            
             int target = -nums[i];
             
             int l = i+1 ;
@@ -31,10 +34,6 @@ class Solution {
                 }
                 
             }
-            
-            while((i+1)<n && nums[i+1]==nums[i])
-                i++;
-            
         }
         
         return res;
