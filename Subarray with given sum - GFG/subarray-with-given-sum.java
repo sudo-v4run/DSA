@@ -35,24 +35,29 @@ class Main{
 }
 // } Driver Code Ends
 
-
 class Solution
 {
     static ArrayList<Integer> subarraySum(int[] arr, int n, int s) 
     {
-        ArrayList<Integer> res = new ArrayList<>();
-        int l = 0;
-        int sum = arr[l];
-        for(int r = 1 ; r < n ;r++){
-            sum+=arr[r];
-            while(sum>s && l<r){
-                sum-=arr[l];
-                l++;
-            }
-            if(sum==s){
-                res.add(l+1);
-                res.add(r+1);
-                return res;
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        int start = 0;
+        int curSum = 0;
+        
+        for(int i = 0 ; i < n ; i++){
+            curSum += arr[i];
+            
+            if(curSum>=s){
+                
+                while(curSum>s && start<i){
+                    curSum-=arr[start];
+                    start++;
+                }
+                
+                if(curSum==s){
+                    res.add(start+1);
+                    res.add(i+1);
+                    return res;
+                }
             }
         }
         
