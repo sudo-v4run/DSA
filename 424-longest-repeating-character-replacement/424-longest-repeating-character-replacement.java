@@ -4,14 +4,18 @@ class Solution {
         int n = s.length();
         HashMap<Character,Integer> hm = new HashMap<>();
         int maxL = 0;
+        int maxF = 0;
         
         for(int r = 0 ; r < n ; r++){
             char ch = s.charAt(r);
             hm.put(ch,hm.getOrDefault(ch,0)+1);
-            int maxF = 0;
-            for(int vals : hm.values()){
-                maxF = Math.max(maxF,vals);
-            }
+            
+            // int maxF = 0;
+            // for(int vals : hm.values()){
+            //     maxF = Math.max(maxF,vals);
+            // }
+            
+            maxF = Math.max(maxF,hm.get(ch));
             
             while((r-l+1)-maxF>k){
                 hm.put(s.charAt(l),hm.get(s.charAt(l))-1);
