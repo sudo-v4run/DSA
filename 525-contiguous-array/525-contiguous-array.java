@@ -1,7 +1,9 @@
 class Solution {
     public int findMaxLength(int[] nums) {
+        
         HashMap<Integer,Integer> hm = new HashMap<>();
         hm.put(0,-1);
+        
         int maxL = 0;
         int n = nums.length;
         int curSum = 0;
