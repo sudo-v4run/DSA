@@ -13,15 +13,15 @@ class Solution {
             return;
         }
         
-        if(close<open){
+        if(close<open || open<0 || close<0){
             return;
         }
         
-        if(open>0){
+        // if(open>0){
             f(ans+'(',open-1,close,res);
-        }
-        if(close>0){
+        // }
+        // if(close>0){
             f(ans+')',open,close-1,res);
-        }
+        // }
     }
 }
