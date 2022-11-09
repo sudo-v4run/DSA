@@ -19,10 +19,6 @@ class Solution {
             sz++;
         }
         
-        if(sz==1){
-            return null;
-        }
-        
         int frmStrt = sz-n;
         
         if(frmStrt==0){
