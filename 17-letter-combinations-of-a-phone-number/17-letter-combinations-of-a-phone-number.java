@@ -1,7 +1,7 @@
 class Solution {
     public List<String> letterCombinations(String digits) {
-        // HashMap<Character,String> hm = new HashMap<>();
         
+        // HashMap<Character,String> hm = new HashMap<>();
         String[] arr = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
         
         List<String> res = new ArrayList<>();
@@ -31,6 +31,7 @@ class Solution {
             res.add(ans);
             return;
         }
+        
         char num = s.charAt(index);
         String chars =  arr[Integer.parseInt(String.valueOf(num))];
         
@@ -39,5 +40,6 @@ class Solution {
             f(index+1,s,ans,res,arr);
             ans = ans.substring(0,ans.length()-1);
         }
+        
     }
 }
