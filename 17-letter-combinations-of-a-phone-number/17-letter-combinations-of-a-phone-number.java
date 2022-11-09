@@ -33,7 +33,7 @@ class Solution {
         }
         
         char num = s.charAt(index);
-        String chars = arr[Integer.parseInt(String.valueOf(num))];
+        String chars = arr[Character.getNumericValue(num)];
         
         for(char ch : chars.toCharArray()){
             ans+=ch;
