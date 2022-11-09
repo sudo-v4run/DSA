@@ -7,6 +7,7 @@ class Solution {
         return res;
     }
     public static void f(String ans,int open, int close, List<String> res){
+        
         if(close<open){
             return;
         }
@@ -19,8 +20,10 @@ class Solution {
         if(open>0){
             f(ans+'(',open-1,close,res);
         }
+        
         if(close>0){
             f(ans+')',open,close-1,res);
         }
+        
     }
 }
