@@ -25,5 +25,6 @@ class Solution {
         if(close>0){
             f(ans+')',open,close-1,res);
         }
+        
     }
 }
