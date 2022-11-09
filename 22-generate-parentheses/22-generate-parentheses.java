@@ -1,5 +1,6 @@
 class Solution {
     public List<String> generateParenthesis(int n) {
+        
         List<String> res = new ArrayList<>();
         
         f("",n,n,res);
@@ -24,6 +25,5 @@ class Solution {
         if(close>0){
             f(ans+')',open,close-1,res);
         }
-        
     }
 }
