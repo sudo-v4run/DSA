@@ -34,6 +34,7 @@ class Solution {
         
         char num = s.charAt(index);
         String chars = arr[(s.charAt(index) - '0')];
+                        // or  arr[Character.getNumericValue(num)];
         
         for(char ch : chars.toCharArray()){
             ans+=ch;
