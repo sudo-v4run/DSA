@@ -17,11 +17,8 @@ class Solution {
             return;
         }
         
-        // if(open>0){
-            f(ans+'(',open-1,close,res);
-        // }
-        // if(close>0){
-            f(ans+')',open,close-1,res);
-        // }
+        f(ans+'(',open-1,close,res);
+        
+        f(ans+')',open,close-1,res);
     }
 }
