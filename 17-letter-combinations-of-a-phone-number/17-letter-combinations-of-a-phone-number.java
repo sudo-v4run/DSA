@@ -42,6 +42,5 @@ class Solution {
             f(index+1,s,ans,res,arr);
             ans = ans.substring(0,ans.length()-1);
         }
-        
     }
 }
