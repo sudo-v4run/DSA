@@ -16,8 +16,6 @@ class Solution {
         // hm.put('8',"tuv");
         // hm.put('9',"wxyz");
         
-        int n = digits.length();
-        
         if(digits.equals(""))
             return res;
         
