@@ -3,14 +3,19 @@ class Solution {
         int n = strs.length;
         HashMap<String,List<String>> hm = new HashMap<>();
         
-        for(int i = 0 ; i < n ; i++){
+        // Using Arrays.sort() - TC: O(n.mlongm)
+        // Using freq Array - TC : O(n.m) 
+        
+        for(String cur : strs){
+            char charr[] = cur.toCharArray();
+            Arrays.sort(charr);
             
-            String cur = strs[i];
-            char cnt[] = new char[26];
-            for(char ch : cur.toCharArray()){
-                cnt[ch-'a']++;
-            }
-            String keyS = String.valueOf(cnt);
+            // char charr[] = new char[26];
+            // for(char ch : cur.toCharArray()){
+            //     charr[ch-'a']++;
+            // }
+            
+            String keyS = String.valueOf(charr);
             
             if(!hm.containsKey(keyS)){
                 hm.put(keyS,new ArrayList<String>());
