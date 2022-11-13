@@ -1,5 +1,7 @@
 class Solution {
     public int strStr(String haystack, String needle) {
+        // KMP Algo... TC : O(m+n) ...
+        
         int lps[] = computeLPS(needle);
         return match(haystack,needle,lps);
     }
