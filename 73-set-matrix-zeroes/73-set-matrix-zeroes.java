@@ -3,12 +3,12 @@ class Solution {
         int m = matrix.length;
         int n = matrix[0].length;
         
-        boolean c0is0 = false;
+        boolean zeroInC0 = false;
         
         for(int i = 0 ; i < m ; i++){
             
             if(matrix[i][0] == 0)
-                c0is0 = true;
+                zeroInC0 = true;
             
             for(int j = 1 ; j < n ; j++){
                 
@@ -28,7 +28,7 @@ class Solution {
                 }
                 
             }
-            if(c0is0){
+            if(zeroInC0){
                 matrix[i][0] = 0;
             }
         }
