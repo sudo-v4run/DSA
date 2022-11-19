@@ -7,8 +7,10 @@ class Solution {
         
         for(int i = 0 ; i < m ; i++){
             for(int j = 0 ; j < n ; j++){
+                
                 if(f(i,j,0,board,word,vis))
                     return true;
+                
             }
         }
         
@@ -25,8 +27,6 @@ class Solution {
         
         if(vis[r][c]==1)
             return false;
-        
-        
         
         if(word.charAt(wordInd)!=board[r][c])
             return false;
