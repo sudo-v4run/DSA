@@ -2,41 +2,43 @@ class Solution {
     public int numDecodings(String s) {
         int n = s.length();
         
-        
         // Tabulation...
         
-//         int dp[] = new int[n+1];
+        int dp[] = new int[n+1];
         
-//         dp[n] = 1;
+        dp[n] = 1;
         
-//         for(int index = n-1; index>=0; index--){
+        for(int index = n-1; index>=0; index--){
             
-//             if(s.charAt(index)=='0'){
-//                 dp[index] = 0;
-//                 continue;
-//             }
+            if(s.charAt(index)=='0'){
+                dp[index] = 0;
+                continue;
+            }
             
-//             int take1digit = dp[index+1];
-//             int take2digits = 0;
-//             if(index+1 <= n-1 && ( (s.charAt(index)=='1') ||  
-//                 (s.charAt(index)=='2' && 
-//                  (s.charAt(index+1)>='0' && s.charAt(index+1)<='6') ) ) ){
+            int take1digit = dp[index+1];
+            int take2digits = 0;
+            if(index+1 <= n-1 && ( (s.charAt(index)=='1') ||  
+                (s.charAt(index)=='2' && 
+                 (s.charAt(index+1)>='0' && s.charAt(index+1)<='6') ) ) ){
 
-//                 take2digits = dp[index+2];
-//             }
+                take2digits = dp[index+2];
+            }
 
-//             dp[index] = take1digit+take2digits;
-//         }
+            dp[index] = take1digit+take2digits;
+        }
         
-//         return dp[0];
+        return dp[0];
+        
+        
+        
         
         // Memoization...
         
-        int dp[] = new int[n];
+//         int dp[] = new int[n];
         
-        Arrays.fill(dp,-1);
+//         Arrays.fill(dp,-1);
         
-        return f(0,s,dp);
+//         return f(0,s,dp);
     }
     public static int f(int index,String s,int dp[]){
         
