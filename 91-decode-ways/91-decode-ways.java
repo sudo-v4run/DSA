@@ -1,5 +1,6 @@
 class Solution {
     public int numDecodings(String s) {
+        
         int n = s.length();
         
         // Tabulation...
