@@ -16,60 +16,19 @@
 class Solution {
     public boolean isValidBST(TreeNode root) {
         
-        return isValidBSTUtil(root,Long.MIN_VALUE, Long.MAX_VALUE);
-        
+        return f(root,Long.MIN_VALUE,Long.MAX_VALUE);
     }
-    public static boolean isValidBSTUtil(TreeNode root,long minVal,long maxVal){
+    public static boolean f(TreeNode root,long left,long right){
+        
         if(root==null)
             return true;
         
-        if(root.val<=minVal || root.val >=maxVal)
+        if(root.val<=left || root.val>=right)
             return false;
         
-        return isValidBSTUtil(root.left,minVal,root.val)
-            && isValidBSTUtil(root.right,root.val,maxVal);
+        boolean leftBST = f(root.left,left,root.val);
+        boolean rightBST = f(root.right,root.val,right);
+        
+        return (leftBST&&rightBST);
     }
-    
-    
-    
-    
-    
-    // TreeNode pre = null;
-    // public boolean isValidBST(TreeNode root) {
-    //     if (root == null) return true;
-    //     if (!isValidBST(root.left)) return false;
-    //     if (pre != null && pre.val >= root.val) return false;
-    //     pre = root;
-    //     return isValidBST(root.right);
-    // }
-    
-    
-    
-    
-    
-    
-    
-//     static  TreeNode prev;
-     
-//     static boolean isBSTUtil(TreeNode root)
-//     {
-//         if (root != null)
-//         {
-//             if (!isBSTUtil(root.left))
-//                 return false;
-     
-//             if (prev != null && root.val <= prev.val)
-//                 return false;
-     
-//             prev = root;
-     
-//             return isBSTUtil(root.right);
-//         }
-//         return true;
-//     }
-     
-//     public boolean isValidBST(TreeNode root) {
-//         prev=null;
-//         return isBSTUtil(root);
-//     }
 }
