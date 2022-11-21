@@ -17,6 +17,7 @@ class Solution {
     public boolean isValidBST(TreeNode root) {
         
         return f(root,Long.MIN_VALUE,Long.MAX_VALUE);
+        
     }
     public static boolean f(TreeNode root,long left,long right){
         
@@ -30,5 +31,6 @@ class Solution {
         boolean rightBST = f(root.right,root.val,right);
         
         return (leftBST&&rightBST);
+        
     }
 }
