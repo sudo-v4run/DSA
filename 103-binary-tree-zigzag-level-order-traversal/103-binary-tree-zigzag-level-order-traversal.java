@@ -16,7 +16,11 @@
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
         
+        f(root,res,0);
+        
+        return res;
         
         
         
@@ -144,41 +148,60 @@ class Solution {
         
         
         
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        Queue<TreeNode> q = new LinkedList<>();
+//         List<List<Integer>> res = new ArrayList<List<Integer>>();
+//         Queue<TreeNode> q = new LinkedList<>();
         
-        if(root==null)
-            return res;
+//         if(root==null)
+//             return res;
         
-        q.add(root);
+//         q.add(root);
         
-        boolean right = true;
+//         boolean right = true;
         
-        while(!q.isEmpty()){
-            ArrayList<Integer> ans = new ArrayList<>();
-            int sz = q.size();
+//         while(!q.isEmpty()){
+//             ArrayList<Integer> ans = new ArrayList<>();
+//             int sz = q.size();
             
-            for(int i = 0 ; i < sz ; i++){
+//             for(int i = 0 ; i < sz ; i++){
                 
-                TreeNode pop = q.poll();
-                if(right)
-                    ans.add(pop.val);
-                else
-                    ans.add(0,pop.val);
+//                 TreeNode pop = q.poll();
+//                 if(right)
+//                     ans.add(pop.val);
+//                 else
+//                     ans.add(0,pop.val);
                 
-                if(pop.left!=null)
-                    q.add(pop.left);
+//                 if(pop.left!=null)
+//                     q.add(pop.left);
                 
-                if(pop.right!=null)
-                    q.add(pop.right);
+//                 if(pop.right!=null)
+//                     q.add(pop.right);
                 
-            }
+//             }
             
-            res.add(ans);
-            right = !right;
+//             res.add(ans);
+//             right = !right;
+//         }
+        
+//         return res;
+        
+    }
+    public static void f(TreeNode root,List<List<Integer>> res, int level){
+        
+        if(root==null){
+            return;
         }
         
-        return res;
+        if(res.size()==level){
+            res.add(new ArrayList<Integer>());
+        }
         
+        if(level%2==0){
+            res.get(level).add(root.val);
+        }else{
+            res.get(level).add(0,root.val);
+        }
+        
+        f(root.left,res,level+1);
+        f(root.right,res,level+1);
     }
 }
