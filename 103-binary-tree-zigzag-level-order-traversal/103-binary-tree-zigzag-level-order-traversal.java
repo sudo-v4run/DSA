@@ -14,70 +14,45 @@
  * }
  */
 class Solution {
-//     public List<List<Integer>> zigzagLevelOrder(TreeNode root){
-//         //RECURSIVE....
-//         List<List<Integer>> ans = new ArrayList<>();
-//         zigzag(root,ans,0);
-//         return ans;
-//     }
-    
-//     public static void zigzag(TreeNode root,List<List<Integer>> ans,int level){
-//         if(root==null)
-//             return;
-//         if(ans.size()==level){
-//             ArrayList<Integer> res = new ArrayList<>();
-//             ans.add(res);
-//         }
-        
-//         if(level%2==0){
-//             ans.get(level).add(root.val);
-//         }else{
-//             ans.get(level).add(0,root.val);
-//         }
-        
-//         zigzag(root.left,ans,level+1);
-//         zigzag(root.right,ans,level+1);
-//     }
-    
-    
-    
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-     //  ITERATIVE.....
-        Stack<TreeNode> s1 = new Stack<>();
-	    Stack<TreeNode> s2 = new Stack<>();
-	    List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> res;
-	    if(root==null){
-            return ans;
-        }
-	    s1.push(root);
-	    
-	    while(!s1.isEmpty()||!s2.isEmpty()){
-            res = new ArrayList<>();
-	        while(!s1.isEmpty()){
-	            TreeNode pop = s1.pop();
-	            res.add(pop.val);
-	            if(pop.left!=null)
-	                s2.push(pop.left);
-	            if(pop.right!=null)
-	                s2.push(pop.right);   
-	        }
-            if(!res.isEmpty())
-                ans.add(res);
-            
-            res = new ArrayList<>();
-	        while(!s2.isEmpty()){
-	            TreeNode pop = s2.pop();
-	            res.add(pop.val);
-	            if(pop.right!=null)
-	                s1.push(pop.right);
-	            if(pop.left!=null)
-	                s1.push(pop.left);
-	        }
-            if(!res.isEmpty())
-                ans.add(res);
-	    }
         
-	    return ans;
-   }
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        Queue<TreeNode> q = new LinkedList<>();
+        
+        if(root==null)
+            return res;
+        
+        q.add(root);
+        
+        boolean right = true;
+        
+        while(!q.isEmpty()){
+            ArrayList<Integer> ans = new ArrayList<>();
+            int sz = q.size();
+            
+            for(int i = 0 ; i < sz ; i++){
+                
+                TreeNode pop = q.poll();
+                ans.add(pop.val);
+                
+                if(pop.left!=null)
+                    q.add(pop.left);
+                
+                if(pop.right!=null)
+                    q.add(pop.right);
+                
+            }
+            
+            if(right){
+                res.add(ans);
+            }
+            else{
+                Collections.reverse(ans);
+                res.add(ans);
+            }
+            right = !right;
+        }
+        
+        return res;
+    }
 }
