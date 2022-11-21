@@ -17,67 +17,70 @@ class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         
         
+        
+        
+        
+        
+        
         // 2 Stack....
         
-        List<List<Integer>> res = new ArrayList<List<Integer>>();        
-        Stack<TreeNode> s1 = new Stack<>();
-        Stack<TreeNode> s2 = new Stack<>();
-        ArrayList<Integer> ans;
+//         List<List<Integer>> res = new ArrayList<List<Integer>>();        
+//         Stack<TreeNode> s1 = new Stack<>();
+//         Stack<TreeNode> s2 = new Stack<>();
+//         ArrayList<Integer> ans;
         
-        if(root==null)
-            return res;
+//         if(root==null)
+//             return res;
         
-        s1.push(root);
+//         s1.push(root);
         
-        while(!s1.isEmpty() || !s2.isEmpty()){
+//         while(!s1.isEmpty() || !s2.isEmpty()){
             
-            ans = new ArrayList<>();
+//             ans = new ArrayList<>();
         
-            while(!s1.isEmpty()){
+//             while(!s1.isEmpty()){
                     
-                TreeNode pop = s1.pop();
-                ans.add(pop.val);
+//                 TreeNode pop = s1.pop();
+//                 ans.add(pop.val);
 
-                if(pop.left!=null){
-                    s2.push(pop.left);
-                }
-                if(pop.right!=null){
-                    s2.push(pop.right);
-                }
+//                 if(pop.left!=null){
+//                     s2.push(pop.left);
+//                 }
+//                 if(pop.right!=null){
+//                     s2.push(pop.right);
+//                 }
 
-            }
+//             }
             
-            if(!ans.isEmpty())
-                res.add(ans);
+//             if(!ans.isEmpty())
+//                 res.add(ans);
             
             
-            ans = new ArrayList<>();
+//             ans = new ArrayList<>();
             
-            while(!s2.isEmpty()){
+//             while(!s2.isEmpty()){
                     
-                TreeNode pop = s2.pop();
-                ans.add(pop.val);
+//                 TreeNode pop = s2.pop();
+//                 ans.add(pop.val);
 
-                if(pop.right!=null){
-                    s1.push(pop.right);
-                }
-                if(pop.left!=null){
-                    s1.push(pop.left);
-                }
+//                 if(pop.right!=null){
+//                     s1.push(pop.right);
+//                 }
+//                 if(pop.left!=null){
+//                     s1.push(pop.left);
+//                 }
 
-            }
+//             }
             
-            if(!ans.isEmpty())
-                res.add(ans);
+//             if(!ans.isEmpty())
+//                 res.add(ans);
             
-        }
+//         }
         
-        return res;
-        
-        
+//         return res;
         
         
-        
+
         
         
         
@@ -135,54 +138,47 @@ class Solution {
 //         }
         
 //         return res;
+
         
         
         
         
         
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        Queue<TreeNode> q = new LinkedList<>();
         
+        if(root==null)
+            return res;
         
+        q.add(root);
         
+        boolean right = true;
         
-        
-        
-//         List<List<Integer>> res = new ArrayList<List<Integer>>();
-//         Queue<TreeNode> q = new LinkedList<>();
-        
-//         if(root==null)
-//             return res;
-        
-//         q.add(root);
-        
-//         boolean right = true;
-        
-//         while(!q.isEmpty()){
-//             ArrayList<Integer> ans = new ArrayList<>();
-//             int sz = q.size();
+        while(!q.isEmpty()){
+            ArrayList<Integer> ans = new ArrayList<>();
+            int sz = q.size();
             
-//             for(int i = 0 ; i < sz ; i++){
+            for(int i = 0 ; i < sz ; i++){
                 
-//                 TreeNode pop = q.poll();
-//                 ans.add(pop.val);
+                TreeNode pop = q.poll();
+                if(right)
+                    ans.add(pop.val);
+                else
+                    ans.add(0,pop.val);
                 
-//                 if(pop.left!=null)
-//                     q.add(pop.left);
+                if(pop.left!=null)
+                    q.add(pop.left);
                 
-//                 if(pop.right!=null)
-//                     q.add(pop.right);
+                if(pop.right!=null)
+                    q.add(pop.right);
                 
-//             }
+            }
             
-//             if(right){
-//                 res.add(ans);
-//             }
-//             else{
-//                 Collections.reverse(ans);
-//                 res.add(ans);
-//             }
-//             right = !right;
-//         }
+            res.add(ans);
+            right = !right;
+        }
         
-//         return res;
+        return res;
+        
     }
 }
