@@ -10,5 +10,21 @@ class Solution {
         }
         
         return maxP;
+        
+    }
+    static int maxP = 0;
+    public static int f(int index,int canBuy,int prices[]){
+        if(index>=prices.length)
+            return 0;
+        
+        if(canBuy==1){
+            maxP = Math.max(f(index+1,0,prices)-prices[index],
+                            f(index+1,1,prices));
+        }else{
+            maxP = Math.max(f(index+1,1,prices)+prices[index],
+                            f(index+1,0,prices));
+        }
+        
+        return maxP;
     }
 }
