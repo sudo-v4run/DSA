@@ -1,5 +1,6 @@
 class Solution {
     public int maxProfit(int[] prices) {
+        
         int n = prices.length;
         
         int maxP = 0;
@@ -11,6 +12,7 @@ class Solution {
         }
         
         return maxP;
+        
         
         
         
@@ -78,6 +80,7 @@ class Solution {
 //         }
         
 //         return f(0,1,prices,dp);
+        
     }
     public static int f(int index,int canBuy,int prices[],int dp[][]){
         
