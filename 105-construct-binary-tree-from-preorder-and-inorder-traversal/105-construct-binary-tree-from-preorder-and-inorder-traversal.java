@@ -30,7 +30,7 @@ class Solution {
     public static TreeNode f(int[] pre,int[] in, int preS, int preE,
                              int inS, int inE, HashMap<Integer,Integer> hm){
         
-        if(preS>preE)
+        if( preS>preE || inS>inE )
             return null;
         
         TreeNode root = new TreeNode(pre[preS]);
