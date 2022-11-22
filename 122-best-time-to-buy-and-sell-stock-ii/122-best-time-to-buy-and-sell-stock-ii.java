@@ -13,21 +13,42 @@ class Solution {
 //         return maxP;
         
         
+        // Tabulation....
+        
+        int dp[][] = new int[n+1][2];
+        
+        dp[n][0] = 0;
+        dp[n][1] = 0;
+        
+        for(int index = n-1 ; index >= 0 ; index--){
+            for(int canBuy = 1 ; canBuy>=0 ; canBuy--){
+                if(canBuy==1){
+                    dp[index][canBuy] = Math.max(dp[index+1][0]-prices[index],
+                                                 dp[index+1][1]);
+                }else{
+                    dp[index][canBuy] = Math.max(dp[index+1][1]+prices[index],
+                                                 dp[index+1][0]);
+                }
+            }
+        }
+        
+        return dp[0][1];
+        
         
         
         // Memoization....
         
-        int dp[][] = new int[n][2];
+//         int dp[][] = new int[n][2];
         
-        for(int[] row : dp){
-            Arrays.fill(row,-1);
-        }
+//         for(int[] row : dp){
+//             Arrays.fill(row,-1);
+//         }
         
-        return f(0,1,prices,dp);
+//         return f(0,1,prices,dp);
     }
     public static int f(int index,int canBuy,int prices[],int dp[][]){
         
-        if(index>=prices.length)
+        if(index==prices.length)
             return 0;
         
         if(dp[index][canBuy] != -1)
