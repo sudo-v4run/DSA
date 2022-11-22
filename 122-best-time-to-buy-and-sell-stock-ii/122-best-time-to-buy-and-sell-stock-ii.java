@@ -2,15 +2,16 @@ class Solution {
     public int maxProfit(int[] prices) {
         int n = prices.length;
         
-//         int maxP = 0;
+        int maxP = 0;
         
-//         for(int i = 1; i < n ; i++){
-//             if(prices[i]>prices[i-1]){
-//                 maxP += prices[i]-prices[i-1];
-//             }
-//         }
+        for(int i = 1; i < n ; i++){
+            if(prices[i]>prices[i-1]){
+                maxP += prices[i]-prices[i-1];
+            }
+        }
         
-//         return maxP;
+        return maxP;
+        
         
         
         
@@ -20,26 +21,26 @@ class Solution {
         // We can also use 4 variables - curBuy,cutNotBuy,nextBuy,nextNotBuy
                 // instead of using 2 1D arrays....
         
-        int cur[] = new int[2];
-        int next[] = new int[2];
+//         int cur[] = new int[2];
+//         int next[] = new int[2];
         
-        next[0] = 0;
-        next[1] = 0;
+//         next[0] = 0;
+//         next[1] = 0;
         
-        for(int index = n-1 ; index >= 0 ; index--){
-            for(int canBuy = 1 ; canBuy>=0 ; canBuy--){
-                if(canBuy==1){
-                    cur[canBuy] = Math.max(next[0]-prices[index],
-                                                 next[1]);
-                }else{
-                    cur[canBuy] = Math.max(next[1]+prices[index],
-                                                 next[0]);
-                }
-            }
-            next = cur.clone();
-        }
+//         for(int index = n-1 ; index >= 0 ; index--){
+//             for(int canBuy = 1 ; canBuy>=0 ; canBuy--){
+//                 if(canBuy==1){
+//                     cur[canBuy] = Math.max(next[0]-prices[index],
+//                                                  next[1]);
+//                 }else{
+//                     cur[canBuy] = Math.max(next[1]+prices[index],
+//                                                  next[0]);
+//                 }
+//             }
+//             next = cur.clone();
+//         }
         
-        return next[1];
+//         return next[1];
         
         
         
