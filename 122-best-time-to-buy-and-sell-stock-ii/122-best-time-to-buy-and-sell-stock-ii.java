@@ -17,6 +17,9 @@ class Solution {
         
         // Tabulation....Space Optimized...
         
+        // We can also use 4 variables - curBuy,cutNotBuy,nextBuy,nextNotBuy
+                // instead of using 2 1D arrays....
+        
         int cur[] = new int[2];
         int next[] = new int[2];
         
