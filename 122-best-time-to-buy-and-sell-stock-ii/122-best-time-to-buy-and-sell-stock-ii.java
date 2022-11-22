@@ -13,26 +13,55 @@ class Solution {
 //         return maxP;
         
         
-        // Tabulation....
         
-        int dp[][] = new int[n+1][2];
         
-        dp[n][0] = 0;
-        dp[n][1] = 0;
+        // Tabulation....Space Optimized...
+        
+        int cur[] = new int[2];
+        int next[] = new int[2];
+        
+        next[0] = 0;
+        next[1] = 0;
         
         for(int index = n-1 ; index >= 0 ; index--){
             for(int canBuy = 1 ; canBuy>=0 ; canBuy--){
                 if(canBuy==1){
-                    dp[index][canBuy] = Math.max(dp[index+1][0]-prices[index],
-                                                 dp[index+1][1]);
+                    cur[canBuy] = Math.max(next[0]-prices[index],
+                                                 next[1]);
                 }else{
-                    dp[index][canBuy] = Math.max(dp[index+1][1]+prices[index],
-                                                 dp[index+1][0]);
+                    cur[canBuy] = Math.max(next[1]+prices[index],
+                                                 next[0]);
                 }
             }
+            next = cur.clone();
         }
         
-        return dp[0][1];
+        return next[1];
+        
+        
+        
+        
+        
+        // Tabulation.... 
+        
+//         int dp[][] = new int[n+1][2];
+        
+//         dp[n][0] = 0;
+//         dp[n][1] = 0;
+        
+//         for(int index = n-1 ; index >= 0 ; index--){
+//             for(int canBuy = 1 ; canBuy>=0 ; canBuy--){
+//                 if(canBuy==1){
+//                     dp[index][canBuy] = Math.max(dp[index+1][0]-prices[index],
+//                                                  dp[index+1][1]);
+//                 }else{
+//                     dp[index][canBuy] = Math.max(dp[index+1][1]+prices[index],
+//                                                  dp[index+1][0]);
+//                 }
+//             }
+//         }
+        
+//         return dp[0][1];
         
         
         
