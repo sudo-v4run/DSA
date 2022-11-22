@@ -1,33 +1,58 @@
 class Solution {
     public Node connect(Node root) {
         
-        Queue<Node> q = new LinkedList<>();
-        
         if(root==null)
-            return null;
+            return root;
         
-        q.add(root);
+        Node cur = root;
+        Node nxt = cur.left;
         
-        while(!q.isEmpty()){
+        while(cur!=null && nxt!=null){
             
-            int sz = q.size();
+            cur.left.next = cur.right;
             
-            for(int i = 0 ; i < sz ; i++){
-                
-                Node pop = q.poll();
-                
-                pop.next = i==sz-1?null:q.peek();
-                
-                if(pop.left!=null)
-                    q.add(pop.left);
-                
-                if(pop.right!=null)
-                    q.add(pop.right);
-                
+            if(cur.next != null){
+                cur.right.next = cur.next.left;
+                cur = cur.next;
+            }else{
+                cur = nxt;
+                nxt = cur.left;
             }
+            
         }
         
         return root;
+        
+        
+        
+        
+//         Queue<Node> q = new LinkedList<>();
+        
+//         if(root==null)
+//             return null;
+        
+//         q.add(root);
+        
+//         while(!q.isEmpty()){
+            
+//             int sz = q.size();
+            
+//             for(int i = 0 ; i < sz ; i++){
+                
+//                 Node pop = q.poll();
+                
+//                 pop.next = i==sz-1?null:q.peek();
+                
+//                 if(pop.left!=null)
+//                     q.add(pop.left);
+                
+//                 if(pop.right!=null)
+//                     q.add(pop.right);
+                
+//             }
+//         }
+        
+//         return root;
         
         
         
