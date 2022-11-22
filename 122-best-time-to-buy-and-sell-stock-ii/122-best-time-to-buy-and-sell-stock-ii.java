@@ -1,30 +1,44 @@
 class Solution {
     public int maxProfit(int[] prices) {
         int n = prices.length;
-        int maxP = 0;
         
-        for(int i = 1; i < n ; i++){
-            if(prices[i]>prices[i-1]){
-                maxP += prices[i]-prices[i-1];
-            }
+//         int maxP = 0;
+        
+//         for(int i = 1; i < n ; i++){
+//             if(prices[i]>prices[i-1]){
+//                 maxP += prices[i]-prices[i-1];
+//             }
+//         }
+        
+//         return maxP;
+        
+        
+        
+        
+        // Memoization....
+        
+        int dp[][] = new int[n][2];
+        
+        for(int[] row : dp){
+            Arrays.fill(row,-1);
         }
         
-        return maxP;
-        
+        return f(0,1,prices,dp);
     }
-    static int maxP = 0;
-    public static int f(int index,int canBuy,int prices[]){
+    public static int f(int index,int canBuy,int prices[],int dp[][]){
+        
         if(index>=prices.length)
             return 0;
         
-        if(canBuy==1){
-            maxP = Math.max(f(index+1,0,prices)-prices[index],
-                            f(index+1,1,prices));
-        }else{
-            maxP = Math.max(f(index+1,1,prices)+prices[index],
-                            f(index+1,0,prices));
-        }
+        if(dp[index][canBuy] != -1)
+            return dp[index][canBuy];
         
-        return maxP;
+        if(canBuy==1){
+            return dp[index][canBuy] = Math.max(f(index+1,0,prices,dp)-prices[index],
+                            f(index+1,1,prices,dp));
+        }else{
+            return dp[index][canBuy] = Math.max(f(index+1,1,prices,dp)+prices[index],
+                            f(index+1,0,prices,dp));
+        }
     }
 }
