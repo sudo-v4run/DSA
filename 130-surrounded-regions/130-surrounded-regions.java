@@ -37,7 +37,9 @@ class Solution {
         
     }
     public static void dfs(char[][] board,int r , int c){
-        if(r<0||r >= board.length||c < 0||c >= board[0].length||board[r][c] != 'O'){
+        if( r<0 || r >= board.length || c < 0 || c >= board[0].length
+                || board[r][c] != 'O' || board[r][c] == 'T' ){
+            
             return;
         }
         
