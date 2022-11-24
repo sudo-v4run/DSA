@@ -49,20 +49,53 @@ class Solution
     //the complete circle without exhausting its petrol in between.
     int tour(int petrol[], int distance[])
     {
-        int cur = 0;
-        int deficit = 0;
+        // int cur = 0;
+        // int deficit = 0;
+        // int start = 0;
+        // for(int i = 0 ; i < petrol.length;i++){
+        //     cur=cur+petrol[i]-distance[i];
+        //     if(cur<0){
+        //         deficit+=cur;
+        //         cur=0;
+        //         start=i+1;
+        //     }
+        // }
+        // if(cur+deficit>=0){
+        //     return start;
+        // }
+        // return -1;
+        
+        
+        int gasSum = 0;
+        
+        for(int i : petrol){
+            gasSum += i;
+        }
+        
+        int costSum = 0;
+        
+        for(int i : distance){
+            costSum += i;
+        }
+        
+        if(gasSum<costSum){
+            return -1;
+        }
+        
+        int n = petrol.length;
+        
         int start = 0;
-        for(int i = 0 ; i < petrol.length;i++){
-            cur=cur+petrol[i]-distance[i];
-            if(cur<0){
-                deficit+=cur;
-                cur=0;
-                start=i+1;
+        int target = 0;
+        
+        for(int i = 0 ; i < n ; i++){
+            target += petrol[i]-distance[i];
+            
+            if(target<0){
+                target = 0;
+                start = i+1;
             }
         }
-        if(cur+deficit>=0){
-            return start;
-        }
-        return -1;
+        
+        return start;
     }
 }
