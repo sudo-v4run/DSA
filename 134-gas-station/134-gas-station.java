@@ -18,7 +18,7 @@ class Solution {
             }
         }
         
-        if(cur+deficit<0){  // or cur+deficit < 0
+        if(cur+deficit<0){
             return -1;
         }
         
