@@ -1,7 +1,7 @@
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         
-        int n =  s.length();
+        int n = s.length();
         
         HashSet<String> hs = new HashSet<>();
         
@@ -9,13 +9,34 @@ class Solution {
             hs.add(str);
         }
         
-        // Memoization...
+        // Tabulation...Buttom Up...
         
-        int dp[] = new int[n];
+        boolean dp[] = new boolean[n+1];
         
-        Arrays.fill(dp,-1);
+        dp[n] = true;
         
-        return f(0,s,hs,dp);
+        for(int i = n-1 ; i >= 0 ; i--){
+            for(String w : wordDict){
+                if(i+w.length()<=n && 
+                                hs.contains(s.substring(i,i+w.length())) ){
+                    dp[i] = dp[i+w.length()];
+                }
+                if(dp[i]){
+                    break;
+                }
+            }
+        }
+        
+        return dp[0];
+        
+        
+        // Memoization... Top Down ...
+        
+//         int dp[] = new int[n];
+        
+//         Arrays.fill(dp,-1);
+        
+//         return f(0,s,hs,dp);
         
     }
     public static boolean f(int index,String s,HashSet<String> hs,int dp[]){
