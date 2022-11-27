@@ -3,12 +3,6 @@ class Solution {
         
         int n = s.length();
         
-        HashSet<String> hs = new HashSet<>();
-        
-        for(String str : wordDict){
-            hs.add(str);
-        }
-        
         // Tabulation...Buttom Up...
         
         boolean dp[] = new boolean[n+1];
@@ -18,7 +12,7 @@ class Solution {
         for(int i = n-1 ; i >= 0 ; i--){
             for(String w : wordDict){
                 if(i+w.length()<=n && 
-                                hs.contains(s.substring(i,i+w.length())) ){
+                                (s.substring(i,i+w.length())).equals(w) ){
                     dp[i] = dp[i+w.length()];
                 }
                 if(dp[i]){
@@ -30,7 +24,14 @@ class Solution {
         return dp[0];
         
         
+        
         // Memoization... Top Down ...
+        
+//         HashSet<String> hs = new HashSet<>();
+        
+//         for(String str : wordDict){
+//             hs.add(str);
+//         }
         
 //         int dp[] = new int[n];
         
