@@ -40,10 +40,12 @@ class LRUCache {
     
     public void put(int key, int value) {
         Node node = new Node(key,value);
+        
         if(hm.containsKey(key)){
             removeNode(hm.get(key));
             addNode(node);
         }else{
+            
             if(hm.size()<cap){
                 addNode(node);
                 hm.put(key,node);
@@ -51,13 +53,16 @@ class LRUCache {
                 removeNode(tail.prev);
                 addNode(node);
             }
+            
         }
     }
+    
     public void removeNode(Node node){
         hm.remove(node.k);
         node.prev.next = node.next;
         node.next.prev = node.prev;
     }
+    
     public void addNode(Node node){
         hm.put(node.k,node);
         Node temp = head.next;
