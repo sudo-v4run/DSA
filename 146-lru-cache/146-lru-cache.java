@@ -43,24 +43,23 @@ class LRUCache {
         if(hm.containsKey(key)){
             removeNode(hm.get(key));
             addNode(node);
-            hm.put(key,node);
         }else{
             if(hm.size()<cap){
                 addNode(node);
                 hm.put(key,node);
             }else{
-                hm.remove(tail.prev.k);
                 removeNode(tail.prev);
                 addNode(node);
-                hm.put(key,node);
             }
         }
     }
     public void removeNode(Node node){
+        hm.remove(node.k);
         node.prev.next = node.next;
         node.next.prev = node.prev;
     }
     public void addNode(Node node){
+        hm.put(node.k,node);
         Node temp = head.next;
         temp.prev = node;
         node.next = temp;
