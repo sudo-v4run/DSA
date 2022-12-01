@@ -2,15 +2,15 @@ class Solution {
     public String largestNumber(int[] nums) {
         int n = nums.length;
         
-        Integer[] arr = IntStream.of(nums)
-                                .boxed()
-                                .toArray(Integer[]::new);
+        String arr[] = new String[n];
         
-        Arrays.sort(arr, new Comparator<Integer>() 
+        for(int i = 0 ; i < n ; i++){
+            arr[i] = String.valueOf(nums[i]);
+        }
+        
+        Arrays.sort(arr, new Comparator<String>() 
         {
-            public int compare(Integer o1, Integer o2) {
-                String s1 = String.valueOf(o1);
-                String s2 = String.valueOf(o2);
+            public int compare(String s1, String s2) {
                 
                 String num1 = s1+s2;
                 String num2 = s2+s1;
@@ -21,8 +21,8 @@ class Solution {
         
         String res = "";
         
-        for(int i : arr){
-            res += String.valueOf(i);
+        for(String s : arr){
+            res += s;
         }
         
         if(res.charAt(0)=='0')
