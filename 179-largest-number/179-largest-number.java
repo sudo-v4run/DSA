@@ -8,16 +8,18 @@ class Solution {
             arr[i] = String.valueOf(nums[i]);
         }
         
-        Arrays.sort(arr, new Comparator<String>() 
-        {
-            public int compare(String s1, String s2) {
+//         Arrays.sort(arr, new Comparator<String>() 
+//         {
+//             public int compare(String s1, String s2) {
                 
-                String num1 = s1+s2;
-                String num2 = s2+s1;
+//                 String num1 = s1+s2;
+//                 String num2 = s2+s1;
                 
-                return num2.compareTo(num1);
-            }
-        }          );
+//                 return num2.compareTo(num1);
+//             }
+//         }          );
+        
+        Arrays.sort(arr,(s1,s2)->{return (s2+s1).compareTo(s1+s2);});
         
         String res = "";
         
