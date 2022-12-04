@@ -55,38 +55,84 @@ class Main {
 // } Driver Code Ends
 
 class Solution
-{ 
+{
+    // DFS...
+    
+    // static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
+    // {
+    //     int vis[] = new int[V];
+    //     Stack<Integer> s = new Stack<>();
+        
+    //     for(int i = 0 ; i < V ; i++){
+    //         if(vis[i]!=1){
+    //             dfs(i,adj,vis,s);
+    //         }
+    //     }
+        
+    //     int res[] = new int[s.size()];
+    //     int k = 0;
+        
+    //     while(!s.isEmpty()){
+    //         res[k++] = s.pop();
+    //     }
+        
+    //     return res;
+    // }
+    // public static void dfs( int node,ArrayList<ArrayList<Integer>> adj,int vis[],
+    //                         Stack<Integer> s ){
+        
+    //     vis[node] = 1;
+        
+    //     for(int nei : adj.get(node)){
+    //         if(vis[nei]!=1){
+    //             dfs(nei,adj,vis,s);
+    //         }
+    //     }
+        
+    //     s.push(node);
+    // }
+    
+    
+    
+    
+    // BFS... Kahn's Algo...
+    
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
     {
-        int vis[] = new int[V];
-        Stack<Integer> s = new Stack<>();
+        Queue<Integer> q = new LinkedList<>();
+        
+        int inDeg[] = new int[V];
+        
+        findInDeg(adj,V,inDeg);
         
         for(int i = 0 ; i < V ; i++){
-            if(vis[i]!=1){
-                dfs(i,adj,vis,s);
+            if(inDeg[i]==0){
+                q.offer(i);
             }
         }
         
-        int res[] = new int[s.size()];
+        int res[] = new int[V];
         int k = 0;
         
-        while(!s.isEmpty()){
-            res[k++] = s.pop();
+        while(!q.isEmpty()){
+            int pop = q.poll();
+            res[k++] = pop;
+            for(int nei : adj.get(pop)){
+                inDeg[nei]--;
+                if(inDeg[nei]==0){
+                    q.add(nei);
+                }
+            }
         }
         
         return res;
+        
     }
-    public static void dfs( int node,ArrayList<ArrayList<Integer>> adj,int vis[],
-                            Stack<Integer> s ){
-        
-        vis[node] = 1;
-        
-        for(int nei : adj.get(node)){
-            if(vis[nei]!=1){
-                dfs(nei,adj,vis,s);
+    public static void findInDeg(ArrayList<ArrayList<Integer>> adj, int v,int inDeg[]){
+        for(int i = 0 ; i < v ; i++){
+            for(int nei : adj.get(i)){
+                inDeg[nei]++;
             }
         }
-        
-        s.push(node);
     }
 }
