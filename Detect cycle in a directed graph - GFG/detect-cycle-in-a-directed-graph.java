@@ -28,90 +28,82 @@ class DriverClass {
 }
 // } Driver Code Ends
 
-
-/*Complete the function below*/
-
 class Solution {
     
-    public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {
+    public boolean isCyclic(int v, ArrayList<ArrayList<Integer>> adj) {
+        HashSet<Integer> vis = new HashSet<>();
+        int nodeVis[] = new int[v];
         
-        //............BFS-Kahns Algo............
-        
-        int cnt = 0 ; 
-        int indeg[] = new int [V];
-        Queue<Integer> q = new LinkedList<>();
-        
-        findIG(adj,indeg);
-        
-        for(int i = 0 ; i < V ; i++){
-            if(indeg[i]==0){
-                q.offer(i);
-                cnt++;
+        for(int i = 0 ; i < v ; i++){
+            if(dfs(i,adj,vis,nodeVis)){
+                return true;
             }
-        }
-        
-        while(!q.isEmpty()){
-            int pop = q.poll();
-            
-            for(int nei : adj.get(pop)){
-                indeg[nei]--;
-                if(indeg[nei]==0){
-                    q.offer(nei);
-                    cnt++;
-                }
-            }
-        }
-        
-        if(cnt<V){
-            return true;
         }
         
         return false;
-     
-        
-        //.............DFS...........................
-        
-        // Stack<Integer> st = new Stack<>();
-        // int vis[] = new int [V];
-        // int pathVis[] = new int[V];
-        
-        // for(int i =  0 ; i < V ; i++){
-        //     if(vis[i]!=1){
-        //         if(dfs(i,vis,adj,cnt,pathVis))
-        //             return true;
-        //     }
-        // }
-        
-        // return false;
-      
-        
-        
     }
     
-    // static boolean dfs(int s , int vis[],ArrayList<ArrayList<Integer>> adj,int cnt,int pathVis[] ){
-    //     vis[s] = 1;
-    //     pathVis[s] = 1;
-    //     for(int nei : adj.get(s) ){
-    //         if(vis[nei]!=1){
-    //             if(dfs(nei,vis,adj,cnt,pathVis)){
-    //                 return true;
-    //             }
-    //         }else{
-    //             if(pathVis[nei]==1){
-    //                 return true;
-    //             }
-    //         }
-    //     }
-    //     pathVis[s] = 0;
-    //     return false;
+    public static boolean dfs(int node, ArrayList<ArrayList<Integer>> adj,
+                            HashSet<Integer> vis, int[] nodeVis){
         
-    // }
-    
-    static void findIG(ArrayList<ArrayList<Integer>> adj , int indeg[]){
-        for(int i = 0 ; i < adj.size() ; i++){
-            for(int j : adj.get(i)){
-                indeg[j]++;
+        if(vis.contains(node)){
+            return true;
+        }
+        
+        if(nodeVis[node]==1){
+            return false;
+        }
+        
+        vis.add(node);
+        nodeVis[node] = 1;
+        
+        for(int nei : adj.get(node)){
+            if(dfs(nei,adj,vis,nodeVis)){
+                return true;
             }
         }
+        
+        vis.remove(node);
+        
+        return false;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    // public boolean isCyclic(int v, ArrayList<ArrayList<Integer>> adj) {
+    //     HashSet<Integer> vis = new HashSet<>();
+        
+    //     for(int i = 0 ; i < v ; i++){
+    //         if(dfs(i,adj,vis)){
+    //             return true;
+    //         }
+    //     }
+        
+    //     return false;
+    // }
+    // public static boolean dfs(int node, ArrayList<ArrayList<Integer>> adj,
+    //                         HashSet<Integer> vis){
+        
+    //     if(vis.contains(node)){
+    //         return true;
+    //     }
+        
+    //     vis.add(node);
+        
+    //     for(int nei : adj.get(node)){
+    //         if(dfs(nei,adj,vis)){
+    //             return true;
+    //         }
+    //     }
+        
+    //     vis.remove(node);
+    //     adj.removeAll(adj.get(node));
+        
+    //     return false;
+    // }
 }
