@@ -31,7 +31,7 @@ class Solution {
         int pivot = arr[r];
         int p = l;
         for(int i = l ; i < r ; i++){
-            if(arr[i]<=pivot){
+            if(arr[i]<pivot){
                 swap(arr,i,p);
                 p++;
             }
