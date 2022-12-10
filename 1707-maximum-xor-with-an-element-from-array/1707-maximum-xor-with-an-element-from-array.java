@@ -85,7 +85,6 @@ class Solution {
             int xi = temp.get(1);
             int ansInd = temp.get(2);
             
-            int maxXor = 0;
             while(ind<arr.length && arr[ind]<=mi){
                 insert(arr[ind]);
                 ind++;
