@@ -79,16 +79,25 @@ class Solution {
         int res[] = new int[q];
         int ind = 0;
         
-        for(int i = 0;i<q;i++) {
-             while(ind<arr.length && arr[ind] <= oQ.get(i).get(0)) {
-                 insert(arr[ind]); 
-                 ind++; 
-             }
-             int queryInd = oQ.get(i).get(2);
+        for(ArrayList<Integer> temp : oQ){
             
-             if(ind!=0) res[queryInd]=getMax(oQ.get(i).get(1));
-             else res[queryInd] = -1; 
-         }
+            int mi = temp.get(0);
+            int xi = temp.get(1);
+            int ansInd = temp.get(2);
+            
+            int maxXor = 0;
+            while(ind<arr.length && arr[ind]<=mi){
+                insert(arr[ind]);
+                ind++;
+            }
+            
+            if(ind == 0){
+                res[ansInd] = -1;
+            }else{
+                res[ansInd] = getMax(xi);
+            }
+            
+        }
         
         return res;
     }
