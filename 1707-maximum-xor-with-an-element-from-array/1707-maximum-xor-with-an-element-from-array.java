@@ -79,8 +79,6 @@ class Solution {
         int res[] = new int[q];
         int ind = 0;
         
-        Arrays.fill(res,-1);
-        
         for(int i = 0;i<q;i++) {
              while(ind<arr.length && arr[ind] <= oQ.get(i).get(0)) {
                  insert(arr[ind]); 
