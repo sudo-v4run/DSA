@@ -23,6 +23,7 @@ class Solution {
     }
     
     public void insert(int num){
+        
         Trie node = root;
         
         for(int i = 31; i >= 0 ; i--){
@@ -52,6 +53,7 @@ class Solution {
     }
     
     public int[] maximizeXor(int[] arr, int[][] queries) {
+        
         Arrays.sort(arr);
         
         ArrayList<ArrayList<Integer>> oQ = new ArrayList<ArrayList<Integer>>();
