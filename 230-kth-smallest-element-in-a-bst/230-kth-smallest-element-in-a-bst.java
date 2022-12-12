@@ -16,27 +16,28 @@
 
 class Solution {
     
+    static int cnt;
+    static int ans = -1;
+    
     public int kthSmallest(TreeNode root, int k) {
         
         cnt = k;
         inOrder(root);
         return ans;
     }
-    static int cnt;
-    static int ans = 1;
     public static void inOrder(TreeNode root){
         if(root==null){
             return;
         }
         
-        
-        
         inOrder(root.left);
+        
         cnt--;
         if(cnt==0){
             ans = root.val;
             return;
         }
+        
         inOrder(root.right);
     }
 }
