@@ -13,28 +13,57 @@
  *     }
  * }
  */
+
 class Solution {
-    static PriorityQueue<Integer> pq;
-    
-    Solution(){
-         pq = new PriorityQueue<>();
-    }
     
     public int kthSmallest(TreeNode root, int k) {
-        inOrder(root);
-        while(k-- !=1){
-            pq.poll();
-        }
         
-        return pq.peek();
+        cnt = k;
+        inOrder(root);
+        return ans;
     }
+    static int cnt;
+    static int ans = 1;
     public static void inOrder(TreeNode root){
         if(root==null){
             return;
         }
         
+        
+        
         inOrder(root.left);
-        pq.add(root.val);
+        cnt--;
+        if(cnt==0){
+            ans = root.val;
+            return;
+        }
         inOrder(root.right);
     }
 }
+
+
+// class Solution {
+//     static PriorityQueue<Integer> pq;
+    
+//     Solution(){
+//          pq = new PriorityQueue<>();
+//     }
+    
+//     public int kthSmallest(TreeNode root, int k) {
+//         inOrder(root);
+//         while(k-- !=1){
+//             pq.poll();
+//         }
+        
+//         return pq.peek();
+//     }
+//     public static void inOrder(TreeNode root){
+//         if(root==null){
+//             return;
+//         }
+        
+//         inOrder(root.left);
+//         pq.add(root.val);
+//         inOrder(root.right);
+//     }
+// }
