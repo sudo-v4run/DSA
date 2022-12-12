@@ -6,14 +6,19 @@ class Solution {
         char sign = '+';
         
         for(int i = 0 ; i < n ; i++){
+            
             if(Character.isDigit(s.charAt(i))){
                 String temp = "";
+                
                 while( i<n && Character.isDigit(s.charAt(i))){
                     temp+=s.charAt(i);
                     i++;
                 }
-                i--;
+                
+                i--;  // this will increment in for loop..
+                
                 int value = Integer.parseInt(temp);
+                
                 if(sign=='+'){
                     st.push(value);
                 }else if(sign=='-'){
