@@ -28,7 +28,7 @@ class Solution {
                 }else if(sum>target){
                     r--;
                 }else{
-                    ans = new ArrayList<>();
+                    
                     ans.add(nums[i]);
                     ans.add(nums[l]);
                     ans.add(nums[r]);
@@ -37,6 +37,7 @@ class Solution {
                     while(l<r && nums[l]==nums[l-1]){
                         l++;
                     }
+                    ans = new ArrayList<>();
                 }
             }
         }
