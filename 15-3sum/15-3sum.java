@@ -31,7 +31,7 @@ class Solution {
                     ans.add(nums[i]);
                     ans.add(nums[l]);
                     ans.add(nums[r]);
-                    res.add(new ArrayList<Integer>(ans));
+                    res.add(ans);
                     l++;
                     while(l<r && nums[l]==nums[l-1]){
                         l++;
