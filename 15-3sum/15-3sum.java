@@ -3,6 +3,7 @@ class Solution {
         
         int n = nums.length;
         List<List<Integer>> res = new ArrayList<List<Integer>>();
+        ArrayList<Integer> ans = new ArrayList<Integer>();
         
         if(n<3){
             return res;
@@ -27,7 +28,7 @@ class Solution {
                 }else if(sum>target){
                     r--;
                 }else{
-                    ArrayList<Integer> ans = new ArrayList<>();
+                    ans = new ArrayList<>();
                     ans.add(nums[i]);
                     ans.add(nums[l]);
                     ans.add(nums[r]);
