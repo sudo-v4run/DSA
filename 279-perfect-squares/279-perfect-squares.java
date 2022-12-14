@@ -11,9 +11,6 @@ class Solution {
         
         for(int i = 1 ; i <= n ; i++){
             for(int s = 1 ; s*s <= n ; s++){
-                if(s*s>i){
-                    break;
-                }
                 if(i-s*s>=0){
                     dp[i] = Math.min(dp[i],1+dp[i-(s*s)]);
                 }
