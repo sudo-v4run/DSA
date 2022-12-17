@@ -3,15 +3,39 @@ class Solution {
         
         int n = arr.length;
         
-        // Memoization ... Top Down...
+        // Tabulation .... Buttom Up...
         
-        int dp[][] = new int[n][n+1];
+        int dp[][] = new int[n+1][n+1];
         
-        for(int row[] : dp){
-            Arrays.fill(row,-1);
+        for(int index = n-1 ; index >=0 ; index--){
+            for(int prevInd = index-1 ; prevInd >= -1 ; prevInd--){
+                
+                int take = 0;
+        
+                if(prevInd == -1 || arr[index]>arr[prevInd]){
+                    take = 1 + dp[index+1][index+1];
+                }
+
+                int notTake = dp[index+1][prevInd+1];
+
+                dp[index][prevInd+1] = Math.max(take,notTake);
+            }
         }
         
-        return f(0,-1,arr,dp);
+        return dp[0][0];
+        
+        
+        
+        
+        // Memoization ... Top Down...
+        
+//         int dp[][] = new int[n][n+1];
+        
+//         for(int row[] : dp){
+//             Arrays.fill(row,-1);
+//         }
+        
+//         return f(0,-1,arr,dp);
     }
     public static int f(int index, int prevInd , int arr[],int dp[][]){
         
