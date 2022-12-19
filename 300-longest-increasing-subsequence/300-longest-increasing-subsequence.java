@@ -7,9 +7,8 @@ class Solution {
         
         int dp[][] = new int[n+1][n+1];
         
-        for(int index = n-1 ; index >=0 ; index--){
+        for(int index = n-1 ; index >= 0 ; index--){
             for(int prevInd = index-1 ; prevInd >= -1 ; prevInd--){
-                
                 int take = 0;
         
                 if(prevInd == -1 || arr[index]>arr[prevInd]){
@@ -22,9 +21,7 @@ class Solution {
             }
         }
         
-        return dp[0][0];
-        
-        
+        return dp[0][-1+1];
         
         
         // Memoization ... Top Down...
