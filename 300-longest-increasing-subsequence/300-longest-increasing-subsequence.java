@@ -3,25 +3,52 @@ class Solution {
         
         int n = arr.length;
         
-        // Tabulation .... Buttom Up...
         
-        int dp[][] = new int[n+1][n+1];
+        // Tabulation .... Buttom Up... Space Optimized...
+        
+        int cur[] = new int[n+1];
+        int next[] = new int[n+1];
         
         for(int index = n-1 ; index >= 0 ; index--){
             for(int prevInd = index-1 ; prevInd >= -1 ; prevInd--){
                 int take = 0;
         
                 if(prevInd == -1 || arr[index]>arr[prevInd]){
-                    take = 1 + dp[index+1][index+1];
+                    take = 1 + next[index+1];
                 }
 
-                int notTake = dp[index+1][prevInd+1];
+                int notTake = next[prevInd+1];
 
-                dp[index][prevInd+1] = Math.max(take,notTake);
+                cur[prevInd+1] = Math.max(take,notTake);
             }
+            
+            next = cur.clone();
         }
         
-        return dp[0][-1+1];
+        return next[-1+1];
+        
+        
+        
+        
+        // Tabulation .... Buttom Up...
+        
+//         int dp[][] = new int[n+1][n+1];
+        
+//         for(int index = n-1 ; index >= 0 ; index--){
+//             for(int prevInd = index-1 ; prevInd >= -1 ; prevInd--){
+//                 int take = 0;
+        
+//                 if(prevInd == -1 || arr[index]>arr[prevInd]){
+//                     take = 1 + dp[index+1][index+1];
+//                 }
+
+//                 int notTake = dp[index+1][prevInd+1];
+
+//                 dp[index][prevInd+1] = Math.max(take,notTake);
+//             }
+//         }
+        
+//         return dp[0][-1+1];
         
         
         // Memoization ... Top Down...
