@@ -156,10 +156,6 @@ class Solution {
             }
         }
         
-        if(!(arr.get(s) > target)){
-            s++;
-        }
-        
         return s;
         
     }
