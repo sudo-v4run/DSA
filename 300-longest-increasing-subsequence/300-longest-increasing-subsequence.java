@@ -3,22 +3,80 @@ class Solution {
         
         int n = arr.length;
         
-        // Tabulation.... O(N) SC....
+        // Binary Search...TC - O(N logN) and SC - O(N)...-> can not print LIS(only len)
         
-        int dp[] = new int[n];
-        int max = 1;
+        ArrayList<Integer> temp = new ArrayList<>();
         
-        for(int index = 0 ; index < n ; index++){
-            dp[index] = 1;
-            for(int prevInd = 0 ; prevInd < index ; prevInd++){
-                if(arr[prevInd] < arr[index]){
-                    dp[index] = Math.max(dp[index],dp[prevInd]+1);
-                }
+        temp.add(arr[0]);
+        int len = 1;
+        for(int i = 1 ; i < n ; i++){
+            if(arr[i]>temp.get(temp.size()-1)){
+                temp.add(arr[i]);
+                len++;
+            }else{
+                int lowerBoundIndex = lowerBound(temp,arr[i]);
+                temp.set(lowerBoundIndex,arr[i]);
             }
-            max = Math.max(max,dp[index]);
         }
         
-        return max;
+        return len;
+        
+        
+        // Tabulation.... O(N) SC....
+        
+//         int dp[] = new int[n];
+//         int max = 1;
+        
+//         for(int index = 0 ; index < n ; index++){
+//             dp[index] = 1;
+//             for(int prevInd = 0 ; prevInd < index ; prevInd++){
+//                 if(arr[prevInd] < arr[index]){
+//                     dp[index] = Math.max(dp[index],dp[prevInd]+1);
+//                 }
+//             }
+//             max = Math.max(max,dp[index]);
+//         }
+        
+//         return max;
+        
+        
+        
+        
+        
+        // Tabulation.... Printing the LIS O(N) SC....
+        
+//         int dp[] = new int[n];
+//         int prevs[] = new int[n];
+//         int max = 1;
+        
+//         int lastInd = 0;
+        
+//         for(int index = 0 ; index < n ; index++){
+//             dp[index] = 1;
+//             prevs[index] = index;
+//             for(int prevInd = 0 ; prevInd < index ; prevInd++){
+//                 if(arr[prevInd] < arr[index] && dp[prevInd]+1 > dp[index]){
+//                     dp[index] = dp[prevInd]+1;
+//                     prevs[index] = prevInd;
+//                 }
+//             }
+//             if(dp[index]>max){
+//                 max = dp[index];
+//                 lastInd = index;
+//             }
+//         }
+        
+//         ArrayList<Integer> printLIS = new ArrayList<>();
+//         printLIS.add(arr[lastInd]);
+        
+//         while(prevs[lastInd] != lastInd){
+//             lastInd = prevs[lastInd];
+//             printLIS.add(arr[lastInd]);
+//         }
+        
+//         System.out.println(printLIS); // prints in reverse Order...
+        
+//         return max;
         
         
         
@@ -79,6 +137,34 @@ class Solution {
         
 //         return f(0,-1,arr,dp);
     }
+    
+    public static int lowerBound(ArrayList<Integer> arr, int target){
+        int s = 0;
+        int e = arr.size()-1;
+        
+        while(s<=e){
+            int mid = s+(e-s)/2;
+            
+            if(arr.get(mid)==target){
+                return mid;
+            }
+            
+            if(target<arr.get(mid)){
+                e = mid-1;
+            }else{
+                s = mid+1;
+            }
+        }
+        
+        if(!(arr.get(s) > target)){
+            s++;
+        }
+        
+        return s;
+        
+    }
+    
+    
     public static int f(int index, int prevInd , int arr[],int dp[][]){
         
         if(index==arr.length){
