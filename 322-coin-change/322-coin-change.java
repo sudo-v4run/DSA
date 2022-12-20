@@ -10,12 +10,10 @@ class Solution {
         
         dp[0] = 0;
         
-        for(int index = 0 ; index < n ; index++){
-            for(int amount = 1 ; amount <= amnt ; amount++){
-                if(coins[index]>amount)
-                    continue;
-                
-                dp[amount] = Math.min(dp[amount],1+dp[amount-coins[index]]);
+        for(int amount = 1 ; amount <= amnt ; amount++){
+            for(int index = 0 ; index < n ; index++){
+                if(amount-coins[index] >= 0)
+                    dp[amount] = Math.min(dp[amount],1+dp[amount-coins[index]]);
             }
         }
         
