@@ -3,52 +3,35 @@ class Solution {
         int n = coins.length;
         
         
-        // Buttom-Up...
+        // Memoization ... Top-Down...
         
-        int dp[] = new int[amount+1];
-        Arrays.fill(dp,(int)1e9);
+        int dp[][] = new int[n][amount+1];
         
-        dp[0] = 0;
-        
-        for(int amnt = 1 ; amnt <= amount ; amnt++){
-            for(int c = 0 ; c < coins.length ; c++){
-                if(amnt-coins[c]>=0){
-                    dp[amnt] = Math.min(dp[amnt],1+dp[amnt-coins[c]]);
-                }
-            }
+        for(int row[] : dp){
+            Arrays.fill(row,-1);
         }
         
-        return dp[amount]==1e9?-1:dp[amount];
+        int res = f(0,amount,coins,dp);
         
-        
-        
-        // Memoization - Top Down...
-        
-        // int dp[][] = new int[n][amount+1];
-        // for(int row[] : dp){
-        //     Arrays.fill(row,-1);
-        // }
-        // return f(0,amount,coins,dp)==(int)1e9?-1:f(0,amount,coins,dp);
+        return res==(int)1e9?-1:res;
     }
     public static int f(int index,int amount,int coins[],int dp[][]){
+        
         if(amount==0){
             return 0;
         }
-        if(amount<0 || index>=coins.length){
+        
+        if(index>=coins.length || amount < 0){
             return (int)1e9;
         }
         
         if(dp[index][amount] != -1)
             return dp[index][amount];
         
-        int min = (int)1e9;
-        
-        int takeThis = 1+f(index,amount-coins[index],coins,dp);
+        int take = 1+f(index,amount-coins[index],coins,dp);
         int notTake = f(index+1,amount,coins,dp);
         
-        min = Math.min(takeThis,notTake);
-        
-        return dp[index][amount] = min;
+        return dp[index][amount] = Math.min(take,notTake);
         
         
         
@@ -56,18 +39,14 @@ class Solution {
 //         if(amount==0){
 //             return 0;
 //         }
-//         if(amount<0 || index>=coins.length){
+        
+//         if(index>=coins.length || amount < 0){
 //             return (int)1e9;
 //         }
         
-//         int min = (int)1e9;
-        
-//         int takeThis = 1+f(index,amount-coins[index],coins);
+//         int take = 1+f(index,amount-coins[index],coins);
 //         int notTake = f(index+1,amount,coins);
         
-//         min = Math.min(takeThis,notTake);
-        
-//         return min;
-        
+//         return Math.min(take,notTake);
     }
 }
