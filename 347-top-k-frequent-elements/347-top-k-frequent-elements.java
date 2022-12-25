@@ -7,14 +7,9 @@ class Solution {
         }
         
         List<Map.Entry<Integer, Integer> > list
-            = new LinkedList<Map.Entry<Integer, Integer> >(
-                hm.entrySet());
- 
-        // Sort the list using lambda expression
-        Collections.sort(
-            list,
-            (i1,
-             i2) -> i2.getValue().compareTo(i1.getValue()));
+            = new LinkedList<Map.Entry<Integer, Integer> >(hm.entrySet());
+        
+        Collections.sort(list,(i1,i2) -> i2.getValue().compareTo(i1.getValue()));
         
         int ans[] = new int[k];
         int j = 0;
