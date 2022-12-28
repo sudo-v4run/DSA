@@ -71,7 +71,6 @@ class Solution {
 //             slow = temp;
 //         }
         
-//         ListNode nextNode = null;
 //         while(prev!=null){
 //             if(prev.val!=head.val)
 //                 return false;
