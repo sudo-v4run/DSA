@@ -8,7 +8,8 @@ class Solution {
         
         for(String cur : strs){
             
-            int charr[] = new int[26];
+            // int charr[] = new int[26];
+            char charr[] = new char[26];
             
             for(char ch : cur.toCharArray()){
                 charr[ch-'a']++;
@@ -17,7 +18,8 @@ class Solution {
             // char charr[] = cur.toCharArray();
             // Arrays.sort(charr);
             
-            String keyS = Arrays.toString(charr);
+            // String keyS = Arrays.toString(charr);
+            String keyS = new String(charr);
             
             if(!hm.containsKey(keyS)){
                 hm.put(keyS,new ArrayList<String>());
