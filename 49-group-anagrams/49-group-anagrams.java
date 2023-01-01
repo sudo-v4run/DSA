@@ -9,6 +9,7 @@ class Solution {
         for(String cur : strs){
             
             char charr[] = new char[26];
+            
             for(char ch : cur.toCharArray()){
                 charr[ch-'a']++;
             }
