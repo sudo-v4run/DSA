@@ -18,8 +18,8 @@ class Solution {
             // char charr[] = cur.toCharArray();
             // Arrays.sort(charr);
             
-            // String keyS = Arrays.toString(charr);
-            String keyS = new String(charr);
+            // String keyS = Arrays.toString(charr); // while using int charr[]..
+            String keyS = new String(charr);  // or keyS = String.valueOf(charr);
             
             if(!hm.containsKey(keyS)){
                 hm.put(keyS,new ArrayList<String>());
