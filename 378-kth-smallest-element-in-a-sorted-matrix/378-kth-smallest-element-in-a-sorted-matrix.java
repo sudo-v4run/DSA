@@ -12,7 +12,10 @@ class Solution {
             int j = matrix[0].length - 1;
             
             for(int i = 0; i < matrix.length; i++) {
-                while(j >= 0 && matrix[i][j] > m) j--;
+                
+                while(j >= 0 && matrix[i][j] > m)
+                    j--;
+                
                 cnt += (j + 1);
             }
             
