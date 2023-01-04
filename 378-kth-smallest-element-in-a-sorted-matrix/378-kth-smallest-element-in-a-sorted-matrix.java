@@ -25,9 +25,7 @@ class Solution {
                 }
                 
                 cnt+=low;
-            }
-            
-            
+            } 
             
             if(cnt<k){
                 l = m+1;
