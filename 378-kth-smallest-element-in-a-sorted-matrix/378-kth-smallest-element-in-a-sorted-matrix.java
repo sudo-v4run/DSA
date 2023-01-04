@@ -11,6 +11,7 @@ class Solution {
             int cnt = 0;
             
             for(int i = 0 ; i < n ; i++){
+                
                 int low = 0;
                 int hi = n-1;
                 
