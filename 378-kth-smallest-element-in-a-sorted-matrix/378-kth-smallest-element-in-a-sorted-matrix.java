@@ -25,9 +25,11 @@ class Solution {
                 }
                 
                 cnt+=low;
-            } 
+            }
             
-            if(cnt<k){
+            System.out.println(h);
+            
+            if(cnt<=k-1){
                 l = m+1;
             }else{
                 h = m-1;
