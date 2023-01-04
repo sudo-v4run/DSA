@@ -17,7 +17,7 @@ class Solution {
                 while(low<=hi){
                     int mid = low+(hi-low)/2;
                     
-                    if(matrix[i][mid]<m){
+                    if(matrix[i][mid]<=m){
                         low = mid+1;
                     }else{
                         hi = mid-1;
@@ -29,7 +29,7 @@ class Solution {
             
             
             
-            if(cnt<=k-1){
+            if(cnt<k){
                 l = m+1;
             }else{
                 h = m-1;
@@ -37,6 +37,6 @@ class Solution {
             
         }
         
-        return h;
+        return l;
     }
 }
