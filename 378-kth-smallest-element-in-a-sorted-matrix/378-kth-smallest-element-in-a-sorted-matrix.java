@@ -29,7 +29,7 @@ class Solution {
             
             System.out.println(h);
             
-            if(cnt<=k-1){
+            if(cnt<k){
                 l = m+1;
             }else{
                 h = m-1;
