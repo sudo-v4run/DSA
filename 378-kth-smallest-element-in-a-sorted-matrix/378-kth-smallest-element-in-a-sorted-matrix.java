@@ -5,26 +5,38 @@ class Solution {
         int l = matrix[0][0];
         int h = matrix[n-1][n-1];
         
-        while(l<h){
+        while(l<=h){
             int m = l+(h-l)/2;
             
             int cnt = 0;
             
-            for(int i = 0; i < n ; i++) {
-                for(int j = 0 ; j < n ; j++){
-                    if(matrix[i][j]<=m){
-                        cnt++;
+            for(int i = 0 ; i < n ; i++){
+                int low = 0;
+                int hi = n-1;
+                
+                while(low<=hi){
+                    int mid = low+(hi-low)/2;
+                    
+                    if(matrix[i][mid]<m){
+                        low = mid+1;
+                    }else{
+                        hi = mid-1;
                     }
                 }
+                
+                cnt+=low;
             }
             
-            if(cnt<k){
+            
+            
+            if(cnt<=k-1){
                 l = m+1;
             }else{
-                h = m;
+                h = m-1;
             }
+            
         }
         
-        return l;
+        return h;
     }
 }
