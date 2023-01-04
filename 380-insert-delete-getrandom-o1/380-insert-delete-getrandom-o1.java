@@ -41,7 +41,9 @@ class RandomizedSet {
         
         Random rand = new Random();
         
-        int randomInd = (int)(Math.random()*list.size());
+        // int randomInd = (int)(Math.random()*list.size());
+        
+        int randomInd = rand.nextInt(list.size());
         
         return list.get(randomInd);
     }
