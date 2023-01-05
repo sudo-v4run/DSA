@@ -27,7 +27,7 @@ class Solution {
         
         int left = longestSubstring(s.substring(0,index),k);
         
-        while(index<n && hm.get(s.charAt(index)) <k ){
+        while( index<n && hm.get(s.charAt(index)) <k ){
             index++;
         }
         
