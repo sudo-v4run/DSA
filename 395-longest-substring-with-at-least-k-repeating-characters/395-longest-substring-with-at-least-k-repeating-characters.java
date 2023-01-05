@@ -1,5 +1,6 @@
 class Solution {
     public int longestSubstring(String s, int k) {
+        
         int n = s.length();
         
         if(n==0 || n<k){
