@@ -5,12 +5,11 @@ class Solution {
         if(n==0 || n<k){
             return 0;
         }
-        
         if(k<=1){
             return n;
         }
         
-        HashMap<Character,Integer> hm = new HashMap();
+        HashMap<Character,Integer> hm = new HashMap<>();
         
         for(char ch : s.toCharArray()){
             hm.put(ch,hm.getOrDefault(ch,0)+1);
