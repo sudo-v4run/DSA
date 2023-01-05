@@ -1,6 +1,5 @@
 class Solution {
     public int longestSubstring(String s, int k) {
-        
         int n = s.length();
         
         if(n==0 || n<k){
@@ -11,7 +10,6 @@ class Solution {
             return n;
         }
         
-        
         HashMap<Character,Integer> hm = new HashMap();
         
         for(char ch : s.toCharArray()){
@@ -20,14 +18,20 @@ class Solution {
         
         int index = 0;
         
-        while( index<n && hm.get(s.charAt(index)) >=k ) index++;
+        while( index<n && hm.get(s.charAt(index)) >=k ){
+            index++;
+        }
         
         if(index>=n-1){
             return index;
         }
         
         int left = longestSubstring(s.substring(0,index),k);
-        while(index<n && hm.get(s.charAt(index)) <k ) index++;
+        
+        while(index<n && hm.get(s.charAt(index)) <k ){
+            index++;
+        }
+        
         int right = longestSubstring(s.substring(index),k);
         
         return Math.max(left,right);
