@@ -31,8 +31,9 @@ class Solution {
         while( index<n && hm.get(s.charAt(index)) <k ){
             index++;
         }
+        index--;
         
-        int right = longestSubstring(s.substring(index),k);
+        int right = longestSubstring(s.substring(index+1),k);
         
         return Math.max(left,right);
     }
