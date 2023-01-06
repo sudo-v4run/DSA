@@ -28,10 +28,10 @@ class Solution {
         
         int left = longestSubstring(s.substring(0,index),k);
         
-        while( index<n && hm.get(s.charAt(index)) <k ){
-            index++;
-        }
-        index--;
+        // while( index<n && hm.get(s.charAt(index)) <k ){
+        //     index++;
+        // }
+        // index--;
         
         int right = longestSubstring(s.substring(index+1),k);
         
