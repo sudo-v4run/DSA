@@ -17,7 +17,7 @@ class Solution {
         
         if(index1<0){
             while(index2>=0 && s2.charAt(index2)=='*'){
-                if(index2>=0 && s2.charAt(index2)=='*'){
+                if(s2.charAt(index2)=='*'){
                     index2--;
                 }
                 index2--;
