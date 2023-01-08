@@ -1,16 +1,73 @@
 class Solution {
-    public boolean isMatch(String s, String p) {
-        int n1 = s.length();
-        int n2 = p.length();
+    public boolean isMatch(String s1, String s2) {
+        int n1 = s1.length();
+        int n2 = s2.length();
         
-        int dp[][] = new int[n1][n2];
+        // Tabulation Buttom Up..
         
-        for(int row[] : dp){
-            Arrays.fill(row,-1);
+        int dp[][] = new int[n1+1][n2+1];
+        
+        dp[0][0] = 1;
+        
+        for(int index2 = 1 ; index2 <= n2 ; index2++){
+            if(s2.charAt(index2-1)!='*'){
+                break;
+            }
+            dp[0][index2] = 1;
         }
         
-        return f(s,p,n1-1,n2-1,dp);
+        for(int index1 = 0 ; index1 <= n1 ; index1++){
+            
+            for(int index2 = 0 ; index2 <= n2 ; index2++){
+                
+                if(index1==0 && index2==0)
+                    continue;
+                
+                if(index1-1<0 || index2-1 <0)
+                    continue;
+                
+                if( s1.charAt(index1-1)==s2.charAt(index2-1)){
+                    if(dp[index1-1][index2-1] == 1){
+                        dp[index1][index2] = 1;
+                    }
+                }
+                else if(s2.charAt(index2-1)=='?'){
+                    if(dp[index1-1][index2-1] == 1){
+                        dp[index1][index2] = 1;
+                    }
+                }else if(s2.charAt(index2-1)=='*'){
+                    if( dp[index1-1][index2] == 1 ||
+                        dp[index1][index2-1] == 1 ||
+                        dp[index1-1][index2-1] == 1 ){
+
+                        dp[index1][index2] = 1;
+                    }
+                }
+                
+            }
+        }
+        
+        return dp[n1][n2] == 1 ? true : false;
+        
+        
+        
+        
+        
+        
+        
+        
+        // Memoization ... Top Down...
+        
+//         int dp[][] = new int[n1][n2];
+        
+//         for(int row[] : dp){
+//             Arrays.fill(row,-1);
+//         }
+        
+//         return f(s,p,n1-1,n2-1,dp);
+        
     }
+    
     public static boolean f(String s1, String s2,
                             int index1, int index2,int dp[][]){
         
