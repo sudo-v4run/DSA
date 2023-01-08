@@ -1,10 +1,9 @@
 class Solution {
     public boolean isMatch(String s1, String s2) {
         int n1 = s1.length();
-        int n2 = s2.length();
+        int n2 = s2.length();   
         
-        
-        // Tabulation Opimized....
+         // Tabulation Opimized....
         
         int cur[] = new int[n2+1];
         int prev[] = new int[n2+1];
