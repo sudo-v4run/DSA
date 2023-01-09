@@ -4,6 +4,65 @@ class Solution {
         int n1 = s.length();
         int n2 = p.length();
         
+        // Tabulation....Buttom Up....
+        
+//         int dp[][] = new int[n1+1][n2+1];
+        
+//         dp[0][0] = 1;
+        
+//         for(int index2 = n2 ;index2>=0 && s2.charAt(index2)=='*';){
+//             if(s2.charAt(index2)=='*'){
+//                 index2--;
+//             }
+//             index2--;
+//             dp[0][index2] = 1;
+//         }
+        
+//         for(int index1 = 1 ; index1 <= n1 ; index1++){
+            
+//             for(int index2 = 1 ; index2 <= n2 ; index2++){
+                
+//                 if( s1.charAt(index1-1)==s2.charAt(index2-1)){
+//                     if(f(s1,s2,index1-1,index2-1,dp)){
+//                         dp[index1][index2] = 1;
+//                         return true;
+//                     }
+//                 }
+//                 else if(s2.charAt(index2-1)=='.'){
+//                     if(f(s1,s2,index1-1,index2-1,dp)){
+//                         dp[index1][index2] = 1;
+//                         return true;
+//                     }
+//                 }else if(s2.charAt(index2-1)=='*'){
+//                     while(index2 <= n2 && s2.charAt(index2)=='*'){
+//                         index2++;
+//                     }
+//                     if( (s2.charAt(index2-1) == s1.charAt(index1) ||
+//                         s2.charAt(index2-1) == '.') &&
+//                         (f(s1,s2,index1-1,index2,dp) ||
+//                         f(s1,s2,index1,index2-1,dp)) ){
+
+//                         dp[index1][index2] = 1;
+//                         return true;
+//                     }
+//                     if(f(s1,s2,index1,index2-2,dp)){
+//                         dp[index1][index2] = 1;
+//                         return true;
+//                     }
+//                 }
+                
+//             }
+//         }
+        
+//         return dp[n1][n2] == 1 ? true : false;
+        
+        
+        
+        
+        
+        
+        // Memoization...Top Down...
+        
         int dp[][] = new int[n1][n2];
         
         for(int row[] : dp){
@@ -48,9 +107,6 @@ class Solution {
                 return true;
             }
         }else if(s2.charAt(index2)=='*'){
-            while(s2.charAt(index2-1)=='*'){
-                index2--;
-            }
             if( (s2.charAt(index2-1) == s1.charAt(index1) ||
                 s2.charAt(index2-1) == '.') &&
                 (f(s1,s2,index1-1,index2,dp) ||
