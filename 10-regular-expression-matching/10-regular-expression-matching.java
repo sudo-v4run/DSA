@@ -14,7 +14,7 @@ class Solution {
             if(s2.charAt(index2-1)!='*'){
                 break;
             }
-            
+            dp[0][index2-1] = 1;
             dp[0][index2] = 1;
         }
         
