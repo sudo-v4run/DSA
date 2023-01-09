@@ -4,50 +4,100 @@ class Solution {
         int n1 = s1.length();
         int n2 = s2.length();
         
+        
         // Tabulation....Buttom Up....
         
-        int dp[][] = new int[n1+1][n2+1];
+        int prev[] = new int[n2+1];
+        int cur[] = new int[n2+1];
         
-        dp[0][0] = 1;
+        prev[0] = 1;
         
         for(int index2 = 2 ; index2 <=n2 ; index2=index2+2){
             if(s2.charAt(index2-1)!='*'){
                 break;
             }
-            dp[0][index2-1] = 1;
-            dp[0][index2] = 1;
+            prev[index2] = 1;
         }
         
         for(int index1 = 1 ; index1 <= n1 ; index1++){
             
+            cur = new int[n2+1];
+            
             for(int index2 = 1 ; index2 <= n2 ; index2++){
                 
                 if( s1.charAt(index1-1)==s2.charAt(index2-1)){
-                    if(dp[index1-1][index2-1] == 1){
-                        dp[index1][index2] = 1;
+                    if(prev[index2-1] == 1){
+                        cur[index2] = 1;
                     }
                 }
                 else if(s2.charAt(index2-1)=='.'){
-                    if(dp[index1-1][index2-1] == 1){
-                        dp[index1][index2] = 1;
+                    if(prev[index2-1] == 1){
+                        cur[index2] = 1;
                     }
                 }else if(s2.charAt(index2-1)=='*'){
                     if( (s2.charAt(index2-2) == s1.charAt(index1-1) ||
                         s2.charAt(index2-2) == '.') &&
-                        (dp[index1-1][index2] == 1 ||
-                        dp[index1][index2-1] == 1 ) ){
+                        (prev[index2] == 1 ||
+                        cur[index2-1] == 1 ) ){
 
-                        dp[index1][index2] = 1;
+                        cur[index2] = 1;
                     }
-                    if(dp[index1][index2-2] == 1){
-                        dp[index1][index2] = 1;
+                    if(cur[index2-2] == 1){
+                        cur[index2] = 1;
                     }
                 }
                 
             }
+            prev = cur.clone();
         }
         
-        return dp[n1][n2] == 1 ? true : false;
+        return prev[n2] == 1 ? true : false;
+        
+        
+        
+//         // Tabulation....Buttom Up....
+        
+//         int dp[][] = new int[n1+1][n2+1];
+        
+//         dp[0][0] = 1;
+        
+//         for(int index2 = 2 ; index2 <=n2 ; index2=index2+2){
+//             if(s2.charAt(index2-1)!='*'){
+//                 break;
+//             }
+//             dp[0][index2] = 1;
+//         }
+        
+//         for(int index1 = 1 ; index1 <= n1 ; index1++){
+            
+//             for(int index2 = 1 ; index2 <= n2 ; index2++){
+                
+//                 if( s1.charAt(index1-1)==s2.charAt(index2-1)){
+//                     if(dp[index1-1][index2-1] == 1){
+//                         dp[index1][index2] = 1;
+//                     }
+//                 }
+//                 else if(s2.charAt(index2-1)=='.'){
+//                     if(dp[index1-1][index2-1] == 1){
+//                         dp[index1][index2] = 1;
+//                     }
+//                 }else if(s2.charAt(index2-1)=='*'){
+//                     if( (s2.charAt(index2-2) == s1.charAt(index1-1) ||
+//                         s2.charAt(index2-2) == '.') &&
+//                         (dp[index1-1][index2] == 1 ||
+//                         dp[index1][index2-1] == 1 ) ){
+
+//                         dp[index1][index2] = 1;
+//                     }
+//                     if(dp[index1][index2-2] == 1){
+//                         dp[index1][index2] = 1;
+//                     }
+//                 }
+                
+//             }
+//         }
+        
+//         return dp[n1][n2] == 1 ? true : false;
         
         
         
