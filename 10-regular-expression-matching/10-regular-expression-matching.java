@@ -26,7 +26,7 @@ class Solution {
             for(int index2 = 1 ; index2 <= n2 ; index2++){
                 
                 if( s1.charAt(index1-1)==s2.charAt(index2-1) || 
-                    s2.charAt(index2-1)=='.'  ){
+                    s2.charAt(index2-1)=='.' ){
                     if(prev[index2-1] == 1){
                         cur[index2] = 1;
                     }
@@ -215,13 +215,8 @@ class Solution {
 //             return dp[index1][index2]==1?true:false;
 //         }
         
-//         if( s1.charAt(index1)==s2.charAt(index2)){
-//             if(f(s1,s2,index1-1,index2-1,dp)){
-//                 dp[index1][index2] = 1;
-//                 return true;
-//             }
-//         }
-//         else if(s2.charAt(index2)=='.'){
+//         if( s1.charAt(index1)==s2.charAt(index2) || 
+//             s2.charAt(index2)=='.' ){
 //             if(f(s1,s2,index1-1,index2-1,dp)){
 //                 dp[index1][index2] = 1;
 //                 return true;
