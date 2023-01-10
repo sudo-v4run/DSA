@@ -138,8 +138,12 @@ class Solution {
         if(index2+1 < s2.length() && s2.charAt(index2+1)=='*'){
             if( (match && f(s1,s2,index1+1,index2,dp)) ||   // use *
                 f(s1,s2,index1,index2+2,dp) ){              // don't use *
-
-                return true;    
+                
+                if(index1<s1.length()){
+                    dp[index1][index2] = 1;
+                }
+                
+                return true;
             }
         }
         if(match && f(s1,s2,index1+1,index2+1,dp)){
