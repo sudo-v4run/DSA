@@ -3,8 +3,9 @@ class Solution {
         int n1 = s1.length();
         int n2 = s2.length();   
         
-         // Tabulation Opimized....
+        // Tabulation Opimized....
         
+        int cur[] = new int[n2+1];
         int prev[] = new int[n2+1];
         
         prev[0] = 1;
@@ -17,7 +18,7 @@ class Solution {
         }
         
         for(int index1 = 1 ; index1 <= n1 ; index1++){
-            int cur[] = new int[n2+1];
+            cur = new int[n2+1];
             for(int index2 = 1 ; index2 <= n2 ; index2++){
                 
                 if( s1.charAt(index1-1)==s2.charAt(index2-1) ||
@@ -38,6 +39,8 @@ class Solution {
         }
         
         return prev[n2] == 1 ? true : false;
+        
+        
         
         
         
