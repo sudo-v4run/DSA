@@ -136,24 +136,15 @@ class Solution {
                         s2.charAt(index2) == '.') ;
         
         if(index2+1 < s2.length() && s2.charAt(index2+1)=='*'){
-            if(match){
-                if( f(s1,s2,index1+1,index2,dp) || 
-                    f(s1,s2,index1,index2+2,dp) ){
-                    
-                    dp[index1][index2] = 1;
-                    return true;
-                }
-            }else{
-                if(f(s1,s2,index1,index2+2,dp)){
-                    return true;
-                }
+            if( (match && f(s1,s2,index1+1,index2,dp)) ||   // use *
+                f(s1,s2,index1,index2+2,dp) ){              // don't use *
+
+                return true;    
             }
-        }else if(match){
-            if(f(s1,s2,index1+1,index2+1,dp)){
-                dp[index1][index2] = 1;
-                return true;
-            }
-            
+        }
+        if(match && f(s1,s2,index1+1,index2+1,dp)){
+            dp[index1][index2] = 1;
+            return true;
         }
         
         return false;
