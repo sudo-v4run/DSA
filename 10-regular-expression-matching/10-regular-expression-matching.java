@@ -7,51 +7,51 @@ class Solution {
         
         // Tabulation....Buttom Up....Space Optimized...
         
-        int prev[] = new int[n2+1];
-        int cur[] = new int[n2+1];
+//         int prev[] = new int[n2+1];
+//         int cur[] = new int[n2+1];
         
-        prev[0] = 1;
+//         prev[0] = 1;
         
-        for(int index2 = 2 ; index2 <=n2 ; index2=index2+2){
-            if(s2.charAt(index2-1)!='*'){
-                break;
-            }
-            prev[index2] = 1;
-        }
+//         for(int index2 = 2 ; index2 <=n2 ; index2=index2+2){
+//             if(s2.charAt(index2-1)!='*'){
+//                 break;
+//             }
+//             prev[index2] = 1;
+//         }
         
-        for(int index1 = 1 ; index1 <= n1 ; index1++){
+//         for(int index1 = 1 ; index1 <= n1 ; index1++){
             
-            cur = new int[n2+1];
+//             cur = new int[n2+1];
             
-            for(int index2 = 1 ; index2 <= n2 ; index2++){
+//             for(int index2 = 1 ; index2 <= n2 ; index2++){
                 
-                if( s1.charAt(index1-1)==s2.charAt(index2-1)){
-                    if(prev[index2-1] == 1){
-                        cur[index2] = 1;
-                    }
-                }
-                else if(s2.charAt(index2-1)=='.'){
-                    if(prev[index2-1] == 1){
-                        cur[index2] = 1;
-                    }
-                }else if(s2.charAt(index2-1)=='*'){
-                    if( (s2.charAt(index2-2) == s1.charAt(index1-1) ||
-                        s2.charAt(index2-2) == '.') &&
-                        (prev[index2] == 1 ||
-                        cur[index2-1] == 1 ) ){
+//                 if( s1.charAt(index1-1)==s2.charAt(index2-1)){
+//                     if(prev[index2-1] == 1){
+//                         cur[index2] = 1;
+//                     }
+//                 }
+//                 else if(s2.charAt(index2-1)=='.'){
+//                     if(prev[index2-1] == 1){
+//                         cur[index2] = 1;
+//                     }
+//                 }else if(s2.charAt(index2-1)=='*'){
+//                     if( (s2.charAt(index2-2) == s1.charAt(index1-1) ||
+//                         s2.charAt(index2-2) == '.') &&
+//                         (prev[index2] == 1 ||
+//                         cur[index2-1] == 1 ) ){
 
-                        cur[index2] = 1;
-                    }
-                    if(cur[index2-2] == 1){
-                        cur[index2] = 1;
-                    }
-                }
+//                         cur[index2] = 1;
+//                     }
+//                     if(cur[index2-2] == 1){
+//                         cur[index2] = 1;
+//                     }
+//                 }
                 
-            }
-            prev = cur.clone();
-        }
+//             }
+//             prev = cur.clone();
+//         }
         
-        return prev[n2] == 1 ? true : false;
+//         return prev[n2] == 1 ? true : false;
         
         
         
@@ -106,68 +106,116 @@ class Solution {
         
         // Memoization...Top Down...
         
-//         int dp[][] = new int[n1][n2];
+        int dp[][] = new int[n1][n2];
         
-//         for(int row[] : dp){
-//             Arrays.fill(row,-1);
-//         }
+        for(int row[] : dp){
+            Arrays.fill(row,-1);
+        }
         
-//         return f(s,p,n1-1,n2-1,dp);
+        // return f(s1,s2,n1-1,n2-1,dp);
+        return f(s1,s2,0,0,dp);
         
     }
     public static boolean f(String s1, String s2,
                             int index1, int index2,int dp[][]){
         
-        if(index1<0){
-            while(index2>=0 && s2.charAt(index2)=='*'){
-                if(s2.charAt(index2)=='*'){
-                    index2--;
-                }
-                index2--;
-            }
-            if(index2<0){
-                return true;
-            }else{
-                return false;
-            }
+        if(index1>=s1.length() && index2>=s2.length()){
+            return true;
         }
-        if(index2<0){
+        
+        if(index2>=s2.length()){
             return false;
         }
         
-        if(dp[index1][index2] != -1){
-            return dp[index1][index2]==1?true:false;
+        if(index1<s1.length() && dp[index1][index2] != -1){
+            return dp[index1][index2] == 1 ? true : false;
         }
         
-        if( s1.charAt(index1)==s2.charAt(index2)){
-            if(f(s1,s2,index1-1,index2-1,dp)){
-                dp[index1][index2] = 1;
-                return true;
-            }
-        }
-        else if(s2.charAt(index2)=='.'){
-            if(f(s1,s2,index1-1,index2-1,dp)){
-                dp[index1][index2] = 1;
-                return true;
-            }
-        }else if(s2.charAt(index2)=='*'){
-            if( (s2.charAt(index2-1) == s1.charAt(index1) ||
-                s2.charAt(index2-1) == '.') &&
-                (f(s1,s2,index1-1,index2,dp) ||
-                f(s1,s2,index1,index2-1,dp)) ){
-
-                dp[index1][index2] = 1;
-                return true;
-            }
-            if(f(s1,s2,index1,index2-2,dp)){
-                dp[index1][index2] = 1;
-                return true;
-            }
-        }
+        boolean match = index1 < s1.length() && 
+                        (s1.charAt(index1) == s2.charAt(index2) || 
+                        s2.charAt(index2) == '.') ;
         
-        dp[index1][index2] = 0;
+        if(index2+1 < s2.length() && s2.charAt(index2+1)=='*'){
+            if(match){
+                if( f(s1,s2,index1+1,index2,dp) || 
+                    f(s1,s2,index1,index2+2,dp) ){
+                    
+                    dp[index1][index2] = 1;
+                    return true;
+                }
+            }else{
+                if(f(s1,s2,index1,index2+2,dp)){
+                    return true;
+                }
+            }
+        }else if(match){
+            if(f(s1,s2,index1+1,index2+1,dp)){
+                dp[index1][index2] = 1;
+                return true;
+            }
+            
+        }
         
         return false;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//         if(index1<0){
+//             while(index2>=0 && s2.charAt(index2)=='*'){
+//                 if(s2.charAt(index2)=='*'){
+//                     index2--;
+//                 }
+//                 index2--;
+//             }
+//             if(index2<0){
+//                 return true;
+//             }else{
+//                 return false;
+//             }
+//         }
+//         if(index2<0){
+//             return false;
+//         }
+        
+//         if(dp[index1][index2] != -1){
+//             return dp[index1][index2]==1?true:false;
+//         }
+        
+//         if( s1.charAt(index1)==s2.charAt(index2)){
+//             if(f(s1,s2,index1-1,index2-1,dp)){
+//                 dp[index1][index2] = 1;
+//                 return true;
+//             }
+//         }
+//         else if(s2.charAt(index2)=='.'){
+//             if(f(s1,s2,index1-1,index2-1,dp)){
+//                 dp[index1][index2] = 1;
+//                 return true;
+//             }
+//         }else if(s2.charAt(index2)=='*'){
+//             if( (s2.charAt(index2-1) == s1.charAt(index1) ||
+//                 s2.charAt(index2-1) == '.') &&
+//                 (f(s1,s2,index1-1,index2,dp) ||
+//                 f(s1,s2,index1,index2-1,dp)) ){
+
+//                 dp[index1][index2] = 1;
+//                 return true;
+//             }
+//             if(f(s1,s2,index1,index2-2,dp)){
+//                 dp[index1][index2] = 1;
+//                 return true;
+//             }
+//         }
+        
+//         dp[index1][index2] = 0;
+        
+//         return false;
         
     }
 }
