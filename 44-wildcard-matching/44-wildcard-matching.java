@@ -5,41 +5,41 @@ class Solution {
         
          // Tabulation Opimized....
         
-        int cur[] = new int[n2+1];
-        int prev[] = new int[n2+1];
+//         int cur[] = new int[n2+1];
+//         int prev[] = new int[n2+1];
         
-        prev[0] = 1;
+//         prev[0] = 1;
         
-        for(int index2 = 1 ; index2 <= n2 ; index2++){
-            if(s2.charAt(index2-1)!='*'){
-                break;
-            }
-            prev[index2] = 1;
-        }
+//         for(int index2 = 1 ; index2 <= n2 ; index2++){
+//             if(s2.charAt(index2-1)!='*'){
+//                 break;
+//             }
+//             prev[index2] = 1;
+//         }
         
-        for(int index1 = 1 ; index1 <= n1 ; index1++){
-            cur = new int[n2+1];
-            for(int index2 = 1 ; index2 <= n2 ; index2++){
+//         for(int index1 = 1 ; index1 <= n1 ; index1++){
+//             cur = new int[n2+1];
+//             for(int index2 = 1 ; index2 <= n2 ; index2++){
                 
-                if( s1.charAt(index1-1)==s2.charAt(index2-1) ||
-                    s2.charAt(index2-1)=='?'){
-                    if(prev[index2-1] == 1){
-                        cur[index2] = 1;
-                    }
-                }else if(s2.charAt(index2-1)=='*'){
-                    if( prev[index2] == 1 ||
-                        cur[index2-1] == 1 ||
-                        prev[index2-1] == 1 ){
+//                 if( s1.charAt(index1-1)==s2.charAt(index2-1) ||
+//                     s2.charAt(index2-1)=='?'){
+//                     if(prev[index2-1] == 1){
+//                         cur[index2] = 1;
+//                     }
+//                 }else if(s2.charAt(index2-1)=='*'){
+//                     if( prev[index2] == 1 ||
+//                         cur[index2-1] == 1 ||
+//                         prev[index2-1] == 1 ){
 
-                        cur[index2] = 1;
-                    }
-                }
+//                         cur[index2] = 1;
+//                     }
+//                 }
                 
-            }
-            prev = cur.clone();
-        }
+//             }
+//             prev = cur.clone();
+//         }
         
-        return prev[n2] == 1 ? true : false;
+//         return prev[n2] == 1 ? true : false;
         
         
         
@@ -91,13 +91,13 @@ class Solution {
         
         // Memoization ... Top Down...
         
-//         int dp[][] = new int[n1][n2];
+        int dp[][] = new int[n1][n2];
         
-//         for(int row[] : dp){
-//             Arrays.fill(row,-1);
-//         }
+        for(int row[] : dp){
+            Arrays.fill(row,-1);
+        }
         
-//         return f(s1,s2,n1-1,n2-1,dp);
+        return f(s1,s2,n1-1,n2-1,dp);
         
     }
     
@@ -129,8 +129,7 @@ class Solution {
             }
         }else if(s2.charAt(index2)=='*'){
             if( f(s1,s2,index1-1,index2,dp) ||
-                f(s1,s2,index1,index2-1,dp) ||
-                f(s1,s2,index1-1,index2-1,dp) ){
+                f(s1,s2,index1,index2-1,dp)){
                 
                 dp[index1][index2] = 1;
                 return true;
