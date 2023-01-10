@@ -27,8 +27,8 @@ class Solution {
                         cur[index2] = 1;
                     }
                 }else if(s2.charAt(index2-1)=='*'){
-                    if( prev[index2] == 1 ||
-                        cur[index2-1] == 1 ){
+                    if( prev[index2] == 1 ||     // process 1 char with *
+                        cur[index2-1] == 1 ){    // process 0 chars with *
 
                         cur[index2] = 1;
                     }
@@ -70,8 +70,10 @@ class Solution {
 //                         dp[index1][index2] = 1;
 //                     }
 //                 }else if(s2.charAt(index2-1)=='*'){
-//                     if( dp[index1-1][index2] == 1 ||
-//                         dp[index1][index2-1] == 1 ){
+//                     if( dp[index1-1][index2] == 1 || 
+                                                    // process 1 char with *
+//                         dp[index1][index2-1] == 1 ){ 
+                                                    // process 0 chars with *
 
 //                         dp[index1][index2] = 1;
 //                     }
@@ -128,8 +130,8 @@ class Solution {
                 return true;
             }
         }else if(s2.charAt(index2)=='*'){
-            if( f(s1,s2,index1-1,index2,dp) ||
-                f(s1,s2,index1,index2-1,dp) ){
+            if( f(s1,s2,index1-1,index2,dp) ||    // process 1 char with *
+                f(s1,s2,index1,index2-1,dp) ){    // process 0 chars with *
                 
                 dp[index1][index2] = 1;
                 return true;
@@ -168,8 +170,8 @@ class Solution {
 //             if(f(s1,s2,index1-1,index2-1))
 //                 return true;
 //         }else if(s2.charAt(index2)=='*'){
-//             if( f(s1,s2,index1-1,index2) ||
-//                 f(s1,s2,index1,index2-1) ){
+//             if( f(s1,s2,index1-1,index2) ||   // process 1 char with *
+//                 f(s1,s2,index1,index2-1) ){   // process 0 chars with *
                 
 //                 return true;
 //             }
