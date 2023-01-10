@@ -55,6 +55,49 @@ class Solution {
         
         
         
+        
+        
+        // Tabulation... n -> 0 ....
+        
+        int dp[][] = new int[n1+1][n2+1];
+        
+        dp[n1][n2] = 1;
+        
+        for(int index2 = n2-1 ; index2 >=0 ; index2=index2-2){
+            if(s2.charAt(index2)!='*'){
+                break;
+            }
+            dp[n1][index2-1] = 1;
+            dp[n1][index2] = 1;
+        }
+        
+        for(int index1 = n1-1 ; index1 >=0 ; index1--){
+            for(int index2 = n2-1; index2 >=0 ; index2--){
+                boolean match = index1 < s1.length() && 
+                        (s1.charAt(index1) == s2.charAt(index2) || 
+                        s2.charAt(index2) == '.') ;
+        
+                if(index2+1 < s2.length() && s2.charAt(index2+1)=='*'){
+                    if( (match && dp[index1+1][index2] == 1) ||  // use *
+                        dp[index1][index2+2] == 1 ){       // don't use *
+
+                        if(index1<s1.length()){
+                            dp[index1][index2] = 1;
+                        }
+                    }
+                }
+                if(match && dp[index1+1][index2+1] == 1){
+                    dp[index1][index2] = 1;
+                }
+            }
+        }
+        
+        return dp[0][0] == 1 ? true : false;
+        
+        
+        
+        
+        
 //         // Tabulation....Buttom Up....
         
 //         int dp[][] = new int[n1+1][n2+1];
@@ -106,14 +149,14 @@ class Solution {
         
         // Memoization...Top Down...
         
-        int dp[][] = new int[n1][n2];
+//         int dp[][] = new int[n1][n2];
         
-        for(int row[] : dp){
-            Arrays.fill(row,-1);
-        }
+//         for(int row[] : dp){
+//             Arrays.fill(row,-1);
+//         }
         
-        // return f(s1,s2,n1-1,n2-1,dp);
-        return f(s1,s2,0,0,dp);
+//         // return f(s1,s2,n1-1,n2-1,dp);  // n -> 0 
+//         return f(s1,s2,0,0,dp);           // 0 -> n
         
     }
     public static boolean f(String s1, String s2,
@@ -152,8 +195,6 @@ class Solution {
         }
         
         return false;
-        
-        
         
         
         
