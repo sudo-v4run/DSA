@@ -11,39 +11,50 @@
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         
-        if(lists.length==0){
-            return null;
-        }
+        // TC - O(NlogK)... SC - Recursive Stack Space...
         
-        int k = lists.length;
+        return partition(lists,0,lists.length-1);
         
-        while(k > 1){
+        
+        
+        
+//         // TC - O(NlogK)... SC - O(N) for temp...
+        
+//         if(lists.length==0){
+//             return null;
+//         }
+        
+//         int k = lists.length;
+        
+//         while(k > 1){
             
-            int sz = k%2==0 ? k/2 : (k/2) + 1;
+//             int sz = k%2==0 ? k/2 : (k/2) + 1;
             
-            ListNode temp[] = new ListNode[sz];
-            int j = 0;
+//             ListNode temp[] = new ListNode[sz];
+//             int j = 0;
                 
-            for(int i = 0 ; i < k ; i+=2){
+//             for(int i = 0 ; i < k ; i+=2){
                 
-                ListNode l1 = lists[i];
-                ListNode l2 = i+1>=k ? null : lists[i+1];
+//                 ListNode l1 = lists[i];
+//                 ListNode l2 = i+1>=k ? null : lists[i+1];
                 
-                temp[j++] = merge(l1,l2);
+//                 temp[j++] = merge(l1,l2);
 
-            }
+//             }
             
-            lists = temp.clone();
+//             lists = temp.clone();
             
-            k = lists.length;
+//             k = lists.length;
             
-        }
+//         }
         
-        return lists[0];
-        
-        
+//         return lists[0];
         
         
+        
+        
+        
+        // TC - O(N.K)...
         
 //         if(lists.length==0){
 //             return null;
@@ -81,7 +92,9 @@ class Solution {
 //         return ansHead.next;
         
         
+       
         
+        // TC - O(NlogK)... SC - O(N) for temp...
         
 //         PriorityQueue<Integer> pq = new PriorityQueue<>();
         
@@ -104,6 +117,19 @@ class Solution {
 //         }
         
 //         return res.next;
+    }
+    
+    public static ListNode partition(ListNode[] lists, int l, int r){
+        if(lists.length==0){
+            return null;
+        }
+        if(l<r){
+            int m = (l+r)/2;
+            ListNode l1 = partition(lists,l,m);
+            ListNode l2 = partition(lists,m+1,r);
+            return merge(l1,l2);
+        }
+        return lists[l];
     }
     
     public static ListNode merge(ListNode l1 , ListNode l2){
