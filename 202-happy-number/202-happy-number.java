@@ -5,9 +5,9 @@ class Solution {
         int fast = n;
         
         do{
-            slow = sumOfDigits(slow);
-            fast = sumOfDigits(fast);
-            fast = sumOfDigits(fast);  
+            slow = sumOfSqOfDigits(slow);
+            fast = sumOfSqOfDigits(fast);
+            fast = sumOfSqOfDigits(fast);  
         }while(slow!=fast);
         
         if(slow==1){
@@ -23,7 +23,7 @@ class Solution {
         
 //         while(!hs.contains(n)){
 //             hs.add(n);
-//             n = sumOfDigits(n);
+//             n = sumOfSqOfDigits(n);
             
 //             if(n==1){
 //                 return true;
@@ -52,7 +52,7 @@ class Solution {
         // }
     }
     
-    public static int sumOfDigits(int n){
+    public static int sumOfSqOfDigits(int n){
         int res = 0;
         
         while(n!=0){
