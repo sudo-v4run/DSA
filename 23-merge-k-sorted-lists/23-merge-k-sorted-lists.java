@@ -24,27 +24,25 @@ class Solution {
             
             ListNode min = new ListNode(Integer.MAX_VALUE);
             notFinished = false;
+            int minPtr = k+1;
+            
             for(int i = 0 ; i < k ; i++){
-                if(lists[i] !=null && lists[i].val!=(int)1e7
-                                   && lists[i].val<min.val){
+                if(lists[i] !=null && lists[i].val<min.val){
                     min = lists[i];
+                    minPtr = i;
                 }
-                if(lists[i] !=null && lists[i].val!=(int)1e7){
+                if(lists[i] !=null){
                     notFinished = true;
                 }
             }
             if(!notFinished){
                 break;
             }
+            
+            lists[minPtr] = lists[minPtr].next;
+            
             ans.next = new ListNode(min.val);
             ans = ans.next;
-            
-            if(min.next!=null){
-                remove(min);
-            }else{
-                min.val = (int)1e7;
-            }
-            
         }
         
         return ansHead.next;
@@ -73,9 +71,5 @@ class Solution {
 //         }
         
 //         return res.next;
-    }
-    public static void remove(ListNode node){
-        node.val = node.next.val;
-        node.next = node.next.next;
     }
 }
