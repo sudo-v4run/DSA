@@ -21,14 +21,13 @@ class Solution {
         boolean notFinished = true;
         
         while(notFinished){
-            
-            ListNode min = new ListNode(Integer.MAX_VALUE);
+            int min = Integer.MAX_VALUE;
             notFinished = false;
             int minPtr = k+1;
             
             for(int i = 0 ; i < k ; i++){
-                if(lists[i] !=null && lists[i].val<min.val){
-                    min = lists[i];
+                if(lists[i] !=null && lists[i].val<min){
+                    min = lists[i].val;
                     minPtr = i;
                 }
                 if(lists[i] !=null){
@@ -41,7 +40,7 @@ class Solution {
             
             lists[minPtr] = lists[minPtr].next;
             
-            ans.next = new ListNode(min.val);
+            ans.next = new ListNode(min);
             ans = ans.next;
         }
         
