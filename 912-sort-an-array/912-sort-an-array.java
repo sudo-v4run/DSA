@@ -1,6 +1,22 @@
 class Solution {
     public int[] sortArray(int[] arr) {
         
+        // Insertion Sort...
+        
+//         int n = arr.length;
+        
+//         for(int i = 0 ; i < n ; i++){
+//             int cur = arr[i];
+//             int j = i-1;
+//             while(j>=0 && arr[j]>cur){
+//                 arr[j+1] = arr[j];
+//                 j--;
+//             }
+//             arr[j+1] = cur;
+//         }
+//         return arr;
+        
+        
         // MergeSort...
         
         int n = arr.length;
@@ -55,11 +71,6 @@ class Solution {
             arr[i] = res[k++];
         }
     }
-    
-    
-    
-    
-    
     
     
     
