@@ -4,6 +4,7 @@ class Solution {
         // Insertion Sort...
         
 //         int n = arr.length;
+//         if(n == 0 || n == 1) return arr;
         
 //         for(int i = 0 ; i < n ; i++){
 //             int cur = arr[i];
@@ -14,6 +15,7 @@ class Solution {
 //             }
 //             arr[j+1] = cur;
 //         }
+        
 //         return arr;
         
         
