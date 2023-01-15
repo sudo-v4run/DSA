@@ -1,95 +1,59 @@
 class Solution {
     public int largestRectangleArea(int[] heights) {
         int n = heights.length;
-        
         int left[] = new int[n];
         int right[] = new int[n];
         
-        //   O(n*n)             *********************************
-        // left[0] = 0;
-        // right[n-1] = n-1;
-        // for(int i = 0; i < n ; i++){
-        //     int j = i-1;
-        //     while(j>=0 && heights[j]>=heights[i]){
-        //         j--;
-        //     }
-        //     left[i] = j+1;
-        //     j = i+1;
-        //     while(j<=n-1 && heights[j]>=heights[i]){
-        //         j++;
-        //     }
-        //     right[i] = j-1;
-        // }
         
-        //********************************************************
+//         O(n*n) ......................................
         
+//         for(int i = 0 ; i < n ; i++){
+//             int j = i-1;
+//             while(j>=0 && heights[j]>=heights[i]){
+//                 j--;
+//             }
+//             left[i] = j+1;
+            
+//             j = i+1;
+//             while(j<n && heights[j]>=heights[i]){
+//                 j++;
+//             }
+//             right[i] = j-1;
+//         }
+
+//         .............................................
         
         Stack<Integer> s = new Stack<>();
         
-        for(int i = 0; i<n ; i++){
+        for(int i = 0 ; i < n ; i++){
             while(!s.isEmpty() && heights[s.peek()]>=heights[i]){
                 s.pop();
             }
-            
-            if(s.isEmpty()){
-                left[i] = 0;
-            }else{
-                left[i] = s.peek()+1;
-            }
+            left[i] = s.isEmpty() ? 0 : s.peek()+1;
             
             s.push(i);
         }
         
+        while(!s.isEmpty()){
+            s.pop();
+        }
         
-        while(!s.isEmpty()) s.pop();
-        
-        
-        for(int i = n-1; i>=0 ; i--){
+        for(int i = n-1 ; i >=0 ; i--){
             while(!s.isEmpty() && heights[s.peek()]>=heights[i]){
                 s.pop();
             }
-            
-            if(s.isEmpty()){
-                right[i] = n-1;
-            }else{
-                right[i] = s.peek()-1;
-            }
+            right[i] = s.isEmpty() ? n-1 : s.peek()-1;
             
             s.push(i);
         }
         
-        int area = 0;
+        int maxA = -1;
         
         for(int i = 0 ; i < n ; i++){
-            int width = right[i]-left[i]+1;
-            area = Math.max(area,width*heights[i]);
+            int width = right[i] - left[i] + 1;
+            maxA = Math.max(maxA,width*heights[i]);
         }
         
-        return area;
-        
-        
-        
-        //****************************************************************
-        
-        
-//         Stack<Integer> s = new Stack<>();
-//         int maxA = 0;
-        
-//         for(int i = 0 ; i <= n; i++){
-//             while(!s.isEmpty()&& (i==n || heights[s.peek()]>=heights[i]) ){
-//                 int h = heights[s.pop()];
-//                 int width;
-//                 if(s.isEmpty()){
-//                     width = i;
-//                 }else{
-//                     width = (i-s.peek()-1);
-//                 }
-//                 maxA = Math.max(maxA,h*width);
-//             }
-//             s.push(i);
-//         }
-        
-//         return maxA;
-        
+        return maxA;
     }
 }
