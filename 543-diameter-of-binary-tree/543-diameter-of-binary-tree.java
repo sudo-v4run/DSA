@@ -1,10 +1,13 @@
 class Solution {
     public int diameterOfBinaryTree(TreeNode root) {
+        
         int diameter[] = new int[1];
         f(root,diameter);
+        
         return diameter[0];
     }
     public static int f(TreeNode root, int diameter[]){
+        
         if(root==null){
             return 0;
         }
