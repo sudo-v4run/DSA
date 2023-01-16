@@ -170,6 +170,7 @@ class Solution {
         
     }
     public static void f(TreeNode root,List<List<Integer>> res, int level){
+        
         if(root==null){
             return;
         }
