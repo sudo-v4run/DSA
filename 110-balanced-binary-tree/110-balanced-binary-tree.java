@@ -30,9 +30,13 @@ class Solution {
         }
         
         int left = findHeight(root.left);
+        
+        if(left==-1)
+            return -1;
+        
         int right = findHeight(root.right);
         
-        if(left==-1 || right == -1)
+        if(right == -1)
             return -1;
         
         if(Math.abs(left-right)>1)
