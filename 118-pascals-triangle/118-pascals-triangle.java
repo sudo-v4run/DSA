@@ -1,7 +1,7 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> rl = new ArrayList<List<Integer>>();
         
+        List<List<Integer>> rl = new ArrayList<List<Integer>>();
         List<Integer> cl;
         
         for(int i = 0 ; i < numRows ; i++){
