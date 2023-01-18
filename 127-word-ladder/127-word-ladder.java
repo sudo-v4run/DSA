@@ -3,6 +3,7 @@ class Solution {
     static class Pair{
         String str;
         int lvl;
+        
         Pair(String str, int lvl){
             this.str = str;
             this.lvl = lvl;
@@ -29,19 +30,21 @@ class Solution {
             if(s.equals(endWord)){
                 return l;
             }
-            String[] hsArr = hs.toArray(new String[hs.size()]);
-            for(String word : hsArr){
-                int cnt = 0;
-                for(int i = 0 ; i < word.length() ; i++){
-                    if(word.charAt(i)!=s.charAt(i)){
-                        cnt++;
+            
+            for(int i = 0 ; i < s.length() ; i++){
+                char[] chArray = s.toCharArray();
+                
+                for(char ch = 'a' ; ch <= 'z' ; ch++){
+                    chArray[i] = ch;
+                    String toString = new String(chArray);
+                    
+                    if(hs.contains(toString)){
+                        q.add(new Pair(toString,l+1));
+                        hs.remove(toString);
                     }
                 }
-                if(cnt==1){
-                    q.add(new Pair(word,l+1));
-                    hs.remove(word);
-                }
             }
+            
         }
         
         return 0;
