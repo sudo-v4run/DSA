@@ -9,6 +9,8 @@ class Solution {
             hs.add(word);
         }
         
+        // Tabulation...Buttom-Up... Optimized...
+        
         int dp[] = new int[n+1];
         dp[n] = 1;
         
@@ -24,6 +26,8 @@ class Solution {
         return dp[0] == 1 ? true : false;
         
         
+        
+        
         // Memoization.... Top-Down....
         
 //         int dp[] = new int[n];
@@ -32,7 +36,6 @@ class Solution {
 //         return f(s,0,hs,dp);
     }
     public static boolean f(String s, int index, Set<String> hs,int dp[]){
-        
         
         if(index >= s.length()){
             return true;
