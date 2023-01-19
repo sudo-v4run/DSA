@@ -30,11 +30,9 @@ class Solution {
         
         for(int i = index ; i < s.length() ; i++){
             
-            if(hs.contains(s.substring(index,i+1))){
-                if(f(s,i+1,hs,dp)){
-                    dp[index] = 1;
-                    return true;
-                }
+            if(hs.contains(s.substring(index,i+1)) && f(s,i+1,hs,dp)){
+                dp[index] = 1;
+                return true;
             }
         }
         
