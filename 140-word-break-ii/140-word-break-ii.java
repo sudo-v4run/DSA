@@ -1,11 +1,9 @@
 class Solution {
     
     static List<String> res;
-    static String ans;
     
     Solution(){
         res = new ArrayList<>();
-        ans = "";
     }
     
     public List<String> wordBreak(String s, List<String> wordDict) {
@@ -18,35 +16,23 @@ class Solution {
             hs.add(word);
         }
         
-        // Memoization.... Top-Down....
+        String ans = "";
 
-        int dp[] = new int[n];
-        Arrays.fill(dp,-1);
-
-        f(s,0,hs,dp);
+        f(s,0,ans,hs);
         
         return res;
     }
-    
-    public static boolean f(String s, int index, Set<String> hs, int dp[]){
+    public static void f(String s, int index,String ans, Set<String> hs){
         
         if(index >= s.length()){
-            return true;
+            res.add(ans.substring(0,ans.length()-1));
         }
         
-        if(dp[index] != -1){
-            return dp[index] == 1 ? true : false;
-        }
-        
-        String temp = ans;
         for(int i = index ; i < s.length() ; i++){
-            ans += s.substring(index,i+1)+" ";
-            if(hs.contains(s.substring(index,i+1)) && f(s,i+1,hs,dp)){
-                res.add(ans.substring(0,ans.length()-1));
+            String temp = s.substring(index,i+1);
+            if(hs.contains(temp)){
+                f(s,i+1,ans+temp+" ",hs);
             }
-            ans = temp;
         }
-        
-        return false;
     }
 }
