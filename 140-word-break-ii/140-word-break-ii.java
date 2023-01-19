@@ -18,11 +18,6 @@ class Solution {
             hs.add(word);
         }
         
-        // Memoization.... Top-Down....
-        
-        int dp[] = new int[n];
-        Arrays.fill(dp,-1);
-        
         f(s,0,hs);
         
         return res;
@@ -36,7 +31,6 @@ class Solution {
         
         String temp = ans;
         for(int i = index ; i < s.length() ; i++){
-            
             ans += s.substring(index,i+1)+" ";
             if(hs.contains(s.substring(index,i+1)) && f(s,i+1,hs)){
                 res.add(new String(ans.substring(0,ans.length()-1)));
@@ -45,23 +39,5 @@ class Solution {
         }
         
         return false;
-        
-        
-        
-        
-//         if(index >= s.length()){
-//             return true;
-//         }
-        
-//         for(int i = index ; i < s.length() ; i++){
-            
-//             if(hs.contains(s.substring(index,i+1))){
-//                 if(f(s,i+1,hs)){
-//                     return true;
-//                 }
-//             }
-//         }
-        
-//         return false;
     }
 }
