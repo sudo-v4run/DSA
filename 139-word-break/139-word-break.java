@@ -3,59 +3,60 @@ class Solution {
         
         int n = s.length();
         
-        // Tabulation...Buttom Up...
+        Set<String> hs = new HashSet();
         
-        boolean dp[] = new boolean[n+1];
-        
-        dp[n] = true;
-        
-        for(int i = n-1 ; i >= 0 ; i--){
-            for(String w : wordDict){
-                if(i+w.length()<=n && 
-                                (s.substring(i,i+w.length())).equals(w) ){
-                    dp[i] = dp[i+w.length()];
-                }
-                if(dp[i]){
-                    break;
-                }
-            }
+        for(String word : wordDict){
+            hs.add(word);
         }
         
-        return dp[0];
         
+        // Memoization.... Top-Down....
         
+        int dp[] = new int[n];
+        Arrays.fill(dp,-1);
         
-        // Memoization... Top Down ...
-        
-//         HashSet<String> hs = new HashSet<>();
-        
-//         for(String str : wordDict){
-//             hs.add(str);
-//         }
-        
-//         int dp[] = new int[n];
-        
-//         Arrays.fill(dp,-1);
-        
-//         return f(0,s,hs,dp);
-        
+        return f(s,0,hs,dp);
     }
-    public static boolean f(int index,String s,HashSet<String> hs,int dp[]){
-        if(index>=s.length()){
+    public static boolean f(String s, int index, Set<String> hs,int dp[]){
+        
+        
+        if(index >= s.length()){
             return true;
         }
         
-        if(dp[index]!= -1){
-            return dp[index]==1?true:false;
+        if(dp[index] != -1){
+            return dp[index] == 1 ? true : false;
         }
         
         for(int i = index ; i < s.length() ; i++){
-            if(hs.contains(s.substring(index,i+1)) && f(i+1,s,hs,dp)){
-                dp[index] = 1;
-                return true;
+            
+            if(hs.contains(s.substring(index,i+1))){
+                if(f(s,i+1,hs,dp)){
+                    dp[index] = 1;
+                    return true;
+                }
             }
         }
+        
         dp[index] = 0;
         return false;
+        
+        
+        
+        
+//         if(index >= s.length()){
+//             return true;
+//         }
+        
+//         for(int i = index ; i < s.length() ; i++){
+            
+//             if(hs.contains(s.substring(index,i+1))){
+//                 if(f(s,i+1,hs)){
+//                     return true;
+//                 }
+//             }
+//         }
+        
+//         return false;
     }
 }
