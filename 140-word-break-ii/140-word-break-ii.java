@@ -33,7 +33,7 @@ class Solution {
         for(int i = index ; i < s.length() ; i++){
             ans += s.substring(index,i+1)+" ";
             if(hs.contains(s.substring(index,i+1)) && f(s,i+1,hs)){
-                res.add(new String(ans.substring(0,ans.length()-1)));
+                res.add(ans.substring(0,ans.length()-1));
             }
             ans = temp;
         }
