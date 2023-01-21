@@ -22,7 +22,7 @@ class Solution {
                 int denominator = x2-x1;
                 
                 if(numerator==0){
-                    slope = 0.0;
+                    slope = (double)0;
                 }else if(denominator != 0){
                     slope = (double)numerator/(double)denominator;
                 }
