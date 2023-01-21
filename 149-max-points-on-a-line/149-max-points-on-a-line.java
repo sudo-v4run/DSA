@@ -21,14 +21,11 @@ class Solution {
                 int numerator = y2-y1;
                 int denominator = x2-x1;
                 
-                if(denominator != 0){
-                    slope = (double)numerator / (double)denominator;
+                if(numerator==0){
+                    slope = 0.0;
+                }else if(denominator != 0){
+                    slope = (double)numerator/(double)denominator;
                 }
-                if(numerator == 0){
-                    slope = (double)0;
-                }
-                
-                System.out.println(slope);
                 
                 hm.put(slope,hm.getOrDefault(slope,1)+1);
                 iMax = Math.max(iMax,hm.get(slope));
