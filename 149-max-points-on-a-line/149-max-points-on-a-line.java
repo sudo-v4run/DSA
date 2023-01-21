@@ -21,10 +21,11 @@ class Solution {
                 int numerator = y2-y1;
                 int denominator = x2-x1;
                 
-                if(numerator==0){
+                if(denominator != 0){
+                    slope = (double)numerator / (double)denominator;
+                }
+                if(numerator == 0){
                     slope = (double)0;
-                }else if(denominator != 0){
-                    slope = (double)numerator/(double)denominator;
                 }
                 
                 System.out.println(slope);
