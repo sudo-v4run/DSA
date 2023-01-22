@@ -54,6 +54,7 @@ class Solution {
         
         int take1digit = f(index+1,s,dp);
         int take2digits = 0;
+        
         if(index+1 <= s.length()-1 && ( (s.charAt(index)=='1') ||  
             (s.charAt(index)=='2' && 
              (s.charAt(index+1)>='0' && s.charAt(index+1)<='6') ) ) ){
