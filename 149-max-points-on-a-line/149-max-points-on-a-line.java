@@ -1,6 +1,5 @@
 class Solution {
     public int maxPoints(int[][] points) {
-        
         int n = points.length;
         
         if(n<=2){
@@ -13,6 +12,7 @@ class Solution {
         for(int i = 0 ; i < n ; i++){
             int iMax = 0;
             for(int j = i+1 ; j < n ; j++){
+                
                 double slope = 1e9;
                 int y2=points[j][1], y1=points[i][1];
                 int x2=points[j][0], x1=points[i][0];
