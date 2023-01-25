@@ -1,34 +1,37 @@
 class MedianFinder {
-    Queue<Integer> minH,maxH;
-    boolean isEven = true;
+
+    static ArrayList<Integer> arr;
+    static PriorityQueue<Integer> maxHeap;
+    static PriorityQueue<Integer> minHeap;
+    
     public MedianFinder() {
-        minH = new PriorityQueue<>();
-        maxH = new PriorityQueue<>(Collections.reverseOrder());
+        arr = new ArrayList<>();
+        maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        minHeap = new PriorityQueue<>();
     }
     
-    public void addNum(int x) {
-        if(isEven){
-            minH.offer(x);
-            maxH.offer(minH.poll());
+    public void addNum(int num) {
+        
+        if(maxHeap.isEmpty() || num<=maxHeap.peek()){
+            maxHeap.add(num);
         }else{
-            maxH.offer(x);
-            minH.offer(maxH.poll());
+            minHeap.add(num);
         }
-        isEven = !isEven;
+        
+        if(maxHeap.size()>minHeap.size()+1){
+            minHeap.add(maxHeap.poll());
+        }else if(maxHeap.size()<minHeap.size()){
+            maxHeap.add(minHeap.poll());
+        }
+        
     }
     
     public double findMedian() {
-        if(isEven){
-            return (minH.peek()+maxH.peek())/2.0;
-        }else{
-            return maxH.peek();
+        
+        if((maxHeap.size()+minHeap.size())%2==0){
+            return (double)(maxHeap.peek()+minHeap.peek())/2;
         }
+        
+        return maxHeap.peek();
     }
 }
-
-/**
- * Your MedianFinder object will be instantiated and called as such:
- * MedianFinder obj = new MedianFinder();
- * obj.addNum(num);
- * double param_2 = obj.findMedian();
- */
