@@ -3,7 +3,7 @@ class Solution {
         
         int ans[] = new int[2];
 
-        // O(N) ..
+        // O(N) ...
         
         HashMap<Integer,Integer> hm = new HashMap<>();
         for(int i = 0 ; i < nums.length; i++){
@@ -15,7 +15,6 @@ class Solution {
             hm.put(nums[i],i);
         }
         return ans;
-        
         
         
         
