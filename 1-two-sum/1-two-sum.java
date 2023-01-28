@@ -18,7 +18,6 @@ class Solution {
         
         
         
-        
         /* O(N.logN) .... This is soultion is only fore booelan return type.
                                     Coz indices' position changes when sorted.*/
         // Using 2 pointers approach....
