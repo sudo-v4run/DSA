@@ -4,7 +4,7 @@ class Solution {
         int m = matrix.length;
         int n = matrix[0].length;
         
-        int area = 0;
+        int len = 0;
         
         int dp[][] = new int[m][n];
         
@@ -29,10 +29,10 @@ class Solution {
         
         for(int row[] : dp){
             for(int k : row){
-                area = Math.max(area,k);
+                len = Math.max(len,k);
             }
         }
         
-        return area*area;
+        return len*len;
     }
 }
