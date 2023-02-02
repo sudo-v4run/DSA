@@ -1,11 +1,5 @@
 class Solution {
     
-    static int lip;
-    
-    Solution(){
-        lip = 1;
-    }
-    
     public int longestIncreasingPath(int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;
@@ -16,9 +10,11 @@ class Solution {
             Arrays.fill(row,1);
         }
         
+        int lip = 1;
+        
         for(int i = 0 ; i < m ; i++){
             for(int j = 0 ; j < n ; j++){
-                dfs(matrix,i,j,-1,dp);
+                lip = Math.max(lip,dfs(matrix,i,j,-1,dp));
             }
         }
         
@@ -49,8 +45,6 @@ class Solution {
         
         int right = dfs(arr,r,c+1,arr[r][c],dp);
         max = Math.max(right+1,max);
-        
-        lip = Math.max(lip,max);
         
         return dp[r][c] = max;
     }
