@@ -7,7 +7,7 @@ class Solution {
         int dp[][] = new int[m][n];
         
         for(int row[] : dp){
-            Arrays.fill(row,1);
+            Arrays.fill(row,-1);
         }
         
         int lip = 1;
@@ -28,7 +28,7 @@ class Solution {
             return Integer.MIN_VALUE;
         }
         
-        if(dp[r][c] != 1){
+        if(dp[r][c] != -1){
             return dp[r][c];
         }
         
