@@ -1,6 +1,6 @@
 class Solution {
-    
     public int longestIncreasingPath(int[][] matrix) {
+        
         int m = matrix.length;
         int n = matrix[0].length;
         
