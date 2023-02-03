@@ -110,97 +110,86 @@ class GfG {
 
 // } Driver Code Ends
 
-
-//User function Template for Java
-
 class Solution
 {
-    /*class Node {
-    	int data;
-    	Node left;
-    	Node right;
-    
-    	Node(int data) {
-    		this.data = data;
-    		left = null;
-    		right = null;
-    	}
-    }*/
-    
     public static int minTime(Node root, int target) 
     {
-        HashMap<Node,Node> hm = new HashMap<>();
-        Node tar = createParents(root,hm,target);
-        int t = burnTree(tar,hm);
+        HashMap<Node,Node> parent = new HashMap<>();
+        findParent(root,parent);
         
-        return t;
-    }
-    public static Node createParents(Node root,HashMap<Node,Node> hm,int target){
         Queue<Node> q = new LinkedList<>();
+        HashSet<Node> vis = new HashSet<>();
         
-        q.offer(root);
-        hm.put(root,null);
+        Node node = findNode(root,target);
         
-        Node res = null;
+        q.add(node);
+        vis.add(node);
+        
+        // for(Map.Entry<Node,Node> entry : parent.entrySet()){
+        //     System.out.println(entry.getKey().data + "  " + entry.getValue().data);
+        // }
+        
+        int minTime = 0;
         
         while(!q.isEmpty()){
-            Node pop = q.poll();
-            
-            if(pop.data==target){
-                res = pop;
-            }
-            
-            if(pop.left!=null){
-                q.offer(pop.left);
-                hm.put(pop.left,pop);
-            }
-            
-            if(pop.right!=null){
-                q.offer(pop.right);
-                hm.put(pop.right,pop);
-            }
-        }
-        
-        return res;
-    }
-    
-    public static int burnTree(Node root,HashMap<Node,Node> hm){
-        Queue<Node> q = new LinkedList<>();
-        HashMap<Node,Boolean> vis = new HashMap<>();
-        
-        q.offer(root);
-        vis.put(root,true);
-        int t = 0;
-        
-        while(!q.isEmpty()){
-            int flg = 0;
             int sz = q.size();
             for(int i = 0 ; i < sz ; i++){
-                
                 Node pop = q.poll();
                 
-                if(pop.left!=null && vis.get(pop.left)==null){
-                    q.offer(pop.left);
-                    vis.put(pop.left,true);
-                    flg = 1;
+                if(pop.left != null && !vis.contains(pop.left)){
+                    q.add(pop.left);
+                    vis.add(pop.left);
                 }
-                if(pop.right!=null && vis.get(pop.right)==null){
-                    q.offer(pop.right);
-                    vis.put(pop.right,true);
-                    flg = 1;
+                if(pop.right != null && !vis.contains(pop.right)){
+                    q.add(pop.right);
+                    vis.add(pop.right);
                 }
-                if(hm.get(pop)!=null && vis.get(hm.get(pop))==null){
-                    q.offer(hm.get(pop));
-                    vis.put(hm.get(pop),true);
-                    flg = 1;
+                
+                Node parentNode = parent.get(pop);
+                
+                if(parent.containsKey(pop) && !vis.contains(parentNode)){
+                    q.add(parentNode);
+                    vis.add(parentNode);
                 }
             }
-            
-            if(flg==1){
-                t++;
-            }
+            minTime++;
         }
         
-        return t;
+        return --minTime;
+    }
+    public static void findParent(Node root, HashMap<Node,Node> hm){
+        
+        if(root==null){
+            return;
+        }
+        
+        if(root.left != null){
+            hm.put(root.left,root);
+        }
+        if(root.right != null){
+            hm.put(root.right,root);
+        }
+        
+        findParent(root.left,hm);
+        findParent(root.right,hm);
+    }
+    public static Node findNode(Node root, int target){
+        if(root==null){
+            return null;
+        }
+        
+        if(root.data == target){
+            return root;
+        }
+        
+        Node ans = findNode(root.left,target);
+        
+        if(ans!=null){
+            return ans;
+        }else{
+            ans = findNode(root.right,target);
+        }
+        
+        return ans;
     }
 }
