@@ -20,8 +20,7 @@ class Solution {
         
         return lip;
     }
-    public static int dfs(int arr[][], int r, int c, 
-                           int last, int dp[][]){
+    public static int dfs(int arr[][], int r, int c, int last, int dp[][]){
         
         if(r<0 || r>=arr.length || c<0 || c>=arr[0].length || arr[r][c]<=last){
             
