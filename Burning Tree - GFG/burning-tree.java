@@ -143,7 +143,7 @@ class Solution
                 
                 Node parentNode = parent.get(pop);
                 
-                if(parent.containsKey(pop) && !vis.contains(parentNode)){
+                if(parentNode != null && !vis.contains(parentNode)){
                     q.add(parentNode);
                     vis.add(parentNode);
                 }
