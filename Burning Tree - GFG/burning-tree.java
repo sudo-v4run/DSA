@@ -125,10 +125,6 @@ class Solution
         q.add(node);
         vis.add(node);
         
-        // for(Map.Entry<Node,Node> entry : parent.entrySet()){
-        //     System.out.println(entry.getKey().data + "  " + entry.getValue().data);
-        // }
-        
         int minTime = 0;
         
         while(!q.isEmpty()){
