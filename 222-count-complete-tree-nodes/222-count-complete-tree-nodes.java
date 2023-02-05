@@ -9,7 +9,7 @@ class Solution {
         int rc = findRightCompleteness(root);
         
         if(lc==rc){
-            return (1<<lc)-1; // no. of nodes in a perfect binary tree -> 2^h -1
+            return (1<<lc)-1; // no. of nodes in a perfect binary tree -> 2^h-1
         }
         
         return 1+countNodes(root.left)+countNodes(root.right);
