@@ -12,7 +12,7 @@ class Solution {
             return (1<<lc)-1; // no. of nodes in a perfect binary tree = 2^h-1
         }
         
-        return 1+countNodes(root.left)+countNodes(root.right);
+        return 1 + countNodes(root.left) + countNodes(root.right);
     }
     public static int findLeftCompleteness(TreeNode root){
         int h = 0;
