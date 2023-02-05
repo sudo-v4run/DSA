@@ -5,8 +5,8 @@ class Solution {
             return 0;
         }
         
-        int lc = findLeftCompleteness(root);
-        int rc = findRightCompleteness(root);
+        int lc = findLeftPerfectness(root);
+        int rc = findRightPerfectness(root);
         
         if(lc==rc){
             return (1<<lc)-1; // no. of nodes in a perfect binary tree = 2^h-1
@@ -14,7 +14,7 @@ class Solution {
         
         return 1 + countNodes(root.left) + countNodes(root.right);
     }
-    public static int findLeftCompleteness(TreeNode root){
+    public static int findLeftPerfectness(TreeNode root){
         int h = 0;
         
         while(root!=null){
@@ -24,7 +24,7 @@ class Solution {
         
         return h;
     }
-    public static int findRightCompleteness(TreeNode root){
+    public static int findRightPerfectness(TreeNode root){
         int h = 0;
         
         while(root!=null){
