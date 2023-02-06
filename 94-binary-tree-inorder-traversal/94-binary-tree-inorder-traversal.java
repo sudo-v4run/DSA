@@ -49,25 +49,26 @@ class Solution {
         // Morris .....
         
         TreeNode cur = root;
-        while(cur!=null){
+        
+        while(cur != null){
             if(cur.left == null){
                 res.add(cur.val);
                 cur = cur.right;
             }else{
                 TreeNode temp = cur.left;
-                while(temp.right!=null && temp.right != cur){
+                while(temp.right != null && temp.right != cur){
                     temp = temp.right;
                 }
-                if(temp.right==cur){
-                    temp.right = null;
-                    res.add(cur.val);
-                    cur = cur.right;
-                }else{
+                if(temp.right == null){
                     temp.right = cur;
                     cur = cur.left;
+                }else{
+                    res.add(cur.val);
+                    temp.right = null;
+                    cur = cur.right;
                 }
+                
             }
-            
         }
         
         return res;
