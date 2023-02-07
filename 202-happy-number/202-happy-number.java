@@ -18,7 +18,6 @@ class Solution {
         
         
         
-        
 //         HashSet<Integer> hs = new HashSet<>();
         
 //         while(!hs.contains(n)){
@@ -44,7 +43,6 @@ class Solution {
         //     newN += l*l;
         //     n = n/10;
         // }
-        // System.out.println(newN);
         // if(newN==1){
         //     return true;
         // }else{
