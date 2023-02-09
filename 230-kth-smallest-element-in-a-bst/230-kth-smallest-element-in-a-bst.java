@@ -13,17 +13,16 @@
  *     }
  * }
  */
-
 class Solution {
-    
-    static int cnt;
     static int ans = -1;
-    
-    public int kthSmallest(TreeNode root, int k) {
+    static int k = -1;
+    public int kthSmallest(TreeNode root, int K) {
+        k = K;
         
-        cnt = k;
         inOrder(root);
+        
         return ans;
+        
     }
     public static void inOrder(TreeNode root){
         if(root==null){
@@ -32,8 +31,9 @@ class Solution {
         
         inOrder(root.left);
         
-        cnt--;
-        if(cnt==0){
+        k--;
+        
+        if(k==0){
             ans = root.val;
             return;
         }
@@ -41,30 +41,3 @@ class Solution {
         inOrder(root.right);
     }
 }
-
-
-// class Solution {
-//     static PriorityQueue<Integer> pq;
-    
-//     Solution(){
-//          pq = new PriorityQueue<>();
-//     }
-    
-//     public int kthSmallest(TreeNode root, int k) {
-//         inOrder(root);
-//         while(k-- !=1){
-//             pq.poll();
-//         }
-        
-//         return pq.peek();
-//     }
-//     public static void inOrder(TreeNode root){
-//         if(root==null){
-//             return;
-//         }
-        
-//         inOrder(root.left);
-//         pq.add(root.val);
-//         inOrder(root.right);
-//     }
-// }
