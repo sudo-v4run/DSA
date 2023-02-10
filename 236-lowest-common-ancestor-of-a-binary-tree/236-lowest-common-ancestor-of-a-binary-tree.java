@@ -22,9 +22,12 @@ class Solution {
         
         if(left != null && right != null){
             return root;
-        }else if(left != null){
+        }
+        
+        if(left != null){
             return left;
-        }else if(right != null){
+        }
+        if(right != null){
             return right;
         }
         
