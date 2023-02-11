@@ -1,38 +1,25 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
+
 class Solution {
     public TreeNode bstFromPreorder(int[] preorder) {
-        return bstFromPreorderUtil(preorder,0,preorder.length-1);
+        return f(0,preorder.length-1,preorder);
     }
-    public TreeNode bstFromPreorderUtil(int[] arr,int l,int r){
+    public static TreeNode f(int l, int r, int[] pre){
         if(l>r){
             return null;
         }
         
-        TreeNode root = new TreeNode(arr[l]);
-        int i = l;
-        for( ; i <= r ; i++){
-            if(arr[i]>arr[l]){
+        TreeNode root = new TreeNode(pre[l]);
+        
+        int i = l+1;
+        for( ; i<=r ; i++){
+            if(pre[i]>pre[l]){
                 break;
             }
         }
         
-        root.left = bstFromPreorderUtil(arr,l+1,i-1);
-        root.right = bstFromPreorderUtil(arr,i,r);
-            
+        root.left = f(l+1,i-1,pre);
+        root.right = f(i,r,pre);
+        
         return root;
     }
 }
