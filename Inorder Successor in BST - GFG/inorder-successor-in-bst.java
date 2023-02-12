@@ -116,11 +116,8 @@ class Solution
 	    Node ans = null;
 	    
 	    while(cur != null){
-	        if(cur.data > x.data){
-	            ans = cur;
-	        }
-	        
 	        if(x.data < cur.data){
+	            ans = cur;
 	            cur = cur.left;
 	        }else{
 	            cur = cur.right;
