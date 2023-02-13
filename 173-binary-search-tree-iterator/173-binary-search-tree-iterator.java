@@ -2,6 +2,8 @@
 class BSTIterator {
     
     static Stack<TreeNode> s;
+    
+    // TC -> O(1) and SC -> O(H)...Use Morris Traversal for SC -> O(1)...
 
     public BSTIterator(TreeNode root) {
         s = new Stack<>();
