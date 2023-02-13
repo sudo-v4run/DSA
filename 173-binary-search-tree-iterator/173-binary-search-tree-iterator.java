@@ -1,30 +1,75 @@
 
 class BSTIterator {
     
-    static Stack<TreeNode> s;
+//     static Stack<TreeNode> s;
     
-    // TC -> O(1) and SC -> O(H)...Use Morris Traversal for SC -> O(1)...
+//     // TC -> O(1) and SC -> O(H)...
 
+//     public BSTIterator(TreeNode root) {
+//         s = new Stack<>();
+        
+//         TreeNode cur = root;
+        
+//         while(cur != null){
+//             s.add(cur);
+//             cur = cur.left;
+//         }
+        
+//     }
+    
+//     public int next() {
+//         int ans = s.peek().val;
+        
+//         TreeNode temp = s.pop().right;
+        
+//         while(temp != null){
+//             s.add(temp);
+//             temp = temp.left;
+//         }
+        
+//         return ans;
+//     }
+    
+//     public boolean hasNext() {
+        
+//         return !s.isEmpty();
+//     }
+    
+    
+    
+    // Morris Traversal... SC -> O(1)...
+    
+    TreeNode cur;
+    
     public BSTIterator(TreeNode root) {
-        s = new Stack<>();
-        
-        TreeNode cur = root;
-        
-        while(cur != null){
-            s.add(cur);
-            cur = cur.left;
-        }
-        
+        cur = root;    
     }
     
     public int next() {
-        int ans = s.peek().val;
+        int ans = -1;
         
-        TreeNode temp = s.pop().right;
-        
-        while(temp != null){
-            s.add(temp);
-            temp = temp.left;
+        while(cur != null){
+            if(cur.left == null){
+                ans = cur.val;
+                cur = cur.right;
+                break;
+            }else{
+                TreeNode temp = cur.left;
+                
+                while(temp.right != null && temp.right != cur){
+                    temp = temp.right;
+                }
+
+                if(temp.right == null){
+                    temp.right = cur;
+                    cur = cur.left;
+                }else{
+                    ans = cur.val;
+                    temp.right = null;
+                    cur = cur.right;
+                    break;
+                }
+            }
         }
         
         return ans;
@@ -32,6 +77,7 @@ class BSTIterator {
     
     public boolean hasNext() {
         
-        return !s.isEmpty();
+        return cur != null;
     }
+    
 }
