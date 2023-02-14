@@ -6,8 +6,8 @@ class Solution {
     
     public boolean findTarget(TreeNode root, int k) {
         
-        pushAllLeft(root);
-        pushAllRight(root);
+        pushAll(root,true);
+        pushAll(root,false);
         
         int i = getNext();
         int j = getBefore();
@@ -32,7 +32,7 @@ class Solution {
         TreeNode temp = nextSt.pop();
         
         if(temp.right != null){
-            pushAllLeft(temp.right);
+            pushAll(temp.right,true);
         }
         
         return temp.val;
@@ -41,25 +41,22 @@ class Solution {
         TreeNode temp = b4St.pop();
         
         if(temp.left != null){
-            pushAllRight(temp.left);
+            pushAll(temp.left,false);
         }
         
         return temp.val;
     }
-    public static void pushAllLeft(TreeNode root){
+    public static void pushAll(TreeNode root, boolean toLeft){
         TreeNode cur = root;
         
         while(cur != null){
-            nextSt.push(cur);
-            cur = cur.left;
-        }
-    }
-    public static void pushAllRight(TreeNode root){
-        TreeNode cur = root;
-        
-        while(cur != null){
-            b4St.push(cur);
-            cur = cur.right;
+            if(toLeft){
+                nextSt.push(cur);
+                cur = cur.left;
+            }else{
+                b4St.push(cur);
+                cur = cur.right;
+            }
         }
     }
 }
