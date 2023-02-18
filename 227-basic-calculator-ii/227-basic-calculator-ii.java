@@ -15,7 +15,7 @@ class Solution {
                     i++;
                 }
                 
-                i--;  // this will increment in for loop..
+                i--;  // this will increment in for loop...
                 
                 int value = Integer.parseInt(temp);
                 
