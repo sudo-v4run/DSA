@@ -13,11 +13,11 @@ class Solution {
     }
     public int maxSumBST(TreeNode root) {
         
-        ans = -1;
+        ans = 0;
         
         f(root);
         
-        return ans < 0 ? 0 : ans;
+        return ans;
     }
     public static Node f(TreeNode root){
         if(root == null){
