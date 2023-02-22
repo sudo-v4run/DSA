@@ -7,13 +7,11 @@ class Solution {
             return new int[]{0};
         }
         
+        for(int i = 0 ; i < n ; i++){
+            adj.put(i,new ArrayList<Integer>());
+        }
+        
         for(int row[] : edges){
-            if(!adj.containsKey(row[0])){
-                adj.put(row[0],new ArrayList<Integer>());
-            }
-            if(!adj.containsKey(row[1])){
-                adj.put(row[1],new ArrayList<Integer>());
-            }
             adj.get(row[0]).add(row[1]);
             adj.get(row[1]).add(row[0]);
         }
