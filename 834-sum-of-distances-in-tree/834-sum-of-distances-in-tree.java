@@ -18,8 +18,6 @@ class Solution {
             adj.get(row[1]).add(row[0]);
         }
         
-        System.out.println(adj);
-        
         int cnt[] = new int[n];
         int res[] = new int[n];
         
