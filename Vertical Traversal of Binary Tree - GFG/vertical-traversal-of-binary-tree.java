@@ -106,46 +106,54 @@ class GfG {
 
 // } Driver Code Ends
 
-
-//User function Template for Java
-
-
 class Solution
 {
-    //Function to find the vertical order traversal of Binary Tree.
-    static ArrayList <Integer> verticalOrder(Node root)
+    static class Pair{
+        Node node;
+        int dis;
+        
+        Pair(Node node,int dis){
+            this.node = node;
+            this.dis = dis;
+        }
+    }
+    
+    static TreeMap<Integer,ArrayList<Integer>> tm;
+    
+    static ArrayList<Integer> verticalOrder(Node root)
     {
-        ArrayList <Integer> ans = new ArrayList<>();
-        if(root==null){
-            return ans;
-        }
-        Map<Integer,ArrayList> hm = new TreeMap<>();
-        Queue<Pair> q = new LinkedList<>();
-        q.add(new Pair(0,root));
-        while(!q.isEmpty()){
-            Pair cur = q.poll();
-            int hd = cur.hd;
-            if(!hm.containsKey(hd)){
-                hm.put(hd,new ArrayList<Integer>());
-            }
-            hm.get(hd).add(cur.node.data);
-            if(cur.node.left!=null)
-                q.add(new Pair(hd-1,cur.node.left));
-            if(cur.node.right!=null)
-                q.add(new Pair(hd+1,cur.node.right));
-        }
-        for(ArrayList<Integer> e : hm.values()){
-            ans.addAll(e);
+        tm = new TreeMap<>();
+        
+        f(root);
+        
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        for(ArrayList<Integer> arr : tm.values()){
+            ans.addAll(arr);
         }
         
         return ans;
     }
-    static class Pair{
-        int hd;
-        Node node;
-        Pair(int hd, Node node){
-            this.hd = hd;
-            this.node = node;
+    public static void f(Node root){
+        Pair cur = new Pair(root,0);
+        
+        Queue<Pair> q = new LinkedList<>();
+        q.add(cur);
+        
+        while(!q.isEmpty()){
+            Pair pop = q.poll();
+            
+            if(!tm.containsKey(pop.dis)){
+                tm.put(pop.dis,new ArrayList<Integer>());
+            }
+            tm.get(pop.dis).add(pop.node.data);
+            
+            if(pop.node.left != null){
+                q.add(new Pair(pop.node.left,pop.dis-1));
+            }
+            if(pop.node.right != null){
+                q.add(new Pair(pop.node.right,pop.dis+1));
+            }
         }
-    }
+    };
 }
