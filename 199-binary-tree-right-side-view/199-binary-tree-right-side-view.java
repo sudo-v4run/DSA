@@ -1,28 +1,16 @@
 class Solution {
     
-    static HashMap<Integer,Integer> hm;
+    static ArrayList<Integer> res;
     
     public List<Integer> rightSideView(TreeNode root) {
         
-        ArrayList<Integer> res = new ArrayList<>();
+        res = new ArrayList<>();
         
         if(root == null){
             return res;
         }
         
-        hm = new HashMap();
-        
         f(root,0);
-        
-        int l =0;
-        
-        while(true){
-            if(!hm.containsKey(l)){
-                break;
-            }
-            res.add(hm.get(l));
-            l++;
-        }
         
         return res;
     }
@@ -31,9 +19,11 @@ class Solution {
             return;
         }
         
-        hm.put(lvl,root.val);
+        if(res.size()==lvl){
+            res.add(root.val);
+        }
         
-        f(root.left,lvl+1);
         f(root.right,lvl+1);
+        f(root.left,lvl+1);
     }
 }
