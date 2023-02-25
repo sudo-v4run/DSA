@@ -25,7 +25,7 @@ class Solution {
             return;
         }
         
-        grid[row][col] = '0';
+        grid[row][col] = '0';       // or we can use a vis matrix..
         
         dfs(grid,row,col-1);
         dfs(grid,row,col+1);
