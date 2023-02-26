@@ -5,11 +5,14 @@ class Solution {
         int prev = 0;
         
         while(x!=0){
+            
             int last = x%10;
             rev = rev*10 + last;
+            
             if((rev-last)/10 != prev){
                 return 0;
             }
+            
             prev = rev;
             x/=10;
         }
