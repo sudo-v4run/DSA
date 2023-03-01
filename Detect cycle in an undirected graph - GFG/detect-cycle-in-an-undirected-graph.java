@@ -33,6 +33,11 @@ class GFG {
 
 class Solution {
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        
+        
+        // Same with BFS also...if adj node is already visited 
+        //                              and it's not the parent,return true...
+        
         int vis[] = new int[V];
         
         for(int i = 0 ; i < V ; i++){
