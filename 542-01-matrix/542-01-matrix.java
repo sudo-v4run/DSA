@@ -25,6 +25,7 @@ class Solution {
             for(int j = 0 ; j < n ; j++){
                 if(mat[i][j] == 0){
                     q.add(new Tuple(i,j,0));
+                    vis[i][j] = 1;
                 }
             }
         }
@@ -35,15 +36,7 @@ class Solution {
             int col = pop.c;
             int dist = pop.d;
             
-            if(mat[row][col] == 1){
-                if(res[row][col] == 0){
-                    res[row][col] = dist;
-                }else{
-                    res[row][col] = Math.min(res[row][col],dist);
-                }
-            }
-            
-            vis[row][col] = 1;
+            res[row][col] = dist;
             
             for(int d[] : dir){
                 int nr = row + d[0];
@@ -54,7 +47,7 @@ class Solution {
                     
                     continue;
                 }
-                
+                vis[nr][nc] = 1;
                 q.add(new Tuple(nr,nc,dist+1));
             }
         }
