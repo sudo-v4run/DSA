@@ -31,31 +31,32 @@ class GFG {
 }
 // } Driver Code Ends
 
-
 class Solution {
-    
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
-        
         int vis[] = new int[V];
         
-        for(int i = 0 ; i  < V ; i++){
-            if(vis[i]!=1)
-                if(isCycleDfs(i,vis,adj,-1)){
+        for(int i = 0 ; i < V ; i++){
+            if(vis[i] != 1){
+                if(dfs(i,adj,vis,-1)){
                     return true;
                 }
+            }
         }
         
         return false;
     }
-    public boolean isCycleDfs(int s,int vis[],ArrayList<ArrayList<Integer>> adj,int parent){
-        vis[s] = 1;
-        for(int nei : adj.get(s)){
-            if(vis[nei]!=1){
-                if(isCycleDfs(nei,vis,adj,s)){
+    public static boolean dfs(int v, ArrayList<ArrayList<Integer>> adj, int vis[], int parent){
+        vis[v] = 1;
+        
+        for(int nei : adj.get(v)){
+            if(vis[nei] == 1 && nei != parent){
+                return true;
+            }
+            
+            if(vis[nei] != 1){
+                if(dfs(nei,adj,vis,v)){
                     return true;
                 }
-            }else if(nei!=parent){
-                return true;
             }
         }
         
