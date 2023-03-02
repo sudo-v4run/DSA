@@ -47,6 +47,7 @@ class Solution {
                     
                     continue;
                 }
+                
                 vis[nr][nc] = 1;
                 q.add(new Tuple(nr,nc,dist+1));
             }
