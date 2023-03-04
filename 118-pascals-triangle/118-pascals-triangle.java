@@ -5,8 +5,10 @@ class Solution {
         List<Integer> cl;
         
         for(int i = 0 ; i < numRows ; i++){
+            
             cl = new ArrayList<Integer>();
             for(int j = 0 ; j <= i ; j++){
+                
                 if( j==0 || j==i ){
                     cl.add(1);
                 }else{
