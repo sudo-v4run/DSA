@@ -11,6 +11,7 @@ class Solution {
     }
     
     public int numEnclaves(int[][] board) {
+        
         // Very Similar to Surrouned regions...
         // Boundary 1 can't account to the answer and all the 1's connected to boundary
         // 1s also can't account to the answer..Thus, Apply BFS or DFS on boundary
