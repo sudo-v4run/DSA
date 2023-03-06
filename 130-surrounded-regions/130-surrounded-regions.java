@@ -1,53 +1,66 @@
 class Solution {
+    
+    static class Pair{
+        int r;
+        int c;
+        
+        Pair(int r, int c){
+            this.r = r;
+            this.c = c;
+        }
+    }
     public void solve(char[][] board) {
         
         int m = board.length;
         int n = board[0].length;
         
-        // 1. Mark Boundary Os and it's connected Os ...
+        int vis[][] = new int[m][n];
         
         for(int i = 0 ; i < m ; i++){
-            dfs(board,i,0);
-            dfs(board,i,n-1);
-        }
-        for(int j = 0 ; j < n ; j++){
-            dfs(board,0,j);
-            dfs(board,m-1,j);
+            if(board[i][0] == 'O' && vis[i][0] != 1){
+                dfs(board, new Pair(i,0), vis);
+            }
+            if(board[i][n-1] == 'O' && vis[i][n-1] != 1){
+                dfs(board, new Pair(i,n-1), vis);
+            }
         }
         
-        // 2. Mark all the Os as X ...
+        for(int j = 0 ; j < n ; j++){
+            if(board[0][j] == 'O' && vis[0][j] != 1){
+                dfs(board, new Pair(0,j), vis);
+            }
+            if(board[m-1][j] == 'O' && vis[m-1][j] != 1){
+                dfs(board, new Pair(m-1,j), vis);
+            }
+        }
         
         for(int i = 0 ; i < m ; i++){
             for(int j = 0 ; j < n ; j++){
-                if(board[i][j] == 'O'){
+                if(vis[i][j] == 1){
+                    board[i][j] = 'O';
+                }else{
                     board[i][j] = 'X';
                 }
             }
         }
         
-        // 3. Mark all the Ts as O ...
-        
-        for(int i = 0 ; i < m ; i++){
-            for(int j = 0 ; j < n ; j++){
-                if(board[i][j] == 'T'){
-                    board[i][j] = 'O';
-                }
-            }
-        }
-        
     }
-    public static void dfs(char[][] board,int r , int c){
-        if( r<0 || r >= board.length || c < 0 || c >= board[0].length
-                || board[r][c] != 'O' || board[r][c] == 'T' ){
+    public static void dfs(char[][] board, Pair p, int vis[][]){
+        
+        int row = p.r;
+        int col = p.c;
+        
+        if( row < 0 || row >= board.length || col < 0 || col >= board[0].length ||
+            board[row][col] == 'X' || vis[row][col] == 1 ){
             
             return;
         }
         
-        board[r][c] = 'T';
+        vis[row][col] = 1;
         
-        dfs(board,r-1,c);
-        dfs(board,r+1,c);
-        dfs(board,r,c-1);
-        dfs(board,r,c+1);
+        dfs(board, new Pair(row-1,col), vis);
+        dfs(board, new Pair(row,col-1), vis);
+        dfs(board, new Pair(row+1,col), vis);
+        dfs(board, new Pair(row,col+1), vis);
     }
 }
