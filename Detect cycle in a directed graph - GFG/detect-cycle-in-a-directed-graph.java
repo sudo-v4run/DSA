@@ -30,6 +30,10 @@ class DriverClass {
 
 class Solution {
     public boolean isCyclic(int v, ArrayList<ArrayList<Integer>> adj) {
+        
+        // BFS will not work for detecting cycles in directed graphs...
+        // 0 -> 1 ; 0 -> 2 ; 1 -> 2 : Test Case eg where BFS fails 
+        
         HashSet<Integer> hs = new HashSet<>();
         int vis[] = new int[v];
         
