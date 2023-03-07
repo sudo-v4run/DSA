@@ -37,34 +37,38 @@ class GFG
 
 class Solution
 {
-    public boolean isBipartite(int V, ArrayList<ArrayList<Integer>>adj)
+    public boolean isBipartite(int v, ArrayList<ArrayList<Integer>>adj)
     {
-        int color[] = new int[V];
-        for(int i = 0 ; i < V ; i++){
-            color[i] = -1;
-        }
+        int color[] = new int[v];
         
-        for(int i = 0 ; i < V ; i++){
-            if(color[i]==-1){
-                if(!bfs(i,color,adj))
+        Arrays.fill(color,-1);
+        
+        for(int i = 0 ; i < v ; i++){
+            if(color[i] == -1){
+                if(!bfs(i,adj,color)){
                     return false;
+                }
             }
         }
         
         return true;
     }
-    public static boolean bfs(int s,int color[],ArrayList<ArrayList<Integer>>adj){
+    public static boolean bfs(int v, ArrayList<ArrayList<Integer>>adj, int color[]){
+        
         Queue<Integer> q = new LinkedList<>();
-        q.offer(s);
-        color[s] = 0;
+        q.add(v);
+        color[v] = 0;
         
         while(!q.isEmpty()){
-            int cur = q.poll();
-            for(int nei : adj.get(cur)){
-                if(color[nei]==-1){
-                    color[nei] = 1 - color[cur];
-                    q.offer(nei);
-                }else if(color[nei]==color[cur]){
+            
+            int pop = q.poll();
+            
+            for(int nei : adj.get(pop)){
+                
+                if(color[nei] == -1){
+                    color[nei] = 1 - color[pop];
+                    q.add(nei);
+                }else if(color[nei] == color[pop]){
                     return false;
                 }
             }
