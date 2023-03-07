@@ -35,7 +35,6 @@ class Solution {
         
         for(int i = 0 ; i < v ; i++){
             if(vis[i] != 1){
-                hs = new HashSet<>();
                 if(dfs(i,adj,vis,hs)){
                     return true;
                 }
