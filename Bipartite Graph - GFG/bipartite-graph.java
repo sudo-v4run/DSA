@@ -44,9 +44,12 @@ class Solution
         Arrays.fill(color,-1);
         
         for(int i = 0 ; i < v ; i++){
+            
             if(color[i] == -1){
-                color[i] = 0;
-                if(!dfs(i,adj,color)){
+                
+                // color[i] = 0;  //for dfs
+                
+                if(!bfs(i,adj,color)){
                     return false;
                 }
             }
