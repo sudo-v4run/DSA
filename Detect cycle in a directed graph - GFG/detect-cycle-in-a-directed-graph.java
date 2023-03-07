@@ -29,81 +29,38 @@ class DriverClass {
 // } Driver Code Ends
 
 class Solution {
-    
     public boolean isCyclic(int v, ArrayList<ArrayList<Integer>> adj) {
-        HashSet<Integer> vis = new HashSet<>();
-        int nodeVis[] = new int[v];
+        HashSet<Integer> hs = new HashSet<>();
+        int vis[] = new int[v];
         
         for(int i = 0 ; i < v ; i++){
-            if(dfs(i,adj,vis,nodeVis)){
-                return true;
+            if(vis[i] != 1){
+                hs = new HashSet<>();
+                if(dfs(i,adj,vis,hs)){
+                    return true;
+                }
             }
         }
         
         return false;
     }
-    
-    public static boolean dfs(int node, ArrayList<ArrayList<Integer>> adj,
-                            HashSet<Integer> vis, int[] nodeVis){
+    public static boolean dfs( int v, ArrayList<ArrayList<Integer>> adj, int vis[],
+                               HashSet<Integer> hs ){
+        hs.add(v);
+        vis[v] = 1;
         
-        if(vis.contains(node)){
-            return true;
-        }
-        
-        if(nodeVis[node]==1){
-            return false;
-        }
-        
-        vis.add(node);
-        nodeVis[node] = 1;
-        
-        for(int nei : adj.get(node)){
-            if(dfs(nei,adj,vis,nodeVis)){
+        for(int nei : adj.get(v)){
+            if(hs.contains(nei)){
                 return true;
+            }else if(vis[nei] != 1){
+                if(dfs(nei,adj,vis,hs)){
+                    return true;
+                }
             }
         }
         
-        vis.remove(node);
+        hs.remove(v);
         
         return false;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    // public boolean isCyclic(int v, ArrayList<ArrayList<Integer>> adj) {
-    //     HashSet<Integer> vis = new HashSet<>();
-        
-    //     for(int i = 0 ; i < v ; i++){
-    //         if(dfs(i,adj,vis)){
-    //             return true;
-    //         }
-    //     }
-        
-    //     return false;
-    // }
-    // public static boolean dfs(int node, ArrayList<ArrayList<Integer>> adj,
-    //                         HashSet<Integer> vis){
-        
-    //     if(vis.contains(node)){
-    //         return true;
-    //     }
-        
-    //     vis.add(node);
-        
-    //     for(int nei : adj.get(node)){
-    //         if(dfs(nei,adj,vis)){
-    //             return true;
-    //         }
-    //     }
-        
-    //     vis.remove(node);
-    //     adj.removeAll(adj.get(node));
-        
-    //     return false;
-    // }
 }
