@@ -47,7 +47,7 @@ class Solution
             
             if(color[i] == -1){
                 
-                // color[i] = 0;  //for dfs
+                color[i] = 0;
                 
                 if(!bfs(i,adj,color)){
                     return false;
@@ -61,7 +61,6 @@ class Solution
         
         Queue<Integer> q = new LinkedList<>();
         q.add(v);
-        color[v] = 0;
         
         while(!q.isEmpty()){
             
