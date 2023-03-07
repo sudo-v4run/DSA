@@ -45,7 +45,8 @@ class Solution
         
         for(int i = 0 ; i < v ; i++){
             if(color[i] == -1){
-                if(!bfs(i,adj,color)){
+                color[i] = 0;
+                if(!dfs(i,adj,color)){
                     return false;
                 }
             }
@@ -71,6 +72,22 @@ class Solution
                 }else if(color[nei] == color[pop]){
                     return false;
                 }
+            }
+        }
+        
+        return true;
+    }
+    public static boolean dfs(int v, ArrayList<ArrayList<Integer>>adj, int color[]){
+        
+        for(int nei : adj.get(v)){
+                
+            if(color[nei] == -1){
+                color[nei] = 1 - color[v];
+                if(!dfs(nei,adj,color)){
+                    return false;
+                }
+            }else if(color[nei] == color[v]){
+                return false;
             }
         }
         
