@@ -62,25 +62,60 @@ class Solution
         int vis[] = new int[v];
         ArrayList<Integer> res = new ArrayList<>();
         
+        // DFS...
+        
+        // for(int i = 0 ; i < v ; i++){
+        //     if(vis[i] != 1){
+        //         dfs(i,adj,vis,res);
+        //     }
+        // }
+        
+        // int ans[] = new int[v];
+        // int k = 0;
+        
+        // for(int i = res.size()-1 ; i >=0 ; i--){
+        //     ans[k++] = res.get(i);
+        // }
+        
+        // return ans;
+        
+        
+        
+        
+        
+        // Kahn's Algo - BFS...
+        
+        int indeg[] = new int[v];
+        findInDeg(adj,indeg);
+        Queue<Integer> q = new LinkedList<>();
+        
         for(int i = 0 ; i < v ; i++){
-            if(vis[i] != 1){
-                dfs(i,adj,vis,res);
+            if(indeg[i] == 0){
+                q.add(i);
+            }
+        }
+        
+        while(!q.isEmpty()){
+            
+            int pop = q.poll();
+            res.add(pop);
+            
+            for(int nei : adj.get(pop)){
+                indeg[nei]--;
+                if(indeg[nei] == 0){
+                    q.add(nei);
+                }
             }
         }
         
         int ans[] = new int[v];
         int k = 0;
         
-        for(int i = res.size()-1 ; i >=0 ; i--){
-            ans[k++] = res.get(i);
+        for(int ele : res){
+            ans[k++] = ele;
         }
         
         return ans;
-        
-        // Kahn's Algo - BFS...
-        
-        // int indeg[] = new int[v];
-        // findInDeg(adj,indeg);
     }
     public static void findInDeg(ArrayList<ArrayList<Integer>> adj, int indeg[]){
         
