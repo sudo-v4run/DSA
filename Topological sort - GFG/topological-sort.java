@@ -58,11 +58,11 @@ class Solution
 {
     static int[] topoSort(int v, ArrayList<ArrayList<Integer>> adj) 
     {
-        
-        int vis[] = new int[v];
         ArrayList<Integer> res = new ArrayList<>();
         
         // DFS...
+        
+        // int vis[] = new int[v];
         
         // for(int i = 0 ; i < v ; i++){
         //     if(vis[i] != 1){
