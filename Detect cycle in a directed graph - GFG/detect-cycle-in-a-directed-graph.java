@@ -29,6 +29,7 @@ class DriverClass {
 // } Driver Code Ends
 
 class Solution {
+    
     public boolean isCyclic(int v, ArrayList<ArrayList<Integer>> adj) {
         
         // BFS will not work for detecting cycles in directed graphs...
@@ -82,6 +83,7 @@ class Solution {
         
         // return false;
     }
+    
     public static boolean dfs( int v, ArrayList<ArrayList<Integer>> adj, int vis[],
                                HashSet<Integer> hs ){
         hs.add(v);
@@ -101,6 +103,7 @@ class Solution {
         
         return false;
     }
+    
     public static void findInDeg(ArrayList<ArrayList<Integer>> adj, int indeg[]){
         
         for(ArrayList<Integer> neis : adj){
