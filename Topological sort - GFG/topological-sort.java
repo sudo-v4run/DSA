@@ -56,83 +56,47 @@ class Main {
 
 class Solution
 {
-    // DFS...
-    
-    // static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
-    // {
-    //     int vis[] = new int[V];
-    //     Stack<Integer> s = new Stack<>();
-        
-    //     for(int i = 0 ; i < V ; i++){
-    //         if(vis[i]!=1){
-    //             dfs(i,adj,vis,s);
-    //         }
-    //     }
-        
-    //     int res[] = new int[s.size()];
-    //     int k = 0;
-        
-    //     while(!s.isEmpty()){
-    //         res[k++] = s.pop();
-    //     }
-        
-    //     return res;
-    // }
-    // public static void dfs( int node,ArrayList<ArrayList<Integer>> adj,int vis[],
-    //                         Stack<Integer> s ){
-        
-    //     vis[node] = 1;
-        
-    //     for(int nei : adj.get(node)){
-    //         if(vis[nei]!=1){
-    //             dfs(nei,adj,vis,s);
-    //         }
-    //     }
-        
-    //     s.push(node);
-    // }
-    
-    
-    
-    
-    // BFS... Kahn's Algo...
-    
-    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
+    static int[] topoSort(int v, ArrayList<ArrayList<Integer>> adj) 
     {
-        Queue<Integer> q = new LinkedList<>();
+        int indeg[] = new int[v];
+        findInDeg(adj,indeg);
+        int vis[] = new int[v];
+        ArrayList<Integer> res = new ArrayList<>();
         
-        int inDeg[] = new int[V];
-        
-        findInDeg(adj,V,inDeg);
-        
-        for(int i = 0 ; i < V ; i++){
-            if(inDeg[i]==0){
-                q.offer(i);
+        for(int i = 0 ; i < v ; i++){
+            if(indeg[i] == 0 && vis[i] != 1){
+                dfs(i,adj,vis,res);
             }
         }
         
-        int res[] = new int[V];
+        int ans[] = new int[v];
         int k = 0;
         
-        while(!q.isEmpty()){
-            int pop = q.poll();
-            res[k++] = pop;
-            for(int nei : adj.get(pop)){
-                inDeg[nei]--;
-                if(inDeg[nei]==0){
-                    q.add(nei);
-                }
-            }
+        for(int ele : res){
+            ans[k++] = ele;
         }
         
-        return res;
-        
+        return ans;
     }
-    public static void findInDeg(ArrayList<ArrayList<Integer>> adj, int v,int inDeg[]){
-        for(int i = 0 ; i < v ; i++){
-            for(int nei : adj.get(i)){
-                inDeg[nei]++;
+    public static void findInDeg(ArrayList<ArrayList<Integer>> adj, int indeg[]){
+        
+        for(ArrayList<Integer> neis : adj){
+            for(int nei : neis){
+                indeg[nei]++;
             }
         }
+    }
+    public static void dfs( int v, ArrayList<ArrayList<Integer>> adj, int vis[], 
+                            ArrayList<Integer> res ){
+    
+        vis[v] = 1;
+        
+        for(int nei : adj.get(v)){
+            if(vis[nei] != 1){
+                dfs(nei,adj,vis,res);
+            }
+        }
+        
+        res.add(0,v);
     }
 }
