@@ -72,8 +72,8 @@ class Solution
         int ans[] = new int[v];
         int k = 0;
         
-        for(int ele : res){
-            ans[k++] = ele;
+        for(int i = res.size()-1 ; i >=0 ; i--){
+            ans[k++] = res.get(i);
         }
         
         return ans;
@@ -97,6 +97,6 @@ class Solution
             }
         }
         
-        res.add(0,v);
+        res.add(v);
     }
 }
