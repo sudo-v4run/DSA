@@ -58,13 +58,12 @@ class Solution
 {
     static int[] topoSort(int v, ArrayList<ArrayList<Integer>> adj) 
     {
-        int indeg[] = new int[v];
-        findInDeg(adj,indeg);
+        
         int vis[] = new int[v];
         ArrayList<Integer> res = new ArrayList<>();
         
         for(int i = 0 ; i < v ; i++){
-            if(indeg[i] == 0 && vis[i] != 1){
+            if(vis[i] != 1){
                 dfs(i,adj,vis,res);
             }
         }
@@ -77,6 +76,11 @@ class Solution
         }
         
         return ans;
+        
+        // Kahn's Algo - BFS...
+        
+        // int indeg[] = new int[v];
+        // findInDeg(adj,indeg);
     }
     public static void findInDeg(ArrayList<ArrayList<Integer>> adj, int indeg[]){
         
