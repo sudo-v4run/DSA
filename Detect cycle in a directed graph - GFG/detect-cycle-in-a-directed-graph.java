@@ -38,7 +38,6 @@ class Solution {
         
         // BFS-Kahn's Algo..
         
-        ArrayList<Integer> res = new ArrayList<>();
         int indeg[] = new int[v];
         findInDeg(adj,indeg);
         Queue<Integer> q = new LinkedList<>();
@@ -49,10 +48,12 @@ class Solution {
             }
         }
         
+        int cnt = 0;
+        
         while(!q.isEmpty()){
             
             int pop = q.poll();
-            res.add(pop);
+            cnt++;
             
             for(int nei : adj.get(pop)){
                 indeg[nei]--;
@@ -62,7 +63,7 @@ class Solution {
             }
         }
         
-        return !(res.size() == v);
+        return !(cnt == v);
         
         
         
