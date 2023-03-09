@@ -47,19 +47,19 @@ class Solution {
         
         // DFS...
         
-        ArrayList<Integer> res = new ArrayList<>();
         HashSet<Integer> hs = new HashSet<>();
         int vis[] = new int[v];
+        int cnt[] = new int[1];
         
         for(int i = 0 ; i < v ; i++){
             if(vis[i] != 1){
-                if(dfs(i,adj,res,vis,hs)){
+                if(dfs(i,adj,cnt,vis,hs)){
                     return false;
                 }
             }
         }
         
-        return res.size() == numCourses;
+        return cnt[0] == numCourses;
     }
     public static void findInDeg(ArrayList<ArrayList<Integer>> adj,int indeg[] ){
         
@@ -70,14 +70,14 @@ class Solution {
         }
     }
     public static boolean dfs(int v, ArrayList<ArrayList<Integer>> adj,
-                               ArrayList<Integer> res, int vis[], HashSet<Integer> hs){
+                               int cnt[], int vis[], HashSet<Integer> hs){
         
         vis[v] = 1;
         hs.add(v);
         
         for(int nei : adj.get(v)){
             if(vis[nei] != 1){
-                if(dfs(nei,adj,res,vis,hs)){
+                if(dfs(nei,adj,cnt,vis,hs)){
                     return true;
                 }
             }else if(hs.contains(nei)){
@@ -86,7 +86,7 @@ class Solution {
         }
         
         hs.remove(v);
-        res.add(v);
+        cnt[0]++;
         
         return false;
     }
