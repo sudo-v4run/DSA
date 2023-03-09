@@ -43,23 +43,79 @@ class Solution {
     List<Integer> eventualSafeNodes(int v, List<List<Integer>> adj) {
         
         List<Integer> ans = new ArrayList<>();
-        int vis[] = new int[v];
-        HashSet<Integer> hs = new HashSet();
-        int safeNodes[] = new int[v];
+        
+        
+        // DFS...
+        
+        // int vis[] = new int[v];
+        // HashSet<Integer> hs = new HashSet();
+        // int safeNodes[] = new int[v];
+        
+        // for(int i = 0 ; i < v ; i++){
+        //     if(vis[i] != 1){
+        //         isCycle(i,adj,vis,hs,safeNodes);
+        //     }
+        // }
+        
+        // for(int i = 0 ; i < v ; i++){
+        //     if(safeNodes[i] == 1){
+        //         ans.add(i);
+        //     }
+        // }
+        
+        // return ans;
+        
+        
+        
+        
+        // BFS....
+        
+        ArrayList<ArrayList<Integer>> revAdj = new ArrayList<>();
         
         for(int i = 0 ; i < v ; i++){
-            if(vis[i] != 1){
-                isCycle(i,adj,vis,hs,safeNodes);
+            revAdj.add(new ArrayList<>());
+        }
+        
+        for(int i = 0 ; i < adj.size() ; i++){
+            
+            for(int nei : adj.get(i)){
+                revAdj.get(nei).add(i);
             }
         }
         
-        for(int i = 0 ; i < v ; i++){
-            if(safeNodes[i] == 1){
-                ans.add(i);
+        int indeg[] = new int[v];
+        
+        for(ArrayList<Integer> neis : revAdj){
+            for(int nei : neis){
+                indeg[nei]++;
             }
         }
+        
+        Queue<Integer> q = new LinkedList<>();
+        
+        for(int i = 0 ; i < v ; i++){
+            if(indeg[i] == 0){
+                q.add(i);
+            }
+        }
+        
+        while(!q.isEmpty()){
+            int pop = q.poll();
+            ans.add(pop);
+            
+            for(int nei : revAdj.get(pop)){
+                indeg[nei]--;
+                if(indeg[nei] == 0){
+                    q.add(nei);
+                }
+            }
+        }
+        
+        Collections.sort(ans);
         
         return ans;
+
+
     }
     
     public static boolean isCycle( int v,List<List<Integer>> adj,int vis[],
