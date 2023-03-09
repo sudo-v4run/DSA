@@ -1,107 +1,50 @@
 class Solution {
-    // BFS...
-    
-    public boolean canFinish(int numCourses, int[][] preReq) {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        int v = numCourses;
         
-        int indeg[] = new int[numCourses];
-        List<List<Integer>> adj = new ArrayList<List<Integer>>();
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
         
-        for(int i = 0 ; i < numCourses ; i++){
+        for(int i = 0 ; i < v ; i++){
             adj.add(new ArrayList<Integer>());
         }
         
-        for(int i = 0 ; i < preReq.length ; i++){
-            adj.get(preReq[i][0]).add(preReq[i][1]);
+        for(int pair[] : prerequisites){
+            adj.get(pair[1]).add(pair[0]);
         }
+        
+        int indeg[] = new int[v];
+        findInDeg(adj,indeg);
         
         Queue<Integer> q = new LinkedList<>();
         
         for(int i = 0 ; i < numCourses ; i++){
-            for(int nei : adj.get(i)){
-                indeg[nei]++;
-            }
-        }
-        
-        for(int i = 0 ; i < numCourses ; i++){
-            if(indeg[i]==0){
+            if(indeg[i] == 0){
                 q.add(i);
             }
         }
         
-        int res[] = new int[numCourses];
-        int k = 0;
+        int cnt = 0;
         
         while(!q.isEmpty()){
             int pop = q.poll();
-            res[k++] = pop;
+            cnt++;
             
             for(int nei : adj.get(pop)){
                 indeg[nei]--;
-                if(indeg[nei]==0){
+                if(indeg[nei] == 0){
                     q.add(nei);
                 }
             }
         }
         
-        if(k==numCourses){
-            return true;
-        }
-        return false;
+        return cnt == numCourses;
     }
-    
-    
-    
-    // DFS...
-    
-//     public boolean canFinish(int numCourses, int[][] preReq) {
+    public static void findInDeg(ArrayList<ArrayList<Integer>> adj,int indeg[] ){
         
-//         // List<List<Integer>> adj = new ArrayList<List<Integer>>();
-        
-//         // Using List of List is giving TLE .. 
-        
-//         HashMap<Integer,ArrayList<Integer>> adj = new HashMap<>();
-        
-//         for(int i = 0 ; i < numCourses ; i++){
-//             adj.put(i,new ArrayList<Integer>());
-//         }
-        
-//         for(int i = 0 ; i < preReq.length ; i++){
-//             adj.get(preReq[i][0]).add(preReq[i][1]);
-//         }
-        
-//         HashSet<Integer> hs = new HashSet<>();
-        
-//         for(int i = 0 ; i < numCourses ; i++){
-//             if(!dfs(i,adj,hs)){
-//                 return false;
-//             }
-//         }
-        
-//         return true;
-        
-//     }
-//     public static boolean dfs(int node, HashMap<Integer,ArrayList<Integer>> adj ,
-//                             HashSet<Integer> hs){
-        
-//         if(hs.contains(node)){
-//             return false;
-//         }
-        
-//         hs.add(node);
-        
-//         for(int nei : adj.get(node)){
-//             if(!dfs(nei,adj,hs)){
-//                 return false;
-//             }
-//         }
-        
-//         adj.put(node,new ArrayList<>());
-        
-//         hs.remove(node);
-        
-//         return true;
-//     }
-    
-    
-    
+        for(ArrayList<Integer> neis : adj){
+            for(int nei : neis){
+                indeg[nei]++;
+            }
+        }
+    }
 }
