@@ -29,13 +29,7 @@ class GFG {
 // } Driver Code Ends
 
 class Solution {
-    static class Pair{
-        int node,wt;
-        Pair(int node, int wt){
-            this.node = node;
-            this.wt = wt;
-        }
-    }
+    
     public int[] shortestPath(int[][] edges,int n,int m ,int src) {
         int v = n;
         
@@ -51,22 +45,22 @@ class Solution {
         }
         
         int vis[] = new int[v];
-        Queue<Pair> q = new LinkedList<>();
+        Queue<Integer> q = new LinkedList<>();
         int dis[] = new int[v];
         Arrays.fill(dis,-1);
+        dis[src] = 0;
         
-        q.add(new Pair(src,0));
+        q.add(src);
         vis[src] = 1;
         
         while(!q.isEmpty()){
-            Pair pop = q.poll();
+            int pop = q.poll();
             
-            dis[pop.node] = pop.wt;
-            
-            for(int nei : adj.get(pop.node)){
+            for(int nei : adj.get(pop)){
                 if(vis[nei] != 1){
                     vis[nei] = 1;
-                    q.add(new Pair(nei,pop.wt+1));
+                    dis[nei] = dis[pop] + 1;
+                    q.add(nei);
                 }
             }
         }
