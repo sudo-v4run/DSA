@@ -1,5 +1,7 @@
 class Solution {
+    
     static class Pair{
+        
         String str;
         int lvl;
         
@@ -9,6 +11,7 @@ class Solution {
         }
     }
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        
         HashSet<String> hs = new HashSet();
         
         for(String s : wordList){
@@ -24,6 +27,7 @@ class Solution {
         q.add(new Pair(beginWord,1));
         
         while(!q.isEmpty()){
+            
             Pair pop = q.poll();
             String curS = pop.str;
             int l = pop.lvl;
