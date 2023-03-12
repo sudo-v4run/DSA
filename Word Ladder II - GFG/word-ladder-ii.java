@@ -82,11 +82,10 @@ class Solution
                 if(word.equals(end)){
                     
                     if(ans.size()==0){
-                        ans.add(new ArrayList<>(temp));
+                        ans.add(temp);
                     }else if(ans.get(0).size() == temp.size()){
-                        ans.add(new ArrayList<>(temp));
+                        ans.add(temp);
                     }
-                    
                     continue;
                 }
                 
