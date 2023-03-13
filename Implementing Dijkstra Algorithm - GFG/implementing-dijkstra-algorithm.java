@@ -53,53 +53,41 @@ class DriverClass
 
 class Solution
 {
-    static class Pair {
-        int v,w;
-        Pair(int v,int w){
-            this.v = v;
-            this.w = w;
+    static class Pair{
+        int node,wt;
+        
+        Pair(int node, int wt){
+            this.node = node;
+            this.wt = wt;
         }
     }
-    static int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
+    static int[] dijkstra(int v, ArrayList<ArrayList<ArrayList<Integer>>> adj, int s)
     {
-        int dis[] = new int[V];
-        for(int i = 0 ; i < V ; i++){
-            dis[i] = 10000000;
-        }
-        int vis[] = new int[V];
-        PriorityQueue<Pair> q = new PriorityQueue<>((a,b) ->
-            {
-            //     if(a.w>b.w)
-            //         return b.w;
-            //     else 
-            //         return a.w;
-            // }
-                return (a.w-b.w);
-            });
-            
-        dis[S] = 0;
-        q.offer(new Pair(S,0));
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b)->{return (a.wt-b.wt);});
+        pq.add(new Pair(s,0));
         
-        while(!q.isEmpty()){
-            Pair cur = q.poll();
+        int dis[] = new int[v];
+        Arrays.fill(dis,(int)1e7);
+        dis[s] = 0;
+        
+        while(!pq.isEmpty()){
+            Pair pop = pq.poll();
+            int node = pop.node;
+            int dist = pop.wt;
             
-            // if(vis[cur.v]==1)
-            //     continue;
-            
-            // vis[cur.v] = 1;
-            
-            ArrayList<ArrayList<Integer>> arr = adj.get(cur.v);
-            
-            for(ArrayList<Integer> a : arr){
-                int vv = a.get(0);
-                int wt = a.get(1);
+            for(ArrayList<Integer> nei : adj.get(node)){
+                int adjNode = nei.get(0);
+                int adjWt = nei.get(1);
                 
-                if(dis[vv]>dis[cur.v]+wt){
-                    dis[vv] = dis[cur.v] + wt;
-                    q.offer(new Pair(vv,dis[vv]));
+                int adjDist = dist + adjWt;
+                
+                if(adjDist < dis[adjNode]){
+                    dis[adjNode] = adjDist;
+                    pq.add(new Pair(adjNode,adjDist));
                 }
             }
         }
+        
         return dis;
     }
 }
