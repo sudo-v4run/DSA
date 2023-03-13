@@ -64,7 +64,7 @@ class Solution
     static int[] dijkstra(int v, ArrayList<ArrayList<ArrayList<Integer>>> adj, int s)
     {
         
-        // TC -> O(E*LogE)...
+        // TC -> O(E*LogV)...
         
         PriorityQueue<Pair> pq = new PriorityQueue<>((a,b)->{return (a.wt-b.wt);});
         pq.add(new Pair(s,0));
