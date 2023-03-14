@@ -76,9 +76,10 @@ class Solution {
                 int sc = n;
                 
                 while(sc != -1){
-                    res.add(0,sc);
+                    res.add(sc);
                     sc = par[sc];
                 }
+                Collections.reverse(res);
                 
                 return res;
             }
