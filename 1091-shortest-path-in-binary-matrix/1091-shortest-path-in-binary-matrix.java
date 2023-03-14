@@ -9,6 +9,9 @@ class Solution {
         }
     }
     public int shortestPathBinaryMatrix(int[][] arr) {
+        
+        // We can convert all the visited cells to -1 instead of using vis to save memory 
+    
         int m = arr.length;
         int n = arr[0].length;
         
