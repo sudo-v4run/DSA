@@ -1,4 +1,5 @@
 class Solution {
+    
     static class Tuple{
         int r,c,diff;
         
