@@ -43,6 +43,7 @@ class Solution {
         dist[src] = 0;
         
         while(!q.isEmpty()){
+            
             Tuple pop = q.poll();
             int node = pop.node;
             int wt = pop.wt;
