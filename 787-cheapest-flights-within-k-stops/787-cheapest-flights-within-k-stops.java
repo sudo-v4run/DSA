@@ -21,55 +21,6 @@ class Solution {
     }
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
         
-//         ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
-        
-//         for(int i = 0 ; i < n ; i++){
-//             adj.add(new ArrayList<>());
-//         }
-        
-//         for(int ed[] : flights){
-//             int u = ed[0];
-//             int v = ed[1];
-//             int wt = ed[2];
-            
-//             adj.get(u).add(new Pair(v,wt));
-//         }
-        
-//         int dist[] = new int[n];
-//         Arrays.fill(dist,(int)1e7);
-//         dist[src] = 0;
-        
-//         PriorityQueue<Tuple> pq = new PriorityQueue<>((a,b)->{return a.wt-b.wt;});
-//         pq.add(new Tuple(src,0,0));
-        
-//         while(!pq.isEmpty()){
-//             Tuple pop = pq.poll();
-//             int node = pop.node;
-//             int wt = pop.wt;
-//             int stops = pop.stops;
-            
-//             if(stops > k){
-//                 continue;
-//             }
-            
-//             for(Pair ed : adj.get(node)){
-//                 int adjWt = wt + ed.wt;
-                
-//                 if(adjWt < dist[ed.node]){
-//                     dist[ed.node] = adjWt;
-//                     pq.add(new Tuple(ed.node,adjWt,stops+1));
-//                 }
-//             }
-//         }
-        
-//         if(dist[dst] == (int)1e7){
-//             return -1;
-//         }
-//         return dist[dst];
-        
-        
-        
-        
         ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
         
         for(int i = 0 ; i < n ; i++){
@@ -84,35 +35,39 @@ class Solution {
             adj.get(u).add(new Pair(v,wt));
         }
         
+        Queue<Tuple> q = new LinkedList<>();
+        q.add(new Tuple(src,0,0));
+        
         int dist[] = new int[n];
         Arrays.fill(dist,(int)1e7);
         dist[src] = 0;
         
-        Queue<Tuple> pq = new LinkedList<>();
-        pq.add(new Tuple(src,0,0));
-        
-        while(!pq.isEmpty()){
-            Tuple pop = pq.poll();
+        while(!q.isEmpty()){
+            Tuple pop = q.poll();
             int node = pop.node;
             int wt = pop.wt;
             int stops = pop.stops;
             
-            if(stops > k){
+            if(stops > k && node != dst){
                 continue;
             }
             
             for(Pair ed : adj.get(node)){
-                int adjWt = wt + ed.wt;
+                int adjNode = ed.node;
+                int adjWt = ed.wt;
                 
-                if(adjWt < dist[ed.node]){
-                    dist[ed.node] = adjWt;
-                    pq.add(new Tuple(ed.node,adjWt,stops+1));
+                int adjDist = wt + adjWt;
+                
+                if(adjDist < dist[adjNode]){
+                    dist[adjNode] = adjDist;
+                    q.add(new Tuple(adjNode,adjDist,stops+1));
                 }
             }
         }
         
-        if(dist[dst] == (int)1e7)
+        if(dist[dst] == (int)1e7){
             return -1;
+        }
         
         return dist[dst];
     }
