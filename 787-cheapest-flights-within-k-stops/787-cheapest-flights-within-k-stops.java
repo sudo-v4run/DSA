@@ -49,7 +49,7 @@ class Solution {
             int wt = pop.wt;
             int stops = pop.stops;
             
-            if(stops > k && node != dst){
+            if(stops > k){
                 continue;
             }
             
