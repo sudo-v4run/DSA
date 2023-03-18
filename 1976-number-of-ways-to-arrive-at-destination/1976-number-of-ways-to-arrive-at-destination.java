@@ -8,7 +8,6 @@ class Solution {
             this.wt = wt;
         }
     }
-    
     public int countPaths(int n, int[][] roads){
         
         ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
@@ -59,9 +58,6 @@ class Solution {
         
         return (int)ways[n-1];
     }
-    
-    
-    
     
     
     
