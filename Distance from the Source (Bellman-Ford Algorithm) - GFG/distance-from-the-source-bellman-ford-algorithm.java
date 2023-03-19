@@ -66,7 +66,7 @@ class Solution {
             int v = ed.get(1);
             int wt = ed.get(2);
             
-            if(dis[u]+wt < dis[v]){
+            if(dis[u]!=(int)1e8 && dis[u]+wt < dis[v]){
                 return new int[]{-1};
             }
         }
