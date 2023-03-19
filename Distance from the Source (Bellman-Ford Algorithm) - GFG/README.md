@@ -1,8 +1,7 @@
 # Distance from the Source (Bellman-Ford Algorithm)
 ## Medium
 <div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a weighted, directed and connected graph of V vertices and E edges, Find the shortest distance of all the vertex's from the source vertex S.<br>
-<strong>Note: </strong>The Graph doesn't contain any negative weight cycle.</span><br>
-&nbsp;</p>
+<strong>Note: </strong>If the Graph contains a negative cycle then return an array consisting of only -1.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -35,7 +34,9 @@ For nodes 2 to 1, we cam follow the path-
 <p>&nbsp;</p>
 
 <p><span style="font-size:18px"><strong>Your Task:</strong><br>
-You don't need to read input or print anything. Your task is to complete the function <strong>bellman_ford()</strong>&nbsp; which takes a number of vertices V<strong> </strong>and<strong> </strong>an E-sized list of lists of three integers where the three integers are u,v, and w; denoting there's an edge from u to v, which has a weight of w as input parameters and returns a list of integers where the ith integer denotes the distance of an ith node from the source node. If some node isn't possible to visit, then its distance should be 100000000(1e8).</span></p>
+You don't need to read input or print anything. Your task is to complete the function <strong>bellman_ford( )</strong>&nbsp;which takes a number of vertices <strong>V</strong><strong> </strong>and<strong> </strong>an<strong> E</strong>-sized list of lists of three integers where the three integers are<strong> u,v</strong>, and <strong>w</strong>; denoting there's an edge from<strong> u to v</strong>, which has a weight of <strong>w</strong> and source node <strong>S</strong>&nbsp;as input parameters and returns a list of integers where the ith integer denotes the distance of an ith node from the source node. </span></p>
+
+<p><span style="font-size:18px">If some node isn't possible to visit, then its distance should be 100000000(1e8). Also, If the Graph contains a negative cycle then return an array consisting of only -1.</span></p>
 
 <p>&nbsp;</p>
 
