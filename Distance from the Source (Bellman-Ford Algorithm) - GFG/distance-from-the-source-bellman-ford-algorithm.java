@@ -3,8 +3,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-class DriverClass
-{
+class DriverClass {
     public static void main(String args[]) throws IOException {
 
         BufferedReader read =
@@ -14,11 +13,11 @@ class DriverClass
             String str[] = read.readLine().trim().split(" ");
             int V = Integer.parseInt(str[0]);
             int E = Integer.parseInt(str[1]);
-    
-            ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-            
-            int i=0;
-            while (i++<E) {
+
+            ArrayList<ArrayList<Integer>> edges = new ArrayList<>();
+
+            int i = 0;
+            while (i++ < E) {
                 String S[] = read.readLine().trim().split(" ");
                 int u = Integer.parseInt(S[0]);
                 int v = Integer.parseInt(S[1]);
@@ -27,41 +26,51 @@ class DriverClass
                 t1.add(u);
                 t1.add(v);
                 t1.add(w);
-                adj.add(t1);
+                edges.add(t1);
             }
-            
+
             int S = Integer.parseInt(read.readLine());
-            
+
             Solution ob = new Solution();
-            
-            int[] ptr = ob.bellman_ford(V, adj, S);
-            
-            for(i=0; i<V; i++)
-                System.out.print(ptr[i] + " ");
+
+            int[] ptr = ob.bellman_ford(V, edges, S);
+
+            for (i = 0; i < ptr.length; i++) System.out.print(ptr[i] + " ");
             System.out.println();
         }
     }
 }
 // } Driver Code Ends
 
-class Solution
-{
-    static int[] bellman_ford(int V, ArrayList<ArrayList<Integer>> adj, int S)
-    {
-        int dis[] = new int[V];
-        Arrays.fill(dis,100000000);
-        dis[S] = 0;
+class Solution {
+    static int[] bellman_ford(int V, ArrayList<ArrayList<Integer>> edges, int s) {
         
-        for(int j = 0 ; j < V-1 ; j++){
-            for(ArrayList<Integer> a : adj){
-                if(dis[a.get(1)]>dis[a.get(0)]+a.get(2)){
-                    dis[a.get(1)]=dis[a.get(0)]+a.get(2);
+        int dis[] = new int[V];
+        Arrays.fill(dis,(int)1e8);
+        dis[s] = 0;
+        
+        for(int i = 0 ; i < V-1 ; i++){
+            for(ArrayList<Integer> ed : edges){
+                int u = ed.get(0);
+                int v = ed.get(1);
+                int wt = ed.get(2);
+                
+                if(dis[u]+wt < dis[v]){
+                    dis[v] = dis[u]+wt;
                 }
             }
         }
         
-        return dis;
+        for(ArrayList<Integer> ed : edges){
+            int u = ed.get(0);
+            int v = ed.get(1);
+            int wt = ed.get(2);
+            
+            if(dis[u]+wt < dis[v]){
+                return new int[]{-1};
+            }
+        }
         
+        return dis;
     }
 }
-
