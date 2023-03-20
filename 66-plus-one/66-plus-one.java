@@ -1,7 +1,6 @@
 // import java.math.BigInteger;
 
 class Solution {
-    
     public int[] plusOne(int[] digits) {
         
         int n = digits.length;
@@ -15,7 +14,6 @@ class Solution {
         }
         
         int arr[] = new int[n+1];
-        
         arr[0] = 1;
         
         return arr;
