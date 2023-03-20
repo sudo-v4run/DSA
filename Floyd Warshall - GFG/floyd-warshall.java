@@ -37,6 +37,9 @@ class Solution
 {
     public void shortest_distance(int[][] matrix)
     {
+        // TC -> O(N*N*N)... 
+        // this Q can be solved using dijkstra algo.. TC -> V*E*logV..
+        
         int n = matrix.length;
         
         for(int i = 0 ; i < n ; i++){
@@ -56,6 +59,14 @@ class Solution
                 }
             }
         }
+        
+        // To detect -ve cycle...not asked in Q..
+        
+        // for(int i = 0 ; i < n ; i++){
+        //     if(matrix[i][i] < 0){
+        //         return "-ve Cycle exists..."
+        //     }
+        // }
         
         for(int i = 0 ; i < n ; i++){
             for(int j = 0 ; j < n ; j++){
