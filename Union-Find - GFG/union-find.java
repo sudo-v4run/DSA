@@ -78,10 +78,12 @@ class Solution
             return;
         }
         
+        // find by rank....
+        
         int rank_parent_a = rank[a];
         int rank_parent_b = rank[b];
         
-        if(rank_parent_a<rank_parent_b){
+        if(rank_parent_a < rank_parent_b){
             parent[parent_a] = parent_b;
         }else if(rank_parent_a > rank_parent_b){
             parent[parent_b] = parent_a;
@@ -90,6 +92,18 @@ class Solution
             rank[parent_b]++;
         }
         
+        // find by size...
+        
+        // int size_parent_a = size[a];
+        // int size_parent_b = size[b];
+        
+        // if(size_parent_a < size_parent_b){
+        //     parent[parent_a] = parent_b;
+        //     size[parent_b] += size[parent_a];
+        // }else{
+        //     parent[parent_b] = parent_a;
+        //     size[parent_a] += size[parent_b];
+        // }
     }
     public Boolean isConnected(int a, int b, int parent[], int rank[])
     {
