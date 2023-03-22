@@ -75,39 +75,40 @@ class DisjointSet{
 class Solution {
     int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {
         
-        // int[] vis = new int[V];
-        // int count = 0;
-        // for (int i = 0; i < V; i++)
-        // {
-        //     if (vis[i] == 0)
-        //     {
-        //         dfs(i, vis, adj);
-        //         count++;
-        //     }
-        // }
-        // return count;
+        int[] vis = new int[V];
+        int count = 0;
+        for (int i = 0; i < V; i++)
+        {
+            if (vis[i] == 0)
+            {
+                dfs(i, vis, adj);
+                count++;
+            }
+        }
+        return count;
+        
         
         
         // using DisjointSet...
         
-        DisjointSet ds = new DisjointSet(V);
+        // DisjointSet ds = new DisjointSet(V);
         
-        for(int i = 0 ; i < V ; i++){
-            for(int j = 0 ; j < V ; j++){
-                if(adj.get(i).get(j) == 1){
-                    ds.union(i,j);
-                }
-            }
-        }
+        // for(int i = 0 ; i < V ; i++){
+        //     for(int j = 0 ; j < V ; j++){
+        //         if(adj.get(i).get(j) == 1){
+        //             ds.union(i,j);
+        //         }
+        //     }
+        // }
         
-        int cnt = 0;
-        for(int i = 0 ; i < V ; i++){
-            if(ds.parent[i] == i){
-                cnt++;
-            }
-        }
+        // int cnt = 0;
+        // for(int i = 0 ; i < V ; i++){
+        //     if(ds.parent[i] == i){
+        //         cnt++;
+        //     }
+        // }
         
-        return cnt;
+        // return cnt;
     }
        
     void dfs(int s , int vis[] , ArrayList<ArrayList<Integer>> adj)
