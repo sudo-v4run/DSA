@@ -32,67 +32,69 @@ public class Main{
 
 class Solution{
     
-    // Only to find Sum... To find MST edges also..check the below code...
+    // Prim's Algo...
     
-    static class Pair{
+        // Only to find Sum... To find MST edges also..check the below code...
+    
+//     static class Pair{
         
-        int node,wt;
-        Pair(int node, int wt){
-            this.node = node;
-            this.wt = wt;
-        }
-    }
-	static int spanningTree(int V, int E, int edges[][]){
+//         int node,wt;
+//         Pair(int node, int wt){
+//             this.node = node;
+//             this.wt = wt;
+//         }
+//     }
+// 	static int spanningTree(int V, int E, int edges[][]){
 	    
-	    ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
+// 	    ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
 	    
-	    for(int i = 0 ; i < V ; i++){
-	        adj.add(new ArrayList<>());
-	    }
+// 	    for(int i = 0 ; i < V ; i++){
+// 	        adj.add(new ArrayList<>());
+// 	    }
 	    
-	    for(int ed[] : edges){
+// 	    for(int ed[] : edges){
 	        
-	        int u = ed[0];
-	        int v = ed[1];
-	        int wt = ed[2];
+// 	        int u = ed[0];
+// 	        int v = ed[1];
+// 	        int wt = ed[2];
 	        
-	        adj.get(u).add(new Pair(v,wt));
-	        adj.get(v).add(new Pair(u,wt));
-	    }
+// 	        adj.get(u).add(new Pair(v,wt));
+// 	        adj.get(v).add(new Pair(u,wt));
+// 	    }
 	    
-	    PriorityQueue<Pair> pq = new PriorityQueue<>((a,b)->{return a.wt-b.wt;});
-	    pq.add(new Pair(0,0));
+// 	    PriorityQueue<Pair> pq = new PriorityQueue<>((a,b)->{return a.wt-b.wt;});
+// 	    pq.add(new Pair(0,0));
 	    
-	    int vis[] = new int[V];
-	    int sum = 0;
+// 	    int vis[] = new int[V];
+// 	    int sum = 0;
 	    
-	    while(!pq.isEmpty()){
-	        Pair pop = pq.poll();
-	        int node = pop.node;
-	        int wt = pop.wt;
+// 	    while(!pq.isEmpty()){
+// 	        Pair pop = pq.poll();
+// 	        int node = pop.node;
+// 	        int wt = pop.wt;
 	        
-	        if(vis[node] == 1){
-	            continue;
-	        }
+// 	        if(vis[node] == 1){
+// 	            continue;
+// 	        }
 	        
-	        vis[node] = 1;
-	        sum += wt;
+// 	        vis[node] = 1;
+// 	        sum += wt;
 	        
-	        for(Pair nei : adj.get(node)){
-	            if(vis[nei.node] != 1){
-	                pq.add(new Pair(nei.node,nei.wt));
-	            }
-	        }
+// 	        for(Pair nei : adj.get(node)){
+// 	            if(vis[nei.node] != 1){
+// 	                pq.add(new Pair(nei.node,nei.wt));
+// 	            }
+// 	        }
 	        
-	    }
+// 	    }
 	    
-	    return sum;
-	}
+// 	    return sum;
+// 	}
 	
 	
 	
 	
-	// Finding MST edges also...
+	    // Finding MST edges also...
 	
 //     static class Tuple{
 //         int node,wt,parent;
@@ -166,4 +168,75 @@ class Solution{
 	    
 // 	    return sum;
 // 	}
+
+
+    // Kruskal's...
+    
+    
+    static class DisjointSet{
+        int[] parent,rank;
+        
+        DisjointSet(int n){
+            parent = new int[n];
+            for(int i = 0 ; i < n ; i++){
+                parent[i] = i;
+            }
+            
+            rank = new int[n];
+            Arrays.fill(rank,1);
+        }
+        
+        int findParent(int u){
+            if(parent[u] == u){
+                return u;
+            }
+            
+            return parent[u] = findParent(parent[u]);
+        }
+        
+        void union(int a, int b){
+            int parent_a = findParent(a);
+            int parent_b = findParent(b);
+            
+            if(parent_a == parent_b){
+                return;
+            }
+            
+            int rank_parent_a = rank[parent_a];
+            int rank_parent_b = rank[parent_b];
+            
+            if(rank_parent_a < rank_parent_b){
+                parent[parent_a] = parent[b];
+            }else if(rank_parent_a > rank_parent_b){
+                parent[parent_b] = parent[a];
+            }else{
+                parent[parent_b] = parent[a];
+                rank[parent_a]++;
+            }
+        }
+    }
+	static int spanningTree(int V, int E, int edges[][]){
+	    
+	    Arrays.sort(edges,(a,b)->{return a[2]-b[2];});
+	    
+	    DisjointSet d = new DisjointSet(V);
+	    int sum = 0;
+	    
+	    for(int ed[] : edges){
+	        int u = ed[0];
+	        int v = ed[1];
+	        int wt = ed[2];
+	        
+	        if(d.findParent(u) != d.findParent(v)){
+	            sum += wt;
+	            d.union(u,v);
+	        }
+	    }
+	    
+	    return sum;
+	}
+    
+    
+    
+    
 }
