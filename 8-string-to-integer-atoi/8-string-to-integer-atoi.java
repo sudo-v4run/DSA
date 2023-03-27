@@ -12,6 +12,7 @@ class Solution {
 
         boolean isNeg = false;
         long ans = 0;
+        
         if(i<s.length() && s.charAt(i)=='-'){
             isNeg = true;
         }
