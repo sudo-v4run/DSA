@@ -42,7 +42,6 @@ class Solution
     
     public ArrayList<Integer> articulationPoints(int n,ArrayList<ArrayList<Integer>> adj)
     {
-        
         int dsc[] = new int[n];
         int low[] = new int[n];
         int vis[] = new int[n];
