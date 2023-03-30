@@ -1,4 +1,5 @@
 class Solution {
+    
     public int removeDuplicates(int[] arr) {
         int n = arr.length;
         
