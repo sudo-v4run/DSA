@@ -9,6 +9,7 @@ class Solution {
         String s = "11";
         
         for(int i = 3 ; i <= n ; i++){
+            
             s = s+'$';
             String t = "";
             int cnt = 1;
