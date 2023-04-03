@@ -4,7 +4,7 @@ class Solution {
         int n = arr.length;
         int res[] = new int[n-k+1];
         int ri = 0;
-        int i = 0 , j = 0;
+        int i = 0, j = 0;
         
         ArrayDeque<Integer> q = new ArrayDeque<>();
         
