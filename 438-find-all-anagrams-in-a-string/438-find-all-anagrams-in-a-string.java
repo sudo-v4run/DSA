@@ -46,6 +46,8 @@ class Solution {
 //         return res;
         
         
+        // TC -> O(N*26)... SC->O(1)...
+        
         
         int n = s.length();
         int k = p.length();
