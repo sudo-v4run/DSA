@@ -18,7 +18,9 @@ class Solution {
         int cnt = hm.size();    // count of distinct letters...i.e. size of hashMap
         
         while(j < n){
+            
             char ch = s.charAt(j);
+            
             if(hm.containsKey(ch)){
                 hm.put(ch,hm.get(ch)-1);
                 if(hm.get(ch) == 0){
@@ -29,10 +31,10 @@ class Solution {
             if(j-i+1 < k){
                 j++;
             }else if(j-i+1 == k){
+                
                 if(cnt == 0){
                     res.add(i);
                 }
-                
                 char ithChar = s.charAt(i);
                 
                 if(hm.containsKey(ithChar)){
@@ -41,7 +43,9 @@ class Solution {
                         cnt++;
                     }
                 }
-                i++;j++;
+                
+                i++;
+                j++;
             }
         }
         
