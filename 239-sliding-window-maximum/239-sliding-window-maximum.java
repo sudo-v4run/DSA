@@ -9,6 +9,7 @@ class Solution {
         ArrayDeque<Integer> q = new ArrayDeque<>();
         
         while(j<n){
+            
             while(!q.isEmpty() && q.peekLast()<arr[j]){
                 q.pollLast();
             }
