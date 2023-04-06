@@ -56,8 +56,14 @@ class Solution
         ArrayList<Integer> res = new ArrayList<>();
         ArrayDeque<Integer> q = new ArrayDeque<>();
         
+        
+        
         while(j < n){
-            while(!q.isEmpty() && q.peekLast() < arr[j]){
+            while(!q.isEmpty() && q.peekLast() < arr[j]){   
+                
+                // Queue won't work because the comparision is to bo done from the last
+                // .ie.peekLast() which is not available in Queue...so Deque...
+        
                 q.pollLast();
             }
             q.add(arr[j]);
