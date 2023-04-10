@@ -2,7 +2,7 @@ class Solution {
     public int totalFruit(int[] fruits) {
         
         // this Q boils down to the Q - Largest substring with k unique characters
-        // where k = 2 in this case...
+        // where k = 2 but atmost k unique characters in this Q...
         
         int k = 2;
         int n = fruits.length;
