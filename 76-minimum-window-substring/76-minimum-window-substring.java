@@ -17,13 +17,10 @@ class Solution {
         }
         
         while(j <= n){
-            
             if(cnt > 0){
-                
                 if(j == n){
                     break;
                 }
-                
                 char ch = s.charAt(j);
                 if(hm.containsKey(ch)){
                     hm.put(ch,hm.get(ch)-1);
@@ -38,7 +35,6 @@ class Solution {
                     start = i;
                     end = j;
                 }
-                
                 char ithChar = s.charAt(i);
                 if(hm.containsKey(ithChar)){
                     hm.put(ithChar,hm.get(ithChar)+1);
