@@ -1,5 +1,4 @@
 class Solution {
-    
     public int climbStairs(int n) {
         
         //Tabulation.... Space Optimized...
@@ -23,7 +22,6 @@ class Solution {
         }
         
         return prev;
-        
         
         
         
