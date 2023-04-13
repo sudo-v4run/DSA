@@ -12,7 +12,6 @@ class Solution {
         int i = 0, j = 0;
         int n = arr.length;
         int cnt = 0;
-        
         HashMap<Integer,Integer> hm = new HashMap<>();
         
         while(j < n){
