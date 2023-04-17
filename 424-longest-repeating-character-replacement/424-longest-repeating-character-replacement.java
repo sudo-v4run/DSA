@@ -15,7 +15,6 @@ class Solution {
                 if(s.charAt(j) != ch){
                     k--;
                 }
-                
                 if(k >= 0){
                     max = Math.max(max,j-i+1);
                     j++;
