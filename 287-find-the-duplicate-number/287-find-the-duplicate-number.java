@@ -11,11 +11,11 @@ class Solution {
         
         int slow2 = 0;
         
-        while(nums[slow] != nums[slow2]){
+        while(slow != slow2){
             slow = nums[slow];
             slow2 = nums[slow2];
         }
         
-        return nums[slow];
+        return slow;
     }
 }
