@@ -10,7 +10,6 @@ class Solution {
         }
         
         return xor ^ i;
-        
                      
 
 //         int Nsum  = (n*(n+1))/2;
