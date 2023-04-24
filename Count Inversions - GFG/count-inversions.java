@@ -31,52 +31,49 @@ class Sorting
 class Solution
 {
     static long cnt;
-    Solution(){
-        cnt = 0;
-    }
+    
     static long inversionCount(long arr[], long N)
     {
-        mergeSort(arr,0,arr.length-1);
+        cnt = 0;
+        merge(arr,0,arr.length-1);
         
         return cnt;
     }
-    public static void mergeSort(long arr[], int l, int h){
-        
-        if(l<h){
-            int m = (l+h)/2;
-            mergeSort(arr,l,m);
-            mergeSort(arr,m+1,h);
-            merge(arr,l,m,h);
+    static void merge(long arr[], int l, int h){
+        if(l < h){
+            int mid = (l+h)/2;
+            
+            merge(arr,l,mid);
+            merge(arr,mid+1,h);
+            mergeSort(arr,l,mid,h);
         }
     }
-    public static void merge(long arr[],int l, int m , int h){
-        int i = l;
-        int j = m+1;
-        
-        long temp[] = new long[h-l+1];
+    static void mergeSort(long arr[], int l, int m, int h){
+        int left = l;
+        int right = m+1;
+        int n = (m-l+1) + (h-m+1+1);
+        long temp[] = new long[n];
         int k = 0;
         
-        while(i<=m && j<=h){
-            if(arr[i]<=arr[j]){
-                temp[k++] = arr[i++];
+        while(left <= m && right <= h){
+            if(arr[left] > arr[right]){
+                cnt += m - left + 1;
+                temp[k++] = arr[right++];
             }else{
-                temp[k++] = arr[j++];
-                cnt += m-i+1;
+                temp[k++] = arr[left++];
             }
         }
         
-        while(i<=m){
-            temp[k++] = arr[i++];
+        while(left <= m){
+            temp[k++] = arr[left++];
+        }
+        while(right <= h){
+            temp[k++] = arr[right++];
         }
         
-        while(j<=h){
-            temp[k++] = arr[j++];
-        }
-        
-        i = l;
         k = 0;
         
-        for( ; i<=h ; i++){
+        for(int i = l ; i <= h ; i++){
             arr[i] = temp[k++];
         }
     }
