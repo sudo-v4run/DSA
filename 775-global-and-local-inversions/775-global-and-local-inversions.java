@@ -17,8 +17,6 @@ class Solution {
         
         merge(nums,0,n-1);
         
-        System.out.println(gCnt + "     "+lCnt);
-        
         return gCnt == lCnt;
     }
     static void merge(int arr[], int l, int h){
