@@ -6,14 +6,14 @@ class Solution {
         int cnt = 0;
         
         for(int i = 0 ; i < n ; i++){
+            if(cnt == 0){
+                ans = arr[i];
+            }
+            
             if(arr[i] == ans){
                 cnt++;
             }else{
                 cnt--;
-                if(cnt == 0){
-                    ans = arr[i];
-                    cnt++;
-                }
             }
         }
         
