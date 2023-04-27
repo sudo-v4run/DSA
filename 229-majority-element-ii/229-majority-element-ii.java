@@ -1,6 +1,8 @@
 class Solution {
     public List<Integer> majorityElement(int[] arr) {
         
+        // TC -> O(n) and SC -> O(1) ...
+        
         int n = arr.length;
         int candidate1 = -1;
         int candidate2 = -1;
@@ -43,5 +45,36 @@ class Solution {
         }
         
         return res;
+        
+        
+        
+        // Use HashMap frequency to solve in TC -> O(n) and SC -> O(n)
+        
+        
+        
+        // TC -> O(nlogn) and SC->O(1) ...
+        
+//         Arrays.sort(arr);
+        
+//         int n = arr.length;
+//         int i = 0;
+//         int j = 1;
+        
+//         List<Integer> res = new ArrayList<>();
+        
+//         while(j < n){
+//             if(arr[j] != arr[j-1]){
+//                 if(j-i > (n/3)){
+//                     res.add(arr[i]);
+//                 }
+//                 i = j;
+//             }
+//             j++;
+//         }
+//         if(j-i > (n/3)){
+//             res.add(arr[i]);
+//         }
+        
+//         return res;
     }
 }
