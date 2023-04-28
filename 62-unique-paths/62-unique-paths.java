@@ -3,7 +3,24 @@ class Solution {
         
         // Tabulation....Space Optimized....
         
+        int prev[] = new int[n];
+        int cur[] = new int[n];
+        
+        Arrays.fill(prev,1);
+        
+        for(int i = 1; i < m ; i++){
+            cur[0] = 1;
+            for(int j = 1; j < n ; j++){
+                
+                int left = cur[j-1];
+                int up = prev[j];
 
+                cur[j] = left+up;
+            }
+            prev = cur.clone();
+        }
+        
+        return prev[n-1];
         
         
         
@@ -37,12 +54,12 @@ class Solution {
         
         // Memoization....
         
-        int dp[][] = new int[m][n];
-        for(int[] row:dp){
-            Arrays.fill(row,-1);
-        }
+//         int dp[][] = new int[m][n];
+//         for(int[] row:dp){
+//             Arrays.fill(row,-1);
+//         }
         
-        return f(m-1,n-1,dp);
+//         return f(m-1,n-1,dp);
         
         
         
