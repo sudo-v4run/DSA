@@ -65,7 +65,7 @@ class Solution {
                     ans.remove(ans.size()-1);
                     
                     s++;
-                    while(s < n && arr[s] == arr[s-1]){
+                    while(s < e && arr[s] == arr[s-1]){
                         s++;
                     }
                 }
