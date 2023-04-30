@@ -13,7 +13,40 @@ class Solution {
         kSum(nums,0,target,4);
         
         return res;
+        
+        
+//         for(int i = 0 ; i < n ; i++){
+//             for(int j = i+1; j < n ; j++){
+//                 int tr = target - arr[j]-arr[i];
+//                 int left = j+1;
+//                 int right = n-1;
+//                 while(left<right){
+//                     int sum = arr[left]+arr[right];
+//                     if(sum<tr){
+//                         left++;
+//                     }else if(sum>tr){
+//                         right--;
+//                     }else{
+//                         List<Integer> frsum = new ArrayList();
+//                         frsum.add(arr[i]);
+//                         frsum.add(arr[j]);
+//                         frsum.add(arr[left]);
+//                         frsum.add(arr[right]);
+//                         res.add(frsum);
+//                         while(left<right && arr[left]==frsum.get(2)) ++left;
+//                         while(left<right && arr[right]==frsum.get(3)) --right;
+//                     }
+                    
+//                 }
+//                 while(j+1<n && arr[j+1]==arr[j]) ++j;
+//             }
+//             while(i+1<n && arr[i+1]==arr[i]) ++i;
+//         }
+//         return res;
+        
+        
     }
+    
     public void kSum(int arr[],int ind, long target, int k){
         
         if(k == 2){
