@@ -1,8 +1,7 @@
 class Solution {
     public double findMedianSortedArrays(int[] arr1, int[] arr2) {
         
-        int n1 = arr1.length;
-        int n2 = arr2.length;
+        int n1 = arr1.length, n2 = arr2.length;
         
         if(n1>n2){
             return findMedianSortedArrays(arr2,arr1);
@@ -12,6 +11,7 @@ class Solution {
         int h = n1;
         
         while(l<=h){
+            
             int cut1 = (l+h)/2;
             int cut2 = ((n1+n2)/2) - cut1;
             
@@ -28,14 +28,15 @@ class Solution {
                     return Math.min(r1,r2);
                 }
             }
+            
             if(l1>r2){
                 h = cut1-1;
             }else if(l2>r1){
                 l = cut1+1;
             }
-            
+        
         }
         
-        return 0.0;        
+        return 0.0;
     }
 }
