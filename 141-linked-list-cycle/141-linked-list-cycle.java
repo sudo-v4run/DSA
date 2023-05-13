@@ -2,6 +2,9 @@
 public class Solution {
     public boolean hasCycle(ListNode head) {
         
+        if(head == null)
+            return false;
+        
         ListNode slow = head;
         ListNode fast = head;
         
@@ -14,5 +17,24 @@ public class Solution {
         }
         
         return false;
+        
+        
+
+    
+//         if(head == null)
+//             return false;
+        
+//         HashSet<ListNode> hs = new HashSet<>();
+        
+//         while(head != null){
+//             if(!hs.contains(head)){
+//                 hs.add(head);
+//                 head = head.next;
+//             }else{
+//                 return true;
+//             }
+//         }
+        
+//         return false;
     }
 }
