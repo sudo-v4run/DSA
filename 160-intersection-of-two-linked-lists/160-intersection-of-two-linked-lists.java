@@ -5,14 +5,14 @@ public class Solution {
         int headASize = getSize(headA);
         int headBSize = getSize(headB);
         
-        while(headASize > headBSize){
-            headA = headA.next;
-            headASize--;
-        }
-        
-        while(headBSize > headASize){
-            headB = headB.next;
-            headBSize--;
+        while(headASize != headBSize){
+            if(headASize > headBSize){
+                headA = headA.next;
+                headASize--;
+            }else{
+                headB = headB.next;
+                headBSize--;
+            }
         }
         
         while(headA != null && headB != null){
