@@ -28,7 +28,6 @@ class Solution {
                 nodes = 0;
                 edgs = 0;
                 dfs(i,vis,adj);
-                System.out.println(i+"  "+nodes+"   "+edgs);
                 if(edgs == nodes*(nodes-1)){
                     ans++;
                 }
