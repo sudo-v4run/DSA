@@ -24,29 +24,33 @@ class Solution {
         
         ListNode end = prev;
         
-        // while(end != null){
-        //     if(start.val != end.val){
-        //         return false;
-        //     }
-        //     start = start.next;
-        //     end = end.next;
-        // }
+        // TC - O(N) and SC = O(1) while NOT preserving the structure of input list..
         
-        // return true;
-        
-        boolean isPali = true;
-        ListNode nxt = null;
         while(end != null){
-            ListNode temp = end.next;
             if(start.val != end.val){
-                isPali = false;
+                return false;
             }
-            end.next = nxt;
-            nxt = end;
-            end = temp;
             start = start.next;
+            end = end.next;
         }
         
-        return isPali;
+        return true;
+        
+        // TC - O(N) and SC = O(1) while preserving the structure of input list..
+        
+//         boolean isPali = true;
+//         ListNode nxt = null;
+//         while(end != null){
+//             ListNode temp = end.next;
+//             if(start.val != end.val){
+//                 isPali = false;
+//             }
+//             end.next = nxt;
+//             nxt = end;
+//             end = temp;
+//             start = start.next;
+//         }
+        
+//         return isPali;
     }
 }
