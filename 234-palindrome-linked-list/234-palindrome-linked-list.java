@@ -2,6 +2,8 @@
 class Solution {
     public boolean isPalindrome(ListNode head) {
         
+        if(head==null||head.next==null) return true;
+        
         ListNode start = head;
         
         ListNode slow = head;
@@ -22,14 +24,29 @@ class Solution {
         
         ListNode end = prev;
         
+        // while(end != null){
+        //     if(start.val != end.val){
+        //         return false;
+        //     }
+        //     start = start.next;
+        //     end = end.next;
+        // }
+        
+        // return true;
+        
+        boolean isPali = true;
+        ListNode nxt = null;
         while(end != null){
+            ListNode temp = end.next;
             if(start.val != end.val){
-                return false;
+                isPali = false;
             }
+            end.next = nxt;
+            nxt = end;
+            end = temp;
             start = start.next;
-            end = end.next;
         }
         
-        return true;
+        return isPali;
     }
 }
