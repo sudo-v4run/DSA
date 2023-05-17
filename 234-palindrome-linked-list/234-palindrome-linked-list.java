@@ -12,15 +12,12 @@ class Solution {
             fast = fast.next.next;
         }
         
-        ListNode mid = slow;
-        
         ListNode prev = null;
-        ListNode cur = mid;
-        while(cur != null){
-            ListNode temp = cur.next;
-            cur.next = prev;
-            prev = cur;
-            cur = temp;
+        while(slow != null){
+            ListNode temp = slow.next;
+            slow.next = prev;
+            prev = slow;
+            slow = temp;
         }
         
         ListNode end = prev;
