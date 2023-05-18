@@ -13,9 +13,8 @@ class Solution {
         while(cur != null){
             Node temp = cur.next;
             cur.next = new Node(cur.val);
-            cur = cur.next;
-            cur.next = temp;
-            cur = cur.next;
+            cur.next.next = temp;
+            cur = temp;
         }
         
         // step-2 : assigning random ptrs
@@ -23,7 +22,9 @@ class Solution {
         cur = head;
         
         while(cur != null){
-            cur.next.random = cur.random != null ? cur.random.next : null ;
+            if(cur.random != null){
+                cur.next.random = cur.random.next;
+            }
             cur = cur.next.next;
         }
         
