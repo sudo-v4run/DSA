@@ -1,6 +1,5 @@
 class Solution {
     public int climbStairs(int n) {
-        
         //Tabulation.... Space Optimized...
         
         int prev = 2;
