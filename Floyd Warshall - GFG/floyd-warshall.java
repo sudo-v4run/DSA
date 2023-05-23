@@ -37,8 +37,9 @@ class Solution
 {
     public void shortest_distance(int[][] matrix)
     {
+        // this Q can also be solved using dijkstra algo. if no -ve cycles. TC -> V*E*logV..
+        
         // TC -> O(N*N*N)... 
-        // this Q can be solved using dijkstra algo.. TC -> V*E*logV..
         
         int n = matrix.length;
         
