@@ -34,19 +34,18 @@ class GFG {
 
 class Solution 
 {
-    static class Tuple{
-        int s, e, i;
-        Tuple(int s, int e , int i){
-            this.s = s;
+    static class Pair{
+        int e, i;
+        Pair(int e , int i){
             this.e = e;
             this.i = i;
         }
     }
     public static int maxMeetings(int start[], int end[], int n)
     {
-        Tuple arr[] = new Tuple[n];
+        Pair arr[] = new Pair[n];
         for(int i = 0 ; i < n ; i++){
-            arr[i] = new Tuple(start[i],end[i],i);
+            arr[i] = new Pair(end[i],i);
         }
         Arrays.sort(arr,(a,b)->{return a.e-b.e;});
         
