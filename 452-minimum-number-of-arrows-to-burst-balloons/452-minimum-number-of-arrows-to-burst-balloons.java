@@ -3,7 +3,9 @@ class Solution {
         
         int n = points.length;
         
-        Arrays.sort(points,(a,b)->Integer.compare(a[1],b[1]));
+        // inorder to get min, we need to maximize the overlappings...
+        
+        Arrays.sort(points,(a,b)->{return Integer.compare(a[1],b[1]);});
         
         int ans = 1;
         int prevEnd = points[0][1];
