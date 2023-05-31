@@ -40,6 +40,9 @@ class Solution {
             }
         }
         
+        // In the end if leftMin is positive, it means that there are atleast a
+        // leftMin number of right parenthesis extra. -> return false...
+        
         return leftMin == 0;
         
         
