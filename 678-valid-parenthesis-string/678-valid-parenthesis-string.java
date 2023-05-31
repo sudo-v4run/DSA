@@ -5,45 +5,54 @@ class Solution {
         
         int n = s.length();
         
-        int leftMin = 0;
-        int leftMax = 0;
+        int openMin = 0;
+        int openMax = 0;
         
         for(int i = 0 ; i < n ; i++){
+            
             char ch = s.charAt(i);
             
             if(ch == '('){
-                leftMin++;
-                leftMax++;
+                openMin++;
+                openMax++;
             }else if(ch == '*'){
-                leftMin--;  // * == )
-                leftMax++;  // * == (
+                openMin--;  // * == )
+                openMax++;  // * == (
             }else{
-                leftMin--;
-                leftMax--;
+                openMin--;
+                openMax--;
             }
             
-            if(leftMax < 0){
-                // if leftMax < 0, it means that there were more right parenthesis
-                // '(' can't be more than ')' at any point... 
+            if(openMax < 0){
+                
+                // if openMax < 0, it means that there were more right parenthesis.
+                // ')' can't be more than '(' at any point... 
+                
                 return false;
             }
             
-            if(leftMin < 0){
+            if(openMin < 0){
                     
-                // leftMin can't be -ve to be valid .i.e we choose the 
+                // openMin can't be -ve to be valid .i.e we choose the 
                 // * wrongly to be ( . So don't consider it.i.e make the 
-                // leftMin = 0...
-                // coz leftMin and leftMax represents the valid range of 
+                // openMin = 0...
+                // coz openMin and openMax represents the valid range of 
                 // possibilities...
+                // openMin < 0 means that * shouldn't have been treated as
+                // ) at some point of *
 
-                leftMin = 0;
+                openMin = 0;
             }
         }
         
-        // In the end if leftMin is positive, it means that there are atleast a
-        // leftMin number of right parenthesis extra. -> return false...
+        // In the end if openMin is positive, it means that there are atleast a
+        // openMin number of right parenthesis extra. -> return false...
         
-        return leftMin == 0;
+        return openMin == 0;
+        
+        
+        
+        
         
         
         // Using Stacks...TC and SC -> O(n)...
