@@ -2,6 +2,7 @@ class Solution {
     public boolean lemonadeChange(int[] bills) {
         
         int n = bills.length;
+        
         int five = 0;
         int ten = 0;
         
