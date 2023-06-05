@@ -10,7 +10,6 @@ class Solution {
         long ans = 0;
         
         for(int i = queries.length-1 ; i >= 0 ; i--){
-            
             int type = queries[i][0];
             int ind = queries[i][1];
             int val = queries[i][2];
