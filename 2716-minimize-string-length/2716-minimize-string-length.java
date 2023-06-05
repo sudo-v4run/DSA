@@ -1,12 +1,14 @@
 class Solution {
     public int minimizedStringLength(String s) {
         
-        HashSet<Character> hs = new HashSet<>();
+        return (int) s.chars().distinct().count();
         
-        for(char ch : s.toCharArray()){
-            hs.add(ch);
-        }
+//         HashSet<Character> hs = new HashSet<>();
         
-        return hs.size();
+//         for(char ch : s.toCharArray()){
+//             hs.add(ch);
+//         }
+        
+//         return hs.size();
     }
 }
