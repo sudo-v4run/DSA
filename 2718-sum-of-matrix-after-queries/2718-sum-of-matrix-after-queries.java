@@ -9,6 +9,8 @@ class Solution {
         
         long ans = 0;
         
+        // last ones win approach...
+        
         for(int i = queries.length-1 ; i >= 0 ; i--){
             int type = queries[i][0];
             int ind = queries[i][1];
@@ -21,6 +23,9 @@ class Solution {
                 ans += n*val - val*rvis.size();
                 cvis.add(ind);
             }
+            
+            // see the Q diagrams in reverse order to understand why we are
+            // subtracting val*rvis.size() or val*cvis.size()
         }
         
         return ans;
