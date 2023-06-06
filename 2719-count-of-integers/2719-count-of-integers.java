@@ -18,15 +18,6 @@ class Solution {
         }
         
         int tillMax = f(0,max_sum,1,1,n1,n2,dp);
-        
-        for(int a[][][] : dp){
-            for(int b[][] : a){
-                for(int c[] : b){
-                    Arrays.fill(c,-1);
-                }
-            }
-        }
-        
         int tillMin = f(0,min_sum-1,1,1,n1,n2,dp);
         
         int ans = (tillMax-tillMin)%MOD;
