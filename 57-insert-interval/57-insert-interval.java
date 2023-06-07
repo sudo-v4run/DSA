@@ -6,6 +6,7 @@ class Solution {
         int n = intervals.length;
         
         for(int i = 0 ; i < n ; i++){
+            
             if(newInterval[0] > intervals[i][1]){
                 res.add(new int[]{intervals[i][0],intervals[i][1]});
             }else if(newInterval[1] < intervals[i][0]){
