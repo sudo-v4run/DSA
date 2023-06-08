@@ -23,5 +23,6 @@ class Solution {
         // res.add(new int[]{start,end});
         
         return ans-1;
+        // -1 for i = 0 since we are already initializing start and end with 0th index
     }
 }
