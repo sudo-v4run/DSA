@@ -1,6 +1,10 @@
 class Solution {
     public int eraseOverlapIntervals(int[][] intervals) {
         
+        
+        
+        
+        
         Arrays.sort(intervals,(a,b)->{return a[0]-b[0];});
         
         int ans = 0;
@@ -23,6 +27,8 @@ class Solution {
         // res.add(new int[]{start,end});
         
         return ans-1;
-        // -1 for i = 0 since we are already initializing start and end with 0th index
+        
+        // -1 for i = 0 since we are already 
+        // initializing start and end with 0th index
     }
 }
