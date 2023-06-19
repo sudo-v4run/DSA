@@ -2,6 +2,8 @@ class Solution {
     
     public List<List<Integer>> permuteUnique(int[] nums) {
         
+        Arrays.sort(nums);
+        
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         
         f(nums,0,res);
@@ -26,8 +28,8 @@ class Solution {
             if(hs.contains(arr[i])){
                 continue;
             }
-            
             hs.add(arr[i]);
+            
             swap(arr,i,index);
             f(arr,index+1,res);
             swap(arr,i,index);
