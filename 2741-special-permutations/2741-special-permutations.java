@@ -9,6 +9,11 @@ class Solution {
         
         int dp[][] = new int[n+1][(1<<14)];
         
+        // only 2 states in DP but not 3 states.i.e index is not considered
+        // coz index is just to traverse and check for the completion of 
+        // all elements. We can remove index in the recursive f() and check
+        // for mask == (1<<arr.length())-1 in the base case.
+        
         for(int row[] : dp){
             Arrays.fill(row,-1);
         }
