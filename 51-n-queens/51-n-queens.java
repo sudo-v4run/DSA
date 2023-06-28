@@ -38,8 +38,8 @@ class Solution {
             if(isPossible(row,col,matrix)){
                 matrix[row][col] = 1;
                 f(row+1,matrix);
+                matrix[row][col] = 0;
             }
-            matrix[row][col] = 0;
         }
     }
     public static boolean isPossible(int r, int c, int matrix[][]){
