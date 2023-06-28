@@ -12,7 +12,7 @@ class Solution {
         
         return res;
     }
-    public static boolean f(int row, int matrix[][]){
+    public static void f(int row, int matrix[][]){
         
         if(row == matrix.length){
             
@@ -31,7 +31,7 @@ class Solution {
             }
             
             res.add(new ArrayList<>(ans));
-            return true;
+            return;
         }
         
         for(int col = 0 ; col < matrix.length ; col++){
@@ -41,8 +41,6 @@ class Solution {
             }
             matrix[row][col] = 0;
         }
-        
-        return false;
     }
     public static boolean isPossible(int r, int c, int matrix[][]){
         
