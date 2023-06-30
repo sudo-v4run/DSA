@@ -1,6 +1,5 @@
 class Solution {
     
-    static int M = 4;
     static ArrayList<ArrayList<Integer>> adj;
     
     public int[] gardenNoAdj(int n, int[][] paths) {
@@ -22,29 +21,27 @@ class Solution {
         int color[] = new int[n];
         Arrays.fill(color,-1);
         
-        dfs(color);
+        dfs(0,color);
         
         return color;
     }
-    public static boolean dfs(int color[]){
+    public static boolean dfs(int v, int color[]){
         
-        for(int v = 0 ; v < color.length ; v++){
-            if(color[v] != -1){
-                continue;
-            }
-            for(int i = 1 ; i <= M ; i++){
-                if(isPossible(v,i,color)){
-                    color[v] = i;
-                    if(dfs(color)){
-                        return true;
-                    }
-                    color[v] = -1;
-                }
-            }
-            return false;
+        if(v == color.length){
+            return true;
         }
         
-        return true;
+        for(int i = 1 ; i <= 4 ; i++){
+            if(isPossible(v,i,color)){
+                color[v] = i;
+                if(dfs(v+1,color)){
+                    return true;
+                }
+                color[v] = -1;
+            }
+        }
+        
+        return false;
     }
     public static boolean isPossible(int v, int i, int color[]){
         for(int nei : adj.get(v)){
