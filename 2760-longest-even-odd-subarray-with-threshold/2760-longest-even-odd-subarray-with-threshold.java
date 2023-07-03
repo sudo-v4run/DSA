@@ -14,8 +14,7 @@ class Solution {
             int j = i;
             for( ; j < n-1 ; j++){
                 
-                if(nums[i] % 2 != 0 ||
-                   nums[j] > threshold || 
+                if(nums[j] > threshold || 
                    nums[j] % 2 == nums[j + 1] % 2){
                     
                     break;
