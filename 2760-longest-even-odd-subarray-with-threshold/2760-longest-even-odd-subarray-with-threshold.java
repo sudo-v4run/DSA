@@ -25,6 +25,7 @@ class Solution {
                 cnt++;
             }
             ans = Math.max(ans,cnt);
+            i = j;
         }
         
         return ans;
