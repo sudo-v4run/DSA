@@ -2,13 +2,6 @@ class Solution {
     public long continuousSubarrays(int[] arr) {
         
         int n = arr.length;
-        
-        return f(arr);
-    }
-    public static long f(int arr[]){
-        // here don't need k explicitly since we know k = 2.
-        
-        int n = arr.length;
         TreeMap<Integer,Integer> tm = new TreeMap<>();
         
         long cnt = 0;
