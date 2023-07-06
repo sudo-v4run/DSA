@@ -19,25 +19,10 @@ class Solution {
             }
         }
         
-        ArrayList<Integer> primes = new ArrayList<>();
-        
         for(int i = 2 ; i <= n ; i++){
-            if(isPrime[i] == 1){
-                primes.add(i);
-            }
-        }
-        
-        int i = 0;
-        int j = primes.size()-1;
-        
-        while(i <= j){
-            if(primes.get(i) + primes.get(j) == n){
-                res.add(new ArrayList<>(Arrays.asList(primes.get(i),primes.get(j))));
-                i++;
-            }else if(primes.get(i) + primes.get(j) < n){
-                i++;
-            }else if(primes.get(i) + primes.get(j) > n){
-                j--;
+            int j = n-i;
+            if(isPrime[i] == 1 && isPrime[j] == 1 && i <= j){
+                res.add(new ArrayList<>(Arrays.asList(i,j)));
             }
         }
         
