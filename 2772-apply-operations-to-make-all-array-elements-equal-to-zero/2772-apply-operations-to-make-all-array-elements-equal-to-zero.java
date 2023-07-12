@@ -14,11 +14,11 @@ class Solution {
                 return false;
             }
             impact += arr[j];
-            j++;
-            if(j >= k){
+            if(j >= k-1){
                 impact -= arr[i];
                 i++;
             }
+            j++;
         }
         
         return impact == 0;
