@@ -8,6 +8,7 @@ class Solution {
         int j = 0;
         
         while(j < n){
+            
             arr[j] -= impact;
             if(arr[j] < 0){
                 return false;
