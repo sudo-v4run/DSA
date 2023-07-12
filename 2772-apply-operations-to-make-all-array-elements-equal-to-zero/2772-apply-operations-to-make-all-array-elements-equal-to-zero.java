@@ -8,18 +8,23 @@ class Solution {
         int j = 0;
         
         while(j < n){
-            
-            arr[j] -= impact;
-            if(arr[j] < 0){
-                return false;
-            }
-            impact += arr[j];
-            
-            if(j >= k-1){
+            if(j-i+1 < k){
+                arr[j] -= impact;
+                if(arr[j] < 0){
+                    return false;
+                }
+                impact += arr[j];
+                j++;
+            }else if(j-i+1 == k){
+                arr[j] -= impact;
+                if(arr[j] < 0){
+                    return false;
+                }
+                impact += arr[j];
                 impact -= arr[i];
                 i++;
+                j++;
             }
-            j++;
         }
         
         return impact == 0;
