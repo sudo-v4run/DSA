@@ -37,6 +37,7 @@ class Solution {
             }
             
             ans = Math.max(ans,Math.max(cur1,cur2));
+            
             prev1 = cur1;
             prev2 = cur2;
         }
