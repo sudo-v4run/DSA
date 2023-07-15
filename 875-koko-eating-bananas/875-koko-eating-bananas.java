@@ -14,7 +14,7 @@ class Solution {
         while(l <= h){
             int m = l+(h-l)/2;
             
-            int reqHrs = requiredHrs(m,piles);
+            long reqHrs = requiredHrs(m,piles);
             
             if(reqHrs <= hr){
                 h = m-1;
@@ -25,12 +25,15 @@ class Solution {
         
         return l;
     }
-    public static int requiredHrs(int k,int piles[]){
+    public static long requiredHrs(int k,int piles[]){
         
-        int ans = 0;
+        long ans = 0;
         
         for(int i : piles){
-            ans += Math.ceil((double)i/k);
+            ans += i/k;
+            if(i % k != 0){
+                ans++;
+            }
         }
         
         return ans;
