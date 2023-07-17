@@ -6,16 +6,16 @@ class Solution {
         
         int max = 0;
         int i = 0;
-        int j = 1;
+        int j = 0;
         while(j < n){
-            if(arr[j] - arr[i] <= 2*k){
+            if(arr[j] - arr[i] <= 2*k){ 
+                // or arr[i]+k >= (arr[j]-k) && arr[i]+k <= (arr[j]+k)
                 max = Math.max(max,j-i+1);
                 j++;
             }else{
                 i++;
             }
         }
-        max = Math.max(max,j-i+1-1);
         
         return max;
     }
