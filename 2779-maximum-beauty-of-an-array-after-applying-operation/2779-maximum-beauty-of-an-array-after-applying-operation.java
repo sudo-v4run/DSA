@@ -8,7 +8,7 @@ class Solution {
         int i = 0;
         int j = 1;
         while(j < n){
-            if(arr[i]+k >= (arr[j]-k) && arr[i]+k <= (arr[j]+k)){
+            if(arr[j] - arr[i] <= 2*k){
                 max = Math.max(max,j-i+1);
                 j++;
             }else{
