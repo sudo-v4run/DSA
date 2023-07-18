@@ -15,6 +15,10 @@ class Solution {
         for(int left = n-1 ; left >= 0 ; left--){
             String substr = "";
             for(int k = left ; k <= Math.min(left+10,end) ; k++){
+                
+                    // why left+10 ? -> coz it is given that 
+                    // forbiddenWord.length <= 10 in constraints..
+                
                 substr += word.charAt(k);
                 if(hs.contains(substr)){
                     end = k-1;
