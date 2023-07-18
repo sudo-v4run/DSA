@@ -27,6 +27,11 @@ class Solution {
         }
         
         int n = arr.size();
+        
+        if(2*dominantFreq <= n){
+            return -1;
+        }
+        
         int cnt1 = 0;
         
         for(int i = 0 ; i < n ; i++){
