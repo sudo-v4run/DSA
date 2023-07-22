@@ -3,22 +3,45 @@ class Solution {
         
         int n = arr.length;
         
+        // Optimal - BS TC-> O(NlogN)...
         
-        // Another approach -> TC - O(N) 2 pointers ...
+        if(k < arr[0]){
+            return k;
+        }
         
-        int i = 1;
-        int j = 0;
-        while(k > 0){
-            if(j < n && i == arr[j]){
-                i++;
-                j++;
+        int lo = 0;
+        int hi = n-1;
+        while(lo <= hi){
+            int mid = lo+(hi-lo)/2;
+            int missing = arr[mid]-(mid+1);
+            if(missing < k){
+                lo = mid+1;
             }else{
-                i++;
-                k--;
+                hi = mid-1;
             }
         }
         
-        return i-1;
+        int more = k-(arr[hi]-(hi+1));
+        
+        return arr[hi]+more;
+        
+        
+        // Another approach -> TC - O(N) 2 pointers ...
+        
+//         int i = 1;
+//         int j = 0;
+//         while(k > 0){
+//             if(j < n && i == arr[j]){
+//                 i++;
+//                 j++;
+//             }else{
+//                 i++;
+//                 k--;
+//             }
+//         }
+        
+//         return i-1; // -1 coz we need kth missing, not (k+1)th missing...
+//                     // when k == 0, i will be one element ahead...
         
         // TC -> O(N)...
         
