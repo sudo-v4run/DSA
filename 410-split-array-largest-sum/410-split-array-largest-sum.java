@@ -4,16 +4,16 @@ class Solution {
         int n = arr.length;
         
         int sum = 0;
-        int min = Integer.MAX_VALUE;
+        int max = -1;
         
         for(int i : arr){
-            if(i < min){
-                min = i;
+            if(i > max){
+                max = i;
             }
             sum += i;
         }
         
-        int lo = min;
+        int lo = max;
         int hi = sum;
         while(lo <= hi){
             int mid = lo+(hi-lo)/2;
@@ -31,17 +31,11 @@ class Solution {
         
         int n = arr.length;
         
-        if(arr[0] > maxSum){
-            return false;
-        }
-        
         int sum = arr[0];
         int cnt = 1;
         
         for(int i = 1 ; i < n ; i++){
-            if(arr[i] > maxSum){
-                return false;
-            }
+            
             if(sum + arr[i] <= maxSum){
                 sum += arr[i];
             }else{
