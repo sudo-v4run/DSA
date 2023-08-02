@@ -1,43 +1,79 @@
 class Solution {
     
-    private static final int mod = 1000000007;
-    private long[][][][] dp;
+    static long MOD = (long)1e9+7;
+    
     public int countSteppingNumbers(String low, String high) {
-        resetArray();
-        long result = solve(high, 0, -1, 1, 1);
-        resetArray();
-        result -= solve(low, 0, -1, 1, 1);
-        result = (result + mod) % mod;
-        int lowIsValid = getLowIsValid(low);
-        result = (result + mod + lowIsValid) % mod;
-        return (int) result;
-    }
-    private int getLowIsValid(final String low) {
-        int lowIsValid = 1;
-        for (int i = 1; i < low.length(); i++)
-            if (Math.abs(low.charAt(i) - low.charAt(i - 1)) != 1) {
-                lowIsValid = 0;
+        
+        long dp[][][][] = new long[101][11][2][2];
+        
+        for(long a[][][] : dp){
+            for(long b[][] : a){
+                for(long c[] : b){
+                    Arrays.fill(c,-1);
+                }
+            }
+        }
+        
+        long res = f(0,-1,1,1,high,dp);
+        
+        int toAdd = 1;
+        for(int i = 1 ; i < low.length() ; i++){
+            int diff = low.charAt(i) - low.charAt(i-1);
+            if(Math.abs(diff) != 1){
+                toAdd = 0;
                 break;
             }
-        return lowIsValid;
-    }
-    private long solve(final String numString, int currentIndex, int previousDigit, int bound, int isZero) {
-        if (numString.length() == currentIndex) return 1 - isZero;
-        if (dp[currentIndex][previousDigit + 1][isZero][bound] != -1)
-            return dp[currentIndex][previousDigit + 1][isZero][bound];
-        long limit = numString.charAt(currentIndex) - '0';
-        if (bound == 0) limit = 9;
-        long ans = 0;
-        for (int currentDigit = 0; currentDigit <= limit; currentDigit++) {
-            int nextBound = (bound == 1 && currentDigit == limit) ? 1 : 0;
-            int nextZero = (isZero == 1 && currentDigit == 0) ? 1 : 0;
-            if (isZero == 1 || Math.abs(currentDigit - previousDigit) == 1)
-                ans += (solve(numString, currentIndex + 1, currentDigit, nextBound, nextZero)) % mod;
         }
-        return dp[currentIndex][previousDigit + 1][isZero][bound] = ans;
+        
+        // clearing the DP values for high
+        for(long a[][][] : dp){
+            for(long b[][] : a){
+                for(long c[] : b){
+                    Arrays.fill(c,-1);
+                }
+            }
+        }
+        
+        res -= f(0,-1,1,1,low,dp);
+        
+        // high - low gives ans for [low+1,high]..but we want [low,high]..
+        // so we check separately for low and if it is a stepping number,
+        // we add +1 to ans...
+        
+        res = (res + MOD) % MOD;
+        
+        res = (res + MOD + toAdd) % MOD;
+        
+        return (int)res;
     }
-    private void resetArray() {
-        dp = new long[101][11][2][2];
-        for (var i : dp) for (var j : i) for (var k : j) Arrays.fill(k, -1);
+    public static long f(int index, int prev, int tight, 
+                        int leadingZeros, String num, long dp[][][][]){
+        
+        if(index == num.length()){
+            return 1;
+        }
+        
+        if(dp[index][prev+1][tight][leadingZeros] != -1){
+            return dp[index][prev+1][tight][leadingZeros];
+        }
+        
+        long hi = num.charAt(index) - '0';
+        if(tight == 0){
+            hi = 9;
+        }
+        
+        long cnt = 0;
+        
+        for(int i = 0 ; i <= hi ; i++){
+            
+            int newTight = (tight == 1 && i == hi) ? 1 : 0;
+            int newLZ = (leadingZeros == 1 && i == 0) ? 1 : 0;
+            
+            if(leadingZeros == 1 || Math.abs(i-prev) == 1){
+                cnt += f(index+1,i,newTight,newLZ,num,dp) % MOD;
+            }
+        }
+        
+        return dp[index][prev+1][tight][leadingZeros] = cnt;
     }
 }
