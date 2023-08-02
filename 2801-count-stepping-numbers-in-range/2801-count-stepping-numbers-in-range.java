@@ -14,7 +14,7 @@ class Solution {
             }
         }
         
-        long res = f(0,-1,1,1,high,dp);
+        long tillHigh = f(0,-1,1,1,high,dp);
         
         int toAdd = 1;
         for(int i = 1 ; i < low.length() ; i++){
@@ -34,13 +34,13 @@ class Solution {
             }
         }
         
-        res -= f(0,-1,1,1,low,dp);
+        long tillLow = f(0,-1,1,1,low,dp);
         
         // high - low gives ans for [low+1,high]..but we want [low,high]..
         // so we check separately for low and if it is a stepping number,
         // we add +1 to ans...
         
-        res = (res + MOD) % MOD;
+        long res = (tillHigh - tillLow) % MOD;
         
         res = (res + MOD + toAdd) % MOD;
         
@@ -57,21 +57,20 @@ class Solution {
             return dp[index][prev+1][tight][leadingZeros];
         }
         
-        long hi = num.charAt(index) - '0';
-        if(tight == 0){
-            hi = 9;
-        }
+        long hi = tight == 1 ? num.charAt(index) - '0' : 9;
         
         long cnt = 0;
         
         for(int i = 0 ; i <= hi ; i++){
             
+            if(prev != -1 && leadingZeros != 1 && Math.abs(prev-i) != 1){
+                continue;
+            }
+            
             int newTight = (tight == 1 && i == hi) ? 1 : 0;
             int newLZ = (leadingZeros == 1 && i == 0) ? 1 : 0;
             
-            if(leadingZeros == 1 || Math.abs(i-prev) == 1){
-                cnt += f(index+1,i,newTight,newLZ,num,dp) % MOD;
-            }
+            cnt += f(index+1,i,newTight,newLZ,num,dp) % MOD;
         }
         
         return dp[index][prev+1][tight][leadingZeros] = cnt;
