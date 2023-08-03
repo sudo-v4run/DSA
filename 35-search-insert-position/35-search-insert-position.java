@@ -6,7 +6,7 @@ class Solution {
         int lo = 0;
         int hi = n-1;
         
-        int ans = n;
+        int ans = n;    // if the ele is to inserted at the end (nth index)..
         
         while(lo <= hi){
             int mid = lo+(hi-lo)/2;
