@@ -49,6 +49,25 @@ class LRUCache {
         if(!hm.containsKey(node.key)){
             if(hm.size() >= cap){
                 removeNode(tail.prev);
+                
+                // In this case when the hm.size() >= cap,
+                // we need to remove tail.prev from HM
+                // and LL..but if we don't store the key,val both
+                // in the Node class, then we can't get the key
+                // of tail.prev and we can't remove it from HM.
+                // Therefore it still stays in the hashMap 
+                // even though it is removed from double LL.
+                // Next time when get(key) is called with 
+                // tail.prev key .i.e. with the unremoved HM key,
+                // HM returns the Node but in actual case
+                // the entry should not be there in HM,
+                // since we should have removed it when the 
+                // hm.size() >= cap.
+                // That's why we store both key and val in Node class
+                // instead of just val, so that it can be removed
+                // from HM when required.i.e. when removeNode()
+                // is called.
+                
             }
             addNode(node);
         }else{
