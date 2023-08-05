@@ -1,36 +1,43 @@
 class LRUCache {
+    
     class Node{
-        int k;
-        int v;
-        Node next;
-        Node prev;
-        Node(int k ,int v){
-            this.k = k;
-            this.v = v;
-            next = null;
-            prev = null;
+        int key, val;
+        Node next, prev;
+        
+        Node(int key, int val){
+            
+            this.key = key;
+            this.val = val;
         }
     }
     
-    Node head = new Node(-1,-1);
-    Node tail = new Node(-1,-1);
-    
     HashMap<Integer,Node> hm;
     int cap;
+    
+    Node head;
+    Node tail;
 
     public LRUCache(int capacity) {
+        
+        head = new Node(-1,-1);
+        tail = new Node(-1,-1);
+        
         hm = new HashMap<>();
         cap = capacity;
+        
         head.next = tail;
         tail.prev = head;
     }
     
     public int get(int key) {
+        
         if(hm.containsKey(key)){
-            Node node = hm.get(key);
-            removeNode(node);
-            addNode(node);
-            return node.v;
+            Node resultNode = hm.get(key);
+            
+            removeNode(resultNode);
+            addNode(resultNode);
+            
+            return resultNode.val;
         }else{
             return -1;
         }
@@ -39,32 +46,33 @@ class LRUCache {
     public void put(int key, int value) {
         Node node = new Node(key,value);
         
-        if(hm.containsKey(key)){
-            removeNode(hm.get(key));
+        if(!hm.containsKey(node.key)){
+            if(hm.size() >= cap){
+                removeNode(tail.prev);
+            }
             addNode(node);
         }else{
-            if(hm.size()<cap){
-                addNode(node);
-                hm.put(key,node);
-            }else{
-                removeNode(tail.prev);
-                addNode(node);
-            }
+            removeNode(hm.get(key));
+            addNode(node);
         }
     }
     
-    public void removeNode(Node node){
-        hm.remove(node.k);
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-    }
-    
     public void addNode(Node node){
-        hm.put(node.k,node);
+        
+        hm.put(node.key,node);
+        
         Node temp = head.next;
-        temp.prev = node;
-        node.next = temp;
+        
+        temp.prev = node;node.next = temp;
         head.next = node;
         node.prev = head;
+    }
+    
+    public void removeNode(Node node){
+        
+        hm.remove(node.key);
+        
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
     }
 }
