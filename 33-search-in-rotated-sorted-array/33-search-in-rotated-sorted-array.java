@@ -14,7 +14,7 @@ class Solution {
             }
             
             if(arr[s]<=arr[m]){
-                if(arr[s]<=target && target< arr[m]){
+                if(arr[s]<=target && target<arr[m]){
                     e = m-1;
                 }else{
                     s = m+1;    
