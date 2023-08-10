@@ -54,8 +54,6 @@ class Solution {
         int n1 = arr1.length;
         int n2 = arr2.length;
         
-        int ans = 0;
-        
         int lo = Math.max(0,k-n2);
         int hi = Math.min(k,n1);
         while(lo <= hi){
