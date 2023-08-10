@@ -56,7 +56,8 @@ class Solution {
         
         int ans = 0;
         
-        int lo = Math.max(0,k-m), hi = Math.min(k,n);
+        int lo = Math.max(0,k-n2);
+        int hi = Math.min(k,n1);
         while(lo <= hi){
             int cut1 = (lo+hi)/2;
             int cut2 = k-cut1;
