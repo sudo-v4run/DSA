@@ -2,7 +2,7 @@ class Solution {
     public int[] twoSum(int[] nums, int target) {
         
         int ans[] = new int[2];
-
+        
         // TC and SC -> O(N) ...
         
         HashMap<Integer,Integer> hm = new HashMap<>();
