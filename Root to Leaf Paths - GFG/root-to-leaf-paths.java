@@ -140,8 +140,10 @@ class Tree{
             return;
         }
         
+        paths[len] = root.data;
+        
         if(root.left == null && root.right == null){
-            paths[len] = root.data;
+            
             ArrayList<Integer> ans = new ArrayList<>();
             for(int i = 0 ; i <= len ; i++){
                 ans.add(paths[i]);
