@@ -127,35 +127,29 @@ class Tree{
             return res;
         }
         
-        int paths[] = new int[1001];
+        ArrayList<Integer> ans = new ArrayList<>();
         
-        f(root,0,paths);
+        f(root,ans);
         
         return res;
     }
-    public static void f(Node root, int len, int paths[]){
-        
+    public static void f(Node root, ArrayList<Integer> ans){
         
         if(root == null){
             return;
         }
         
-        paths[len] = root.data;
-        
         if(root.left == null && root.right == null){
-            
-            ArrayList<Integer> ans = new ArrayList<>();
-            for(int i = 0 ; i <= len ; i++){
-                ans.add(paths[i]);
-            }
-            res.add(ans);
+            ans.add(root.data);
+            res.add(new ArrayList<>(ans));
+            ans.remove(ans.size()-1);
             return;
         }
         
-        paths[len] = root.data;
-        
-        f(root.left,len+1,paths);
-        f(root.right,len+1,paths);
+        ans.add(root.data);
+        f(root.left,ans);
+        f(root.right,ans);
+        ans.remove(ans.size()-1);
     }
     
 }
