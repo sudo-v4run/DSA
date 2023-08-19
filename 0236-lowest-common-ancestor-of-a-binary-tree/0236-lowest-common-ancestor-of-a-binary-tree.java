@@ -1,62 +1,12 @@
 class Solution {
-    
-    static TreeNode ans;
-    
     public TreeNode lowestCommonAncestor(TreeNode root, 
-                                         TreeNode p, TreeNode q) {
+                                         TreeNode p, TreeNode q){
         
         if(root == null){
             return null;
         }
-        
-        if(p.val == q.val){
-            return p;
-        }
-        
-        ans = null;
-        
-        lca(root,p,q);
-        
-        return ans;
-        
-    }
-    public static boolean lca(TreeNode root, TreeNode p, TreeNode q){
-        
-        if(root == null){
-            return false;
-        }
-        
-        boolean left = lca(root.left,p,q);
-        boolean right = lca(root.right,p,q);
         
         if(root.val == p.val || root.val == q.val){
-            if(left || right){
-                ans = root;
-            }
-            return true;
-        }
-        
-        
-        
-        if(left && right){
-            ans = root;
-            return true;
-        }
-        
-        if(left || right){
-            return true;
-        }
-        
-        return false;
-    }
-    public TreeNode lowestCommonAncestor1(TreeNode root, 
-                                         TreeNode p, TreeNode q) {
-        
-        if(root == null){
-            return null;
-        }
-        
-        if((root.val == p.val) || (root.val == q.val)){
             return root;
         }
         
@@ -71,16 +21,12 @@ class Solution {
             return left;
         }
         
-        if(right != null){
-            return right;
-        }
-        
-        return null;
+        return right;
     }
     
-    
-    
-//     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+//     public TreeNode lowestCommonAncestor(TreeNode root, 
+//                                          TreeNode p, TreeNode q){
+        
 //         ArrayList<TreeNode> pArr = new ArrayList<>();
 //         ArrayList<TreeNode> qArr = new ArrayList<>();
         
@@ -97,6 +43,7 @@ class Solution {
         
 //         return pArr.get(i+1);
 //     }
+    
 //     public static boolean findPath(TreeNode root, TreeNode x, 
 //                                         ArrayList<TreeNode> arr){
         
