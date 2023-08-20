@@ -19,7 +19,6 @@ class Solution {
         }
         
         Arrays.sort(arr,(a,b)->{return a.s-b.s;});
-                // we can sort on the basis of start as well..
         
         int dp[] = new int[n];
         Arrays.fill(dp,-1);
