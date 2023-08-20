@@ -9,6 +9,8 @@ class Solution {
     }
     public int maximizeTheProfit(int m, List<List<Integer>> offers) {
         
+        // very similar to 1235. Maximum Profit in Job Scheduling
+        
         int n = offers.size();
         
         Job arr[] = new Job[n];
