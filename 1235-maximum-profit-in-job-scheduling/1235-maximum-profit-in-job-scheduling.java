@@ -1,4 +1,5 @@
 class Solution {
+    
     class Job{
         int s,e,p;
         Job(int s, int e, int p){
@@ -37,18 +38,18 @@ class Solution {
             return dp[index];
         }
         
-        int nextInd = getNextInd(index+1,arr[index].e,arr);
+        int nextInd = getNextInd(arr[index].e,arr);
         
         int take = arr[index].p+f(nextInd,arr,dp);
         int notTake = f(index+1,arr,dp);
         
         return dp[index] = Math.max(take,notTake);
     }
-    public static int getNextInd(int l, int currentJobEnd, Job arr[]){
+    public static int getNextInd(int currentJobEnd, Job arr[]){
         
         int n = arr.length;
         
-        int lo = l;
+        int lo = 0;
         int hi = n-1;
         
         int ans = n;
