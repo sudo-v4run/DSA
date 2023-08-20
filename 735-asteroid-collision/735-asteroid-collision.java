@@ -4,12 +4,9 @@ class Solution {
         Stack<Integer> s = new Stack<>();
         
         int n = asteroids.length;
-        int i = 0;
-        while(i < n){
-            int cur = asteroids[i];
-            if(s.isEmpty()){
-                s.push(cur);
-            }else if(cur > 0){
+        
+        for(int cur : asteroids){
+            if(cur > 0){
                 s.push(cur);
             }else if(cur < 0){
                 while(!s.isEmpty() && s.peek() > 0 && 
@@ -22,7 +19,6 @@ class Solution {
                     s.pop();
                 }
             }
-            i++;
         }
         
         int len = s.size();
