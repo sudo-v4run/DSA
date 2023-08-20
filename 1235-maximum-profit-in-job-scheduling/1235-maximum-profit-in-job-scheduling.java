@@ -37,7 +37,7 @@ class Solution {
             return dp[index];
         }
         
-        int nextInd = getNextInd(index,arr[index].e,arr);
+        int nextInd = getNextInd(index+1,arr[index].e,arr);
         
         int take = arr[index].p+f(nextInd,arr,dp);
         int notTake = f(index+1,arr,dp);
@@ -46,10 +46,12 @@ class Solution {
     }
     public static int getNextInd(int l, int currentJobEnd, Job arr[]){
         
-        int lo = l;
-        int hi = arr.length-1;
+        int n = arr.length;
         
-        int ans = arr.length;
+        int lo = l;
+        int hi = n-1;
+        
+        int ans = n;
         
         while(lo <= hi){
             int mid = lo+(hi-lo)/2;
