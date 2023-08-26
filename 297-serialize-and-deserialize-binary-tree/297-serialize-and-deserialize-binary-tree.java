@@ -4,8 +4,8 @@ public class Codec {
     public String serialize(TreeNode root) {
         
         Queue<TreeNode> q = new LinkedList<>();
-        
         q.add(root);
+        
         StringBuilder ans = new StringBuilder();
         
         while(!q.isEmpty()){
