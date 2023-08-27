@@ -10,7 +10,6 @@ class Solution {
             return true;
         if(left==null || right==null)
             return false;
-        
         if(left.val!=right.val)
             return false;
         
