@@ -29,14 +29,14 @@ class Solution {
     }
     public int next(){
         int ans = -1;
-        if(!s1.isEmpty()){
+        // if(!s1.isEmpty()){
             TreeNode temp = s1.peek();
             ans = temp.val;
             s1.pop();
             if(temp.right != null){
                 pushAll(temp.right,true);
             }
-        }
+        // }
         return ans;
     }
     public int prev(){
