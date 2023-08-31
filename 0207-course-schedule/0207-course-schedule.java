@@ -75,12 +75,13 @@ class Solution {
         hs.add(v);
         
         for(int nei : adj.get(v)){
+            if(hs.contains(nei)){
+                return true;
+            }
             if(vis[nei] != 1){
                 if(isCycle(nei,adj,vis,hs)){
                     return true;
                 }
-            }else if(hs.contains(nei)){
-                return true;
             }
         }
         
