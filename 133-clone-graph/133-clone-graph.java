@@ -20,7 +20,8 @@ class Solution {
             if(!hm.containsKey(nei)){
                 dfs(nei,hm);
             }
-            adj.add(hm.get(nei));
+            adj.add(hm.get(nei));  
+                // hm.get() will not return null coz we first traverse and then add to adj
         }
         
         clone.neighbors = adj;
