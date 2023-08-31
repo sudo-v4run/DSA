@@ -16,6 +16,15 @@ class Solution {
         
         // BFS...
         
+        
+        // BFS using HashSet or ParentMap will not work...
+        // 0 -> 1 ; 3 -> 1 : Test Case eg where BFS fails 
+        // In the above eg, cycle does not exist 
+        // but in case of hs method, hs will contain 1 when reach 3 (after finishing 0) and 
+        // returns true. Also in case of parentMap, when we reach 3 (after finishing 0),
+        // vis[1] == 1 and parent of 1 != 3. So, it returns true.
+        // But modified BFS - Kahn's Algo (Topological Sort) can be used...
+        
 //         int indeg[] = new int[v];
 //         findInDeg(adj,indeg);
         
