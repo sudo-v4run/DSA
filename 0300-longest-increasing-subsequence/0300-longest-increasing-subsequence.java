@@ -15,15 +15,15 @@ class Solution {
                 temp.add(arr[i]);
                 len++;
             }else{
-                int lowerBoundIndex = lowerBound(temp,arr[i]);
-                temp.set(lowerBoundIndex,arr[i]);
+                int uprBoundIndex = upperBound(temp,arr[i]);
+                temp.set(uprBoundIndex,arr[i]);
             }
         }
         
-        return len;
+        return len; // or temp.size();
         
         
-        // Tabulation.... O(N) SC....
+        // Another Method.... O(N) SC....
         
 //         int dp[] = new int[n];
 //         int max = 1;
@@ -43,8 +43,7 @@ class Solution {
         
         
         
-        
-        // Tabulation.... Printing the LIS O(N) SC....
+        // Printing the LIS...
         
 //         int dp[] = new int[n];
 //         int prevs[] = new int[n];
@@ -53,7 +52,7 @@ class Solution {
 //         int lastInd = 0;
         
 //         for(int index = 0 ; index < n ; index++){
-//             dp[index] = 1;
+//             dp[index] = 1;   // least possible for any index
 //             prevs[index] = index;
 //             for(int prevInd = 0 ; prevInd < index ; prevInd++){
 //                 if(arr[prevInd] < arr[index] && dp[prevInd]+1 > dp[index]){
@@ -139,11 +138,14 @@ class Solution {
 //         return f(0,-1,arr,dp);
     }
     
-    public static int lowerBound(ArrayList<Integer> arr, int target){
-        int s = 0;
-        int e = arr.size()-1;
+    public static int upperBound(ArrayList<Integer> arr, int target){
         
-        int ans = -1;
+        int n = arr.size();
+        
+        int s = 0;
+        int e = n-1;
+        
+        int ans = n-1;
         
         while(s<=e){
             int mid = s+(e-s)/2;
@@ -153,14 +155,14 @@ class Solution {
             }
             
             if(arr.get(mid) < target){
-                ans = mid;
                 s = mid+1;
             }else{
+                ans = mid;
                 e = mid-1;
             }
         }
         
-        return ans+1;
+        return ans;
     }
     
     
