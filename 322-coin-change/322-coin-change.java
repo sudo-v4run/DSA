@@ -99,7 +99,7 @@ class Solution {
             return 0;
         }
         
-        if(index>=coins.length || amount < 0){
+        if(index >= coins.length || amount < 0){
             return (int)1e9;
         }
         
