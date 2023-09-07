@@ -63,7 +63,7 @@ class Solution
 	    for(int i = 1 ; i <= floors; i++){
 	        
 	        int attempts = 1 + Math.max(f(eggs-1,i-1,dp),f(eggs,floors-i,dp));
-	            // refer to pepcoding for better understanding
+	            // refer to pepcoding explanation for better understanding
 	        
             mini = Math.min(mini,attempts);
 	    }
