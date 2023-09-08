@@ -38,7 +38,9 @@ class Solution {
     }
     public static boolean f(String s, int index, Set<String> hs,int dp[]){
         
-        if(index >= s.length()){
+        int n = s.length();
+        
+        if(index == n){
             return true;
         }
         
