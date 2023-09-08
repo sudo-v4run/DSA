@@ -23,39 +23,34 @@ class Solution{
     {
         int n = str.length();
         
-        int dp[][] = new int[n][n];
+        int dp[] = new int[n];
         
-        for(int row[] : dp){
-            Arrays.fill(row,-1);
-        }
+        Arrays.fill(dp,-1);
         
-        return f(0,n-1,str,dp);
+        return f(0,str,dp)-1;
     }
-    public static int f(int i, int j, String str, int dp[][]){
+    public static int f(int i, String str, int dp[]){
         
         int n = str.length();
         
-        if(i >= j){
+        if(i == n){
             return 0;
         }
         
-        if(dp[i][j] != -1){
-            return dp[i][j];
+        if(dp[i] != -1){
+            return dp[i];
         }
         
         int mini = (int)1e7;
         
-        for(int k = i ; k <= j ; k++){
+        for(int k = i ; k < n ; k++){
             if(isPali(i,k,str)){
-                if(k == n-1){
-                    return 0;
-                }
-                int cuts = 1 + f(k+1,j,str,dp);
+                int cuts = 1 + f(k+1,str,dp);
                 mini = Math.min(mini,cuts);
             }
         }
         
-        return dp[i][j] = mini;
+        return dp[i] = mini;
     }
     public static boolean isPali(int i, int j, String str){
         
