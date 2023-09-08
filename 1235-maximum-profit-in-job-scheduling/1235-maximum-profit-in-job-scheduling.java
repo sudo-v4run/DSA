@@ -19,6 +19,7 @@ class Solution {
         }
         
         Arrays.sort(arr,(a,b)->{return a.s-b.s;});
+        // Sorting is essential coz we are going to use BS later...
         
         int dp[] = new int[n];
         Arrays.fill(dp,-1);
