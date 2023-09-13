@@ -72,6 +72,7 @@ class Solution {
             }
             
             int coins = left*arr[k]*right + f(i,k-1,arr,dp) + f(k+1,j,arr,dp);
+                // we go from last bolloon bursted to frist balloon bursted..
             
             max = Math.max(max,coins);
         }
