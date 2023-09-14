@@ -9,43 +9,30 @@ class Solution {
             }
             
             if(ch == ')'){
-                boolean hasTrue = false;
-                boolean hasFalse = false;
-                int cnt = 0;
-                char ifSingleChar = '#';
+                HashSet<Character> hs = new HashSet<>();
                 while(s.peek() != '('){
                     char poped = s.pop();
-                    if(cnt == 0){
-                        ifSingleChar = poped;
-                    }
-                    if(poped == 't'){
-                        hasTrue = true;
-                    }else if(poped == 'f'){
-                        hasFalse = true;
-                    }
-                    cnt++;
+                    hs.add(poped);
                 }
                 s.pop();
                 char op = s.pop();
-                if(cnt == 1){
-                    if(op == '!'){
-                        s.push(ifSingleChar == 't' ? 'f' : 't');
+                if(op == '&'){
+                    if(!hs.contains('f')){  // all are chars are true
+                        s.push('t');
                     }else{
-                        s.push(ifSingleChar);
+                        s.push('f');
+                    }
+                }else if(op == '|'){
+                    if(hs.contains('t')){   // atleast one true is present
+                        s.push('t');
+                    }else{
+                        s.push('f');
                     }
                 }else{
-                    if(op == '&'){
-                        if(hasFalse == false){  // all are chars are true
-                            s.push('t');
-                        }else{
-                            s.push('f');
-                        }
-                    }else if(op == '|'){
-                        if(hasFalse == true && hasTrue == false){   // all are false
-                            s.push('f');
-                        }else{
-                            s.push('t');
-                        }
+                    if(hs.contains('t')){
+                        s.push('f');
+                    }else{
+                        s.push('t');
                     }
                 }
             }else{
