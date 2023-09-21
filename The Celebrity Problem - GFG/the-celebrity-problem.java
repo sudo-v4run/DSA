@@ -30,38 +30,52 @@ class Solution
 {
     int celebrity(int M[][], int n)
     {
-        Stack<Integer> s = new Stack<>();
+        
+        int candidate = 0;
         
         for(int i = 0 ; i < n ; i++){
-            s.push(i);
-        }
-        
-        while(s.size() > 1){
-            int a = s.pop();
-            int b = s.pop();
-            
-            if(M[a][b] == 1){
-                s.push(b);
-            }else{
-                s.push(a);
-            }
-        }
-        int candidate = s.peek();
-        
-        for(int i = 0 ; i < n ; i++){
-            
             if(M[candidate][i] == 1){
-                return -1;
+                candidate = i;
             }
         }
         
         for(int i = 0 ; i < n ; i++){
             
-            if(i != candidate && M[i][candidate] == 0){
+            if(M[candidate][i] == 1 || (i != candidate && M[i][candidate] == 0)){
                 return -1;
             }
         }
         
         return candidate;
+        
+        
+        // Stack<Integer> s = new Stack<>();
+        
+        // for(int i = 0 ; i < n ; i++){
+        //     s.push(i);
+        // }
+        
+        // while(s.size() > 1){
+        //     int a = s.pop();
+        //     int b = s.pop();
+            
+        //     if(M[a][b] == 1){
+        //         s.push(b);
+        //     }else{
+        //         s.push(a);
+        //     }
+        // }
+        // int candidate = s.peek();
+        
+        // Check corresponding row and col
+        
+        // for(int i = 0 ; i < n ; i++){
+            
+        //     if(M[candidate][i] == 1 || (i != candidate && M[i][candidate] == 0)){
+        //         return -1;
+        //     }
+        // }
+        
+        // return candidate;
     }
 }
