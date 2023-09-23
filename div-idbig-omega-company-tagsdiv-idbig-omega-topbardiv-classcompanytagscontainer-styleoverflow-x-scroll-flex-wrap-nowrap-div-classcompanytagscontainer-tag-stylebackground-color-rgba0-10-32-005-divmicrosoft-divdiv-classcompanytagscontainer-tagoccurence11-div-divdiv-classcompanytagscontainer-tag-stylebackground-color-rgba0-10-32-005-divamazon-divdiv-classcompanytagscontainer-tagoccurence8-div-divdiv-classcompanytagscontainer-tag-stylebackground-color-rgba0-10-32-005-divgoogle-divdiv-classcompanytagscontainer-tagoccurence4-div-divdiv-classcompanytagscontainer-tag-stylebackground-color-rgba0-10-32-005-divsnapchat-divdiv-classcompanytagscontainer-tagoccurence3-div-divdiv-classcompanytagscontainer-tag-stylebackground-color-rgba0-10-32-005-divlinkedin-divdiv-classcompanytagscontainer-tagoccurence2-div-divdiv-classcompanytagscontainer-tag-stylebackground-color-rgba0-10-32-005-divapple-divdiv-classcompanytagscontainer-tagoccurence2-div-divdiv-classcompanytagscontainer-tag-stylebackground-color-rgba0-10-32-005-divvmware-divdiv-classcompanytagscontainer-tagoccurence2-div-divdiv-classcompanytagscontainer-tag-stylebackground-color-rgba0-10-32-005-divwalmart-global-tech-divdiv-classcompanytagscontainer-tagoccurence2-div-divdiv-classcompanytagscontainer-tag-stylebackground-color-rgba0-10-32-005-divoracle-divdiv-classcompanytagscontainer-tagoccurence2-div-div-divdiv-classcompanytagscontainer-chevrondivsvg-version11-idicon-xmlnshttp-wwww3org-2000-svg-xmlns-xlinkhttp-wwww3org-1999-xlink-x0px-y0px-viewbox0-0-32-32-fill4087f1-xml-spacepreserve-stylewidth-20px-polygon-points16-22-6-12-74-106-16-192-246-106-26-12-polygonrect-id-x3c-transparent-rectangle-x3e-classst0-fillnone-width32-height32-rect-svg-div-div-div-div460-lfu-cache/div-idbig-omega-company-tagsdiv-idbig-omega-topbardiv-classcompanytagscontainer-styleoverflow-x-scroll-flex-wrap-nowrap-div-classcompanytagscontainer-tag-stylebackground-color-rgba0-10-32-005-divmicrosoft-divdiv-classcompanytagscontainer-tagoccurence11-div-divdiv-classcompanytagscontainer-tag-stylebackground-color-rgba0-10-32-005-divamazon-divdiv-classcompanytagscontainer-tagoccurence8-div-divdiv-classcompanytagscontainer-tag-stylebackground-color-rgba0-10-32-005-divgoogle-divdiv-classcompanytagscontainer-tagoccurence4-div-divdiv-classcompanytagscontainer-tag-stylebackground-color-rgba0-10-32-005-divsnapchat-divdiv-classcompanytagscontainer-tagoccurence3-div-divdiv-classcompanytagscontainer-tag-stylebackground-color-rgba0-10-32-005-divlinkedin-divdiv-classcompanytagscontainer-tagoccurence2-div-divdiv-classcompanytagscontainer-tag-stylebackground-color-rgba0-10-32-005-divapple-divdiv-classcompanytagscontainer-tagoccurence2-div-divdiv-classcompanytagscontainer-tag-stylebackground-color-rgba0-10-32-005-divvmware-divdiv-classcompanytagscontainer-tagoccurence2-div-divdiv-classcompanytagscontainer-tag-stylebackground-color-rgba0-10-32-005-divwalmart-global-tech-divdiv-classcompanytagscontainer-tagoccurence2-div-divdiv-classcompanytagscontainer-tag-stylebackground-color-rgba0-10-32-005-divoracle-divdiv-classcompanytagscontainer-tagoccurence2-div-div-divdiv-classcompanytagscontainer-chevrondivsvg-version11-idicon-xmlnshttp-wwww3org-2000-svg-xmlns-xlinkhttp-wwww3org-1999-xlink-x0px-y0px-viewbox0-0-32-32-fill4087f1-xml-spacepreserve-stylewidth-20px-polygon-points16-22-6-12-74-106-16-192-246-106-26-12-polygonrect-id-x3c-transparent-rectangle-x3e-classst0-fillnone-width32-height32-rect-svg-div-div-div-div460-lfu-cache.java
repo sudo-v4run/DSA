@@ -95,7 +95,7 @@ class LFUCache {
         
         freqMap.get(node.freq).removeNode(node);
         
-        if(node.freq == minFreq && freqMap.get(minFreq).sz == 0){
+        if(freqMap.get(minFreq).sz == 0){
             minFreq++;
         }
         
