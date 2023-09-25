@@ -5,26 +5,17 @@ class Solution {
         
         long ans = 0;
         for(int maxInd = 0 ; maxInd < n ; maxInd++){
-            long sum = 0;
-            int cur = maxHeights.get(maxInd);
-            for(int i = maxInd ; i >=0 ; i--){
-                if(maxHeights.get(i) <= cur){
-                    sum += maxHeights.get(i);
-                    cur = maxHeights.get(i);
-                }else{
-                    sum += cur;
-                }
+            long sum = maxHeights.get(maxInd);
+            int min = maxHeights.get(maxInd);
+            for(int i = maxInd-1 ; i >=0 ; i--){
+                min = Math.min(min,maxHeights.get(i));
+                sum += min;
             }
 
-            cur = maxHeights.get(maxInd);
-
+            min = maxHeights.get(maxInd);
             for(int i = maxInd+1 ; i < n ; i++){
-                if(maxHeights.get(i) <= cur){
-                    sum += maxHeights.get(i);
-                    cur = maxHeights.get(i);
-                }else{
-                    sum += cur;
-                }
+                min = Math.min(min,maxHeights.get(i));
+                sum += min;
             }
             
             ans = Math.max(ans,sum);
