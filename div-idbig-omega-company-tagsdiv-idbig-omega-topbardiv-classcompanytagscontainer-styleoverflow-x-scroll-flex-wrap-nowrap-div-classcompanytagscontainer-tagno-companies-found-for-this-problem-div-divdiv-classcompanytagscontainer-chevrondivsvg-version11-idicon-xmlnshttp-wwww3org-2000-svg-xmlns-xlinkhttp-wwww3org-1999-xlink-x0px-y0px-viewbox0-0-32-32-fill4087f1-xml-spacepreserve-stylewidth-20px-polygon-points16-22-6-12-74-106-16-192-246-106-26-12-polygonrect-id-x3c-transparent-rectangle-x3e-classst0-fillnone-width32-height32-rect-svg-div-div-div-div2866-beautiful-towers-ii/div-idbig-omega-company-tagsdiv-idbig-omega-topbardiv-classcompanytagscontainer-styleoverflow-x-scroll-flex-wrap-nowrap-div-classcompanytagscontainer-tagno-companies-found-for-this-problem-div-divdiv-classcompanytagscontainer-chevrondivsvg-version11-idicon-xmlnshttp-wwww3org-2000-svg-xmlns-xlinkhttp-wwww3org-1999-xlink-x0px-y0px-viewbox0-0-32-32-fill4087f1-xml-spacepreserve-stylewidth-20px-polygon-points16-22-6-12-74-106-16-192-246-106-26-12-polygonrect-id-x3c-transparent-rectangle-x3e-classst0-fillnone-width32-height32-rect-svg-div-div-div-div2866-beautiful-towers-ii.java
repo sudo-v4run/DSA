@@ -22,7 +22,7 @@ class Solution {
             if(!s.isEmpty()){
                 minInd = s.peek();
             }
-            long left = 1l*(i-minInd)*1l*arr[i];
+            long left = 1l*(i-minInd)*arr[i];
             if(minInd != -1){
                 left += pre[minInd];
             }
@@ -43,7 +43,7 @@ class Solution {
             if(!s.isEmpty()){
                 minInd = s.peek();
             }
-            long right = 1l*(minInd-i)*1l*arr[i];
+            long right = 1l*(minInd-i)*arr[i];
             if(minInd != n){
                 right += suf[minInd];
             }
