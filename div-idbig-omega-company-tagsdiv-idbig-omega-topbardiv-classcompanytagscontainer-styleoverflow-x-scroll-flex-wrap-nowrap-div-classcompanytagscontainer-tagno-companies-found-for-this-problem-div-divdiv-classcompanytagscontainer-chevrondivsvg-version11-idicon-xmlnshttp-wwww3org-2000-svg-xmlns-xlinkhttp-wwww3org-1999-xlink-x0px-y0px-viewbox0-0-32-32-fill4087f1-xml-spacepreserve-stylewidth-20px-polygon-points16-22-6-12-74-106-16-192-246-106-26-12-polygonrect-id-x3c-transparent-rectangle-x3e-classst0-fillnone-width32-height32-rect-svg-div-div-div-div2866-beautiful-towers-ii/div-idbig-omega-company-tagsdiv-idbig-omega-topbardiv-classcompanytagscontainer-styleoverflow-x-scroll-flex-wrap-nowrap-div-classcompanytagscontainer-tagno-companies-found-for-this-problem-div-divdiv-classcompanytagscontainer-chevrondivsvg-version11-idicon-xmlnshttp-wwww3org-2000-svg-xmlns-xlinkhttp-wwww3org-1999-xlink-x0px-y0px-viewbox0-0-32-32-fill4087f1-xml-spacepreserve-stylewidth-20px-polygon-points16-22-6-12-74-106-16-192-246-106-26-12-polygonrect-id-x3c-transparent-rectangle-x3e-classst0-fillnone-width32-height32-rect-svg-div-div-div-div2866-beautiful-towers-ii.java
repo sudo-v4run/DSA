@@ -12,11 +12,9 @@ class Solution {
         // Finding Next Smaller Element Index to the left of i and Calculations...
         
         long pre[] = new long[n];
-        pre[0] = arr[0];
         Stack<Integer> s = new Stack<>();
-        s.push(0);
         
-        for(int i = 1 ; i < n ; i++){
+        for(int i = 0 ; i < n ; i++){
             while(!s.isEmpty() && arr[s.peek()] >= arr[i]){
                 s.pop();
             }
@@ -35,11 +33,9 @@ class Solution {
         // Finding Next Smaller Element Index to the right of i and Calculations...
         
         long suf[] = new long[n];
-        suf[n-1] = arr[n-1];
         s = new Stack<>();
-        s.push(n-1);
         
-        for(int i = n-2 ; i >=0 ; i--){
+        for(int i = n-1 ; i >=0 ; i--){
             while(!s.isEmpty() && arr[s.peek()] >= arr[i]){
                 s.pop();
             }
