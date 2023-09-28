@@ -42,7 +42,7 @@ class Solution {
                 return true;
             }
             
-            // we can use * only if s1[i1] == s2[i2]...
+            // we can use * at i2+1 if and only if s1[i1] == s2[i2]...
             
             if(s1.charAt(i1) == s2.charAt(i2) || s2.charAt(i2) == '.'){
                 
