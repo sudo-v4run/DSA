@@ -42,11 +42,17 @@ class Solution {
                 return true;
             }
             
-            if((s1.charAt(i1) == s2.charAt(i2) || s2.charAt(i2) == '.') && 
-               (f(i1+1,i2+2,s1,s2,dp) || f(i1+1,i2,s1,s2,dp))){
+            if(s1.charAt(i1) == s2.charAt(i2) || s2.charAt(i2) == '.'){
                 
-                dp[i1][i2] = 1;
-                return true;
+                if(f(i1+1,i2+2,s1,s2,dp) || f(i1+1,i2,s1,s2,dp)){   // 1 || more use of *
+                    
+                    dp[i1][i2] = 1;
+                    return true;
+                }else{
+                    
+                    dp[i1][i2] = 0;
+                    return false;
+                }
             }
         }else if(s1.charAt(i1) == s2.charAt(i2) || s2.charAt(i2) == '.'){
             if(f(i1+1,i2+1,s1,s2,dp)){
