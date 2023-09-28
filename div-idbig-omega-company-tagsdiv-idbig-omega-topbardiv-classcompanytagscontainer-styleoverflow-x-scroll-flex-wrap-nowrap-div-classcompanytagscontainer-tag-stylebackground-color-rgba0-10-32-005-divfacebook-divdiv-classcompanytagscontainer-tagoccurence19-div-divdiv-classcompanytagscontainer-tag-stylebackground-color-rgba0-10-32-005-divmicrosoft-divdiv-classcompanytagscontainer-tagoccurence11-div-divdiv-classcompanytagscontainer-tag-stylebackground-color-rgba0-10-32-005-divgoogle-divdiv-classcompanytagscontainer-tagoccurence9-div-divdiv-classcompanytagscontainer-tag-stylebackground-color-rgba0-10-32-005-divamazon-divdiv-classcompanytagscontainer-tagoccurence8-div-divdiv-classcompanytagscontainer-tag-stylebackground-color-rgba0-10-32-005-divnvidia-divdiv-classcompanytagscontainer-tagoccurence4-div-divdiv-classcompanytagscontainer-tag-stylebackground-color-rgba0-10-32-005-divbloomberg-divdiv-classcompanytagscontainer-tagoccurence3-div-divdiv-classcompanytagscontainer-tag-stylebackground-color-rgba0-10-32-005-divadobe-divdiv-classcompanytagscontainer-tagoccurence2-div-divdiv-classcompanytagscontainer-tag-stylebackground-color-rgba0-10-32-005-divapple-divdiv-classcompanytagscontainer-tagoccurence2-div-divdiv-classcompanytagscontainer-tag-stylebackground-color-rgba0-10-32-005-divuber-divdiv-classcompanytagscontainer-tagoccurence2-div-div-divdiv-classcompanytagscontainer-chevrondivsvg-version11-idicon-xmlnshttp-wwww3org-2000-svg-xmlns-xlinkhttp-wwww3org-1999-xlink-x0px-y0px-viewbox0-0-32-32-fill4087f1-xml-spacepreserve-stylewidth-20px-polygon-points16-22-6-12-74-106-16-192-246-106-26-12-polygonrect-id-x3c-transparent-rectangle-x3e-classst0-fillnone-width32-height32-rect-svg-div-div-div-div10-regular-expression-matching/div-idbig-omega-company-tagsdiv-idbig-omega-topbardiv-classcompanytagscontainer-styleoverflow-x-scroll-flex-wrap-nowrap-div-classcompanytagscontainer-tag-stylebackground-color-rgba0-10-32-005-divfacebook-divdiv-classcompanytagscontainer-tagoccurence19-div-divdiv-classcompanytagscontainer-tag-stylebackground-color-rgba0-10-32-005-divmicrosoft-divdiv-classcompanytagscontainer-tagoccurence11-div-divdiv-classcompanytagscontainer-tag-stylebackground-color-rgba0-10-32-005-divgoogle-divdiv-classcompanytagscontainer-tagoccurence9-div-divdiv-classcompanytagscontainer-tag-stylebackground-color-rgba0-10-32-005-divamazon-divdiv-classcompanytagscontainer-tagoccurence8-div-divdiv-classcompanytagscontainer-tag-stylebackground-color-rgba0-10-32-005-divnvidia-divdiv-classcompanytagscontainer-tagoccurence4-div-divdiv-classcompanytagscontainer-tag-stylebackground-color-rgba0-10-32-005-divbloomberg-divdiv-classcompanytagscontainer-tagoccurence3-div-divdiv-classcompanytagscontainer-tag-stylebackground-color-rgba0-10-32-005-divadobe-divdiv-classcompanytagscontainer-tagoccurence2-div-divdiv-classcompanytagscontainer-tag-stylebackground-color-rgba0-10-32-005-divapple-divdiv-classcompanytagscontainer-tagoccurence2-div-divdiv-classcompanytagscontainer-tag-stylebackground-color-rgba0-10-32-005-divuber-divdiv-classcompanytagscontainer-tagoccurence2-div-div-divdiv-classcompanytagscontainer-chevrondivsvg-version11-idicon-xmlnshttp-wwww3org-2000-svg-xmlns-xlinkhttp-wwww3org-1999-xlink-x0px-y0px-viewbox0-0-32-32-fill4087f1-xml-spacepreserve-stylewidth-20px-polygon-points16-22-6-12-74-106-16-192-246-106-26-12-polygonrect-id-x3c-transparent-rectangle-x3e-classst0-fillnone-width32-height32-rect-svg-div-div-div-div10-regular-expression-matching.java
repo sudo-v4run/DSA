@@ -42,16 +42,14 @@ class Solution {
                 return true;
             }
             
+            // we can use * only if s1[i1] == s2[i2]...
+            
             if(s1.charAt(i1) == s2.charAt(i2) || s2.charAt(i2) == '.'){
                 
                 if(f(i1+1,i2+2,s1,s2,dp) || f(i1+1,i2,s1,s2,dp)){   // 1 || more use of *
                     
                     dp[i1][i2] = 1;
                     return true;
-                }else{
-                    
-                    dp[i1][i2] = 0;
-                    return false;
                 }
             }
         }else if(s1.charAt(i1) == s2.charAt(i2) || s2.charAt(i2) == '.'){
