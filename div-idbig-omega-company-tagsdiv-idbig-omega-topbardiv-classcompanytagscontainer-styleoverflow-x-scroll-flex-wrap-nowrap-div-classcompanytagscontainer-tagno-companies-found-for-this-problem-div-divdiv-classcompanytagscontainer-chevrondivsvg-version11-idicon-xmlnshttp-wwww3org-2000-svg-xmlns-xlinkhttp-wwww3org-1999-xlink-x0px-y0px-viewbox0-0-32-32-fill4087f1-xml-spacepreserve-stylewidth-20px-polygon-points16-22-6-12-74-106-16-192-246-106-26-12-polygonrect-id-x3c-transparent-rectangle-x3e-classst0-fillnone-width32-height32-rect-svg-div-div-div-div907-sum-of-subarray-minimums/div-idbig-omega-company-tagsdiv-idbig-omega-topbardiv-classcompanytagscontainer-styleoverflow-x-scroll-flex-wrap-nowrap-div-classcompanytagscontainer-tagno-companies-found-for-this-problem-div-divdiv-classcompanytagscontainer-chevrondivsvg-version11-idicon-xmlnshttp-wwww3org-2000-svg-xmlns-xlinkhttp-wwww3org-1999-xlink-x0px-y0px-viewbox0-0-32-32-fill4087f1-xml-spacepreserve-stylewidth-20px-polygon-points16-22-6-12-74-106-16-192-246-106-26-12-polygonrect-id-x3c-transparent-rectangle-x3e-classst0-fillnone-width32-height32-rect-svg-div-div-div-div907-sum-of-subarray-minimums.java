@@ -45,13 +45,6 @@ class Solution {
             int leftCnt = i-leftBoundary+1;
             int rightCnt = rightBoundary-i+1;
             
-            // if(leftCnt == 0){
-            //     leftCnt = 1;
-            // }
-            // if(rightCnt == 0){
-            //     rightCnt = 1;
-            // }
-            
             long noOfSubarrays = (leftCnt*rightCnt)%mod;
             long temp = (noOfSubarrays*arr[i])%mod;
             
