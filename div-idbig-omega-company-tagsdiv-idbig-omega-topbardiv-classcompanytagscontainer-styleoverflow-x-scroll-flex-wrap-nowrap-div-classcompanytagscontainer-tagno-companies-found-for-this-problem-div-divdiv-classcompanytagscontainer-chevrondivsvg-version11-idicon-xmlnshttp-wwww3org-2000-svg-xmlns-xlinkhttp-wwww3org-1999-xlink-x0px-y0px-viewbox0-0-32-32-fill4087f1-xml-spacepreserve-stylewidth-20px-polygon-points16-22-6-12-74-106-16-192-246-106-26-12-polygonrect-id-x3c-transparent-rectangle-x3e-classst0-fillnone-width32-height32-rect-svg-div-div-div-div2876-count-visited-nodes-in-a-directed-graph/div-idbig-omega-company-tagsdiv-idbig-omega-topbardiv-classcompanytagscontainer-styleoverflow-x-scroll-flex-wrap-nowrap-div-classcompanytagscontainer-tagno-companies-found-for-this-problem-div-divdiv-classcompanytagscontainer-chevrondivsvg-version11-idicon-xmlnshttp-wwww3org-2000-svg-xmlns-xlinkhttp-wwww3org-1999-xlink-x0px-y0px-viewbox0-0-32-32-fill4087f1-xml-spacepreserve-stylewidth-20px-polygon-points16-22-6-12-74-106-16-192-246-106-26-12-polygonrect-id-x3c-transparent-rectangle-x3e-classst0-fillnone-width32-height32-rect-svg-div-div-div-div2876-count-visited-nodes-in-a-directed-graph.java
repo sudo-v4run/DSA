@@ -3,12 +3,56 @@ class Solution {
         
         int n = edges.size();
         
-        int vis[] = new int[n];
+        // DFS...
+        
+//         int vis[] = new int[n];
+//         int res[] = new int[n];
+        
+//         for(int i = 0 ; i < n ; i++){
+//             if(vis[i] != 1)
+//                 dfs1(i,vis,res,edges);
+//         }
+        
+//         return res;
+        
+        
+        // Stack...Simple...
+        
         int res[] = new int[n];
+        Stack<Integer> s = new Stack<>();
+        HashSet<Integer> hs = new HashSet<>();
         
         for(int i = 0 ; i < n ; i++){
-            if(vis[i] != 1)
-                dfs1(i,vis,res,edges);
+            
+            int v = i;
+            
+            if(res[v] != 0){
+                continue;
+            }
+            
+            if(res[edges.get(v)] != 0){
+                res[v] = res[edges.get(v)]+1;
+                continue;
+            }
+
+            while(!hs.contains(v)){
+                hs.add(v);
+                s.add(v);
+                v = edges.get(v);
+            }
+
+            if(hs.contains(v) && res[v] == 0){
+                int cycleLen = s.size() - s.indexOf(v);
+
+                for(int temp = 0 ; temp < cycleLen ; temp++){
+                    res[s.pop()] = cycleLen;
+                }
+            }
+
+            while(!s.isEmpty()){
+                v = s.pop();
+                res[v] = res[edges.get(v)]+1;
+            }
         }
         
         return res;
