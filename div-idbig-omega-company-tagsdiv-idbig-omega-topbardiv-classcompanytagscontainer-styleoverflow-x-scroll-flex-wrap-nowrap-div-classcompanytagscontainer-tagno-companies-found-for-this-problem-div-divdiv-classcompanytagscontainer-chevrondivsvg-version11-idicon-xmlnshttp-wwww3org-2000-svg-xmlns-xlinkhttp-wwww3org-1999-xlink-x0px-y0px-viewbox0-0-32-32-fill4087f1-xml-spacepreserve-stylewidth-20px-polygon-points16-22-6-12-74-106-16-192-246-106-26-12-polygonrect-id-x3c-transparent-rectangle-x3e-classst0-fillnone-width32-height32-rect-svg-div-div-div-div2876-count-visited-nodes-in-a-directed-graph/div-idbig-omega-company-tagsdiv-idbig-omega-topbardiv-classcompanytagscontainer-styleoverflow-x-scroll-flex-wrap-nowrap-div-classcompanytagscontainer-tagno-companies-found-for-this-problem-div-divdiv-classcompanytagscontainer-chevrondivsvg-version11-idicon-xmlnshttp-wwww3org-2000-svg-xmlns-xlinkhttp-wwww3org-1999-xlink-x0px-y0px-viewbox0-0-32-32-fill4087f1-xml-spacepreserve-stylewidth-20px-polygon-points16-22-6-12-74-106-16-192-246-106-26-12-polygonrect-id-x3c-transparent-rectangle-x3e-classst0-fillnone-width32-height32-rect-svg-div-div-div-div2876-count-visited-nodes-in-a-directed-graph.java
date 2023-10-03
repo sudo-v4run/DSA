@@ -22,14 +22,11 @@ class Solution {
         Stack<Integer> s = new Stack<>();
         HashSet<Integer> hs = new HashSet<>();
         
-        for(int i = 0 ; i < n ; i++){
-            
-            int v = i;
+        for(int v = 0 ; v  < n ; v++){
             
             if(res[v] != 0){
                 continue;
             }
-            
             if(res[edges.get(v)] != 0){
                 res[v] = res[edges.get(v)]+1;
                 continue;
@@ -40,8 +37,13 @@ class Solution {
                 s.add(v);
                 v = edges.get(v);
             }
-
+            
             if(hs.contains(v) && res[v] == 0){
+                
+                // hs.contains(v) and res[v] != 0 means we have computed the values 
+                // for the cycle. No need to compute again and also 
+                // s.indexOf(v) gives -1 if we again try to compute.
+                
                 int cycleLen = s.size() - s.indexOf(v);
 
                 for(int temp = 0 ; temp < cycleLen ; temp++){
