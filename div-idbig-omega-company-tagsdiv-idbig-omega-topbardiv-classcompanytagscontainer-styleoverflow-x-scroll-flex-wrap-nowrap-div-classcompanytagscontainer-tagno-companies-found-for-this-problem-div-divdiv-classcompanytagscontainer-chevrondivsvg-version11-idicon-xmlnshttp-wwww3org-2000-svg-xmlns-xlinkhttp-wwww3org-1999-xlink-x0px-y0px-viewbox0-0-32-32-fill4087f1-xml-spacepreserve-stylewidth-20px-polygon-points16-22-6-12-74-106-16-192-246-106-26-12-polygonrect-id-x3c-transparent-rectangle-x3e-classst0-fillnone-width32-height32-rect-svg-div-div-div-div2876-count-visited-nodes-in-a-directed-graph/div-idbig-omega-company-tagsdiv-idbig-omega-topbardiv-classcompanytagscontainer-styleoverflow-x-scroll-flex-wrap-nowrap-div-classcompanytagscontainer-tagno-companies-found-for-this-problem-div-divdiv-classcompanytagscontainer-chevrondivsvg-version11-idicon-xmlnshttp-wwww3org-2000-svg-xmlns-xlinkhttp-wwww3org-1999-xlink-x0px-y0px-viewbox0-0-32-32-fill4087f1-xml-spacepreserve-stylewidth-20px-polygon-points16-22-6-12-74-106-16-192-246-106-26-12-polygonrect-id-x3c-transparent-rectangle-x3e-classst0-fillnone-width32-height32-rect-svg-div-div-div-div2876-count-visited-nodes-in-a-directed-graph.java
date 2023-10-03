@@ -26,14 +26,14 @@ class Solution {
             
             int v = i;
             
-//             if(res[v] != 0){
-//                 continue;
-//             }
+            if(res[v] != 0){
+                continue;
+            }
             
-//             if(res[edges.get(v)] != 0){
-//                 res[v] = res[edges.get(v)]+1;
-//                 continue;
-//             }
+            if(res[edges.get(v)] != 0){
+                res[v] = res[edges.get(v)]+1;
+                continue;
+            }
 
             while(!hs.contains(v)){
                 hs.add(v);
