@@ -11,6 +11,8 @@ class Solution {
         
         for(int i = 0 ; i < n ; i++){
             while(!s.isEmpty() && arr[s.peek()] >= arr[i]){
+                // we need to take >= on only any one of the sides 
+                // to deal with duplicates..
                 s.pop();
             }
             if(s.isEmpty()){
@@ -25,6 +27,9 @@ class Solution {
         
         for(int i = n-1 ; i >= 0 ; i--){
             while(!s.isEmpty() && arr[s.peek()] > arr[i]){
+                // we need to take >= on only any one of the sides 
+                // to deal with duplicates..size we took = case in the  
+                // left side case, we are not taking = here.
                 s.pop();
             }
             if(s.isEmpty()){
