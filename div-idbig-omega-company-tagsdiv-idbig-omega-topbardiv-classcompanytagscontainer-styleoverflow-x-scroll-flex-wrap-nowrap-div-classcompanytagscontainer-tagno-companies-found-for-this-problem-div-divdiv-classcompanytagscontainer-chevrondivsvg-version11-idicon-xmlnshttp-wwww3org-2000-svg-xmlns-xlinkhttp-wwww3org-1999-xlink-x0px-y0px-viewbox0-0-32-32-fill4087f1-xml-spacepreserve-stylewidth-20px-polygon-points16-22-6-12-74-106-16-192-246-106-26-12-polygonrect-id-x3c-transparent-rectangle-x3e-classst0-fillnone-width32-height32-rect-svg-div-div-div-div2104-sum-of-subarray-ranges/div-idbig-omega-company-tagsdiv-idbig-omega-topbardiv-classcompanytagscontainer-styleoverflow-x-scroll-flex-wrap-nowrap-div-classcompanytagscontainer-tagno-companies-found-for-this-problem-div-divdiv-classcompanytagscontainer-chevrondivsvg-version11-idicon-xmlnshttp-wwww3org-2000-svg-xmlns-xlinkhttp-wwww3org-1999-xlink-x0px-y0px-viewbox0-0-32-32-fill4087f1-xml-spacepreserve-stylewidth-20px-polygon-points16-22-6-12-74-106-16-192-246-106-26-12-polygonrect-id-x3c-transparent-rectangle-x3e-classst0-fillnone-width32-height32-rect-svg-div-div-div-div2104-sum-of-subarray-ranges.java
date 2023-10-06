@@ -14,8 +14,10 @@ class Solution {
         
         for(int i = 0 ; i < n ; i++){
             while(!smax.isEmpty() && arr[smax.peek()] <= arr[i]){
+                
                 // we need to take >= on only any one of the sides 
                 // to deal with duplicates..
+                
                 smax.pop();
             }
             if(smax.isEmpty()){
@@ -26,8 +28,10 @@ class Solution {
             smax.push(i);
             
             while(!smin.isEmpty() && arr[smin.peek()] >= arr[i]){
+                
                 // we need to take >= on only any one of the sides 
                 // to deal with duplicates..
+                
                 smin.pop();
             }
             if(smin.isEmpty()){
@@ -43,9 +47,11 @@ class Solution {
         
         for(int i = n-1 ; i >= 0 ; i--){
             while(!smax.isEmpty() && arr[smax.peek()] < arr[i]){
+                
                 // we need to take >= on only any one of the sides 
                 // to deal with duplicates..size we took = case in the  
                 // left side case, we are not taking = here.
+                
                 smax.pop();
             }
             if(smax.isEmpty()){
@@ -56,9 +62,11 @@ class Solution {
             smax.push(i);
             
             while(!smin.isEmpty() && arr[smin.peek()] > arr[i]){
+                
                 // we need to take >= on only any one of the sides 
                 // to deal with duplicates..size we took = case in the 
                 // left side case, we are not taking = here.
+                
                 smin.pop();
             }
             if(smin.isEmpty()){
@@ -73,6 +81,7 @@ class Solution {
         long toSub = 0;
         
         for(int i = 0 ; i < n ; i++){
+            
             int leftMaxBoundary = leftMax[i]+1;
             int rightMaxBoundary = rightMax[i]-1;
             
