@@ -22,11 +22,14 @@ class Solution {
             k--;
         }
         
-        String ans = "";
+        StringBuilder ans = new StringBuilder();
         while(!s.isEmpty()){
-            ans = String.valueOf(s.pop()) + ans;
+            ans = ans.append(String.valueOf(s.pop()));
         }
         
-        return ans.equals("") ? "0" : ans;
+        if(ans.length() == 0){
+            return "0";
+        }
+        return ans.reverse().toString();
     }
 }
