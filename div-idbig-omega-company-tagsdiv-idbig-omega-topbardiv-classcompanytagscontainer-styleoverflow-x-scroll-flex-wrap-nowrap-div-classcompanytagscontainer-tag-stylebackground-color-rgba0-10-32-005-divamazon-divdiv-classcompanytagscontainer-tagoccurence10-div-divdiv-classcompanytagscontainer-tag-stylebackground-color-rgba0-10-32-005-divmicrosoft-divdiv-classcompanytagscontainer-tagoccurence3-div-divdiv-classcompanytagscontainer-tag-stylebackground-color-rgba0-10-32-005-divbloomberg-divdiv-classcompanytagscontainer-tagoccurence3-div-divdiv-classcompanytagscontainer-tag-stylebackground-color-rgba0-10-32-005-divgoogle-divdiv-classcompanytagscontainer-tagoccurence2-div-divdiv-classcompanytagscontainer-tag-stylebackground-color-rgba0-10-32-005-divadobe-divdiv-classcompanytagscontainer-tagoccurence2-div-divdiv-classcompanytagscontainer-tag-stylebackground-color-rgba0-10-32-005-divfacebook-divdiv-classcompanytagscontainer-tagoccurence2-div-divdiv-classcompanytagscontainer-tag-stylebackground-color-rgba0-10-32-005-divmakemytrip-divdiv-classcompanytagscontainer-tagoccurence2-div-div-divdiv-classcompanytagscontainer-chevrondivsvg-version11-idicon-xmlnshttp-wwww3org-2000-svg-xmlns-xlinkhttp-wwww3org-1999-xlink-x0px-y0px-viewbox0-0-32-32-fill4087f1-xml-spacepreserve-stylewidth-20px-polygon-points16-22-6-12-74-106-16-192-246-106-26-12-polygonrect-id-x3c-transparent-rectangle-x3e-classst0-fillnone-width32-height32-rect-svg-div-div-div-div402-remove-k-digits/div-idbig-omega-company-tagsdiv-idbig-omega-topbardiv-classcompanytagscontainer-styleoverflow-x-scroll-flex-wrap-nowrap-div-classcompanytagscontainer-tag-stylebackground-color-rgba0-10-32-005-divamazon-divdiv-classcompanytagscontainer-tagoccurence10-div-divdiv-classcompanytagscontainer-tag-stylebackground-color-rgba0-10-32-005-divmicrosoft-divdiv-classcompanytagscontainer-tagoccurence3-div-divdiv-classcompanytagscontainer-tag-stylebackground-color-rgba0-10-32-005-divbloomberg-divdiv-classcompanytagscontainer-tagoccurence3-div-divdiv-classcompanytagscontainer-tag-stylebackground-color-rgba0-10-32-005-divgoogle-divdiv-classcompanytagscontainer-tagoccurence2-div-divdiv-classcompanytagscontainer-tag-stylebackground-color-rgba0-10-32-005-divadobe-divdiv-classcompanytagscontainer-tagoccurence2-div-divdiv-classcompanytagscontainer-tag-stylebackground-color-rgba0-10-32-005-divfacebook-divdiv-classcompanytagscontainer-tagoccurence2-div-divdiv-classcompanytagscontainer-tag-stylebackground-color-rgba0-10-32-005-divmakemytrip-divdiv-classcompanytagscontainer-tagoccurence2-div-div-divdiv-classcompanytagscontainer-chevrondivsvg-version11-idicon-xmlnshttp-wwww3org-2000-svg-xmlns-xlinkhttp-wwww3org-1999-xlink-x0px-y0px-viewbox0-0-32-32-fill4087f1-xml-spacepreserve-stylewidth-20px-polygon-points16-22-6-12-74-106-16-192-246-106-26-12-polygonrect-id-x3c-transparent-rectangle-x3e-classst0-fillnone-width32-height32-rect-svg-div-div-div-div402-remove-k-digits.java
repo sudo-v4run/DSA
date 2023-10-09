@@ -24,12 +24,12 @@ class Solution {
         
         StringBuilder ans = new StringBuilder();
         while(!s.isEmpty()){
-            ans = ans.insert(0,String.valueOf(s.pop()));
+            ans = ans.append(String.valueOf(s.pop()));
         }
         
         if(ans.length() == 0){
             return "0";
         }
-        return ans.toString();
+        return ans.reverse().toString();
     }
 }
