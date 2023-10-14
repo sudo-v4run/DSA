@@ -7,10 +7,10 @@ class Solution {
         do{
             slow = sumOfSqOfDigits(slow);
             fast = sumOfSqOfDigits(fast);
-            fast = sumOfSqOfDigits(fast);  
-        }while(slow!=fast);
+            fast = sumOfSqOfDigits(fast);
+        }while(slow != fast);
         
-        if(slow==1){
+        if(slow == 1){
             return true;
         }
         
