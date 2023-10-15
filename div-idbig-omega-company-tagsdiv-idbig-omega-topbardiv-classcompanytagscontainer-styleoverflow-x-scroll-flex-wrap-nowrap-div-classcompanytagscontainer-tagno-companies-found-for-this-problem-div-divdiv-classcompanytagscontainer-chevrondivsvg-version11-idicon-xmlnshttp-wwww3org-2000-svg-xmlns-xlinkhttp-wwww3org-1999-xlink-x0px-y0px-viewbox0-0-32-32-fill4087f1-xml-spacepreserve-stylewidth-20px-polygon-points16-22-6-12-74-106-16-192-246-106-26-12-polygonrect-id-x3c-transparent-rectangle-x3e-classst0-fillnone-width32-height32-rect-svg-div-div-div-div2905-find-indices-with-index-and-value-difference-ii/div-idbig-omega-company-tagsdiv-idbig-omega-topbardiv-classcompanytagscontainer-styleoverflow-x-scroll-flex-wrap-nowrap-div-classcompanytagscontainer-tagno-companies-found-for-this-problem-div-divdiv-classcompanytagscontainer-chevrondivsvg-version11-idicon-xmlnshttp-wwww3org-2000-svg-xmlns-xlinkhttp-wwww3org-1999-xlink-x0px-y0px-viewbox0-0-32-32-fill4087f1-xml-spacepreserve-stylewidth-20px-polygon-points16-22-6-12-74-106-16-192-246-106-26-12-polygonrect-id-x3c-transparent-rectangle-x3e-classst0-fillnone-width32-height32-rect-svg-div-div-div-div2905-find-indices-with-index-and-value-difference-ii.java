@@ -6,7 +6,10 @@ class Solution {
             this.max = max;
         }
     }
+    
     public int[] findIndices(int[] arr, int indexDifference, int valueDifference) {
+        
+        // TC, SC -> O(N) 
         
         // Intuition -> suff[i] stores the min and max elements from i-->n-1.
         // We iterate again to find the answer -> For the current index i,
@@ -30,7 +33,7 @@ class Solution {
             int j = i + indexDifference;
             
             if(j >= n){
-                continue;
+                break;
             }
             
             if(Math.abs(arr[i]-suff[j].min) >= valueDifference || 
@@ -47,5 +50,41 @@ class Solution {
         }
         
         return new int[]{-1,-1};
+        
+        
+        
+        // TC -> O(N) and SC-> O(1)....
+        
+        
+//         int n = arr.length;
+        
+//         int min = indexDifference;
+//         int max = indexDifference;
+        
+//         for(int i = 0 ; i < n ; i++){
+//             int j = i + indexDifference;
+            
+//             if(j >= n){
+//                 break;
+//             }
+            
+//             if(arr[j] < arr[min]){
+//                 min = j;
+//             }
+//             if(arr[j] > arr[max]){
+//                 max = j;
+//             }
+            
+//             // Check the condition...
+            
+//             if(Math.abs(arr[i] - arr[min]) >= valueDifference){
+//                 return new int[]{min,i};
+//             }
+//             if(Math.abs(arr[i] - arr[max]) >= valueDifference){
+//                 return new int[]{max,i};
+//             }
+//         }
+        
+//         return new int[]{-1,-1};
     }
 }
