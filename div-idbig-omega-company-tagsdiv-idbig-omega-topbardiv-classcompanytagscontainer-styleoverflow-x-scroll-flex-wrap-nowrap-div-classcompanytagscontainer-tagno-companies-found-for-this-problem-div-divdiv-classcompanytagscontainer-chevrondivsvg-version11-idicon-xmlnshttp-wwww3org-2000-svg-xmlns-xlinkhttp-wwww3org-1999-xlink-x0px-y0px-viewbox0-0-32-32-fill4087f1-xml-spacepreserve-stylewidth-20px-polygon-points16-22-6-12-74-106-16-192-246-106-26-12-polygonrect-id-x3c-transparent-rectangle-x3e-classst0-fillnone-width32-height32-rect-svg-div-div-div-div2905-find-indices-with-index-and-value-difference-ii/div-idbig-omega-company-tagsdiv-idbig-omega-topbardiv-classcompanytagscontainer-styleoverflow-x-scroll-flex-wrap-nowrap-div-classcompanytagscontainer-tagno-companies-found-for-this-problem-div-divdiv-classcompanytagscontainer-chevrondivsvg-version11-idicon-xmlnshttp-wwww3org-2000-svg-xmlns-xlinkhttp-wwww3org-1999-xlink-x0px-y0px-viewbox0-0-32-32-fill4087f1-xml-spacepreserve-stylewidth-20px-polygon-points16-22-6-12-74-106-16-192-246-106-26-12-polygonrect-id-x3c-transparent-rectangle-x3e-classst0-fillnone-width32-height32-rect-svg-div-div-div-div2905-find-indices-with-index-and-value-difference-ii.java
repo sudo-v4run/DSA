@@ -55,6 +55,9 @@ class Solution {
         
         // TC -> O(N) and SC-> O(1)....
         
+        // Intuition -> Same as above but keeping track of min and max along the traversal
+        // instead of separetly calculating suff[]...
+        
         int n = arr.length;
         
         int min = n-1;
