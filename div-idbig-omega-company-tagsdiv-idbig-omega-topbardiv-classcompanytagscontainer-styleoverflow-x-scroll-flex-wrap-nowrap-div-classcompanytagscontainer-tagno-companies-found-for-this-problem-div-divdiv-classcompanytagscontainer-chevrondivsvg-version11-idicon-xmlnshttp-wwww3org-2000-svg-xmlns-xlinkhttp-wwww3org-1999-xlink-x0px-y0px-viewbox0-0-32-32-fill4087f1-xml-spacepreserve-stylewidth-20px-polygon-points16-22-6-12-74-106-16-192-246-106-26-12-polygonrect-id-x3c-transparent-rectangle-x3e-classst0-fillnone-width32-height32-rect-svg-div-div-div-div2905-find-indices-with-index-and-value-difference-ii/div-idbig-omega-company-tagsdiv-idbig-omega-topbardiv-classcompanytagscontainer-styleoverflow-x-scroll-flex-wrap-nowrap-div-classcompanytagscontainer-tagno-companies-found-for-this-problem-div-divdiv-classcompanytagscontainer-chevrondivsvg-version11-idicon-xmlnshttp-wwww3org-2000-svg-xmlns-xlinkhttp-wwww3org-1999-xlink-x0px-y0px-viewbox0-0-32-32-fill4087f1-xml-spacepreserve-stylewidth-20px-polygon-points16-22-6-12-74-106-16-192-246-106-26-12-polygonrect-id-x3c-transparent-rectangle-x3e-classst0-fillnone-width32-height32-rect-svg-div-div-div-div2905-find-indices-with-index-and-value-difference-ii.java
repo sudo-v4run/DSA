@@ -17,49 +17,17 @@ class Solution {
         // we found an answer. If max or min both does not satisfy the condition, then 
         // no other element will satisfy. So, we go i++ and repeat the same.
         
-        int n = arr.length;
-        Pair suff[] = new Pair[n];
-        
-        suff[n-1] = new Pair(arr[n-1],arr[n-1]);
-        
-        for(int i = n-2 ; i >=0 ; i--){
-            int newMin = Math.min(arr[i],suff[i+1].min);
-            int newMax = Math.max(arr[i],suff[i+1].max);
-            
-            suff[i] = new Pair(newMin,newMax);
-        }
-        
-        for(int i = 0 ; i < n ; i++){
-            int j = i + indexDifference;
-            
-            if(j >= n){
-                break;
-            }
-            
-            if(Math.abs(arr[i]-suff[j].min) >= valueDifference || 
-               Math.abs(arr[i]-suff[j].max) >= valueDifference){
-                
-                // We found an ans...find that index..
-                
-                for(int k = j ; k < n ; k++){
-                    if(Math.abs(arr[i]-arr[k]) >= valueDifference){
-                        return new int[]{i,k};
-                    }
-                }
-            }
-        }
-        
-        return new int[]{-1,-1};
-        
-        
-        
-        // TC -> O(N) and SC-> O(1)....
-        
-        
 //         int n = arr.length;
+//         Pair suff[] = new Pair[n];
         
-//         int min = indexDifference;
-//         int max = indexDifference;
+//         suff[n-1] = new Pair(arr[n-1],arr[n-1]);
+        
+//         for(int i = n-2 ; i >=0 ; i--){
+//             int newMin = Math.min(arr[i],suff[i+1].min);
+//             int newMax = Math.max(arr[i],suff[i+1].max);
+            
+//             suff[i] = new Pair(newMin,newMax);
+//         }
         
 //         for(int i = 0 ; i < n ; i++){
 //             int j = i + indexDifference;
@@ -68,23 +36,50 @@ class Solution {
 //                 break;
 //             }
             
-//             if(arr[j] < arr[min]){
-//                 min = j;
-//             }
-//             if(arr[j] > arr[max]){
-//                 max = j;
-//             }
-            
-//             // Check the condition...
-            
-//             if(Math.abs(arr[i] - arr[min]) >= valueDifference){
-//                 return new int[]{min,i};
-//             }
-//             if(Math.abs(arr[i] - arr[max]) >= valueDifference){
-//                 return new int[]{max,i};
+//             if(Math.abs(arr[i]-suff[j].min) >= valueDifference || 
+//                Math.abs(arr[i]-suff[j].max) >= valueDifference){
+                
+//                 // We found an ans...find that index..
+                
+//                 for(int k = j ; k < n ; k++){
+//                     if(Math.abs(arr[i]-arr[k]) >= valueDifference){
+//                         return new int[]{i,k};
+//                     }
+//                 }
 //             }
 //         }
         
 //         return new int[]{-1,-1};
+        
+        
+        
+        // TC -> O(N) and SC-> O(1)....
+        
+        int n = arr.length;
+        
+        int min = n-1;
+        int max = n-1;
+        
+        for(int i = n-1-indexDifference ; i >= 0 ; i--){
+            int j = i + indexDifference;
+            
+            if(arr[j] < arr[min]){
+                min = j;
+            }
+            if(arr[j] > arr[max]){
+                max = j;
+            }
+            
+            // Check the condition...
+            
+            if(Math.abs(arr[i] - arr[min]) >= valueDifference){
+                return new int[]{min,i};
+            }
+            if(Math.abs(arr[i] - arr[max]) >= valueDifference){
+                return new int[]{max,i};
+            }
+        }
+        
+        return new int[]{-1,-1};
     }
 }
