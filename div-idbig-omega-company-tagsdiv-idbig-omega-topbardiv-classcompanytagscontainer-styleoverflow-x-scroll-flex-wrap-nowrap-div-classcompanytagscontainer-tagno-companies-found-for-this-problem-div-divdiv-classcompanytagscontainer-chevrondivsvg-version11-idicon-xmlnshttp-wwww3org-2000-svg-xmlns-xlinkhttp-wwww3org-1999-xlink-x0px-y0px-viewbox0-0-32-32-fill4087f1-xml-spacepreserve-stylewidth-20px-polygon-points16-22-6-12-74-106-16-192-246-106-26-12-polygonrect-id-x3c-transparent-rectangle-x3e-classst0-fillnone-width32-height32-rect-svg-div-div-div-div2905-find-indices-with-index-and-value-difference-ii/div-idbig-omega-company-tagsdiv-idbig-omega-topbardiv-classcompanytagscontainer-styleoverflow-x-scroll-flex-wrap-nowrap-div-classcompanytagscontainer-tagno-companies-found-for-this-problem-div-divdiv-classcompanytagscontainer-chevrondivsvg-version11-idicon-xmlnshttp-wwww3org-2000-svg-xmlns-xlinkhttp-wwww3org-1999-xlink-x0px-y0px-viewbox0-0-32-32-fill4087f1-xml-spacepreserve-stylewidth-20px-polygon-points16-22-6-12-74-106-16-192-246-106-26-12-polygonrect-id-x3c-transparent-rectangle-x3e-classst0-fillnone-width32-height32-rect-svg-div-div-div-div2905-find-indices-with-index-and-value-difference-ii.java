@@ -8,6 +8,12 @@ class Solution {
     }
     public int[] findIndices(int[] arr, int indexDifference, int valueDifference) {
         
+        // Intuition -> suff[i] stores the min and max elements from i-->n-1.
+        // We iterate again to find the answer -> For the current index i,
+        // if abs diff of arr[i] and (min or max) at suff[i+indexDifference] >= valueDifference,
+        // we found an answer. If max or min both does not satisfy the condition, then 
+        // no other element will satisfy. So, we go i++ and repeat the same.
+        
         int n = arr.length;
         Pair suff[] = new Pair[n];
         
