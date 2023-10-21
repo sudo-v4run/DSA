@@ -2,28 +2,27 @@
 class Solution {
     public TreeNode sortedListToBST(ListNode head) {
         
-        ArrayList<Integer> arr = new ArrayList<>();
-        
-        ListNode node = head;
-        while(node != null){
-            arr.add(node.val);
-            node = node.next;
-        }
-        int n = arr.size();
-        
-        return f(0,n-1,arr);
+        return f(head,null);
     }
-    public TreeNode f(int l, int h, ArrayList<Integer> arr){
+    public TreeNode f(ListNode start, ListNode end){
         
-        if(l > h){
+        if(start == end){
             return null;
         }
         
-        int mid = (l+h)/2;
-        TreeNode curHead = new TreeNode(arr.get(mid));
+        // Find mid of LL coz that will become the current Head...
         
-        curHead.left = f(l,mid-1,arr);
-        curHead.right = f(mid+1,h,arr);
+        ListNode slow = start;
+        ListNode fast = start;
+        while(fast != end && fast.next != end){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        TreeNode curHead = new TreeNode(slow.val);
+        
+        curHead.left = f(start,slow);
+        curHead.right = f(slow.next,end);
         
         return curHead;
     }
