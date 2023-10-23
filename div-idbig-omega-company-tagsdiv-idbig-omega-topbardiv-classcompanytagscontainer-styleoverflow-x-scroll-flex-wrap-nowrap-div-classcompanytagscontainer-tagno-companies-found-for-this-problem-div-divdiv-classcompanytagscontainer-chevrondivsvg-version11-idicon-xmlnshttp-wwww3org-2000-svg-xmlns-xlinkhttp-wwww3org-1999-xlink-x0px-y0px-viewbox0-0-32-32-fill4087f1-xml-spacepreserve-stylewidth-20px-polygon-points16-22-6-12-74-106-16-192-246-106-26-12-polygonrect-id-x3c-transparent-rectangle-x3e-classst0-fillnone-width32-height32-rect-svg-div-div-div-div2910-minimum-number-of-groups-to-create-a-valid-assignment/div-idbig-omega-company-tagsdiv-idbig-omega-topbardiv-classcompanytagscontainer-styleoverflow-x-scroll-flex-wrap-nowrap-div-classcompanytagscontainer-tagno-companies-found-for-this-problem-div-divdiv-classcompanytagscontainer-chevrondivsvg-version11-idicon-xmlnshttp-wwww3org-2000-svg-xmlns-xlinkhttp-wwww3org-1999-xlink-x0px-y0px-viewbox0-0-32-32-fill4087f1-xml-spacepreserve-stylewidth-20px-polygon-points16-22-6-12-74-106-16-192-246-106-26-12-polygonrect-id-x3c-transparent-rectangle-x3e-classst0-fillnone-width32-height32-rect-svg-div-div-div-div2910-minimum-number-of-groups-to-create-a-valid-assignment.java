@@ -50,7 +50,7 @@ class Solution {
                     
                     // This is invalid / not possible case...i.e. we won't
                     // get answer with cur x and y.
-                    // Worst case answer will n (1 ele in a 
+                    // Worst case answer will be n (1 ele in a 
                     // group). So, we add n+1 to ignore 
                     // this case...similar to how we return
                     // Int.MAX in DP Qs when a case is not
