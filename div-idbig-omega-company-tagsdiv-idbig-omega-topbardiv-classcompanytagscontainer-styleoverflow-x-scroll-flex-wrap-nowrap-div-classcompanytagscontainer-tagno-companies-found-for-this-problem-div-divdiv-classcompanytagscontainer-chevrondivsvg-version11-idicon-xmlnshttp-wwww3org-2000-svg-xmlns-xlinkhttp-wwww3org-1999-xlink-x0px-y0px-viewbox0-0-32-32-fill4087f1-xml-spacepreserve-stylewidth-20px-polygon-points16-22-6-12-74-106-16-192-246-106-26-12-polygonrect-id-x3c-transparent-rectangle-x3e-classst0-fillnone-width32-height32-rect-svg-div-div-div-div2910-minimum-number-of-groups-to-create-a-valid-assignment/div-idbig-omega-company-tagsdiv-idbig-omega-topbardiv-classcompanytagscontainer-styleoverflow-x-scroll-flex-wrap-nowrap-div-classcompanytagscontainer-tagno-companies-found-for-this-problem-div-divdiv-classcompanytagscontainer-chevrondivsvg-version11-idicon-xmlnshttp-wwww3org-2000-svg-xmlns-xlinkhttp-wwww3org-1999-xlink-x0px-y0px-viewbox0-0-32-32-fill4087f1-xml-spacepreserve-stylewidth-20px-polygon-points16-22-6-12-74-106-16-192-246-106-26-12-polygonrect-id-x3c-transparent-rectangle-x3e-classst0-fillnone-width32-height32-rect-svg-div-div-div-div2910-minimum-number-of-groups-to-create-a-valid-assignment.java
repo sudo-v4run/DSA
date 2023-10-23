@@ -54,7 +54,8 @@ class Solution {
                     // group). So, we add n+1 to ignore 
                     // this case...similar to how we return
                     // Int.MAX in DP Qs when a case is not
-                    // valid. We can add Int.MAX also here.
+                    // valid. We can add Int.MAX here also. But since, it can overflow
+                    // the INT range, cnt += n+1 will work fine.
                 }
             }
             ans = Math.min(ans,cnt);
