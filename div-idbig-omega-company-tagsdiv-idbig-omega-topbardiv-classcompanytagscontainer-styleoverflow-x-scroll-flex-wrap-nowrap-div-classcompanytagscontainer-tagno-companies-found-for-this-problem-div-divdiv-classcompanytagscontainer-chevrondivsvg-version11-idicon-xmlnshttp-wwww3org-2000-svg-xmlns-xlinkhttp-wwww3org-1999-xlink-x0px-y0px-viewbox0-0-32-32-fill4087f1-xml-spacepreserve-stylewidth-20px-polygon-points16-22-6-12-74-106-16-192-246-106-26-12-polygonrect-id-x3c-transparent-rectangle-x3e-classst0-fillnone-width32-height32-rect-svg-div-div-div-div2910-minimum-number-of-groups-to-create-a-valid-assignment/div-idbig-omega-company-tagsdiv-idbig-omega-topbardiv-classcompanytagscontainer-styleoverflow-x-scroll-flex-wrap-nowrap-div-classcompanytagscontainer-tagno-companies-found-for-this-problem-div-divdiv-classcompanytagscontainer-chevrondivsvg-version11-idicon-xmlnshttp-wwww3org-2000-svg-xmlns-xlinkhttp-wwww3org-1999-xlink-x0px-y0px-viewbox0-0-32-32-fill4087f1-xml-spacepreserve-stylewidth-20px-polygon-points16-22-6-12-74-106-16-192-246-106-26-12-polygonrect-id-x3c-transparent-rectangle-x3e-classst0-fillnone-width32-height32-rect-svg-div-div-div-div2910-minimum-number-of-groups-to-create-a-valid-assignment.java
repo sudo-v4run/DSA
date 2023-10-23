@@ -33,14 +33,15 @@ class Solution {
                     // y eles(1 ele extra in all prevgrps), we can give 1 ele from each
                     // grp to the last grp. If there are enough elements that we can 
                     // give to the last grp, then last grp is also valid, thus another
-                    // cnt++. If the total count of all those 1 ele from all the 
-                    // upper/prev grps is less(deficit), then we can't make the last grp
-                    // valid. We have rem no.of eles in the last grp, and to make it
+                    // cnt++. If the total count of all those 1 ele contribution
+                    // from all the upper/prev grps is deficit, then we can't make the last
+                    // grp valid. We have rem no.of eles in the last grp, and to make it
                     // valid there should be atleast x eles in the last grp.
                     // So, how much do we need more?
                     // moreNeeded = x-rem. What is max count of 1 ele 
                     // from all prev grps in total we can give?
-                    // It is == grpsForCurFreq(noOfGrps == total count of 1 ele from                         // each grp)...
+                    // It is == grpsForCurFreq(total count of 1 ele
+                    // contribution from each grp)...
                     // So, if grpsForCurFreq >= moreNeeded.i.e we have sufficient
                     // no.of prevGrps from which we can contribute an ele to the last
                     // grp to make it valid.
