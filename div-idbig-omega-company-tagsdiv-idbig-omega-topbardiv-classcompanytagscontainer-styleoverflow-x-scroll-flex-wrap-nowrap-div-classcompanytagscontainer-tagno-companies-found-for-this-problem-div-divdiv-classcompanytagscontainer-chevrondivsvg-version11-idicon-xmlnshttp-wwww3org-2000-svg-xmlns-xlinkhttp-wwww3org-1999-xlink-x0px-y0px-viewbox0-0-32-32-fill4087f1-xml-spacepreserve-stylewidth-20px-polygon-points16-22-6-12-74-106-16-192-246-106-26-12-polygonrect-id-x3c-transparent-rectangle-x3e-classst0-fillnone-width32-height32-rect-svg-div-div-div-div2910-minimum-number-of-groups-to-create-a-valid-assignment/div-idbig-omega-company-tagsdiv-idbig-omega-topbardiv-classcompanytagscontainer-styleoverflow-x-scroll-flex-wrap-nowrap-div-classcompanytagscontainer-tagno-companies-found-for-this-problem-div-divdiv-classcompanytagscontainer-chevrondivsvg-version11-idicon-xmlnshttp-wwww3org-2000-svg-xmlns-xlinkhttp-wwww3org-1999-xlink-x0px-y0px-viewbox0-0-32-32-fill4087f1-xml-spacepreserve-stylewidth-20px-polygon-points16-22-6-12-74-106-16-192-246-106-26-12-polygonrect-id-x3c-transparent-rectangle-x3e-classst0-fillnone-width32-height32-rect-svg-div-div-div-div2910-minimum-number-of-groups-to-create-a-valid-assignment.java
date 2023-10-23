@@ -30,7 +30,7 @@ class Solution {
                     // and if rem != 0 means that there are some elements left in last
                     // grp. Now,  in order to make this last group valid, it should
                     // contain atleast x elements. Since, we divided upper grps with
-                    // y eles(1 ele more in all grps), we can give 1 element from each
+                    // y eles(1 ele extra in all prevgrps), we can give 1 ele from each
                     // grp to the last grp. If there are enough elements that we can 
                     // give to the last grp, then last grp is also valid, thus another
                     // cnt++. If the total count of all those 1 ele from all the 
