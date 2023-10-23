@@ -25,8 +25,28 @@ class Solution {
                 }else if(grpsForCurFreq >= x-rem){
                     cnt += grpsForCurFreq;
                     cnt++;
+                    
+                    // we divided cur freq into groups with y eles..
+                    // and if rem != 0 means that there are some elements left in last
+                    // grp. Now,  in order to make this last group valid, it should
+                    // contain atleast x elements. Since, we divided upper grps with
+                    // y eles(1 ele more in all grps), we can give 1 element from each
+                    // grp to the last grp. If there are enough elements that we can 
+                    // give to the last grp, then last grp is also valid, thus another
+                    // cnt++. If the total count of all those 1 ele from all the 
+                    // upper/prev grps is less(deficit), then we can't make the last grp
+                    // valid. We have rem no.of eles in the last grp, and to make it
+                    // valid there should be atleast x eles in the last grp.
+                    // So, how much do we need more?
+                    // moreNeeded = x-rem. What is max count of 1 ele 
+                    // from all prev grps in total we can give?
+                    // It is == grpsForCurFreq(noOfGrps == total count of 1 ele from                         // each grp)...
+                    // So, if grpsForCurFreq >= moreNeeded.i.e we have sufficient
+                    // no.of prevGrps from which we can contribute an ele to the last
+                    // grp to make it valid.
                 }else{
                     cnt += n+1;
+                    
                     // not possible case...i.e. we won't
                     // get answer with cur x and y
                     // worst case answer will n(1 ele in a 
