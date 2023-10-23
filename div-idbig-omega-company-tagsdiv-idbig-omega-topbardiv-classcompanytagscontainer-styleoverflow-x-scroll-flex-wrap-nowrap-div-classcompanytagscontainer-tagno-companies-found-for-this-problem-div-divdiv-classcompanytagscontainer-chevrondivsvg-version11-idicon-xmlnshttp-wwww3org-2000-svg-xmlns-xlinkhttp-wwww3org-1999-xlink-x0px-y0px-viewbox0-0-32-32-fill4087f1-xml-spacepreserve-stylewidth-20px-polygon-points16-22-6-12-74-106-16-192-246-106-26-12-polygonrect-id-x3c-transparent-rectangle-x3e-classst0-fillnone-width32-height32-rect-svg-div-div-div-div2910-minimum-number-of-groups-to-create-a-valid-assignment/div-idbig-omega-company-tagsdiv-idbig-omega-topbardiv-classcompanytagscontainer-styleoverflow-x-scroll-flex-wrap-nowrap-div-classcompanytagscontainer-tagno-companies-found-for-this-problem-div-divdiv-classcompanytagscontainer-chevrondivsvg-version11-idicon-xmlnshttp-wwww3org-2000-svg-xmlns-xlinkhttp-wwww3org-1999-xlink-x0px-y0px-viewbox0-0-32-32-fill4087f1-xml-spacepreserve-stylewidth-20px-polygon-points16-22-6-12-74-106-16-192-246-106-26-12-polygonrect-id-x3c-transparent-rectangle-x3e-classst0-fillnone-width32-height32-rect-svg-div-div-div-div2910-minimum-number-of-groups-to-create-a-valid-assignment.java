@@ -49,8 +49,8 @@ class Solution {
                     cnt += n+1;
                     
                     // not possible case...i.e. we won't
-                    // get answer with cur x and y
-                    // worst case answer will n(1 ele in a 
+                    // get answer with cur x and y.
+                    // Worst case answer will n (1 ele in a 
                     // group). So, we add n+1 to ignore 
                     // this case...similar to how we return
                     // Int.MAX in DP Qs when a case is not
