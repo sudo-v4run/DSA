@@ -10,7 +10,11 @@ class Solution {
             Arrays.fill(row,-1);
         }
         
+        // for all the substrings, pre-compute minimum count of changes required to
+        // make them semi-palindrome so that we can directly use it in f() without 
+        // computing again...
         getChangesSum(s);
+        
         int ans = f(0,k,s,dp);
         
         return ans;
@@ -52,7 +56,7 @@ class Solution {
                 
                 int len = j-i+1;
         
-                for(int d = 1 ; d <= len/2 ; d++){
+                for(int d = 1 ; d < len ; d++){
                     if(len % d != 0){
                         continue;
                     }
