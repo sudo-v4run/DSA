@@ -52,7 +52,7 @@ class Solution {
                 
                 int len = j-i+1;
         
-                for(int d = 1 ; d < len ; d++){
+                for(int d = 1 ; d <= len/2 ; d++){
                     if(len % d != 0){
                         continue;
                     }
