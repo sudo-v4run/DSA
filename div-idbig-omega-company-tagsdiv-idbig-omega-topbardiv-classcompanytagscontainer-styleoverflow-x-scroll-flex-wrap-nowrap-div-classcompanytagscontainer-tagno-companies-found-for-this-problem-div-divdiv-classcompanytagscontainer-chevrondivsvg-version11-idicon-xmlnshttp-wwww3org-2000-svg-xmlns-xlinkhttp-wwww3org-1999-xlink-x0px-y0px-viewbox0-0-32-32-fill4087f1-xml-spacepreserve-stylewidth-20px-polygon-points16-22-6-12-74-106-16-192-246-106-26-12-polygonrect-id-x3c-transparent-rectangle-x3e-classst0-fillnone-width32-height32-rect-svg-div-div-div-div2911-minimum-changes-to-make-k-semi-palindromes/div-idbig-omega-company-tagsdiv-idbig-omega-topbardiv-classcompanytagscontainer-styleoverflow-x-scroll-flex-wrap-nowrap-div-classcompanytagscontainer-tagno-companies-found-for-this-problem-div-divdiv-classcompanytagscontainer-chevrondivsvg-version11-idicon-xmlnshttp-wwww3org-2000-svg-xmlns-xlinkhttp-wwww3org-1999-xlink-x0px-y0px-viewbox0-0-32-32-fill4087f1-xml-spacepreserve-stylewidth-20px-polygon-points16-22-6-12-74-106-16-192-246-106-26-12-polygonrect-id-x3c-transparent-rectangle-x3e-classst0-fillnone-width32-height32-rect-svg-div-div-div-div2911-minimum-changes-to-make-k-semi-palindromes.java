@@ -1,9 +1,9 @@
 class Solution {
-    HashMap<String,Integer> hm;
+    HashMap<String,Integer> map;
     public int minimumChanges(String s, int k) {
         
         int n = s.length();
-        hm = new HashMap<>();
+        map = new HashMap<>();
         
         int dp[][] = new int[n][k+1];
         for(int row[] : dp){
@@ -36,7 +36,7 @@ class Solution {
         
         int ans = (int)1e7;
         for(int i = index ; i < n ; i++){
-            int cur = hm.get(index+" "+i) + f(i+1,k-1,s,dp);
+            int cur = map.get(index+" "+i) + f(i+1,k-1,s,dp);
             ans = Math.min(ans,cur);
         }
         
@@ -82,7 +82,7 @@ class Solution {
                     ans = Math.min(ans,cnt);
                 }
                 
-                hm.put(i+" "+j,ans);
+                map.put(i+" "+j,ans);
             }
         }
     }
