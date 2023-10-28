@@ -8,7 +8,7 @@ class Solution {
         return quickSelect(0,nums.length-1,reqInd,nums);
         
    
-    // TC - O(klogk)...
+    // TC - O(nlogk)...
         
 //         PriorityQueue<Integer> pq = new PriorityQueue<>();
         
@@ -46,10 +46,10 @@ class Solution {
         int j = h;
         
         while(i < j){
-            while(i <= h && arr[i] <= pivot){
+            while(i <= j && arr[i] <= pivot){
                 i++;
             }
-            while(arr[j] > pivot){
+            while(i <= j && arr[j] >= pivot){
                 j--;
             }
             
