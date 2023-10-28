@@ -1,16 +1,33 @@
 class Solution {
+    class Pair{
+        int x,y;
+        Pair(int x, int y){
+            this.x = x;
+            this.y = y;
+        }
+    }
     public int[][] kClosest(int[][] points, int k) {
         
-        PriorityQueue<int[]> pq = new PriorityQueue((a,b)->{
-                return -1*(((((int[])a)[0]*((int[])a)[0])+(((int[])a)[1]*((int[])a)[1])) - 
-                    ((((int[])b)[0]*((int[])b)[0])+(((int[])b)[1]*((int[])b)[1])));
+        // Use QuickSelect for O(N) in Avg case and O(N^2) in worst case....
+        
+        // PQ...TC-> O(n.logk)...
+        
+        int n = points.length;
+        Pair[] arr = new Pair[n];
+        
+        for(int i = 0 ; i < n ; i++){
+            arr[i] = new Pair(points[i][0],points[i][1]);
+        }
+        
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b)->{
+            return (b.x*b.x + b.y*b.y)-(a.x*a.x + a.y*a.y);
         });
         
         int res[][] = new int[k][2];
         int j = 0;
         
-        for(int point[] : points){
-            pq.add(point);
+        for(Pair p : arr){
+            pq.add(p);
             
             if(pq.size() > k){
                 pq.poll();
@@ -18,7 +35,10 @@ class Solution {
         }
         
         while(!pq.isEmpty()){
-            res[j++] = pq.poll();
+            Pair cur = pq.poll();
+            res[j][0] = cur.x;
+            res[j][1] = cur.y;
+            j++;
         }
         
         return res;
