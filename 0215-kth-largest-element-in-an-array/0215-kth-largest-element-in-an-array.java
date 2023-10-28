@@ -46,10 +46,10 @@ class Solution {
         int j = h;
         
         while(i < j){
-            while(i <= j && arr[i] <= pivot){
+            while(i < h && arr[i] <= pivot){
                 i++;
             }
-            while(i <= j && arr[j] >= pivot){
+            while(arr[j] > pivot){
                 j--;
             }
             
