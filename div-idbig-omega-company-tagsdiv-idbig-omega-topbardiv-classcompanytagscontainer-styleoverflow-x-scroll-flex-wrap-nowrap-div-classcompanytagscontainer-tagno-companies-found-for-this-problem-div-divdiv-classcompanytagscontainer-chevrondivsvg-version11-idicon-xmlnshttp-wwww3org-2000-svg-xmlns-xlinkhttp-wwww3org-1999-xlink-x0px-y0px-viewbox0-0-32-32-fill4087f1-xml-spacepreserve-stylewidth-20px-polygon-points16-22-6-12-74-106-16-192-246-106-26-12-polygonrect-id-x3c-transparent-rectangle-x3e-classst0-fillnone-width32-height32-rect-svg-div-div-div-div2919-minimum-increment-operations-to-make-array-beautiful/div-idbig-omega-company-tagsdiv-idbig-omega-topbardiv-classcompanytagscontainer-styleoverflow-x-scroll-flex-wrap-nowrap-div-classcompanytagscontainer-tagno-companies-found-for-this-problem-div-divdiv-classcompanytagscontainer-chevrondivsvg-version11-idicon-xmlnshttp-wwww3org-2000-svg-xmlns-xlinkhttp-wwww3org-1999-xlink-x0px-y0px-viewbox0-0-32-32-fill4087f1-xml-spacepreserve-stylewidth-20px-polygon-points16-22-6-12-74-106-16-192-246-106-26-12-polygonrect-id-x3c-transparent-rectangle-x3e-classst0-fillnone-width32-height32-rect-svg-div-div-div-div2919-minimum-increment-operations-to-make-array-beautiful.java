@@ -20,10 +20,12 @@ class Solution {
             return dp[index];
         }
         
-        long cur1 = Math.max(0,k-arr[index]) + f(index+1,k,arr,dp);
-        long cur2 = Math.max(0,k-arr[index+1]) + f(index+2,k,arr,dp);
-        long cur3 = Math.max(0,k-arr[index+2]) + f(index+3,k,arr,dp);
+        long ans = Long.MAX_VALUE;
+        for(int i = index ; i < index+3 ; i++){
+            long cur = Math.max(0,k-arr[i]) + f(i+1,k,arr,dp);
+            ans = Math.min(ans,cur);
+        }
         
-        return dp[index] = Math.min(cur1,Math.min(cur2,cur3));
+        return dp[index] = ans;
     }
 }
