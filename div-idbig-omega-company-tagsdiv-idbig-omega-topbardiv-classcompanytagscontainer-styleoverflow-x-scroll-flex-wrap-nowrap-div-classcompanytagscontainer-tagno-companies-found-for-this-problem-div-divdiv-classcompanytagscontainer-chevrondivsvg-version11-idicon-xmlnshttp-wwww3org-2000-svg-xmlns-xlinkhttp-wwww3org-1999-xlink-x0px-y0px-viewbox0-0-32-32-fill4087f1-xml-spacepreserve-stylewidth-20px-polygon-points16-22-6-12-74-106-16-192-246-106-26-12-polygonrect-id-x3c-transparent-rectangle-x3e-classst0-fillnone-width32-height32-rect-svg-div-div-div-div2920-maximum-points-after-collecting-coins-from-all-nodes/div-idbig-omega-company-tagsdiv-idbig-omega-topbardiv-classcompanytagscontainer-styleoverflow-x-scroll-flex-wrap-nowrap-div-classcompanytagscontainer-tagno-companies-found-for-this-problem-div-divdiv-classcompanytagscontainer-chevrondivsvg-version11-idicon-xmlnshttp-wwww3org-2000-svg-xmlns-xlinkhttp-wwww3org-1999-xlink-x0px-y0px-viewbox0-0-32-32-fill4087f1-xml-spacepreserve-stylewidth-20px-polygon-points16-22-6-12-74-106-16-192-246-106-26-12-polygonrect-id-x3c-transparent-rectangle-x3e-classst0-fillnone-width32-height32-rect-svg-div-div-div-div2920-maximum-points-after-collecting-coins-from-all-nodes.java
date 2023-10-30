@@ -18,6 +18,9 @@ class Solution {
         }
         
         int dp[][] = new int[n][15];
+            // max value of coins[i] = 1e4 and we can at max divide 14 times by 2 before
+            // the coins[i] becomes zero...
+        
         for(int row[] : dp){
             Arrays.fill(row,-1);
         }
@@ -28,6 +31,8 @@ class Solution {
                    int k, int coins[], ArrayList<ArrayList<Integer>> adj, int dp[][]){
         
         if(reduceCnt > 14){
+            // max value of coins[i] = 1e4 and we can at max divide 14 times by 2 before
+            // the coins[i] becomes zero...
             return 0;
         }
         
