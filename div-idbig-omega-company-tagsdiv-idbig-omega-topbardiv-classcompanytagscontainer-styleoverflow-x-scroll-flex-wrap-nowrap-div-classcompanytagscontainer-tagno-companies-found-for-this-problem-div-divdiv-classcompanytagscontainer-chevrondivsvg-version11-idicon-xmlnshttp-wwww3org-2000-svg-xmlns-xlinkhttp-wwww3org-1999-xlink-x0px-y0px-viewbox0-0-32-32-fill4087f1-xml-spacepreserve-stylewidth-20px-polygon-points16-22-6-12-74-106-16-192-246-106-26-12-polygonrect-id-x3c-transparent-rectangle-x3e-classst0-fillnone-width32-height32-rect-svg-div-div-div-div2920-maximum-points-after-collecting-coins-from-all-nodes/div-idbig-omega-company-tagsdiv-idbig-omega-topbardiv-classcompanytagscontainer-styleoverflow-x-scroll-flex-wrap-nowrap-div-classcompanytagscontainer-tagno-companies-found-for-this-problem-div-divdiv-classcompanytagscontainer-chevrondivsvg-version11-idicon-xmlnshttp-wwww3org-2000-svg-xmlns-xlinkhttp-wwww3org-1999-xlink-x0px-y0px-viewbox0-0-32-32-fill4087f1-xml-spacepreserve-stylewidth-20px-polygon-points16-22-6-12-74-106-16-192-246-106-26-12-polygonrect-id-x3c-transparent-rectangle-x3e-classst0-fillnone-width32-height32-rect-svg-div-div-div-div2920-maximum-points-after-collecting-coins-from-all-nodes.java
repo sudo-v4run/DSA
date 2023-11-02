@@ -33,6 +33,7 @@ class Solution {
         if(reduceCnt > 14){
             // max value of coins[i] = 1e4 and we can at max divide 14 times by 2 before
             // the coins[i] becomes zero...
+            
             return 0;
         }
         
