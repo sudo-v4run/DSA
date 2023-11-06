@@ -9,26 +9,26 @@ class Solution {
             char cur = str.charAt(i);
             
             if(cur == ')'){
-                String temp = "";
+                StringBuilder temp = new StringBuilder();
                 while(!s.isEmpty() && !s.peek().equals("(")){
                     String top = s.pop();
                     for(int j = top.length()-1 ; j >= 0 ; j--){
-                        temp += top.charAt(j);
+                        temp.append(top.charAt(j));
                     }
                 }
                 s.pop();
-                s.push(temp);
+                s.push(temp.toString());
             }else{
                 s.push(cur+"");
             }
         }
         
-        String ans = "";
+        StringBuilder ans = new StringBuilder();
         String ss = s.pop();
         for(int i = ss.length()-1 ; i >= 0 ; i--){
-            ans += ss.charAt(i);
+            ans.append(ss.charAt(i));
         }
         
-        return ans;
+        return ans.toString();
     }
 }
