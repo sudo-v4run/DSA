@@ -14,7 +14,7 @@ class Solution {
             i++;
         }
         
-        if(i == n){
+        if(i == n){         // if all are a
             arr[n-1] = 'b';
             return new String(arr);
         }
