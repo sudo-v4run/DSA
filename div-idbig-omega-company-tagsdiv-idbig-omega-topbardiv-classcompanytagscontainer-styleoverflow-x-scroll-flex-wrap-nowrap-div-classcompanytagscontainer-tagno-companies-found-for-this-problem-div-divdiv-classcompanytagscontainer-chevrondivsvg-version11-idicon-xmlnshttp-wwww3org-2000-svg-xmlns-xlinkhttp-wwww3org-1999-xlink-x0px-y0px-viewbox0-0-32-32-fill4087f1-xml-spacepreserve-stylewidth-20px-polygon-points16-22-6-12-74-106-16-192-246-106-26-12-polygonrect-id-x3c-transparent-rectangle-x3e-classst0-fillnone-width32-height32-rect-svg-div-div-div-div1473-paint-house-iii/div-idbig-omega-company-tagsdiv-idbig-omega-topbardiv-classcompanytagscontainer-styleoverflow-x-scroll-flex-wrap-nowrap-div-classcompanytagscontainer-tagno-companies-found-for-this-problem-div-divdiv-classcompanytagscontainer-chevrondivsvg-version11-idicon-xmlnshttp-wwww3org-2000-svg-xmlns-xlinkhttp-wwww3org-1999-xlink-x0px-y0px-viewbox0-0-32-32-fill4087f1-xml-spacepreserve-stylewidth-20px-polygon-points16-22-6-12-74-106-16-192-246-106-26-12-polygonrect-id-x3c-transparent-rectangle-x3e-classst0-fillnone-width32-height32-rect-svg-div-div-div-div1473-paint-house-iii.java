@@ -8,7 +8,8 @@ class Solution {
             }
         }
         
-        int res = f(0,0,0,houses,cost,target,dp);
+        int res = f(0,0,0,houses,cost,target,dp);   
+            // no need to set prevColor = -1 initially for this Q.
         
         return res == (int)1e7 ? -1 : res;
     }
