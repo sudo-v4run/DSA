@@ -12,13 +12,14 @@ class Solution {
             i++;
         }
         
+        if(i == 0){
+            return -1;
+        }
+        
         int cnt = n1-i;
         cnt += n2-i;
         cnt += n3-i;
         
-        if(cnt == n1+n2+n3){
-            return -1;
-        }
         return cnt;
     }
 }
