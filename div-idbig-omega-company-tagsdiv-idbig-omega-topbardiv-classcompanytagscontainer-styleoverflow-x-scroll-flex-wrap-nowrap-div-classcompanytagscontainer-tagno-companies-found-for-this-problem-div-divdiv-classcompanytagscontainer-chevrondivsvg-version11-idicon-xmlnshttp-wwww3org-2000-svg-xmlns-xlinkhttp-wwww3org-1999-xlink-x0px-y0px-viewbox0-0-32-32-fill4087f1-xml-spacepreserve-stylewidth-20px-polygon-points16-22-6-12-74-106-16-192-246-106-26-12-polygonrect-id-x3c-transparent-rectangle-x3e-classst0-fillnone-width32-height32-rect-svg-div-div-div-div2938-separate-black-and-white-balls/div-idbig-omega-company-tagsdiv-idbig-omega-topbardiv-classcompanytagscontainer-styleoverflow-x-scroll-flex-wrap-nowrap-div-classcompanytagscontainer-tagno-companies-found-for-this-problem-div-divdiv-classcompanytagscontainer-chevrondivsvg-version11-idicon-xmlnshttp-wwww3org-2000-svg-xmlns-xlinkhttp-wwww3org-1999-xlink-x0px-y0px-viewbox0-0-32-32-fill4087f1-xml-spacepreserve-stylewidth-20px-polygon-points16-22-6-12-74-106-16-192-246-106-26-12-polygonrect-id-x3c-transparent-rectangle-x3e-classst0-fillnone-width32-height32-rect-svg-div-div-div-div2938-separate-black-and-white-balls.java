@@ -1,6 +1,8 @@
 class Solution {
     public long minimumSteps(String s) {
         
+        // Intuition -> All the 1s has to get swapped with all the zeros on it's right...
+        
         int n = s.length();
         
         long cnt0 = 0;
