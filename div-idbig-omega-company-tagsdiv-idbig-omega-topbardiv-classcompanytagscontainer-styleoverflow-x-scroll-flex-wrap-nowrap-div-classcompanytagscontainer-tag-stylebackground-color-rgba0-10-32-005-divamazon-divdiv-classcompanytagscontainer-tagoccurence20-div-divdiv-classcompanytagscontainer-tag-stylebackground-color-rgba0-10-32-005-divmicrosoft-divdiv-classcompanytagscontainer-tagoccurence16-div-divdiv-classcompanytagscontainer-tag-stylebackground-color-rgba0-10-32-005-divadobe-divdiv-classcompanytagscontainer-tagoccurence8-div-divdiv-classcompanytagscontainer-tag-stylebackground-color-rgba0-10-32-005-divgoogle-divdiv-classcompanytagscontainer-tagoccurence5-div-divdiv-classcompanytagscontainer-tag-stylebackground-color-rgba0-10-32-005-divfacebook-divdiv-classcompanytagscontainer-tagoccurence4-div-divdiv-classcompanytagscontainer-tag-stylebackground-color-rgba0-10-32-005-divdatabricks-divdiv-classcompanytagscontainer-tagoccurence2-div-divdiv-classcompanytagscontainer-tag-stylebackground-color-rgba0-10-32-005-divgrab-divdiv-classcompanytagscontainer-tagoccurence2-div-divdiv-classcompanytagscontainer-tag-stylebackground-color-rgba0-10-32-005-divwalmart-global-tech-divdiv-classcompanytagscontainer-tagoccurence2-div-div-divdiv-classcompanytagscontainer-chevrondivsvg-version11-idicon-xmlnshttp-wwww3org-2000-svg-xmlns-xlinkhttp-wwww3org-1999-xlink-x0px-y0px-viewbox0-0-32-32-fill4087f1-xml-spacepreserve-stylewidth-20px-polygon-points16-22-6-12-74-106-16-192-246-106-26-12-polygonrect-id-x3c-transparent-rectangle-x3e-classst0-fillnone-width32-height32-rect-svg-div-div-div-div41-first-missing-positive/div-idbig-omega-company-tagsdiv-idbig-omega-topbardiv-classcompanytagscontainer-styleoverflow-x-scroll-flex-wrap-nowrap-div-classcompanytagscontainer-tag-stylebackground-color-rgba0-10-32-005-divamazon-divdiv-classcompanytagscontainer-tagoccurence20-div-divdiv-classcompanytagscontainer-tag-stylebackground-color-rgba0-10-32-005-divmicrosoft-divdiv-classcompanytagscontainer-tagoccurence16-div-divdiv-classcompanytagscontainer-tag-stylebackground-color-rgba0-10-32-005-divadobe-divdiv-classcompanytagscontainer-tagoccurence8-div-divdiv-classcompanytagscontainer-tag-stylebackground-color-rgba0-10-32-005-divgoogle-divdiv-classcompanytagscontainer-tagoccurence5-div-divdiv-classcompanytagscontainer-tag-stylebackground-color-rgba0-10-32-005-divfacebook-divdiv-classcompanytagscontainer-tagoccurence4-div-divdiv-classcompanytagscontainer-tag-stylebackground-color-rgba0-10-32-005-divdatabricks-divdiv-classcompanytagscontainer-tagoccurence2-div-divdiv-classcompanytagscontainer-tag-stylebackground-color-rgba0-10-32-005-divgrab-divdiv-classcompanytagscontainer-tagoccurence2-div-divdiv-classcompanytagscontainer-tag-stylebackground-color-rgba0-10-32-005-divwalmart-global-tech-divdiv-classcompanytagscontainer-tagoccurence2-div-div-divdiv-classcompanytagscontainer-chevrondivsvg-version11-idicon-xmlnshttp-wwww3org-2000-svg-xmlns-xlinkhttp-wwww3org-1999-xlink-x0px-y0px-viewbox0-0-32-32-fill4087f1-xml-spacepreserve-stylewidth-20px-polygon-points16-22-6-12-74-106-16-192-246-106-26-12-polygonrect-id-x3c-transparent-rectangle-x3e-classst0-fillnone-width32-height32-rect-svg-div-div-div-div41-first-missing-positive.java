@@ -23,7 +23,7 @@ class Solution {
         // This indicates that 2 exists in the array. We do val-1 because ->
         // Array is 0 based indexing and the possible elements
         // range is [1...n], we do (index-1) .i.e. changing element at index 1 
-        // to -ve indicates that 2 is present.
+        // to -ve indicates that 2 is present...
         
         for(int i = 0 ; i < n ; i++){
             
