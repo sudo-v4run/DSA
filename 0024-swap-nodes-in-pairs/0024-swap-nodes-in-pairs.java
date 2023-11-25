@@ -9,6 +9,7 @@ class Solution {
         ListNode cur = head;
         
         while(true){
+            
             ListNode temp = cur.next.next;
             cur.next.next = cur;
             
