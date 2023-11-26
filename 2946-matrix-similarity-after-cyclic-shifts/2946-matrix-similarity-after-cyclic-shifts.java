@@ -17,7 +17,7 @@ class Solution {
             else{
                 // even rows
                 for(int j = 0; j < n; j++){
-                    int p = ((j - k < 0)?(n + j - k):(j - k)) % n;
+                    int p = (j + k) % n;
                     if(arr[i][j] != arr[i][p]) return false;
                 }
             }
