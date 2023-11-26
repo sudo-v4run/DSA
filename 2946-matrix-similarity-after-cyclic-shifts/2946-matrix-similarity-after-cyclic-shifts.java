@@ -9,7 +9,9 @@ class Solution {
         for(int i = 0 ; i < m ; i++){
             for(int j = 0; j < n; j++){
                 int p = (j + k) % n;
-                if(arr[i][j] != arr[i][p]) return false;
+                if(arr[i][j] != arr[i][p]){
+                    return false;
+                }
             }
         }
         
