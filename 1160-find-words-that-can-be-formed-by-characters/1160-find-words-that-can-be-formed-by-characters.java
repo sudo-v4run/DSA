@@ -11,15 +11,12 @@ class Solution {
         
         for(String s : words){
             HashMap<Character,Integer> curMap = new HashMap<>();
-            
+            boolean flag = true;
             for(int i = 0 ; i < s.length() ; i++){
                 char cur = s.charAt(i);
                 
                 curMap.put(cur,curMap.getOrDefault(cur,0)+1);
-            }
-            boolean flag = true;
-            for(char key : curMap.keySet()){
-                if(!hm.containsKey(key) || hm.get(key) < curMap.get(key)){
+                if(!hm.containsKey(cur) || hm.get(cur) < curMap.get(cur)){
                     flag = false;
                     break;
                 }
