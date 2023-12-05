@@ -14,7 +14,7 @@ class Solution {
                 i++;
             }else{
                 if(preSum >= t){
-                    // t = preSum;  // for more optimization..
+                    t = preSum;  // for more optimization..
                     continue;
                 }
                 cnt++;
