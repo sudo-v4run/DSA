@@ -19,13 +19,13 @@ class Solution {
         for(int i = 0 ; i < n ; i++){
             if(i-1 >= 0 && Math.abs(word.charAt(i) - word.charAt(i-1)) > 2){
                
-                leftBoundary = i-1; //2
+                leftBoundary = i-1;
             }
             
-            int r = i; //3
+            int r = i;
             for(int j = 1 ; j <= 26 ; j++){
                 int len = j*k;
-                int l = r-len; // 3 - 1 = 2
+                int l = r-len;
                 
                 if(l < leftBoundary){
                     break;
@@ -48,7 +48,6 @@ class Solution {
                 }
                 
                 if(flag){
-                     System.out.println(r);
                     cnt++;
                 }
             }
