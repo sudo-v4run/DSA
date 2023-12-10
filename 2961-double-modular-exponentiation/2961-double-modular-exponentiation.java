@@ -1,4 +1,4 @@
-import java.math.BigInteger;  
+  
 class Solution {
     public List<Integer> getGoodIndices(int[][] variables, int target) {
         
@@ -13,19 +13,18 @@ class Solution {
             int c = cur[2];
             int m = cur[3];
             
-            BigInteger aa = new BigInteger(String.valueOf(a));
-            BigInteger result = aa.pow(b);
-            BigInteger ten = new BigInteger("10");
-            result = result.mod(ten);
+            int temp1 = 1;
             
-            result = result.pow(c);
+            for(int j = 0 ; j < b ; j++){
+                temp1 = (temp1*a)%10;
+            }
             
-            BigInteger mm = new BigInteger(String.valueOf(m));
-            result = result.mod(mm); 
+            int temp2 = 1;
+            for(int j = 0 ; j < c ; j++){
+                temp2 = (temp2*temp1)%m;
+            }
             
-            BigInteger tar = new BigInteger(String.valueOf(target));
-            
-            if(result.compareTo(tar) == 0){
+            if(temp2 == target){
                 res.add(i);
             }
         }
