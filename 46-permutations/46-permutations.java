@@ -14,7 +14,7 @@ class Solution {
             for(int i : arr){
                 ans.add(i);
             }
-            res.add(ans);
+            res.add(new ArrayList<Integer>(ans));
             return;
         }
         
