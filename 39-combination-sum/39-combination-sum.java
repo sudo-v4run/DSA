@@ -27,10 +27,12 @@ class Solution {
             return;
         }
         
+        // take...
         ans.add(arr[i]);
         f(i,arr,target-arr[i],ans);
         ans.remove(ans.size()-1);
         
+        // notTake...
         f(i+1,arr,target,ans);
     }
 }
