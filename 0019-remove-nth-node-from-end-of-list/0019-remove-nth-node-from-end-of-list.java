@@ -10,7 +10,7 @@ class Solution {
             fast = fast.next;
         }
         
-        if(fast == null){
+        if(fast == null){   // n = list.size(). i.e. remove head..
             return head.next;
         }
         
