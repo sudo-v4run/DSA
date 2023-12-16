@@ -1,7 +1,6 @@
 
-class Solution {
-    
-    public boolean isSubPath(ListNode head, TreeNode root) {
+class Solution{
+    public boolean isSubPath(ListNode head, TreeNode root){
         
         if(head == null){
             return true;
