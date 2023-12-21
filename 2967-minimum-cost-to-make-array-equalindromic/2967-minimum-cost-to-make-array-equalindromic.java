@@ -57,6 +57,15 @@ class Solution {
         int n2 = Integer.parseInt(s2); 
         int n3 = Integer.parseInt(s3);
         
+        // palis for one digit less or one digit more..
+        // for eg. [9,10,10] -> median = 10...leftHalf = 1 
+        // leftHalf-1 = 0 leftHalf+1 = 2. 
+        // candidates = 00,11,22...but we won't get 9(which is pali too and very near to 10) from
+        // above n1/n2/n3. Because, in this eg., when we do -1, the no of digits become less.
+        // so to handle that case...
+        
+        // Another example -> when we want to get 999 from 1000
+        
         int oneDigitLess = (int)Math.pow(10,len-1)-1;
         int oneDigitMore = (int)Math.pow(10,len-1)+1;
         
