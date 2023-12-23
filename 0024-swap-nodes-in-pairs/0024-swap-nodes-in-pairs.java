@@ -17,6 +17,7 @@ class Solution {
                 cur.next = null;
                 break;
             }
+
             if(temp.next == null){
                 cur.next = temp;
                 break;
