@@ -27,6 +27,7 @@ class Solution {
         if(i < 0){
             return "0";
         }
+
         for( ; i >= 0 ; i--){
             ans += String.valueOf(arr[i]);
         }
