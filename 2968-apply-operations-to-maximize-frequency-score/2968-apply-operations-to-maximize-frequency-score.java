@@ -40,10 +40,13 @@ class Solution {
                 int medianInd = (i+j)/2;
                 int median = arr[medianInd];
                 
-                long lOps = ((medianInd-i+1)*1L*median) - (preSum[medianInd]-preSum[i]+arr[i]);
-                long rOps = (preSum[j]-preSum[medianInd]) - ((j-medianInd)*1L*median);
+                long lOps = ((medianInd-i+1)*1L*median) - 
+                            (preSum[medianInd]-preSum[i]+arr[i]);
+                long rOps = (preSum[j]-preSum[medianInd]) - 
+                            ((j-medianInd)*1L*median);
                 
                 long totOps = lOps + rOps;
+                
                 if(totOps <= k){
                     return true;
                 }
@@ -51,6 +54,7 @@ class Solution {
                 i++;
                 j++;
             }else{
+                
                 j++;
             }
         }
