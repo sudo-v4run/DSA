@@ -64,7 +64,6 @@ class Solution {
             if(a == c && ((f < d && d < b)  || (b < d && d < f))){
                 return 2;
             }
-            
             return 1;
         }
         if(b == f){
