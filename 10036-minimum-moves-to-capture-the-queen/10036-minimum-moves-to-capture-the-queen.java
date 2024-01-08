@@ -57,7 +57,6 @@ class Solution {
                 break;
             }
         }
-        
         c = tVr;
         d = tVc;
         
