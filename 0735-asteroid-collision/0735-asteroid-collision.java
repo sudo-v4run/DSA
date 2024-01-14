@@ -28,6 +28,7 @@ class Solution {
         int k = len-1;
         
         while(!s.isEmpty()){
+
             res[k--] = s.pop();
         }
         
