@@ -7,6 +7,7 @@ class Solution {
         int initColr = image[sr][sc];
         
         if(initColr == newColr){
+
             return image;
         }
         
