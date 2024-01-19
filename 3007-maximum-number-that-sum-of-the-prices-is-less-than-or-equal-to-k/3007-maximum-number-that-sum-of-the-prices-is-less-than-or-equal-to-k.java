@@ -20,31 +20,21 @@ class Solution {
         
         return ans;
     }
+    
     public long cnt[];
+    
     public boolean isPossible(long num, int x, long k){
         
         cnt = new long[65];
         
-        
         getOneCnt(num);
         
-        
         long price = 0;
-        
         for(int i = 1 ; i < cnt.length ; i++){
             if((i) % x == 0){
                 price += cnt[i];
             }
         }
-        
-//         if(price <= k){
-//             System.out.println(num);
-        
-//             for(long ele : cnt){
-//                 System.out.print(ele+"  ");
-//             }
-//             System.out.println();
-//         }
         
         return price <= k;
     }
