@@ -1,62 +1,24 @@
 class Solution {
+    
+    private List<List<Integer>> ans = new ArrayList<>();
+
     public List<List<Integer>> combinationSum3(int k, int n) {
-        
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        
-        HashSet<Integer> hs = new HashSet<>();
-        
-        f(k,n,hs,res);
-        
-        return res;
+        List<Integer> temp = new ArrayList<>();
+        solve(k, n, temp, 1);
+        return ans;
     }
-    public void f(int k, int sum, HashSet<Integer> hs,
-                   List<List<Integer>> res){
-        
-        if(sum == 0 && hs.size() == k){
-            
-            boolean isDup = true;
-            for(List<Integer> li : res){
-                for(int ele : li){
-                    if(!hs.contains(ele)){
-                        isDup = false;
-                        break;
-                    }
-                }
-                if(isDup){
-                    return;
-                }
-                if(!isDup){
-                    isDup = true;
-                }
-            }
-            
-            ArrayList<Integer> temp = new ArrayList<>();
-            for(int ele : hs){
-                temp.add(ele);
-            }
-            res.add(temp);
-            
+
+    private void solve(int k, int n, List<Integer> temp, int idx) {
+        if (n == 0 && k == 0) {
+            ans.add(new ArrayList<>(temp));
             return;
         }
-        
-        if(sum < 0){
-            return;
-        }
-        
-        if(hs.size() > k){
-            return;
-        }
-        
-        for(int i = 1 ; i <= 9 ; i++){
-            if(hs.contains(i)){
-                continue;
-            }
-            
-            hs.add(i);
-            
-            f(k,sum-i,hs,res);
-            
-            hs.remove(i);
+
+        for (int i = idx; i <= 9; i++) {
+            if (k == 0) break;
+            temp.add(i);
+            solve(k - 1, n - i, temp, i + 1);
+            temp.remove(temp.size() - 1);
         }
     }
 }
