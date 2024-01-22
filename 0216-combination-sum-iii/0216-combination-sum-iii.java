@@ -1,24 +1,39 @@
 class Solution {
-    
-    private List<List<Integer>> ans = new ArrayList<>();
-
     public List<List<Integer>> combinationSum3(int k, int n) {
-        List<Integer> temp = new ArrayList<>();
-        solve(k, n, temp, 1);
-        return ans;
+        
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        f(1,k,n,ans,res);
+        
+        return res;
     }
-
-    private void solve(int k, int n, List<Integer> temp, int idx) {
-        if (n == 0 && k == 0) {
-            ans.add(new ArrayList<>(temp));
+    public void f(int start, int k, int sum, ArrayList<Integer> ans,
+                   List<List<Integer>> res){
+        
+        if(sum == 0 && ans.size() == k){
+            
+            res.add(new ArrayList<>(ans));
+            
             return;
         }
-
-        for (int i = idx; i <= 9; i++) {
-            if (k == 0) break;
-            temp.add(i);
-            solve(k - 1, n - i, temp, i + 1);
-            temp.remove(temp.size() - 1);
+        
+        if(sum < 0){
+            return;
+        }
+        
+        if(ans.size() > k){
+            return;
+        }
+        
+        for(int i = start ; i <= 9 ; i++){
+            
+            ans.add(i);
+            
+            f(i+1,k,sum-i,ans,res);
+            
+            ans.remove(ans.size()-1);
         }
     }
 }
