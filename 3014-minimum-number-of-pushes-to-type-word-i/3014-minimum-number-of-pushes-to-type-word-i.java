@@ -1,21 +1,16 @@
 class Solution {
-    static int i;
     public int minimumPushes(String word) {
         
         int n = word.length();
         
-        i = 0;
+        int res = 0;
         
-        return f(n);
-    }
-    public int f(int n){
-        
-        if(n <= 8){
-            return (++i)*n;
+        for(int i = 0 ; i < word.length() ; i++){
+            
+            char ch = word.charAt(i);
+            res += ((i/8) +1);
         }
         
-        i++;
-        
-        return i*8 + f(n-8);
+        return res;
     }
 }
