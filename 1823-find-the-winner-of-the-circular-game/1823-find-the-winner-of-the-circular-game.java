@@ -15,6 +15,6 @@ class Solution {
             q.poll();
         }
         
-        return q.peek(); 
+        return q.peek();
     }
 }
