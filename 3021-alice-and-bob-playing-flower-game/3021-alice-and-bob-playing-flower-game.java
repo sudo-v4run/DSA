@@ -1,12 +1,12 @@
 class Solution {
     public long flowerGame(int n, int m) {
         
-        long oddX = (m + 1) / 2;
-        long oddY = (n + 1) / 2;
-
-        long evenX = m / 2;
-        long evenY = n / 2;
-
-        return oddX * evenY + evenX * oddY;
+        long evens_n = n/2;
+        long odds_n = (n+1)/2;
+        
+        long evens_m = m/2;
+        long odds_m = (m+1)/2;
+        
+        return evens_n*odds_m + odds_n*evens_m;
     }
 }
