@@ -8,15 +8,18 @@ class Solution {
             return a[0]-b[0];
         });
         
+        // Why sorting Heights in descending order when the widths are same? ->
+        // to prevent calculating the envelope with the same width. For eg.
+        // [3, 1] [3, 2] [3, 3] will get 3, but [3, 3], [3, 2], [3, 1] will get 1.
+        
         int n = envelopes.length;
+        
+        // Apply LIS on Heights...
         
         int arr[] = new int[n];
         for(int i = 0 ; i < n ; i++){
             arr[i] = envelopes[i][1];
         }
-        
-        // Binary Search...TC - O(N logN) and SC - O(N)...
-        // -> can not print LIS(only len)
         
         ArrayList<Integer> temp = new ArrayList<>();
         
