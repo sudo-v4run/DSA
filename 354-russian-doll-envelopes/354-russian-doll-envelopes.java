@@ -1,14 +1,12 @@
 class Solution {
     public int maxEnvelopes(int[][] envelopes) {
         
-        Arrays.sort(envelopes, new Comparator<int[]>(){
-        public int compare(int[] arr1, int[] arr2){
-            if(arr1[0] == arr2[0])
-                return arr2[1] - arr1[1];
-            else
-                return arr1[0] - arr2[0];
-       } 
-    });
+        Arrays.sort(envelopes,(a,b)->{
+            if(a[0] == b[0]){
+                return b[1]-a[1];
+            }
+            return a[0]-b[0];
+        });
         
         int n = envelopes.length;
         
