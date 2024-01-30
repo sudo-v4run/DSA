@@ -7,7 +7,6 @@ class Solution {
             }
             return a[0]-b[0];
         });
-        
         // Why sorting Heights in descending order when the widths are same? ->
         // to prevent calculating the envelope with the same width. For eg.
         // [3, 1] [3, 2] [3, 3] will get 3, but [3, 3], [3, 2], [3, 1] will get 1.
