@@ -5,18 +5,16 @@ class Solution {
         
         int n = arr.length;
         
-        int prefix[] = new int[n];
-        prefix[0] = arr[0];
-        for(int i = 1 ; i < n ; i++){
-            prefix[i] = prefix[i-1] + arr[i];
-        }
-        
         int medianIndex = n/2;
         int median = arr[n/2];
         
-        int left = ((medianIndex-0+1)*median) - prefix[medianIndex];
-        int right = (prefix[n-1]-prefix[medianIndex]) - ((n-1-medianIndex)*median);
+        int ans = 0;
         
-        return left+right;
+        for(int i = 0 ; i < n ; i++){
+            
+            ans += Math.abs(median-arr[i]);
+        }
+        
+        return ans;
     }
 }
