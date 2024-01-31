@@ -37,10 +37,7 @@ class Solution {
             
             int cnt = 1;
             
-            while(hm.containsKey(sqrt) && hm.get(sqrt) >= 2 && sqrt != 1){
-                  // Why sqrt != 1 again? -> Although we are handling 1 
-                  // separetly...and we are skipping cur = 1 at the top...
-                  // sqrt(2) gives 1 and again we will get stuck in the loop...
+            while(hm.containsKey(sqrt) && hm.get(sqrt) >= 2){
                 
                 vis.add(sqrt);
                 cnt += 2;
