@@ -5,9 +5,7 @@ class Solution {
         
         int n = arr.length;
         
-        int medianIndex = n/2;
         int median = arr[n/2];
-        
         int ans = 0;
         
         for(int i = 0 ; i < n ; i++){
