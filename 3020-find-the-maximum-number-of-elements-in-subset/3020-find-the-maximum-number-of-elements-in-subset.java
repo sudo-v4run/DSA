@@ -3,32 +3,33 @@ class Solution {
         
         int n = arr.length;
         
-        HashMap<Integer,Integer> hm = new HashMap<>();
+        HashMap<Double,Integer> hm = new HashMap<>();
         
         for(int i = 0 ; i < n ; i++){
-            hm.put(arr[i],hm.getOrDefault(arr[i],0)+1);
+            double cur = (double)arr[i];
+            hm.put(cur,hm.getOrDefault(cur,0)+1);
         }
         
         Arrays.sort(arr);
         int ans = 1;
         
-        HashSet<Integer> vis = new HashSet<>();
+        HashSet<Double> vis = new HashSet<>();
         
         for(int i = n-1 ; i >= 0 ; i--){
             
-            int cur = arr[i];
-            
-            if(cur == 1){   
+            if(arr[i] == 1){
                 // We handle 1 separately coz sqrt of 1 is always 1 and 
                 // we will go into infinite loop...
                 continue;
             }
             
+            double cur = (double)arr[i];
+            
             if(vis.contains(cur)){
                 continue;
             }
             
-            int sqrt = (int)Math.sqrt(cur);
+            double sqrt = Math.sqrt(cur);
             
             if(!hm.containsKey(sqrt)){
                 continue;
@@ -44,13 +45,13 @@ class Solution {
                 vis.add(sqrt);
                 cnt += 2;
                 
-                sqrt = (int)Math.sqrt(sqrt);
+                sqrt = Math.sqrt(sqrt);
             }
             ans = Math.max(ans,cnt);
         }
         
-        if(hm.containsKey(1)){
-            int oneCnt = hm.get(1);
+        if(hm.containsKey(1d)){ // 1d -> converts 1 to (double)1
+            int oneCnt = hm.get(1d);
             if(oneCnt % 2 != 0){
                 ans = Math.max(ans,oneCnt);
             }else{
