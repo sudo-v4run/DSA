@@ -19,9 +19,7 @@ class Solution {
         
         int ans = (int)Math.ceil((double)n/k);
         
-        for(int i = n-1 ; i >= 1 ; i--){
-            
-            if (i % k != 0) continue;
+        for(int i = k ; i < n ; i=i+k){
             
             long prefixHash = preHash[n-i-1];
             long suffixHash = (preHash[n-1]-preHash[i-1]+mod)%mod;
