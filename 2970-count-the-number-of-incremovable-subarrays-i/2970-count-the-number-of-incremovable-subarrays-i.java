@@ -26,10 +26,9 @@ class Solution {
         for(int l = -1 ; l <= max_l ; l++){
             int cur = l == -1 ? Integer.MIN_VALUE : arr[l];
             int index = bs(min_r,n-1,cur,arr);
+            cnt += n-index+1;
             if(index == l+1){  // when max_l == n-1
-                cnt += n-index;
-            }else{
-                cnt += n-index+1;
+                cnt--;
             }
         }
         
