@@ -29,6 +29,7 @@ class Solution {
             cnt += n-index+1;
             if(index == l+1){  // when max_l == n-1
                 cnt--;
+                // -1 coz there will be no elements between l & index.
             }
         }
         
