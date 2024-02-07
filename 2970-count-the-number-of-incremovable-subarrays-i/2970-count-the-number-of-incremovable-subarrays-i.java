@@ -12,10 +12,6 @@ class Solution {
             }
         }
         
-        if(max_l == n-1){
-            return (n*(n+1))/2;
-        }
-        
         int min_r = n-1;
         while(min_r-1 >= 0){
             if(arr[min_r-1] < arr[min_r]){
@@ -30,7 +26,11 @@ class Solution {
         for(int l = -1 ; l <= max_l ; l++){
             int cur = l == -1 ? Integer.MIN_VALUE : arr[l];
             int index = bs(min_r,n-1,cur,arr);
-            cnt += n-index+1;
+            if(max_l  == n-1){
+                cnt += n-index;
+            }else{
+                cnt += n-index+1;
+            }
         }
         
         return cnt;
