@@ -19,10 +19,13 @@ class Solution {
             return;
         }
         
+        // add s[index] to s1 but not s2...
         f(index+1,s1+s.charAt(index),s2,s);
         
+        // add s[index] to s2 but not s1...
         f(index+1,s1,s2+s.charAt(index),s);
         
+        // skip s[index]...
         f(index+1,s1,s2,s);
         
     }
