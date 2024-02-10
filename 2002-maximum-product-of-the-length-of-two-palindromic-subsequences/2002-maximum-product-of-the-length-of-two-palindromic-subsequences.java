@@ -1,4 +1,5 @@
 class Solution {
+    
     int ans;
     public int maxProduct(String s) {
         
