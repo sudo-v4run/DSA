@@ -17,60 +17,110 @@ class Solution{
             Arrays.fill(row,Integer.MAX_VALUE);
         }
         
-        ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
-        for(int i = 0 ; i < 26 ; i++){
-            adj.add(new ArrayList<>());
+        for(int i = 0 ; i < dist.length ; i++){
+            dist[i][i] = 0;
         }
         
+        // Floyd Warshall...
+        
         for(int i = 0 ; i < original.length ; i++){
-            
             int u = original[i]-'a';
             int v = changed[i]-'a';
+            int c = cost[i];
             
-            adj.get(u).add(new Pair(v,cost[i]));
+            dist[u][v] = Math.min(dist[u][v],c);
         }
         
-        // Since we are pre-computing shortest dist from every alphabet/node to every 
-        // other alphabet/node, and there is no as such destination node, we are 
-        // using q insted of PQ. Because we don't stop when node == dest -> coz there is 
-        // no dest.
-        
-        for(int i = 0 ; i < original.length ; i++){
-            int curSrc = original[i]-'a';
-            Queue<Pair> q = new LinkedList<>();
-            q.add(new Pair(curSrc,0));
-
-            while(!q.isEmpty()){
-                Pair p = q.poll();
-                int node = p.node;
-                int nodeCost = p.cost;
-
-                for(Pair nei : adj.get(node)){
-                    int adjNode = nei.node;
-                    int adjCost = nodeCost+nei.cost;
-                    if(dist[curSrc][adjNode] > adjCost){
-                        dist[curSrc][adjNode] = adjCost;
-                        q.add(new Pair(adjNode,adjCost));
+        for(int k = 0 ; k < 26 ; k++){
+            for(int i = 0 ; i < 26 ; i++){
+                for(int j = 0 ; j < 26 ; j++){
+                    
+                    if(dist[i][k] == Integer.MAX_VALUE || 
+                       dist[k][j] == Integer.MAX_VALUE){
+                        
+                        continue;
                     }
+                    
+                    dist[i][j] = Math.min(dist[i][j],dist[i][k]+dist[k][j]);
                 }
             }
         }
         
-        long ans = 0;
+        long minCost = 0;
+        
         for(int i = 0 ; i < source.length() ; i++){
             if(source.charAt(i) == target.charAt(i)){
                 continue;
             }
             
             int curCost = dist[source.charAt(i)-'a'][target.charAt(i)-'a'];
+            
             if(curCost == Integer.MAX_VALUE){
                 return -1;
             }
             
-            ans += curCost;
+            minCost += curCost;
         }
         
-        return ans;
+        return minCost;
+        
+        
+        // Dijkstra....
+        
+//         ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
+//         for(int i = 0 ; i < 26 ; i++){
+//             adj.add(new ArrayList<>());
+//         }
+        
+//         for(int i = 0 ; i < original.length ; i++){
+            
+//             int u = original[i]-'a';
+//             int v = changed[i]-'a';
+            
+//             adj.get(u).add(new Pair(v,cost[i]));
+//         }
+        
+//         // Since we are pre-computing shortest dist from every alphabet/node to every 
+//         // other alphabet/node, and there is no as such destination node, we are 
+//         // using q insted of PQ. Because we don't stop when node == dest -> coz there is 
+//         // no dest.
+        
+//         for(int i = 0 ; i < original.length ; i++){
+//             int curSrc = original[i]-'a';
+//             Queue<Pair> q = new LinkedList<>();
+//             q.add(new Pair(curSrc,0));
+
+//             while(!q.isEmpty()){
+//                 Pair p = q.poll();
+//                 int node = p.node;
+//                 int nodeCost = p.cost;
+
+//                 for(Pair nei : adj.get(node)){
+//                     int adjNode = nei.node;
+//                     int adjCost = nodeCost+nei.cost;
+//                     if(dist[curSrc][adjNode] > adjCost){
+//                         dist[curSrc][adjNode] = adjCost;
+//                         q.add(new Pair(adjNode,adjCost));
+//                     }
+//                 }
+//             }
+//         }
+        
+//         long ans = 0;
+//         for(int i = 0 ; i < source.length() ; i++){
+//             if(source.charAt(i) == target.charAt(i)){
+//                 continue;
+//             }
+            
+//             int curCost = dist[source.charAt(i)-'a'][target.charAt(i)-'a'];
+//             if(curCost == Integer.MAX_VALUE){
+//                 return -1;
+//             }
+            
+//             ans += curCost;
+//         }
+        
+//         return ans;
     }
 }
 
