@@ -1,7 +1,5 @@
-// Using Dijkstra... You can do the same using Floyd Warshall's Algo...
-// Refer Minimum Cost to Convert String II for Warshall's Algo...
-
 class Solution{
+    
     class Pair{
         int node, cost;
         Pair(int node, int cost){
@@ -9,6 +7,7 @@ class Solution{
             this.cost = cost;
         }
     }
+    
     public long minimumCost(String source, String target, 
                             char[] original, char[] changed, int[] cost){
         
