@@ -49,73 +49,97 @@ class Solution {
         
         String temp = cur;
         
-        for(int i = r-1 ; i >= 0 ; i--){
-            temp += arr[i][c];
-            if(temp.length() >= 2 && isPrime(temp)){
-                hm.put(temp,hm.getOrDefault(temp,0)+1);
+//         for(int i = r-1 ; i >= 0 ; i--){
+//             temp += arr[i][c];
+//             if(temp.length() >= 2 && isPrime(temp)){
+//                 hm.put(temp,hm.getOrDefault(temp,0)+1);
+//             }
+//         }
+        
+//         temp = cur;
+        
+        for(int i = -1 ; i <= 1 ; i++){
+            for(int j = -1 ; j <= 1 ; j++){
+                if(i == 0 && j == 0){
+                    continue;
+                }
+                temp = cur;
+                
+                int nr = r+i;
+                int nc = c+j;
+                
+                while(nr >=0 && nr < m && nc >=0 && nc < n){
+                    temp += arr[nr][nc];
+                    
+                    if(temp.length() >= 2 && isPrime(temp)){
+                        hm.put(temp,hm.getOrDefault(temp,0)+1);
+                    }
+                    
+                    nr += i;
+                    nc += j;
+                }
+                
             }
         }
         
-        temp = cur;
+//         for(int i = r-1, j = c-1 ; i >= 0 && j >= 0 ; i--, j--){
+//             temp += arr[i][j];
+//             if(temp.length() >= 2 && isPrime(temp)){
+//                 hm.put(temp,hm.getOrDefault(temp,0)+1);
+//             }
+//         }
         
-        for(int i = r-1, j = c-1 ; i >= 0 && j >= 0 ; i--, j--){
-            temp += arr[i][j];
-            if(temp.length() >= 2 && isPrime(temp)){
-                hm.put(temp,hm.getOrDefault(temp,0)+1);
-            }
-        }
+//         temp = cur;
         
-        temp = cur;
+//         for(int i = c-1 ; i >= 0 ; i--){
+//             temp += arr[r][i];
+//             if(temp.length() >= 2 && isPrime(temp)){
+//                 hm.put(temp,hm.getOrDefault(temp,0)+1);
+//             }
+//         }
         
-        for(int i = c-1 ; i >= 0 ; i--){
-            temp += arr[r][i];
-            if(temp.length() >= 2 && isPrime(temp)){
-                hm.put(temp,hm.getOrDefault(temp,0)+1);
-            }
-        }
+//         temp = cur;
         
-        temp = cur;
+//         for(int i = r+1, j = c-1 ; i < m && j >= 0 ; i++,j--){
+//             temp += arr[i][j];
+//             if(temp.length() >= 2 && isPrime(temp)){
+//                 hm.put(temp,hm.getOrDefault(temp,0)+1);
+//             }
+//         }
         
-        for(int i = r+1, j = c-1 ; i < m && j >= 0 ; i++,j--){
-            temp += arr[i][j];
-            if(temp.length() >= 2 && isPrime(temp)){
-                hm.put(temp,hm.getOrDefault(temp,0)+1);
-            }
-        }
+//         temp = cur;
         
-        temp = cur;
+//         for(int i = r+1 ; i < m ; i++){
+//             temp += arr[i][c];
+//             if(temp.length() >= 2 && isPrime(temp)){
+//                 hm.put(temp,hm.getOrDefault(temp,0)+1);
+//             }
+//         }
         
-        for(int i = r+1 ; i < m ; i++){
-            temp += arr[i][c];
-            if(temp.length() >= 2 && isPrime(temp)){
-                hm.put(temp,hm.getOrDefault(temp,0)+1);
-            }
-        }
+//         temp = cur;
+//         for(int i = r+1, j = c+1 ; i < m && j < n ; i++,j++){
+//             temp += arr[i][j];
+//             if(temp.length() >= 2 && isPrime(temp)){
+//                 hm.put(temp,hm.getOrDefault(temp,0)+1);
+//             }
+//         }
         
-        temp = cur;
-        for(int i = r+1, j = c+1 ; i < m && j < n ; i++,j++){
-            temp += arr[i][j];
-            if(temp.length() >= 2 && isPrime(temp)){
-                hm.put(temp,hm.getOrDefault(temp,0)+1);
-            }
-        }
+//         temp = cur;
         
-        temp = cur;
+//         for(int i = c+1 ; i < n ; i++){
+//             temp += arr[r][i];
+//             if(temp.length() >= 2 && isPrime(temp)){
+//                 hm.put(temp,hm.getOrDefault(temp,0)+1);
+//             }
+//         }
         
-        for(int i = c+1 ; i < n ; i++){
-            temp += arr[r][i];
-            if(temp.length() >= 2 && isPrime(temp)){
-                hm.put(temp,hm.getOrDefault(temp,0)+1);
-            }
-        }
-        
-        temp = cur;
-        for(int i = r-1, j = c+1 ; i >= 0 && j < n ; i--,j++){
-            temp += arr[i][j];
-            if(temp.length() >= 2 && isPrime(temp)){
-                hm.put(temp,hm.getOrDefault(temp,0)+1);
-            }
-        }
+//         temp = cur;
+//         for(int i = r-1, j = c+1 ; i >= 0 && j < n ; i--,j++){
+//             temp += arr[i][j];
+//             if(temp.length() >= 2 && isPrime(temp)){
+//                 hm.put(temp,hm.getOrDefault(temp,0)+1);
+//             }
+//         }
         
         
     }
