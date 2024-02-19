@@ -49,20 +49,13 @@ class Solution {
         
         String temp = cur;
         
-//         for(int i = r-1 ; i >= 0 ; i--){
-//             temp += arr[i][c];
-//             if(temp.length() >= 2 && isPrime(temp)){
-//                 hm.put(temp,hm.getOrDefault(temp,0)+1);
-//             }
-//         }
-        
-//         temp = cur;
-        
         for(int i = -1 ; i <= 1 ; i++){
             for(int j = -1 ; j <= 1 ; j++){
+                
                 if(i == 0 && j == 0){
                     continue;
                 }
+                
                 temp = cur;
                 
                 int nr = r+i;
@@ -81,6 +74,21 @@ class Solution {
                 
             }
         }
+        
+        
+        
+        
+//         String temp = cur;        
+//         for(int i = r-1 ; i >= 0 ; i--){
+//             temp += arr[i][c];
+//             if(temp.length() >= 2 && isPrime(temp)){
+//                 hm.put(temp,hm.getOrDefault(temp,0)+1);
+//             }
+//         }
+        
+//         temp = cur;
+        
+
         
 //         for(int i = r-1, j = c-1 ; i >= 0 && j >= 0 ; i--, j--){
 //             temp += arr[i][j];
