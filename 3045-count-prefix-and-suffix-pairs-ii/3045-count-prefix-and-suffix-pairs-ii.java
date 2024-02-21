@@ -14,7 +14,7 @@ class Solution {
         
         long ans = 0;
         
-        HashMap<Integer,HashMap<Long,Integer>> hm = new HashMap<>();
+        HashMap<Long,Integer> hm = new HashMap<>();
         
         for(String word : words){
             
@@ -29,10 +29,6 @@ class Solution {
             
             for(int l = 0 ; l < n ; l++){
                 
-                if(!hm.containsKey(l+1)){
-                    continue;
-                }
-                
                 long prefixHash = preHash[l];
                 
                 int suffixInd = n-(l+1);
@@ -42,18 +38,15 @@ class Solution {
                 }
                 
                 if((prefixHash*primePower[suffixInd])%mod == suffixHash && 
-                   hm.containsKey(l+1) && 
-                   hm.get(l+1).containsKey(prefixHash)){
+                   
+                   hm.containsKey(prefixHash)){
                     
-                    ans += hm.get(l+1).get(prefixHash);
+                    ans += hm.get(prefixHash);
                 }
             }
+         
             
-            if(!hm.containsKey(n)){
-                hm.put(n, new HashMap<>());
-            }
-            
-            hm.get(n).put(preHash[n-1],hm.get(n).getOrDefault(preHash[n-1],0)+1);
+            hm.put(preHash[n-1],hm.getOrDefault(preHash[n-1],0)+1);
         }
         
         return ans;
