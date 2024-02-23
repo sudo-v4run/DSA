@@ -28,6 +28,8 @@ class Solution {
             }
         }
         
+        // Simulate the Q...
+        
         int temp[] = new int[n];
         
         int j = n-1;
