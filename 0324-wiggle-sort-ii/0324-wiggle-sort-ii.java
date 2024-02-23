@@ -28,7 +28,7 @@ class Solution {
             }
         }
         
-        // Simulate the Q...
+        // Simulate Wiggle...
         
         int temp[] = new int[n];
         
@@ -51,12 +51,6 @@ class Solution {
             arr[k] = temp[k];
         }
     }
-    public void swap(int arr[], int i, int j){
-        
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
     public int kthLargest(int k, int arr[]){
         
         int n = arr.length;
@@ -74,6 +68,12 @@ class Solution {
         }
         
         return pq.peek();
+    }
+    public void swap(int arr[], int i, int j){
+        
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
 
