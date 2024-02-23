@@ -3,12 +3,12 @@ class Solution {
         
     // Avg - O(n) .. worst - O(n^2)....
         
-        int reqInd = nums.length - k;
+//         int reqInd = nums.length - k;
         
-        return quickSelect(0,nums.length-1,reqInd,nums);
+//         return quickSelect(0,nums.length-1,reqInd,nums);
         
    
-    // TC - O(klogk)...
+    // TC - O(nlogk)...
         
 //         PriorityQueue<Integer> pq = new PriorityQueue<>();
         
@@ -24,6 +24,17 @@ class Solution {
 //         }
         
 //         return pq.peek();
+        
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        
+        for(int x : nums){
+            pq.add(x);
+            if(pq.size() > k){
+                pq.poll();
+            }
+        }
+        
+        return pq.peek();
     }
     public static int quickSelect(int l, int h, int reqInd, int arr[]){
         
@@ -45,8 +56,8 @@ class Solution {
         int i = l;
         int j = h;
         
-        while(i < j){
-            while(i <= h && arr[i] <= pivot){
+        while(i <= j){
+            while(i <= j && arr[i] <= pivot){
                 i++;
             }
             while(arr[j] > pivot){
