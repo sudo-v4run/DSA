@@ -47,6 +47,14 @@ class Solution {
             int req = arr[x-1]+1;
             
             if(cnt+req > xLastInd+1){
+                
+                // why +1 ? -> let [1,1,1,1] be the changeIndices[], 
+                // lastIndex of 1 is 3. But there are 4 1s.
+                // so if req = 4, and lastInd = 3, it means, there are 4 
+                // chances. +1 is to make 0 indexed to 1 indexed, or 
+                // changing 0 index counting to 1 indexed counting.
+                // Dry run arr=[3], changedInds = [1,1,1,1] for better understanding.
+                
                 return false;
             }
             
