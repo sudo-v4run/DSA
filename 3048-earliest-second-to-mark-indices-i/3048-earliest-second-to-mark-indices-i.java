@@ -3,6 +3,7 @@ class Solution {
         
         int m = changeIndices.length;
         
+        // We can apply BS also for the below linear traversal...
         for(int i = 1 ; i <= m ; i++){
             if(isPossible(i,changeIndices,arr)){
                 return i;
