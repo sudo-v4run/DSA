@@ -1,6 +1,6 @@
 class Solution {
     
-    // TC -> O(N)...NlongN in the worst case
+    // TC -> O(N) in the best case and O(NlongN) in the worst case...
     
     public List<String> topKFrequent(String[] words, int k){
         
