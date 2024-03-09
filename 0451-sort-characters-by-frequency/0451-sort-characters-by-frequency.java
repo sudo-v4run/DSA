@@ -18,9 +18,7 @@ class Solution {
             if(cnt[f] == null){
                 cnt[f] = new ArrayList<>();
             }
-            for(int i = 0 ; i < f ; i++){
-                cnt[f].add(ch);
-            }
+            cnt[f].add(ch);
         }
         
         String ans = "";
@@ -30,7 +28,9 @@ class Solution {
                 continue;
             }
             for(char ch : cnt[i]){
-                ans += ch;
+                for(int freq = 0 ; freq < i ; freq++){
+                    ans += ch;
+                }
             }
         }
         
