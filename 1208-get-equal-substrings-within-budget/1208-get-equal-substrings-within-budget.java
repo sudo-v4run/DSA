@@ -11,6 +11,7 @@ class Solution {
         int max = Integer.MIN_VALUE;
         
         while(j < n){
+            
             cost += Math.abs((int)s.charAt(j)-(int)t.charAt(j));
             
             if(cost <= maxCost){
