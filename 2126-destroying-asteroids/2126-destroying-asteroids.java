@@ -15,6 +15,11 @@ class Solution {
             }else{
                 return false;
             }
+            
+            // Instead of long, we can check if mass >= 1e5, coz if mass is 
+            // reaches 1e5, then mass is always >= asteroids[i] for any i.
+            // coz it is given that 1 <= asteroid[i] <= 1e5. So, we can simply
+            // return true if mass exceeds 1e5.
         }
         
         return true;
