@@ -5,13 +5,13 @@ class Solution {
         
         Arrays.sort(asteroids);
         
-        long mas = mass*1l;
+        long mss = mass*1l;
         
         for(int i = 0 ; i < n ; i++){
             int cur = asteroids[i];
                     
-            if(cur <= mas){
-                mas += cur;
+            if(cur <= mss){
+                mss += cur;
             }else{
                 return false;
             }
