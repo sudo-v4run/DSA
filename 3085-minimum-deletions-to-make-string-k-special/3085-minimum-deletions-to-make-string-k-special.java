@@ -1,21 +1,35 @@
 class Solution {
     public int minimumDeletions(String word, int k) {
-        int count[] = new int[26];
-        for(char c: word.toCharArray())
-            count[c - 'a']++;
         
-        int ans = word.length(), del = 0;
-        Arrays.sort(count);
-        for(int i = 0; i <26; i++){
-            int res = del;
-            for(int j = 25; j>i; j--){
-                int dif = count[j] - count[i];
-                if(dif <= k ) break; // condition satisfied
-                res += dif - k; // option when we decrease the freq of max
-            }
-            ans = Math.min(res,ans);
-            del += count[i]; // this value track the option to del the min val
+        HashMap<Character,Integer> hm = new HashMap<>();
+        
+        for(char ch : word.toCharArray()){
+            hm.put(ch,hm.getOrDefault(ch,0)+1);
         }
-        return ans;
+        
+        int n = hm.size();
+        int arr[] = new int[n];
+        int index = 0;
+        for(char ch : hm.keySet()){
+            arr[index++] = hm.get(ch);
+        }
+        
+        Arrays.sort(arr);
+        int res = Integer.MAX_VALUE;
+        for(int l = 0 ; l <= (int)1e5 ; l++){
+            int r = Math.min(l+k,(int)1e5);
+            int cur = 0;
+            for(int i = 0 ; i < n ; i++){
+                if(arr[i] < l){
+                    cur += arr[i];
+                }else if(arr[i] > r){
+                    cur += arr[i]-r;
+                }
+            }
+            
+            res = Math.min(res,cur);
+        }
+        
+        return res;
     }
 }
