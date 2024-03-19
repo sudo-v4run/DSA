@@ -18,7 +18,7 @@ class Solution {
         int res = Integer.MAX_VALUE;
         for(int li = 0 ; li < n ; li++){
             int l = arr[li];
-            int r = Math.min(l+k,(int)1e5);
+            int r = l+k;
             int cur = 0;
             for(int i = 0 ; i < n ; i++){
                 if(arr[i] < l){
