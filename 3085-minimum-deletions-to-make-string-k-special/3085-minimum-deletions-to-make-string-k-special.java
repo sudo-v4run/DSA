@@ -16,7 +16,8 @@ class Solution {
         
         Arrays.sort(arr);
         int res = Integer.MAX_VALUE;
-        for(int l = 0 ; l <= (int)1e5 ; l++){
+        for(int li = 0 ; li < n ; li++){
+            int l = arr[li];
             int r = Math.min(l+k,(int)1e5);
             int cur = 0;
             for(int i = 0 ; i < n ; i++){
