@@ -4,7 +4,7 @@ class Solution {
         
         // TC - O(NlogK)... SC - Recursive Stack Space...
         
-        return partition(lists,0,lists.length-1);
+        // return partition(lists,0,lists.length-1);
         
         
 //         // TC - O(NlogK)... SC - O(N) for temp...
@@ -45,40 +45,39 @@ class Solution {
         
         // TC - O(N.K)...
         
-//         if(lists.length==0){
-//             return null;
-//         }
+        if(lists.length==0){
+            return null;
+        }
         
-//         int k = lists.length;
-//         ListNode ans = new ListNode();
-//         ListNode ansHead = ans;
-//         boolean notFinished = true;
+        int k = lists.length;
+        ListNode ans = new ListNode();
+        ListNode ansHead = ans;
         
-//         while(notFinished){
-//             int min = Integer.MAX_VALUE;
-//             notFinished = false;
-//             int minPtr = k+1;
+        while(true){
+            int min = Integer.MAX_VALUE;
+            boolean finished = true;
+            int minPtr = k+1;
             
-//             for(int i = 0 ; i < k ; i++){
-//                 if(lists[i] !=null && lists[i].val<min){
-//                     min = lists[i].val;
-//                     minPtr = i;
-//                 }
-//                 if(lists[i] !=null){
-//                     notFinished = true;
-//                 }
-//             }
-//             if(!notFinished){
-//                 break;
-//             }
+            for(int i = 0 ; i < k ; i++){
+                if(lists[i] !=null && lists[i].val<min){
+                    min = lists[i].val;
+                    minPtr = i;
+                }
+                if(lists[i] !=null){
+                    finished = false;
+                }
+            }
+            if(finished){
+                break;
+            }
             
-//             lists[minPtr] = lists[minPtr].next;
+            lists[minPtr] = lists[minPtr].next;
             
-//             ans.next = new ListNode(min);
-//             ans = ans.next;
-//         }
+            ans.next = new ListNode(min);
+            ans = ans.next;
+        }
         
-//         return ansHead.next;
+        return ansHead.next;
         
         
        
