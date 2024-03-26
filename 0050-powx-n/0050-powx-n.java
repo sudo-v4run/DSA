@@ -11,10 +11,12 @@ class Solution {
         double ans = half * half;
         
         if(n % 2 != 0){
+
             ans *= x;
         }
         
         if(n > 0){
+
             return ans;
         }
         
