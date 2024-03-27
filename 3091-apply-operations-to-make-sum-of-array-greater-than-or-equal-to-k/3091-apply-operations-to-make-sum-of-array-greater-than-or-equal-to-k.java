@@ -6,8 +6,9 @@ class Solution {
         for(int a = 0 ; a < k ; a++){
             
             int curSum = 1 + a;
-            int b = (int)Math.ceil((double)k/curSum);
             
+            int b = (int)Math.ceil((double)k/curSum);
+        
             int ops = a+(b-1);
             
             ans = Math.min(ans,ops);
