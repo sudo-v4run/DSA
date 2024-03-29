@@ -15,6 +15,7 @@ class Solution {
             long f = hm.getOrDefault(val,0l);
             
             if(tm.containsKey(f)){
+                
                 // tm.get(f).remove(val);
                 // if(tm.get(f).size() == 0){
                 //     tm.remove(f);
@@ -29,10 +30,12 @@ class Solution {
             hm.put(val,hm.getOrDefault(val,0l)+freq[i]);
             
             long newFreq = hm.get(val);
+            
             // if(!tm.containsKey(newFreq)){
             //     tm.put(newFreq,new HashSet<>());
             // }
             // tm.get(newFreq).add(val);
+            
             tm.put(newFreq,tm.getOrDefault(newFreq,0)+1);
             
             ans[i] = tm.lastKey();
