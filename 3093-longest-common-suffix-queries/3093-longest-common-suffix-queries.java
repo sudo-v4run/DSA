@@ -2,13 +2,13 @@ class Solution {
     public int[] stringIndices(String[] wordsContainer, String[] wordsQuery) {
         
         int p = 31;
-        int mod = (int)1e9+9;
+        int mod1 = (int)1e9+9;
         int mod2 = (int)1e9+7;
         
-        long p_pow[] = new long[(int)1e4];
-        p_pow[0] = 1l;
-        for(int i = 1 ; i < p_pow.length ; i++){
-            p_pow[i] = (p_pow[i-1]*p)%mod;
+        long p_pow1[] = new long[(int)1e4];
+        p_pow1[0] = 1l;
+        for(int i = 1 ; i < p_pow1.length ; i++){
+            p_pow1[i] = (p_pow1[i-1]*p)%mod1;
         }
         long p_pow2[] = new long[(int)1e4];
         p_pow2[0] = 1l;
@@ -22,19 +22,19 @@ class Solution {
         
         for(int index = 0 ; index < n1 ; index++){
             
-            long curHash = 0;
+            long curHash1 = 0;
             long curHash2 = 0;
             String curStr = wordsContainer[index];
             int len = curStr.length();
             
             for(int i = len-1 ; i >= 0 ; i--){
-                curHash = (curHash+
-                           ((curStr.charAt(i)-'a'+1)*p_pow[len-1-i])%mod)%mod;
+                curHash1 = (curHash1+
+                           ((curStr.charAt(i)-'a'+1)*p_pow1[len-1-i])%mod1)%mod1;
                 
                 curHash2 = (curHash2+
                            ((curStr.charAt(i)-'a'+1)*p_pow2[len-1-i])%mod2)%mod2;
                 
-                String hash = curHash+","+curHash2;
+                String hash = curHash1+","+curHash2;
                 
                 if(!hm.containsKey(hash)){
                     hm.put(hash,index);
@@ -63,7 +63,7 @@ class Solution {
         
         for(int index = 0 ; index < n2 ; index++){
             
-            long curHash = 0;
+            long curHash1 = 0;
             long curHash2 = 0;
             String curStr = wordsQuery[index];
             int len = curStr.length();
@@ -73,13 +73,13 @@ class Solution {
             ans[index] = minInd;
             
             for(int i = len-1 ; i >= 0 ; i--){
-                curHash = (curHash+
-                           ((curStr.charAt(i)-'a'+1)*p_pow[len-1-i])%mod)%mod;
+                curHash1 = (curHash1+
+                           ((curStr.charAt(i)-'a'+1)*p_pow1[len-1-i])%mod1)%mod1;
                 
                 curHash2 = (curHash2+
                            ((curStr.charAt(i)-'a'+1)*p_pow2[len-1-i])%mod2)%mod2;
                 
-                String hash = curHash+","+curHash2;
+                String hash = curHash1+","+curHash2;
                 
                 if(hm.containsKey(hash)){
                     ans[index] = hm.get(hash);
