@@ -68,8 +68,6 @@ class Solution {
             String curStr = wordsQuery[index];
             int len = curStr.length();
             
-            boolean noMatch = true;
-            
             ans[index] = minInd;
             
             for(int i = len-1 ; i >= 0 ; i--){
