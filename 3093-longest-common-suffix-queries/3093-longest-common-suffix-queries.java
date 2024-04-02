@@ -10,6 +10,7 @@ class Solution {
         for(int i = 1 ; i < p_pow1.length ; i++){
             p_pow1[i] = (p_pow1[i-1]*p)%mod1;
         }
+        
         long p_pow2[] = new long[(int)1e4];
         p_pow2[0] = 1l;
         for(int i = 1 ; i < p_pow2.length ; i++){
@@ -28,6 +29,7 @@ class Solution {
             int len = curStr.length();
             
             for(int i = len-1 ; i >= 0 ; i--){
+                
                 curHash1 = (curHash1+
                            ((curStr.charAt(i)-'a'+1)*p_pow1[len-1-i])%mod1)%mod1;
                 
@@ -71,6 +73,7 @@ class Solution {
             ans[index] = minInd;
             
             for(int i = len-1 ; i >= 0 ; i--){
+                
                 curHash1 = (curHash1+
                            ((curStr.charAt(i)-'a'+1)*p_pow1[len-1-i])%mod1)%mod1;
                 
