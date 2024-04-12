@@ -70,8 +70,9 @@ class Solution {
         
         // How do we handle invalidity? Since, it is a tree, for n nodes, there should
         // be n-1 edges, and if for any subset, e != n-1, we ignore it.
-            
-            
+        
+        // 1<<n means 2^n... we get 2^n possible subsets..
+        
         for(int subset = 0 ; subset < (1<<n) ; subset++){
             
             int curMaxD = getMaxDist(subset,matrix,n);
