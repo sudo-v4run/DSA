@@ -12,7 +12,7 @@ class Solution {
             
             long mid = lo+(hi-lo)/2;
             
-            if(isPossible(coins,mid,k)){
+            if(k <= smallerThanX(coins,mid)){
                 ans = mid;
                 hi = mid-1;
             }else{
@@ -22,7 +22,7 @@ class Solution {
         
         return ans;
     }
-    public boolean isPossible(int coins[], long mid, int k){
+    public long smallerThanX(int coins[], long x){
         
         int n = coins.length;
         
@@ -49,13 +49,13 @@ class Solution {
             }
             
             if(cnt%2 != 0){
-                ans = ans + (mid/lcm);
+                ans = ans + (x/lcm);
             }else{
-                ans = ans - (mid/lcm);
+                ans = ans - (x/lcm);
             }   
         }
         
-        return ans >= k;
+        return ans;
     }
     public long gcd(long A , long B) 
     {
