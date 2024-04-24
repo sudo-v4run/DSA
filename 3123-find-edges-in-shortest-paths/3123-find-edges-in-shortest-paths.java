@@ -53,11 +53,6 @@ class Solution {
             }
         }
         
-        Queue<Integer> que = new LinkedList<>();
-        que.add(n-1);
-        
-        boolean ans[] = new boolean[edges.length];
-        
         HashMap<String,Integer> edgeInds = new HashMap<>();
         for(int i = 0 ; i < edges.length ; i++){
             int ed[] = edges[i];
@@ -68,7 +63,10 @@ class Solution {
             edgeInds.put(v+","+u,i);
         }
         
-        HashSet<Integer> vis = new HashSet<>();
+        Queue<Integer> que = new LinkedList<>();
+        que.add(n-1);
+        
+        boolean ans[] = new boolean[edges.length];
         
         while(!que.isEmpty()){
             
@@ -82,11 +80,7 @@ class Solution {
                 
                 String edg = pop+","+nei;
                 ans[edgeInds.get(edg)] = true;
-                
-                if(!vis.contains(nei)){
-                    vis.add(nei);
-                    que.add(nei);
-                }
+                que.add(nei);
             }
         }
         
