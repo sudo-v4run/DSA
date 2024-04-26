@@ -21,8 +21,8 @@ class Solution {
         
         minDiffInBST(root.left);
         
-        if(prev<root.val)
-            minDist = Math.min(minDist,root.val-prev);
+        // if(prev<root.val)
+            minDist = Math.min(minDist,Math.abs(root.val-prev));
         prev = root.val;
         
         minDiffInBST(root.right);
