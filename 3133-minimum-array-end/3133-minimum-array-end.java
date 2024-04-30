@@ -31,15 +31,15 @@ class Solution {
         
         long ans = 0;
         
-        long pow = 1l;
+        long pow = 1;
         
         for(int index = 63 ; index  >= 0; index--){
             if(xArr[index] == 0){
-                pow = pow*2l;
+                pow = pow*2;
                 continue;
             }
             ans += pow;
-            pow = pow*2l;
+            pow = pow*2;
         }
         
         return ans;
