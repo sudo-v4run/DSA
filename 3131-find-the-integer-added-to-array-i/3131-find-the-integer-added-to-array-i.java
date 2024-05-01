@@ -7,9 +7,11 @@ class Solution {
         Arrays.sort(nums1);
         Arrays.sort(nums2);
         
-        int median1 = nums1[n1/2];
-        int median2 = nums2[n2/2];
+        return nums2[0]-nums1[0];
         
-        return median2-median1;
+//         int median1 = nums1[n1/2];
+//         int median2 = nums2[n2/2];
+        
+//         return median2-median1;
     }
 }
