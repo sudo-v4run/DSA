@@ -13,7 +13,7 @@ class Solution {
         
         if(root == null){
             ArrayList<Integer> res = new ArrayList<>();
-            res.add((int)1e7);
+            // res.add((int)1e7);
             
             return res;
         }
