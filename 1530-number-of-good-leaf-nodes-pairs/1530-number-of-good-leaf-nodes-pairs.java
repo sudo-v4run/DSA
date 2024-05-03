@@ -12,10 +12,8 @@ class Solution {
     public ArrayList<Integer> f(TreeNode root, int distance){
         
         if(root == null){
-            ArrayList<Integer> res = new ArrayList<>();
-            // res.add((int)1e7);
             
-            return res;
+            return new ArrayList<>();
         }
         
         if(root.left == null && root.right == null){
