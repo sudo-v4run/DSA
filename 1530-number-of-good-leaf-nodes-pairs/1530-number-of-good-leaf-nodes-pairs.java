@@ -38,15 +38,19 @@ class Solution {
         ArrayList<Integer> merged = new ArrayList<>();
         
         for(int i = 0 ; i < left.size() ; i++){
-            if(left.get(i)+1 > distance){
-                continue;
-            }
+            
+            // if(left.get(i)+1 > distance){
+            //     continue;
+            // }
+            
             merged.add(left.get(i)+1);
         }
         for(int i = 0 ; i < right.size() ; i++){
-            if(right.get(i)+1 > distance){
-                continue;
-            }
+            
+            // if(right.get(i)+1 > distance){
+            //     continue;
+            // }
+            
             merged.add(right.get(i)+1);
         }
         
