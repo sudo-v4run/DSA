@@ -17,6 +17,7 @@ class Solution {
         }
         
         if(root.left == null && root.right == null){
+            
             ArrayList<Integer> res = new ArrayList<>();
             res.add(1);
             
