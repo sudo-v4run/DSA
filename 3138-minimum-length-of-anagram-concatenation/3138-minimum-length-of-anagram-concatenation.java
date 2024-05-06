@@ -3,14 +3,14 @@ class Solution {
         
         int n = s.length();
         
-        int arr[][] = new int[n][26];
+        int prefixFreq[][] = new int[n][26];
         for(int i = 0 ; i < n ; i++){
             int ch = s.charAt(i)-'a';
             if(i >= 1){
-                arr[i] = arr[i-1].clone();
-                arr[i][ch]++;
+                prefixFreq[i] = prefixFreq[i-1].clone();
+                prefixFreq[i][ch]++;
             }else{
-                arr[i][ch]++;
+                prefixFreq[i][ch]++;
             }
         }
         
@@ -18,7 +18,7 @@ class Solution {
         int hi = n+1;
         
         for(int tLen = 1 ; tLen <= n ; tLen++){
-            if(isPossible(tLen,s,arr)){
+            if(isPossible(tLen,s,prefixFreq)){
                
                 return tLen;
             }
@@ -26,7 +26,7 @@ class Solution {
         
         return n;
     }
-    public boolean isPossible(int tLen, String s, int arr[][]){
+    public boolean isPossible(int tLen, String s, int prefixFreq[][]){
         
         int n = s.length();
         
@@ -47,8 +47,8 @@ class Solution {
         while(i+tLen-1 < n){
             int j = i+tLen-1;
             
-            int rFreq[] = arr[j];
-            int lFreq[] = arr[i-1];
+            int rFreq[] = prefixFreq[j];
+            int lFreq[] = prefixFreq[i-1];
             
             for(Character key : hm.keySet()){
                 int curF = hm.get(key);
