@@ -15,9 +15,11 @@ class Solution {
             return c;       // coz c is not min or max for sure...
         }
         if(c < a){
+
             return a;       // coz now a is not the min anymore...
         }
         if(c > b){
+
             return b;       // coz now b is not max anymore...
         }
         
