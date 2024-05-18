@@ -28,6 +28,7 @@ class Solution {
                                     List<String> res,String[] arr){
         
         if(index>s.length()-1){
+
             res.add(ans);
             return;
         }
