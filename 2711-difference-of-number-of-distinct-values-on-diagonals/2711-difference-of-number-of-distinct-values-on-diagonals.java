@@ -9,10 +9,12 @@ class Solution {
         int ans[][] = new int[m][n];
         
         for(int i = 0 ; i < m ; i++){
+
             populateDiagonal(i,0,grid,ans);
         }
         
         for(int j = 1 ; j < n ; j++){
+
             populateDiagonal(0,j,grid,ans);
         }
         
