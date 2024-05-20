@@ -7,6 +7,7 @@ class Solution {
         int ans = Integer.MAX_VALUE;
         
         for(int i = 1 ; i < n ; i++){
+
             ans = Math.min(ans,arr[i]-arr[i-1]);
         }
         
