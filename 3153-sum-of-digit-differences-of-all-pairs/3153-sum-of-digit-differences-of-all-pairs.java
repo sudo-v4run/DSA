@@ -24,6 +24,6 @@ class Solution {
             }
         }
         
-        return ans/2;
+        return ans/2;  // by 2 coz each pair is calculated twice in the above process..
     }
 }
