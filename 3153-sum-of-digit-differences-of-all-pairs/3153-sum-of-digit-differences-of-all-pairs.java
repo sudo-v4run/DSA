@@ -5,6 +5,7 @@ class Solution {
         int prefix[][] = new int[10][10];
         
         for(int i = 0 ; i < n ; i++){
+            
             String cur = String.valueOf(arr[i]);
             
             for(int j = 0 ; j < cur.length() ; j++){
@@ -15,7 +16,9 @@ class Solution {
         long ans = 0;
         
         for(int i = 0 ; i < n ; i++){
+            
             String cur = String.valueOf(arr[i]);
+            
             for(int j = 0 ; j < cur.length() ; j++){
                 ans += n-prefix[j][cur.charAt(j)-'0'];
             }
