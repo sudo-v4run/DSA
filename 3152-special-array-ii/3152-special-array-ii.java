@@ -26,9 +26,9 @@ class Solution {
             int l = q[0];
             int r = q[1];
             
-//             int cnt = prefix[r]-prefix[l];
+//             int specialBreakcnt = prefix[r]-prefix[l];
             
-//             if(cnt == 0){
+//             if(specialBreakcnt == 0){
 //                 res[index] = true;
 //             }else{
 //                 res[index] = false;
