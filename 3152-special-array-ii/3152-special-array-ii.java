@@ -26,9 +26,16 @@ class Solution {
             int l = q[0];
             int r = q[1];
             
-            int cnt = prefix[r]-prefix[l];
+//             int cnt = prefix[r]-prefix[l];
             
-            if(cnt == 0){
+//             if(cnt == 0){
+//                 res[index] = true;
+//             }else{
+//                 res[index] = false;
+//             }
+//             index++;
+            
+            if(prefix[l] == prefix[r]){
                 res[index] = true;
             }else{
                 res[index] = false;
