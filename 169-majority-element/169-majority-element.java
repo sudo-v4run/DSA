@@ -2,6 +2,7 @@ class Solution {
     public int majorityElement(int[] arr) {
         
         int n = arr.length;
+
         int ans = arr[0];
         int cnt = 0;
         
