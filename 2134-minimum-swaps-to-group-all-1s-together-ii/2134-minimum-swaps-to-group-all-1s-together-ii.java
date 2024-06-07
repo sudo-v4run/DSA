@@ -36,6 +36,7 @@ class Solution {
             int curOnes = 0;
             
             if(l < r%n){
+                
                 curOnes = preCnt[r];
                 if(l > 0){
                     curOnes = preCnt[r]-preCnt[l-1];
@@ -43,7 +44,6 @@ class Solution {
             }else{
                 
                 int newR = r%n;
-                
                 curOnes = ones - (preCnt[l-1] - preCnt[newR]);
             }
             
