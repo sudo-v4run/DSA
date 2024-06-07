@@ -47,7 +47,8 @@ class Solution {
                 curOnes = ones - (preCnt[l-1] - preCnt[newR]);
             }
             
-            
+            // or just append the first k elements at the end of the array and keep the
+            // first condition only...
             
             int reqSwaps = ones-curOnes;
             
