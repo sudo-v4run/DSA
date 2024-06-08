@@ -41,6 +41,7 @@ class Solution {
                 for(char alpha = 'a' ; alpha <='z' ; alpha++){
                     chArray[i] = alpha;
                     String temp = new String(chArray);
+
                     if(!temp.equals(curS) && hs.contains(temp)){
                         hs.remove(temp);
                         q.add(new Pair(temp,l+1));
