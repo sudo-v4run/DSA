@@ -37,8 +37,6 @@ class Solution {
         
         int notTake = f(index+1,curReward,arr,dp);
         
-        int ans = Math.max(take,notTake);
-        
-        return dp[index][curReward] = ans;
+        return dp[index][curReward] = Math.max(take,notTake);
     }
 }
