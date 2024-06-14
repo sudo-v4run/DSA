@@ -6,7 +6,6 @@ class Solution {
         for(int i : nums){
             xor^=i;
         }
-        
         return xor;
         
         
