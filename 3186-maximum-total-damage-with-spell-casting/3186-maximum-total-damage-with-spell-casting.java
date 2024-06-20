@@ -36,6 +36,7 @@ class Solution {
         long take = arr[index]*1l*hm.get(arr[index]);
 
         int newIndex = bs(index+1,arr[index]+3,arr);
+            // linear seach is also getting accepted...
         take += f(newIndex,arr,dp);
   
         long notTake = f(index+1,arr,dp);
