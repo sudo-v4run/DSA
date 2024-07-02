@@ -43,7 +43,6 @@ class Solution {
 
                     cnt++;
                     prevIndex = iList.get(iIndex);
-                    iIndex++;
 
                     while(jIndex < jList.size() && jList.get(jIndex) <= prevIndex){
 
@@ -56,7 +55,6 @@ class Solution {
 
                     cnt++;
                     prevIndex = jList.get(jIndex);
-                    jIndex++;
                 }
                 
                 max = Math.max(max,cnt);
