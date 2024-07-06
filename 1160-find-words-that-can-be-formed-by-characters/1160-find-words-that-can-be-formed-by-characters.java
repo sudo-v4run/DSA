@@ -23,6 +23,7 @@ class Solution {
             }
             
             if(flag){
+
                 cnt += s.length();
             }
         }
