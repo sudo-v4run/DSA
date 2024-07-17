@@ -1,7 +1,9 @@
 class Solution {
+    
     int horizontalCut[];
     int verticalCut[];
     HashMap<String,Integer> dp;
+    
     public int minimumCost(int M, int N, int[] horizontalCut, int[] verticalCut) {
         
         this.horizontalCut = horizontalCut;
