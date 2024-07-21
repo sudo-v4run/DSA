@@ -41,21 +41,11 @@ class Solution {
             v = vPq.peek();
         }
         
-        if(v != -1 && h != -1){
-            if(v > h){
-                vPq.poll();
-                long cur = horiPcs*v + f(horiPcs,vertiPcs+1,m,n);
-                ans = Math.min(ans,cur);
-            }else{
-                hPq.poll();
-                long cur = vertiPcs*h + f(horiPcs+1,vertiPcs,m,n);
-                ans = Math.min(ans,cur);
-            }
-        }else if(v != -1){
+        if(v > h){
             vPq.poll();
             long cur = horiPcs*v + f(horiPcs,vertiPcs+1,m,n);
             ans = Math.min(ans,cur);
-        }else if(h != -1){
+        }else{
             hPq.poll();
             long cur = vertiPcs*h + f(horiPcs+1,vertiPcs,m,n);
             ans = Math.min(ans,cur);
