@@ -18,7 +18,6 @@ class Solution {
             }else{
                 return false;
             }
-            
         }
         
         return true;
