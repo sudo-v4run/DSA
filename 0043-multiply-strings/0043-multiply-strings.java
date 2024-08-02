@@ -20,6 +20,7 @@ class Solution {
         }
         
         String ans = "";
+
         int i = arr.length-1;
         while(i >= 0 && arr[i] == 0){
             i--;
