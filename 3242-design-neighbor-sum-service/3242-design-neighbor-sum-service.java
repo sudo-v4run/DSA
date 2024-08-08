@@ -61,10 +61,3 @@ class neighborSum {
         return s;
     }
 }
-
-/**
- * Your neighborSum object will be instantiated and called as such:
- * neighborSum obj = new neighborSum(grid);
- * int param_1 = obj.adjacentSum(value);
- * int param_2 = obj.diagonalSum(value);
- */
