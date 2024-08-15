@@ -8,7 +8,7 @@ class Solution {
         
         return f(0,0,arr,dp)%mod;
     }
-    public int f(int index, int prev, int arr[], HashMap<String,Integer> dp){
+    public int f(int index, int prev1, int arr[], HashMap<String,Integer> dp){
         
         int n = arr.length;
         
@@ -16,16 +16,16 @@ class Solution {
             return 1;
         }
         
-        String state = index+","+prev;
+        String state = index+","+prev1;
         
         if(dp.containsKey(state)){
             return dp.get(state);
         }
         
         int ans = 0;
-        int prev2 = index==0 ? (int)1e9 : (arr[index-1]-prev);
+        int prev2 = index==0 ? (int)1e9 : (arr[index-1]-prev1);
         
-        for(int i = prev ; i <= arr[index] ; i++){
+        for(int i = prev1 ; i <= arr[index] ; i++){
             int curSecond = arr[index]-i;
             if(prev2 >= curSecond){
                 int cur = f(index+1,i,arr,dp)%mod;
