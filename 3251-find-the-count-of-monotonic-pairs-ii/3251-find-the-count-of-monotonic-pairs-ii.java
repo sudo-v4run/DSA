@@ -34,7 +34,7 @@ class Solution {
                 if(l <= r){
                     int cur = prefix[r];
                     if(l > 0){
-                        cur = (prefix[r] - prefix[l-1]+mod)%mod;
+                        cur = (prefix[r] - prefix[l-1] + mod)%mod;
                     }
 
                     ans = (ans + cur)%mod;
