@@ -23,10 +23,11 @@ class Solution {
         }
         
         int ans = 0;
+        int prev2 = index==0 ? (int)1e9 : (arr[index-1]-prev);
         
         for(int i = prev ; i <= arr[index] ; i++){
-            int second = arr[index]-i;
-            if(index == 0 || (index-1 >= 0 && second <= arr[index-1]-prev)){
+            int curSecond = arr[index]-i;
+            if(prev2 >= curSecond){
                 int cur = f(index+1,i,arr,dp)%mod;
                 ans = (ans + cur)%mod;
             }
