@@ -55,6 +55,7 @@ class Solution {
             merged.add(right.get(i)+1);
         }
         
+
         return merged;
     }
 }
