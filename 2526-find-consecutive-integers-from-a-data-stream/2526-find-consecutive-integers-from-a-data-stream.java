@@ -3,6 +3,7 @@ class DataStream {
     int cnt;
     int val;
     int k;
+
     public DataStream(int value, int k) {
         
         cnt = 0;
