@@ -1,6 +1,9 @@
 class Solution {
     public int maxScore(List<List<Integer>> grid) {
         
+        // Intuition-> Start from 1 and try to take 1 from every row it exits and mark that
+        // row as taken and move to next number.i.e. 2 ...untill 100.
+        
         int dp[][] = new int[101][1024];
         for(int row[] : dp){
             Arrays.fill(row,-1);
