@@ -11,9 +11,12 @@ class Solution {
         for(String s : message){
             if(hs.contains(s)){
                 cnt++;
+                if(cnt == 2){
+                    return true;
+                }
             }
         }
         
-        return cnt >= 2;
+        return false;
     }
 }
