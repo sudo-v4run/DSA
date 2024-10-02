@@ -8,6 +8,7 @@ public class Solution {
             if((n&1)==1){
                 res++;          // or res = res | 1
             }
+
             n = n >> 1;
         }
         
