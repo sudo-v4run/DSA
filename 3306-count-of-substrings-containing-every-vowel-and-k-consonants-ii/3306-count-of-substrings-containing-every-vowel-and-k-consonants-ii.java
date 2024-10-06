@@ -1,9 +1,6 @@
 class Solution {
     public long countOfSubstrings(String word, int k) {
         
-        //System.out.println(atmostK(word,k));
-        //System.out.println(atmostK(word,k-1));
-        
         return atleastK(word,k)-atleastK(word,k+1);
     }
     public long atleastK(String word, int k) {
