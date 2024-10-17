@@ -11,10 +11,6 @@ class Solution {
             return b - a;
         });
         
-        // for(int x : res){
-        //     System.out.println(x);
-        // }
-        
         if(k > res.size()){
             return -1;
         }
@@ -31,8 +27,10 @@ class Solution {
         Pair right = f(root.right);
         
         if(left.size == right.size && left.ht == right.ht){
+            
             int newSize = left.size+right.size+1;
             res.add(newSize);
+            
             return new Pair(newSize,Math.max(left.ht,right.ht)+1);
         }
         
