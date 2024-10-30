@@ -11,7 +11,7 @@ class Solution {
         
         for(int i = -1 ; i < n ; i++){
             
-            long gcd = (i != 0) ? arr[0] : arr[1];
+            long gcd = (i == 0) ? arr[1] : arr[0];
             long lcm = gcd;
             
             for(int j = 0 ; j < n ; j++){
