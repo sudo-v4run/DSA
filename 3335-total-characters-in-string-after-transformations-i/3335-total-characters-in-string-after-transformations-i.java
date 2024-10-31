@@ -13,6 +13,10 @@ class Solution {
             
             int temp[] = new int[26];
             
+                // temp is necessary. We just can't modify the existing freq[] because
+                // we are changing the value at i+1 which leads to wrong 
+                // calculations when i becomes i+1.
+            
             for(int i = 0 ; i < 26 ; i++){
                 if(i == 25 && freq[i] != 0){
                     
