@@ -13,7 +13,7 @@ class Solution {
         int preSum[] = new int[n+1];
         preSum[0] = freq[0];
         
-        for(int i = 1 ; i < freq.length ; i++){
+        for(int i = 1 ; i < n ; i++){
             preSum[i] = preSum[i-1] + freq[i];
         }
         
