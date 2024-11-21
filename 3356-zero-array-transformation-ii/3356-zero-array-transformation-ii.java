@@ -7,7 +7,6 @@ class Solution {
         for(int x : arr){
             sum += x;
         }
-        
         if(sum == 0){
             return 0;
         }
@@ -32,7 +31,7 @@ class Solution {
             return -1;
         }
         
-        return ans+1; 
+        return ans+1;
             // +1 coz we worked on indices and indices starts from 0 not 1.
     }
     public boolean isPossible(int arr[], int k, int[][] queries){
