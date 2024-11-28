@@ -19,13 +19,10 @@ class Solution {
             for(int j = i ; j < i+len ; j++){
                 temp += t.charAt(j);
             }
-            if(!hm.containsKey(temp)){
+            if(!hm.containsKey(temp) || hm.get(temp) <= 0){
                 return false;
             }else{
                 hm.put(temp,hm.get(temp)-1);
-                if(hm.get(temp) == 0){
-                    hm.remove(temp);
-                }
             }
         }
         
