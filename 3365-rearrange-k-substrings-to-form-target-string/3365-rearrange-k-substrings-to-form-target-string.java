@@ -7,18 +7,15 @@ class Solution {
         HashMap<String,Integer> hm = new HashMap<>();
         
         for(int i = 0 ; i < n ; i = i+len){
-            String temp = "";
-            for(int j = i ; j < i+len ; j++){
-                temp += s.charAt(j);
-            }
+            
+            String temp = s.substring(i,i+len);
             hm.put(temp,hm.getOrDefault(temp,0)+1);
         }
         
         for(int i = 0 ; i < n ; i = i+len){
-            String temp = "";
-            for(int j = i ; j < i+len ; j++){
-                temp += t.charAt(j);
-            }
+            
+            String temp = t.substring(i,i+len);
+            
             if(!hm.containsKey(temp) || hm.get(temp) <= 0){
                 return false;
             }else{
