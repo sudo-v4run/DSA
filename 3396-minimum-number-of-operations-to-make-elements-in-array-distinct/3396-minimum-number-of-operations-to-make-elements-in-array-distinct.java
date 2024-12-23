@@ -4,11 +4,10 @@ class Solution {
         int n = arr.length;
         HashMap<Integer,Integer> hm  = new HashMap<>();
         
-        int cnt = 0;
+        int cnt = n;
         
         for(int x : arr){
             hm.put(x,hm.getOrDefault(x,0)+1);
-            cnt++;
         }
         
         int min = 0;
@@ -19,7 +18,9 @@ class Solution {
             if(cnt == hm.size()){
                 break;
             }
+            
             for(int j = i ; j < i+3 && j < n ; j++){
+                
                 hm.put(arr[j],hm.get(arr[j])-1);
                 if(hm.get(arr[j]) == 0){
                     hm.remove(arr[j]);
