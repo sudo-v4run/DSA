@@ -17,14 +17,15 @@ class Solution {
                 continue;
             }
             for(int j = 0 ; j < n ; j++){
+                if(cur < 0){
+                    cur = 0;
+                }
                 if(arr[j] == i){
                     cur++;
                 }else if(arr[j] == k){
                     cur--;
                 }
-                if(cur < 0){
-                    cur = 0;
-                }
+                
                 max = Math.max(max,cur);
             }
         }
