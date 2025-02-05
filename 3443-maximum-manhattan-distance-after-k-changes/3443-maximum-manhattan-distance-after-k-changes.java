@@ -31,8 +31,8 @@ class Solution {
 
                     x = x + ((ch == 'N') ? 1 : 0);
                     x = x - ((ch == 'S') ? 1 : 0);
-                    y = y + ((ch == 'W') ? 1 : 0);
-                    y = y - ((ch == 'E') ? 1 : 0);
+                    y = y - ((ch == 'W') ? 1 : 0);
+                    y = y + ((ch == 'E') ? 1 : 0);
 
                     ans = Math.max(ans,Math.abs(x)+Math.abs(y));
                 }
