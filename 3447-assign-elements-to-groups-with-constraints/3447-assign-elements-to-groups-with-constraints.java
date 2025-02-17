@@ -2,7 +2,7 @@ class Solution {
     public int[] assignElements(int[] groups, int[] elements) {
         
         int sieve[] = new int[(int)1e6];
-        int maxg = Arrays.stream(groups).max().orElse(-1);
+        int maxg = (int)1e5;
         Arrays.fill(sieve,-1);
 
         for(int i = 0 ; i < elements.length ; i++){
