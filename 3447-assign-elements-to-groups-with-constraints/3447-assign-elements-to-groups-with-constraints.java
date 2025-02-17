@@ -2,12 +2,11 @@ class Solution {
     public int[] assignElements(int[] groups, int[] elements) {
         
         int sieve[] = new int[(int)1e6];
-        int maxg = (int)1e5;
         Arrays.fill(sieve,-1);
 
         for(int i = 0 ; i < elements.length ; i++){
             int cur = elements[i];
-            if (cur > maxg || sieve[cur] != -1){
+            if (sieve[cur] != -1){
                 continue;
             }
             for(int j = cur ; j <= (int)1e5 ; j = j+cur){
