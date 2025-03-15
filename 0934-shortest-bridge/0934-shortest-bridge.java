@@ -1,25 +1,19 @@
 class Solution {
-
     Queue<Pair> q;
-    HashSet<String> vis;
-    int dirs[][];
-
-    public int shortestBridge(int[][] arr){
+    public int shortestBridge(int[][] arr) {
         
         int m = arr.length;
         int n = arr[0].length;
 
         q = new LinkedList<>();
-        vis = new HashSet<>();
-        dirs = new int[][]{{-1,0},{0,-1},{1,0},{0,1}};
 
         boolean flag = false;
 
         for(int i = 0 ; i < m ; i++){
             for(int j = 0 ; j < n ; j++){
                 if(arr[i][j] == 1){
-                    flag = true;
                     dfs(i,j,arr);
+                    flag = true;
                     break;
                 }
             }
@@ -27,6 +21,8 @@ class Solution {
                 break;
             }
         }
+
+        HashSet<String> vis = new HashSet<>();
 
         int steps = 0;
 
@@ -39,22 +35,24 @@ class Solution {
                 Pair pop = q.poll();
                 int r = pop.r;
                 int c = pop.c;
+                int dist = pop.dist;
 
-                for(int d[] : dirs){
-                    int newR = r+d[0];
-                    int newC = c+d[1];
-
-                    if(newR < 0 || newR >= m || newC < 0 || newC >= n || vis.contains(newR+","+newC)){
-                        continue;
-                    }
-
-                    if(arr[newR][newC] == 1){
-                        return steps;
-                    }
-
-                    q.add(new Pair(newR,newC));
-                    vis.add(newR+","+newC);
+                if(r < 0 || r >= m || c < 0 || c >= n){
+                    continue;
                 }
+                if(arr[r][c] == 1){
+                    return steps-1;
+                }
+
+                if(vis.contains(r+","+c)){
+                    continue;   
+                }
+                vis.add(r+","+c);
+
+                q.add(new Pair(r-1,c,dist+1));
+                q.add(new Pair(r,c-1,dist+1));
+                q.add(new Pair(r+1,c,dist+1));
+                q.add(new Pair(r,c+1,dist+1));
             }
 
             steps++;
@@ -67,15 +65,18 @@ class Solution {
         int m = arr.length;
         int n = arr[0].length;
 
-        if(r < 0 || r >= m || c < 0 || c >= n || vis.contains(r+","+c)){
+        if(r < 0 || r >= m || c < 0 || c >= n){
+            return;
+        }
+        if(arr[r][c] == 2){
             return;
         }
         if(arr[r][c] == 0){
             return;
         }
-        
-        q.add(new Pair(r,c));
-        vis.add(r+","+c);
+
+        arr[r][c] = 2;
+        q.add(new Pair(r,c,0));
 
         dfs(r-1,c,arr);
         dfs(r,c-1,arr);
@@ -84,10 +85,11 @@ class Solution {
     }
     
     class Pair{
-        int r, c;
-        Pair(int r, int c){
+        int r, c, dist;
+        Pair(int r, int c, int dist){
             this.r = r;
             this.c = c;
+            this.dist = dist;
         }
     }
 }
