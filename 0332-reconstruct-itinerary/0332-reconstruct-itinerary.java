@@ -24,8 +24,10 @@ class Solution {
 
     public void dfs(String v, HashMap<String, PriorityQueue<String>> adj, LinkedList<String> res) {
 
-        while (adj.get(v) != null && !adj.get(v).isEmpty()) {
-            String next = adj.get(v).poll();
+        PriorityQueue<String> neighbors = adj.get(v);
+
+        while (neighbors != null && !neighbors.isEmpty()) {
+            String next = neighbors.poll();
             dfs(next, adj, res);
         }
         
