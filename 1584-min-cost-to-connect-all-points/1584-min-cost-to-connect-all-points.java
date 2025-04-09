@@ -1,16 +1,48 @@
 class Solution {
+
+    class DSU{
+
+        int par[];
+
+        DSU(int n){
+            par = new int[n];
+            for(int i = 0 ; i < n ; i++){
+                par[i] = i;
+            }
+        }
+
+        int findParent(int x){
+
+            if(par[x] == x){
+                return x;
+            }
+
+            return par[x] = findParent(par[x]);
+        }
+
+        void merge(int a, int b){
+
+            int parOfa = findParent(a);
+            int parOfb = findParent(b);
+
+            if(parOfa == parOfb){
+                return;
+            }
+
+            par[parOfa] = parOfb;
+        }
+    }
     public int minCostConnectPoints(int[][] points) {
 
-        Arrays.sort(points,(a,b)->{
-            if(a[0] == b[0]){
-                return a[1]-b[1];
-            }
-            return a[0]-b[0];
-        });
-        
-        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b)->{return a.dist-b.dist;});
+        int n = points.length;
 
-        for(int i = 0 ; i < points.length ; i++){
+        DSU d = new DSU(n);
+
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b)->{
+            return a.dist-b.dist;
+        });
+
+        for(int i = 0 ; i < n ; i++){
             int xi = points[i][0];
             int yi = points[i][1];
             for(int j = i+1 ; j < points.length ; j++){
@@ -22,42 +54,36 @@ class Solution {
 
                 int dist = Math.abs(xi-xj)+Math.abs(yi-yj);
 
-                pq.add(new Pair(dist,xi+","+yi,xj+","+yj));
+                pq.add(new Pair(dist,i,j));
             }
         }
 
-        HashSet<String> vis = new HashSet<>();
+        int cost = 0;
 
-        int res = 0;
-     
         while(!pq.isEmpty()){
 
             Pair pop = pq.poll();
-            int dist = pop.dist;
-            String point1 = pop.point1;
-            String point2 = pop.point2;
+            
+            int point1 = pop.point1;
+            int point2 = pop.point2;
 
-            //System.out.println(dist+"   "+point2);
+            if(d.findParent(point1) != d.findParent(point2)){
 
-            if(vis.contains(point2)){
-                
-                continue;
+                cost += pop.dist;
+
+                d.merge(point1,point2);
             }
-            //System.out.println(dist);
-
-            res += dist;
-            //vis.add(point1);
-            vis.add(point2);
-    
         }
 
-        return res;
+        return cost;
     }
     class Pair{
+
         int dist;
-        String point1;
-        String point2;
-        Pair(int dist, String point1, String point2){
+        int point1;
+        int point2;
+
+        Pair(int dist, int point1, int point2){
             this.dist = dist;
             this.point1 = point1;
             this.point2 = point2;
