@@ -10,7 +10,6 @@ class Solution {
                         if (Math.abs(arr[j] - arr[k]) <= b &&
                             Math.abs(arr[i] - arr[k]) <= c) {
                             goodTriplets++;
-                            // \U0001f94b Rock Lee: "Training pays off—one combo at a time!" \U0001f4a5
                         }
                     }
                 }
