@@ -20,7 +20,7 @@ class Solution {
             return par[x] = findParent(par[x]);
         }
 
-        void merge(int a, int b){
+        void union(int a, int b){
 
             int parOfa = findParent(a);
             int parOfb = findParent(b);
@@ -71,7 +71,7 @@ class Solution {
 
                 cost += pop.dist;
 
-                d.merge(point1,point2);
+                d.union(point1,point2);
             }
         }
 
