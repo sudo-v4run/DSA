@@ -120,10 +120,6 @@ class Solution {
                 int v = newEdges[i][1];
                 int ind = newEdges[i][3];
 
-                if(curEdgeInd == ind){
-                    continue;
-                }
-
                 if(dsu.findParent(u) != dsu.findParent(v)){
 
                     cur += newEdges[i][2];
