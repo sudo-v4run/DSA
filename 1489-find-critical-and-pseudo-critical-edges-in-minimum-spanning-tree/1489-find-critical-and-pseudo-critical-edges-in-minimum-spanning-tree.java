@@ -142,13 +142,4 @@ class Solution {
 
         return res;
     }
-    class Pair{
-        int node, wt, index;
-        Pair(int node, int wt, int index){
-            this.node = node;
-            this.wt = wt;
-            this.index = index;
-        }
-    }
-    
 }
