@@ -1,26 +1,63 @@
 class Solution {
-    int minMoves;
-
     public int snakesAndLadders(int[][] board) {
-        minMoves = Integer.MAX_VALUE;
-        dfs(board, board.length * board.length, board.length, 1, 0, new HashMap<>());
-        return minMoves == Integer.MAX_VALUE ? -1 : minMoves;
-    }
+        
+        int n = board.length;
 
-    private void dfs(int[][] board, int maxPos, int sideSize, int currPos, int movesMade, Map<Integer, Integer> visited) {
-        if (movesMade >= minMoves || (visited.containsKey(currPos) && movesMade >= visited.get(currPos))) {
-            return;
+        for(int i = 0 ; i < (n/2) ; i++){
+            int temp[] = board[i];
+            board[i] = board[n-1-i];
+            board[n-1-i] = temp;
         }
-        if (currPos == maxPos) {
-            minMoves = movesMade; 
-            return;
+
+        Queue<Integer> q = new LinkedList<>();
+        q.add(1);
+        HashSet<Integer> vis = new HashSet<>();
+        vis.add(1);
+
+        int moves = 0;
+        while(!q.isEmpty()){
+            int sz = q.size();
+            for(int index = 0 ; index < sz ; index++){
+                int sq = q.poll();
+                if(sq == n*n){
+                    return moves;
+                }
+                for(int i = 1 ; i <= 6 && sq+i <= n*n ; i++){
+                    int nextSq = sq+i;
+                    Pair pos = intToPos(nextSq, n);
+                    int r = pos.r;
+                    int c = pos.c;
+                    if(board[r][c] != -1){
+                        nextSq = board[r][c];
+                    }
+                    if(vis.contains(nextSq)){
+                        continue;
+                    }
+                    q.add(nextSq);
+                    vis.add(nextSq);
+                }
+            }
+            moves++;
         }
-        visited.put(currPos, movesMade);
-        for (int i = 1; i <= Math.min(6, maxPos - currPos); i++) { 
-            int nextPos = currPos + i;
-            int row = sideSize - 1 - (nextPos - 1) / sideSize;
-            int col = (sideSize - row) % 2 == 1 ? (nextPos - 1) % sideSize : sideSize - 1 - ((nextPos - 1) % sideSize);
-            dfs(board, maxPos, sideSize, board[row][col] == -1 ? nextPos : board[row][col], movesMade + 1, visited);
+
+        return -1;
+    }
+    public Pair intToPos(int sq, int n){
+
+        int r = (sq-1)/n;
+        int c = (sq-1)%n;
+
+        if(r%2 == 1){
+            c = n-1-c;
+        }
+
+        return new Pair(r, c);
+    }
+    class Pair{
+        int r, c;
+        Pair(int r, int c){
+            this.r = r;
+            this.c = c;
         }
     }
 }
