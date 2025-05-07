@@ -43,17 +43,17 @@ class Solution {
             int v = e[2];
 
             if(t == 3){
-                if(dsu.findParent(u) != dsu.findParent(v)){
+                if(dsu.findParent(u) == dsu.findParent(v)){
+                    cnt++;
+                }else{
                     dsu.union(u,v);
                     both++;
-                }else{
-                    cnt++;
                 }
             }
         }
 
-        
-        int alice = 0;
+        int temp[] = dsu.par.clone();
+        int aliceEdges = 0;
 
         for(int e[] : edges){
             int t = e[0];
@@ -64,27 +64,27 @@ class Solution {
                 if(dsu.findParent(u) == dsu.findParent(v)){
                     cnt++;
                 }else{
-                    alice++;
+                    aliceEdges++;
                     dsu.union(u,v);
                 }
             }
         }
 
-        dsu = new DSU(n+1);
+        dsu.par = temp;
 
-        for(int e[] : edges){
-            int t = e[0];
-            int u = e[1];
-            int v = e[2];
+        // for(int e[] : edges){
+        //     int t = e[0];
+        //     int u = e[1];
+        //     int v = e[2];
 
-            if(t == 3){
-                if(dsu.findParent(u) != dsu.findParent(v)){
-                    dsu.union(u,v);
-                }
-            }
-        }
+        //     if(t == 3){
+        //         if(dsu.findParent(u) != dsu.findParent(v)){
+        //             dsu.union(u,v);
+        //         }
+        //     }
+        // }
 
-        int bob = 0;
+        int bobEdges = 0;
 
         for(int e[] : edges){
             int t = e[0];
@@ -95,18 +95,20 @@ class Solution {
                 if(dsu.findParent(u) == dsu.findParent(v)){
                     cnt++;
                 }else{
-                    bob++;
+                    bobEdges++;
                     dsu.union(u,v);
                 }
             }
         }
 
-        if(alice + both < n-1){
+        if(aliceEdges + both < n-1){
             return -1;
         }
-        if(bob + both < n-1){
+
+        if(bobEdges + both < n-1){
             return -1;
         }
+
         return cnt;
     }
 }
