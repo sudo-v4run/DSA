@@ -53,8 +53,8 @@ class Solution {
         }
 
         int temp[] = dsu.par.clone();
-        int aliceEdges = 0;
 
+        int aliceEdges = 0;
         for(int e[] : edges){
             int t = e[0];
             int u = e[1];
@@ -72,20 +72,7 @@ class Solution {
 
         dsu.par = temp;
 
-        // for(int e[] : edges){
-        //     int t = e[0];
-        //     int u = e[1];
-        //     int v = e[2];
-
-        //     if(t == 3){
-        //         if(dsu.findParent(u) != dsu.findParent(v)){
-        //             dsu.union(u,v);
-        //         }
-        //     }
-        // }
-
         int bobEdges = 0;
-
         for(int e[] : edges){
             int t = e[0];
             int u = e[1];
@@ -101,14 +88,12 @@ class Solution {
             }
         }
 
-        if(aliceEdges + both < n-1){
+        if(aliceEdges + both != n-1){
             return -1;
         }
-
-        if(bobEdges + both < n-1){
+        if(bobEdges + both != n-1){
             return -1;
         }
-
         return cnt;
     }
 }
