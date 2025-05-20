@@ -28,7 +28,7 @@ class Solution {
                 return;
             }
 
-            par[parOfa] = parOfb;
+            par[parOfb] = parOfa;
         }
     }
     public int maxNumEdgesToRemove(int n, int[][] edges) {
