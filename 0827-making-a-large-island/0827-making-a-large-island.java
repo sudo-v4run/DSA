@@ -228,16 +228,16 @@ class Solution {
             int rank_parent_a = rank[parent_a];
             int rank_parent_b = rank[parent_b];
             
-            parent[parent_a] = parent_b;
+            //parent[parent_a] = parent_b;
 
-            // if(rank_parent_a < rank_parent_b){
-            //     parent[parent_a] = parent_b;
-            // }else if(rank_parent_a > rank_parent_b){
-            //     parent[parent_b] = parent_a;
-            // }else{
-            //     parent[parent_b] = parent_a;
-            //     rank[parent_a]++;
-            // }
+            if(rank_parent_a < rank_parent_b){
+                parent[parent_a] = parent_b;
+            }else if(rank_parent_a > rank_parent_b){
+                parent[parent_b] = parent_a;
+            }else{
+                parent[parent_a] = parent_b;
+                rank[parent_b]++;
+            }
         }
     }
 }
