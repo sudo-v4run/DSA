@@ -44,17 +44,8 @@ class Solution {
         Arrays.sort(edgeList,(a,b)->{return a[2]-b[2];});
 
         ArrayList<ArrayList<Integer>> q = new ArrayList<>();
-
-        // for(int i = 0 ; i < queries.length ; i++){
-        //     q.add(new ArrayList<>());
-        // }
-
         int ind = 0;
         for(int que[] : queries){
-            // int u = que[0];
-            // int v = que[1];
-            // int dist = que[2];
-            // int index = ind;
 
             ArrayList<Integer> temp = new ArrayList<>();
             temp.add(que[0]);
@@ -72,8 +63,7 @@ class Solution {
 
         int i = 0;
         for(ArrayList<Integer> query : q){
-            //int u = query.get(0);
-            //int v = query.get(1);
+            
             int limit = query.get(2);
 
             for( ; i < edgeList.length ; i++){
