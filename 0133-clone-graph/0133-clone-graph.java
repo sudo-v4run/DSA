@@ -21,8 +21,7 @@ class Solution {
                 dfs(nei,hm);
             }
             adj.add(hm.get(nei));  
-                // hm.get() will not return null coz we first traverse and add to adj
-
+                // hm.get() will not return null coz we first traverse and then add to adj
         }
         
         clone.neighbors = adj;
