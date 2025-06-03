@@ -10,8 +10,6 @@ class Solution {
         return dfs(root,hm);
     }
     public static Node dfs(Node root, HashMap<Node,Node> hm){
-
-        ArrayList<Node> adj = new ArrayList<>();
         
         Node clone = new Node(root.val);
         hm.put(root,clone);
@@ -20,11 +18,9 @@ class Solution {
             if(!hm.containsKey(nei)){
                 dfs(nei,hm);
             }
-            adj.add(hm.get(nei));  
+            clone.neighbors.add(hm.get(nei));
                 // hm.get() will not return null coz we first traverse and then add to adj
         }
-        
-        clone.neighbors = adj;
         
         return clone;
     }
