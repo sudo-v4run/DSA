@@ -11,8 +11,8 @@ class Solution {
         int h = n1;
             // h = n1 but not n1-1 coz that's how we take cuts...n1 is also inclusive
             // i.e. n1 accounts for all elements taken...and 0 means no elements taken...
-            // In that way, cut = 1 means we are taking elements at 0th and before indices
-            // So, cut = n1 means we are taking n-1th element and before indecies elements
+            // In that way, cut = 1 means we are taking elements till 0th index(0 index inclusive)
+            // So, cut = n1 means we are taking till n-1th index (n-1 index inclusive)
         
         while(l<=h){
             
