@@ -1,72 +1,52 @@
 class Solution {
-    public double findMedianSortedArrays(int[] arr1, int[] arr2) {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        
+        int arr1[] = new int[nums1.length+4];
+        int arr2[] = new int[nums2.length+4];
 
         int n1 = arr1.length;
         int n2 = arr2.length;
 
-        if(n1 == 0 && n2 == 0){
-            return 0.0;
-        }
-
         if(n2 < n1){
-            return findMedianSortedArrays(arr2, arr1);
+            return findMedianSortedArrays(nums2,nums1);
         }
 
-        if(n1 == 0){
-            if(n2%2 == 0){
-                return (arr2[(n2/2)-1]+arr2[n2/2])/2.0;
-            }
-            return arr2[n2/2];
+        arr1[0] = arr1[1] = Integer.MIN_VALUE;
+        arr1[n1-1] = arr1[n1-2] = Integer.MAX_VALUE;
+
+        arr2[0] = arr2[1] = Integer.MIN_VALUE;
+        arr2[n2-1] = arr2[n2-2] = Integer.MAX_VALUE;
+
+        for(int i = 0 ; i < nums1.length; i++){
+            arr1[i+2] = nums1[i];
+        }
+        for(int i = 0 ; i < nums2.length; i++){
+            arr2[i+2] = nums2[i];
         }
 
         int l1 = 0;
         int h1 = n1-1;
+        int l2 = 0;
+        int h2 = n2-1;
 
-        while(true){
+        while(l1 <= h1){
             int m1 = (l1+h1)/2;
-            if(h1 < 0){
-                m1 = -1;
-            }
             int m2 = (((n1+n2+1)/2)-(m1+1))-1;
-            if(h1 < 0){
-                m2 = ((n1+n2+1)/2)-1;
-            }
 
-            //System.out.println(m2);
-
-            int m1Ele = Integer.MIN_VALUE;
-            if(m1 >= 0){
-                m1Ele = arr1[m1];
-            }
-            int m2Ele = Integer.MIN_VALUE;
-            if(m2 >= 0){
-                m2Ele = arr2[m2];
-            }
-
-            int m1next = Integer.MAX_VALUE;
-            if(m1+1 < n1){
-                m1next = arr1[m1+1];
-            }
-
-            int m2next = Integer.MAX_VALUE;
-            if(m2+1 < n2){
-                m2next = arr2[m2+1];
-            }
-
-            if(m1Ele <= m2next && m2Ele <= m1next){
+            if(arr1[m1] <= arr2[m2+1] && arr2[m2] <= arr1[m1+1]){
                 if((n1+n2)%2 == 0){
-                    return (Math.max(m1Ele,m2Ele)+Math.min(m1next,m2next))/2.0;
+                    return (Math.max(arr1[m1],arr2[m2])+Math.min(arr1[m1+1],arr2[m2+1]))/2.0;
 
                 }else{
-                    return Math.max(m1Ele,m2Ele);
+                    return Math.max(arr1[m1],arr2[m2]);
                 }
-            }else if(m1Ele > m2next){
+            }else if(arr1[m1] > arr2[m2+1]){
                 h1 = m1-1;
-            }else if(m2Ele > m1next){
+            }else if(arr2[m2] > arr1[m1+1]){
                 l1 = m1+1;
             }
         }
 
-        
+        return 0.0;
     }
 }
