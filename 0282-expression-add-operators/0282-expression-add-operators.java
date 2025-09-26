@@ -1,3 +1,10 @@
+/*
+ * @lc app=leetcode id=282 lang=java
+ *
+ * [282] Expression Add Operators
+ */
+
+// @lc code=start
 class Solution {
     public List<String> addOperators(String num, int target) {
 
@@ -18,10 +25,9 @@ class Solution {
             return;
         }
 
-        String curDigitStr = "";
         for(int i = index; i < n; i++){
 
-            long curDigit = Long.parseLong(curDigitStr+num.charAt(i));
+            long curDigit = Long.parseLong(num.substring(index, i+1));
 
             if(i != index && num.charAt(index) == '0'){
                 return;
@@ -34,8 +40,8 @@ class Solution {
                 f(i+1, path+"-"+curDigit, -curDigit, value-curDigit, t, num, res);
                 f(i+1, path+"*"+curDigit, prev*curDigit, value-prev+prev*curDigit, t, num, res);
             }
-
-            curDigitStr += num.charAt(i);
         }
     }
 }
+// @lc code=end
+
