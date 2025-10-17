@@ -32,11 +32,6 @@ class Solution {
 
             int t[] = merge(t1,t2);
 
-            // for(int xx : ans){
-            //     System.out.print(xx+"    ");
-            // }
-            // System.out.println();
-
             ans = max(ans,t);
         }
 
@@ -58,8 +53,6 @@ class Solution {
         }
     }
     public int[] merge(int t1[], int t2[]){
-
-        
 
         int n1 = t1.length;
         int n2 = t2.length;
@@ -111,7 +104,6 @@ class Solution {
     public static int[] max(int arr1[], int arr2[]){
 
         int n = arr1.length;
-
         int[] res = arr1.clone();
 
         for (int i = 0; i < n; i++) {
