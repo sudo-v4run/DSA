@@ -82,11 +82,15 @@ class Solution {
                     res[k++] = t1[i];
                     i++;
                 }else if(t1[tempI] > t2[tempJ]){
-                    res[k++] = t1[i];
-                    i++;
+                    while(i < tempI){
+                        res[k++] = t1[i];
+                        i++;
+                    }
                 }else{
-                    res[k++] = t2[j];
-                    j++;
+                    while(j < tempJ){
+                        res[k++] = t2[j];
+                        j++;
+                    }
                 }
             }
         }
