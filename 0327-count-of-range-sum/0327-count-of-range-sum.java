@@ -3,9 +3,9 @@ class Solution {
     public int countRangeSum(int[] nums, int lower, int upper) {
         res = 0;
         int n = nums.length;
-        long[] sums = new long[n + 1];
-        for (int i = 0; i < n; ++i)
-            sums[i + 1] = sums[i] + nums[i];
+        long[] sums = new long[n+1];
+        for (int i = 1; i <= n; i++)
+            sums[i] = sums[i-1] + nums[i-1];
 
         
         partition(sums, 0, n, lower, upper);
