@@ -28,10 +28,9 @@ class Solution {
         int k = m + 1;
         
         for (int i = l; i <= m; i++) {
-            // Find the range [k, j) where lower <= arr[j] - arr[i] <= upper
-            while (k <= r && arr[k] - arr[i] < lower) k++;
-            while (j <= r && arr[j] - arr[i] <= upper) j++;
-            res += j - k;
+            while (j <= r && arr[j] - arr[i] < lower) j++;
+            while (k <= r && arr[k] - arr[i] <= upper) k++;
+            res += k-j;
         }
         
         // Standard merge sort logic
