@@ -37,32 +37,31 @@ class Solution {
         
         // Standard merge sort logic
         int n = r - l + 1;
-        long res[] = new long[n];
+        long temp[] = new long[n];
         int i = l;
         j = m + 1;
         int idx = 0;
         
         while (i <= m && j <= r) {
             if (arr[i] < arr[j]) {
-                res[idx++] = arr[i++];
+                temp[idx++] = arr[i++];
             } else {
-                res[idx++] = arr[j++];
+                temp[idx++] = arr[j++];
             }
         }
         
         while (i <= m) {
-            res[idx++] = arr[i++];
+            temp[idx++] = arr[i++];
         }
         
         while (j <= r) {
-            res[idx++] = arr[j++];
+            temp[idx++] = arr[j++];
         }
         
         // Copy back
-        i = l;
         idx = 0;
-        for (; i <= r; i++) {
-            arr[i] = res[idx++];
+        for (int index = l ; index <= r; index++) {
+            arr[index] = temp[idx++];
         }
         
         return count;
