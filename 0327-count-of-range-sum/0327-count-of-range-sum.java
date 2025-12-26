@@ -18,13 +18,12 @@ class Solution {
             int m = (l + h) / 2;
             partition(arr, l, m, lower, upper);
             partition(arr, m + 1, h, lower, upper);
-            res += merge(arr, l, m, h, lower, upper);
+            merge(arr, l, m, h, lower, upper);
         }
     }
 
-    public static int merge(long arr[], int l, int m, int r, int lower, int upper) {
+    public static void merge(long arr[], int l, int m, int r, int lower, int upper) {
         // Count valid range sums
-        int count = 0;
         int j = m + 1;
         int k = m + 1;
         
@@ -32,7 +31,7 @@ class Solution {
             // Find the range [k, j) where lower <= arr[j] - arr[i] <= upper
             while (k <= r && arr[k] - arr[i] < lower) k++;
             while (j <= r && arr[j] - arr[i] <= upper) j++;
-            count += j - k;
+            res += j - k;
         }
         
         // Standard merge sort logic
@@ -63,7 +62,5 @@ class Solution {
         for (int index = l ; index <= r; index++) {
             arr[index] = temp[idx++];
         }
-        
-        return count;
     }
 }
