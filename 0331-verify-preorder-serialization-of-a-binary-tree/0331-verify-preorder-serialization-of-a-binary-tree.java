@@ -14,7 +14,7 @@ class Solution {
         char prev = 'a';
         st.push(pre[0]);
 
-        while(!st.isEmpty() && index <= pre.length){
+        while(!st.isEmpty()){
             if(!st.isEmpty() && st.peek() == prev && prev == '#'){
                 st.pop();
                 st.pop();
@@ -22,7 +22,7 @@ class Solution {
                     return false;
                 }
                 st.pop();
-                
+
                 if(!st.isEmpty()){
                     prev = st.peek();
                 }else{
@@ -37,8 +37,6 @@ class Solution {
                 }
                 st.push(pre[index++]);
             }
-
-            System.out.println(st);
         }
 
         return st.size() == 1 && st.peek() == '#';
