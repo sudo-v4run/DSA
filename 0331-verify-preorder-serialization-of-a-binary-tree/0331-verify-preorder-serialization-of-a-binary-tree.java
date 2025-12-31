@@ -2,17 +2,11 @@ class Solution {
     public boolean isValidSerialization(String preorder) {
         
         Stack<Character> st = new Stack<>();
-        String temp[] = preorder.split(",");
-
-        char pre[] = new char[temp.length];
-        int i = 0;
-        for(String s : temp){
-            pre[i++] = s.charAt(0);
-        }
+        String pre[] = preorder.split(",");
 
         int index = 1;
         char prev = 'a';
-        st.push(pre[0]);
+        st.push(pre[0].charAt(0));
 
         while(!st.isEmpty()){
             if(!st.isEmpty() && st.peek() == prev && prev == '#'){
@@ -35,7 +29,7 @@ class Solution {
                 if(index == pre.length){
                     break;
                 }
-                st.push(pre[index++]);
+                st.push(pre[index++].charAt(0));
             }
         }
 
