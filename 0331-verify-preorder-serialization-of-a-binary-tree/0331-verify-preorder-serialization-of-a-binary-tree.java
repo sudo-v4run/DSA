@@ -5,6 +5,7 @@ class Solution {
         int edges = 1;
         for(String node : nodes){
             edges--; // consume one for parent
+            
             if(edges < 0){
                 return false;
             }
