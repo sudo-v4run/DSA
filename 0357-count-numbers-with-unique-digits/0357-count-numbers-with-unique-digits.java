@@ -1,7 +1,10 @@
 class Solution {
+    int dp[];
     public int countNumbersWithUniqueDigits(int n) {
         
         int ans = 0;
+        dp = new int[n+1];
+        Arrays.fill(dp, -1);
 
         for(int i = 0; i <= n ; i++){
             ans += f(i);
@@ -23,6 +26,10 @@ class Solution {
             return 9;
         }
 
-        return f(n-1)*(10 - (n-1));
+        if(dp[n] != -1){
+            return dp[n];
+        }
+
+        return dp[n] = f(n-1)*(10 - (n-1));
     }
 }
