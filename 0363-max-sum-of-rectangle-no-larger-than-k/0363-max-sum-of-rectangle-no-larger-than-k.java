@@ -39,7 +39,7 @@ class Solution {
                 for(int k = -1; k <= i; k++){
                     for(int l = -1; l <= j; l++){
 
-                        if(k == i && l == j){
+                        if(k == i || l == j){
                             continue;
                         }
                         
