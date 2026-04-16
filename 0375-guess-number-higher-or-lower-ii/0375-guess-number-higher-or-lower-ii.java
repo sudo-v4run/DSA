@@ -45,7 +45,7 @@ class Solution {
         
 
 
-        for(int index = Math.max(l, ind - 7) ; index <= Math.min(h, ind + 7) ; index++){
+        for(int index = Math.max(l, ind - 999) ; index <= Math.min(h, ind + 999) ; index++){
             int left = index + f(l, index-1, dp);
             int right = index + f(index+1, h, dp);
 
