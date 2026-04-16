@@ -45,7 +45,7 @@ class Solution {
         //System.out.println(preSum[h]+","+ind);
 
 
-        for(int index = Math.max(l, ind - 99) ; index <= Math.min(h, ind + 99) ; index++){
+        for(int index = Math.max(l, ind - 9) ; index <= Math.min(h, ind + 9) ; index++){
             int left = index + f(l, index-1, dp);
             int right = index + f(index+1, h, dp);
 
