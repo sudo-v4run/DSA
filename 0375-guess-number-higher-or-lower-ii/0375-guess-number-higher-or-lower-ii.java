@@ -42,21 +42,16 @@ class Solution {
             }
         }
 
-        
+        //System.out.println(preSum[h]+","+ind);
 
 
-        for(int index = Math.max(l, ind - 999) ; index <= Math.min(h, ind + 999) ; index++){
+        for(int index = Math.max(l, ind - 99) ; index <= Math.min(h, ind + 99) ; index++){
             int left = index + f(l, index-1, dp);
             int right = index + f(index+1, h, dp);
 
-            
-
             int cur = Math.max(left, right);
 
-            if(cur < ans){
-                ans = cur;
-                System.out.println(index);
-            }
+            ans = Math.min(ans, cur);
         }
 
         return dp[l][h] = ans;
