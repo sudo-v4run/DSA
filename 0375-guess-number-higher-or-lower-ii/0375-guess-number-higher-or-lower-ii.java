@@ -6,7 +6,7 @@ class Solution {
             Arrays.fill(row, -1);
         }
         
-        return f(1, n, dp);
+        return f((n/2), n, dp);
     }
     public int f(int l, int h, int dp[][]){
 
