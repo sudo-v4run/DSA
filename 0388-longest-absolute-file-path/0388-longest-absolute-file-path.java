@@ -3,6 +3,7 @@ class Solution {
         
         input = input.replace("\n","/");
         String inp[] = input.split("/");
+        
         for(int index = 0; index < inp.length; index++){
             String x = inp[index];
             int t = 0;
@@ -18,10 +19,6 @@ class Solution {
                 inp[index] = x;
             }
         }
-
-        // for(String x : inp){
-        //     System.out.println(x);
-        // }
 
         Stack<String> st = new Stack<>();
         int longest = 0;
