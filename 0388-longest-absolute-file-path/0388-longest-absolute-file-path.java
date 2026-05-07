@@ -28,7 +28,7 @@ class Solution {
             String cur = inp[index];
             if(cur.indexOf("-") != -1){
                 int level = Integer.parseInt(cur.substring(0,cur.indexOf("-")));
-                while(!st.isEmpty() && st.peek().indexOf("-") != -1 && Integer.parseInt(st.peek().substring(0,st.peek().indexOf("-"))) >= level){
+                while(!st.isEmpty() && st.peek().indexOf("-") != -1 && st.size() > level){
                     length = length-st.peek().substring(st.peek().indexOf("-")).length();
                     st.pop();
                 }
