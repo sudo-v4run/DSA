@@ -1,53 +1,21 @@
 class Solution {
     public int lengthLongestPath(String input) {
         
-        input = input.replace("\n","/");
-        String inp[] = input.split("/");
-        
-        for(int index = 0; index < inp.length; index++){
-            String x = inp[index];
-            int t = 0;
-            boolean tFound = false;
-            for(int i = 0; i < x.length(); i++){
-                if(x.charAt(i) == '\t'){
-                    t++;
-                    tFound = true;
-                }
-            }
-            if(tFound){
-                x = x.replace(x.substring(0, t),t+"-");
-                inp[index] = x;
-            }
-        }
+        String filesOrFolders[] = input.split("\n");
 
-        Stack<String> st = new Stack<>();
+        Stack<Integer> st = new Stack<>();
+        st.push(0);
         int longest = 0;
-        int length = 0;
-
-        for(int index = 0; index < inp.length; index++){
-            String cur = inp[index];
-            if(cur.indexOf("-") != -1){
-                int level = Integer.parseInt(cur.substring(0,cur.indexOf("-")));
-                while(!st.isEmpty() && st.peek().indexOf("-") != -1 && st.size() > level){
-                    length = length-st.peek().substring(st.peek().indexOf("-")).length();
-                    st.pop();
-                }
-                st.push(cur);
-                length = length+cur.substring(cur.indexOf("-")).length();
-            }else{
-                length = cur.length();
-                st.push(cur);
+        for(String cur : filesOrFolders){
+            int level = cur.lastIndexOf("\t")+1;
+            while(st.size()-1 > level){
+                st.pop();
             }
+            int len = st.peek()+cur.length()-level+1;
+            st.push(len);
 
             if(cur.indexOf(".") != -1){
-                longest = Math.max(longest, length);
-                if(cur.indexOf("-") != -1){
-                    length = length-st.peek().substring(st.peek().indexOf("-")).length();
-                }else{
-                    length = length-st.peek().length();
-                }
-                
-                st.pop();
+                longest = Math.max(longest, len-1); // -1 for added / in case of file
             }
         }
 
