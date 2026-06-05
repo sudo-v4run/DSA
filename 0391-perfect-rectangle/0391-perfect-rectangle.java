@@ -1,49 +1,30 @@
 class Solution {
     public boolean isRectangleCover(int[][] rectangles) {
-
-        int minXInd = 0;
-        int minYInd = 0;
-
-        int maxXInd = 0;
-        int maxYInd = 0;
+        
+        int minInd = 0;
+        int maxInd = 0;
 
         for(int index = 0; index < rectangles.length; index++){
 
-            if(rectangles[index][0] < rectangles[minXInd][0]){
-                minXInd = index;
-                minYInd = index;
-            }else if(rectangles[index][0] == rectangles[minXInd][0]){
-                if(rectangles[index][1] < rectangles[minYInd][1]){
-                    minXInd = index;
-                    minYInd = index;
+            if(rectangles[index][0] < rectangles[minInd][0]){
+                minInd = index;
+            }else if(rectangles[index][0] == rectangles[minInd][0]){
+                if(rectangles[index][1] < rectangles[minInd][1]){
+                    minInd = index;
                 }
             }
 
-            if(rectangles[index][2] > rectangles[maxXInd][2]){
-                maxXInd = index;
-                maxYInd = index;
-            }else if(rectangles[index][2] == rectangles[maxXInd][2]){
-                if(rectangles[index][3] > rectangles[maxYInd][3]){
-                    maxXInd = index;
-                    maxYInd = index;
+            if(rectangles[index][2] > rectangles[maxInd][2]){
+                maxInd = index;
+            }else if(rectangles[index][2] == rectangles[maxInd][2]){
+                if(rectangles[index][3] > rectangles[maxInd][3]){
+                    maxInd = index;
                 }
             }
         }
-        
-        int leftBottomX = minXInd;
-        int leftBottomY = minYInd;
-
-        int rightTopX = maxXInd;
-        int rightTopY = maxYInd;
-
-        int area = (rectangles[rightTopX][2]-rectangles[leftBottomX][0])
-                    *(rectangles[rightTopY][3]-rectangles[leftBottomY][1]);
-
-        //System.out.println(minXInd+","+minYInd+","+maxXInd+","+maxYInd);
 
         HashSet<String> hs = new HashSet<>();
-
-        int areaSum = 0;
+        int area = 0;
 
         for(int index = 0; index < rectangles.length; index++){
 
@@ -52,11 +33,13 @@ class Solution {
             int a = rectangles[index][2];
             int b = rectangles[index][3];
 
-
             String c1 = x+","+y;
             String c2 = a+","+b;
             String c3 = x+","+b;
             String c4 = a+","+y;
+
+            // all inside sides of the rectangles should be even and if u found even, remove 
+            // from HashSet thus keeping only outer sides of rectangle- all 4 coords.
 
             if(hs.contains(c1)){
                 hs.remove(c1);
@@ -82,22 +65,21 @@ class Solution {
                 hs.add(c4);
             }
 
-
-            areaSum += (a-x)*(b-y);
+            area += (a-x)*(b-y);
         }
 
-        int xInd = minXInd;
-        int aInd = maxXInd;
-
         if( hs.size() != 4 ||
-        !hs.contains(rectangles[xInd][0]+","+rectangles[xInd][1]) ||
-        !hs.contains(rectangles[aInd][2]+","+rectangles[aInd][3]) || 
-        !hs.contains(rectangles[xInd][0]+","+rectangles[aInd][3]) || 
-        !hs.contains(rectangles[aInd][2]+","+rectangles[xInd][1]) ){
+        !hs.contains(rectangles[minInd][0]+","+rectangles[minInd][1]) ||
+        !hs.contains(rectangles[maxInd][2]+","+rectangles[maxInd][3]) || 
+        !hs.contains(rectangles[minInd][0]+","+rectangles[maxInd][3]) || 
+        !hs.contains(rectangles[maxInd][2]+","+rectangles[minInd][1]) ){
             
             return false;
         }
 
-        return areaSum == area;
+        int globalArea = (rectangles[maxInd][2]-rectangles[minInd][0])
+                    *(rectangles[maxInd][3]-rectangles[minInd][1]);
+
+        return area == globalArea;
     }
 }
