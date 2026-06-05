@@ -26,6 +26,11 @@ class Solution {
         HashSet<String> hs = new HashSet<>();
         int area = 0;
 
+        // all inside sides of the rectangles should be even and if u found even, remove 
+        // from HashSet. After inner overlapping sides cancel out each other, only
+        // outer sides of rectangle- all 4 coords should remain in case of perfect
+        // rectangle.
+
         for(int index = 0; index < rectangles.length; index++){
 
             int x = rectangles[index][0];
@@ -37,10 +42,7 @@ class Solution {
             String c2 = a+","+b;
             String c3 = x+","+b;
             String c4 = a+","+y;
-
-            // all inside sides of the rectangles should be even and if u found even, remove 
-            // from HashSet thus keeping only outer sides of rectangle- all 4 coords.
-
+            
             if(hs.contains(c1)){
                 hs.remove(c1);
             }else{
