@@ -5,6 +5,7 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0373-find-k-pairs-with-smallest-sums](https://github.com/sudo-v4run/DSA/tree/main/0373-find-k-pairs-with-smallest-sums/) | Medium |
+| [0391-perfect-rectangle](https://github.com/sudo-v4run/DSA/tree/main/0391-perfect-rectangle/) | Hard |
 ## Heap (Priority Queue)
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -13,6 +14,7 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0375-guess-number-higher-or-lower-ii](https://github.com/sudo-v4run/DSA/tree/main/0375-guess-number-higher-or-lower-ii/) | Medium |
+| [0391-perfect-rectangle](https://github.com/sudo-v4run/DSA/tree/main/0391-perfect-rectangle/) | Hard |
 ## Dynamic Programming
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -33,4 +35,16 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0388-longest-absolute-file-path](https://github.com/sudo-v4run/DSA/tree/main/0388-longest-absolute-file-path/) | Medium |
+## Hash Table
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0391-perfect-rectangle](https://github.com/sudo-v4run/DSA/tree/main/0391-perfect-rectangle/) | Hard |
+## Geometry
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0391-perfect-rectangle](https://github.com/sudo-v4run/DSA/tree/main/0391-perfect-rectangle/) | Hard |
+## Sweep Line
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0391-perfect-rectangle](https://github.com/sudo-v4run/DSA/tree/main/0391-perfect-rectangle/) | Hard |
 <!---LeetCode Topics End-->
