@@ -27,10 +27,12 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0388-longest-absolute-file-path](https://github.com/sudo-v4run/DSA/tree/main/0388-longest-absolute-file-path/) | Medium |
+| [0394-decode-string](https://github.com/sudo-v4run/DSA/tree/main/0394-decode-string/) | Medium |
 ## Stack
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0388-longest-absolute-file-path](https://github.com/sudo-v4run/DSA/tree/main/0388-longest-absolute-file-path/) | Medium |
+| [0394-decode-string](https://github.com/sudo-v4run/DSA/tree/main/0394-decode-string/) | Medium |
 ## Depth-First Search
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -47,4 +49,8 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0391-perfect-rectangle](https://github.com/sudo-v4run/DSA/tree/main/0391-perfect-rectangle/) | Hard |
+## Recursion
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0394-decode-string](https://github.com/sudo-v4run/DSA/tree/main/0394-decode-string/) | Medium |
 <!---LeetCode Topics End-->
