@@ -19,6 +19,7 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0375-guess-number-higher-or-lower-ii](https://github.com/sudo-v4run/DSA/tree/main/0375-guess-number-higher-or-lower-ii/) | Medium |
+| [0397-integer-replacement](https://github.com/sudo-v4run/DSA/tree/main/0397-integer-replacement/) | Medium |
 ## Game Theory
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -53,4 +54,16 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0394-decode-string](https://github.com/sudo-v4run/DSA/tree/main/0394-decode-string/) | Medium |
+## Greedy
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0397-integer-replacement](https://github.com/sudo-v4run/DSA/tree/main/0397-integer-replacement/) | Medium |
+## Bit Manipulation
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0397-integer-replacement](https://github.com/sudo-v4run/DSA/tree/main/0397-integer-replacement/) | Medium |
+## Memoization
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0397-integer-replacement](https://github.com/sudo-v4run/DSA/tree/main/0397-integer-replacement/) | Medium |
 <!---LeetCode Topics End-->
