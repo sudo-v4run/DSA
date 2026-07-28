@@ -44,16 +44,6 @@ class Solution {
                 }
             }
 
-            if(cur < 0.0 && hm.containsKey(dj)){
-
-                cur = dfs(dj, 1, cj, hm, vis);
-                if(cur > 0){
-                    res[index] = (double)(1d/cur);
-                    index++;
-                    continue;
-                }
-            }
-
             if(cur < 0){
                 res[index] = -1;
                 index++;
