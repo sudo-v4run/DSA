@@ -22,10 +22,6 @@ class Solution {
             index++;
         }
 
-        // for(String key : hm.keySet())
-        //     for(Node n : hm.get(key))
-        //         System.out.println(n.v+","+n.w);
-
         int n = queries.size();
 
         double res[] = new double[n];
@@ -40,12 +36,7 @@ class Solution {
             double cur = -1.00000;
             if(hm.containsKey(cj)){
 
-                
                 cur = dfs(cj, 1, dj, hm, vis);
-                
-
-                //System.out.println(cur);
-
                 if(cur > 0){
                     res[index] = cur;
                     index++;
@@ -55,12 +46,7 @@ class Solution {
 
             if(cur < 0.0 && hm.containsKey(dj)){
 
-                
                 cur = dfs(dj, 1, cj, hm, vis);
-                
-
-                //System.out.println(cur);
-
                 if(cur > 0){
                     res[index] = (double)(1d/cur);
                     index++;
@@ -69,8 +55,6 @@ class Solution {
             }
 
             if(cur < 0){
-                //System.out.println(cur);
-                            
                 res[index] = -1;
                 index++;
             }
@@ -81,10 +65,6 @@ class Solution {
     public static double dfs(String cur, double prod, String dest, 
             HashMap<String, ArrayList<Node>> hm, HashSet<String> vis){
 
-       
-
-
-
         if(cur.equals(dest)){
             return prod;
         }
@@ -92,7 +72,6 @@ class Solution {
         if(vis.contains(cur)){
             return -1;
         }
-
         vis.add(cur);
 
         double ans = -1;
@@ -102,7 +81,7 @@ class Solution {
         }
 
         for(Node nei : hm.get(cur)){
-            
+        
             ans = dfs(nei.v, prod*nei.w, dest, hm, vis);
 
             if(ans > 0){
