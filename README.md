@@ -6,6 +6,7 @@
 | ------- | ------- |
 | [0373-find-k-pairs-with-smallest-sums](https://github.com/sudo-v4run/DSA/tree/main/0373-find-k-pairs-with-smallest-sums/) | Medium |
 | [0391-perfect-rectangle](https://github.com/sudo-v4run/DSA/tree/main/0391-perfect-rectangle/) | Hard |
+| [0399-evaluate-division](https://github.com/cyberciph3r/DSA/tree/main/0399-evaluate-division/) | Medium |
 ## Heap (Priority Queue)
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -29,6 +30,7 @@
 | ------- | ------- |
 | [0388-longest-absolute-file-path](https://github.com/sudo-v4run/DSA/tree/main/0388-longest-absolute-file-path/) | Medium |
 | [0394-decode-string](https://github.com/sudo-v4run/DSA/tree/main/0394-decode-string/) | Medium |
+| [0399-evaluate-division](https://github.com/cyberciph3r/DSA/tree/main/0399-evaluate-division/) | Medium |
 ## Stack
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -38,6 +40,7 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0388-longest-absolute-file-path](https://github.com/sudo-v4run/DSA/tree/main/0388-longest-absolute-file-path/) | Medium |
+| [0399-evaluate-division](https://github.com/cyberciph3r/DSA/tree/main/0399-evaluate-division/) | Medium |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -66,4 +69,20 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0397-integer-replacement](https://github.com/sudo-v4run/DSA/tree/main/0397-integer-replacement/) | Medium |
+## Breadth-First Search
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0399-evaluate-division](https://github.com/cyberciph3r/DSA/tree/main/0399-evaluate-division/) | Medium |
+## Union-Find
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0399-evaluate-division](https://github.com/cyberciph3r/DSA/tree/main/0399-evaluate-division/) | Medium |
+## Graph Theory
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0399-evaluate-division](https://github.com/cyberciph3r/DSA/tree/main/0399-evaluate-division/) | Medium |
+## Shortest Path
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0399-evaluate-division](https://github.com/cyberciph3r/DSA/tree/main/0399-evaluate-division/) | Medium |
 <!---LeetCode Topics End-->
