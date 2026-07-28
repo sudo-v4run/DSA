@@ -28,6 +28,7 @@ class Solution {
 
         index = 0;
         for(List<String> q : queries){
+
             String cj = q.get(0);
             String dj = q.get(1);
 
@@ -35,19 +36,16 @@ class Solution {
 
             double cur = -1.00000;
             if(hm.containsKey(cj)){
-
                 cur = dfs(cj, 1, dj, hm, vis);
-                if(cur > 0){
-                    res[index] = cur;
-                    index++;
-                    continue;
-                }
             }
 
             if(cur < 0){
                 res[index] = -1;
-                index++;
+            }else{
+                res[index] = cur;
             }
+
+            index++;
         }
 
         return res;
